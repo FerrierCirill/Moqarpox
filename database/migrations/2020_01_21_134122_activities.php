@@ -13,7 +13,17 @@ class Activities extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('activities', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->float('price');
+            $table->string('description');
+            $table->text('resume');
+            $table->text('information');
+            $table->string('state');
+            $table->foreign('subCategories_id')->references('id')->on('subCategories');
+            $table->foreign('compagnies_id')->references('id')->on('compagnies');
+        });
     }
 
     /**
