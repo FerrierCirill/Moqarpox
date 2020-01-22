@@ -13,7 +13,11 @@ class Configs extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('configs', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('key');
+            $table->string('value');
+        });
     }
 
     /**

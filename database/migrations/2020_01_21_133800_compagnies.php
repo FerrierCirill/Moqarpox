@@ -22,9 +22,9 @@ class Compagnies extends Migration
             $table->string('rib');
             $table->string('adress1');
             $table->string('adress2');
-            $table->bigInteger('ville_id');
+            $table->bigInteger('city_id');
             $table->timestamps();
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

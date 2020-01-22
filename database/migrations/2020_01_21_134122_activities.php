@@ -21,8 +21,8 @@ class Activities extends Migration
             $table->text('resume');
             $table->text('information');
             $table->string('state');
-            $table->foreign('subCategories_id')->references('id')->on('subCategories');
-            $table->foreign('compagnies_id')->references('id')->on('compagnies');
+            $table->foreign('subCategory_id')->references('id')->on('subCategories');
+            $table->foreign('compagny_id')->references('id')->on('compagnies');
         });
     }
 

@@ -13,7 +13,12 @@ class Picture extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('pictures', function(Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('link');
+            $table->foreign('compagny_id')->references('id')->on('compagnies');
+            $table->foreign('activity_id')->references('id')->on('activities');
+        });
     }
 
     /**
