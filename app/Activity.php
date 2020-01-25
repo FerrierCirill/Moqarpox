@@ -14,8 +14,8 @@ class Activity extends Model
         return $this->belongsTo(SubCategory::class);
     }
 
-    public function activitiesOrders() {
-        return $this->hasMany(ActivityOrder::class);
+    public function activityOrder() {
+        return $this->belongsTo(ActivityOrder::class);
     }
 
     public function pictures() {
