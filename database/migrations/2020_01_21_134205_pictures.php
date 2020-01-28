@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Picture extends Migration
+class Pictures extends Migration
 {
     /**
      * Run the migrations.
@@ -16,6 +16,10 @@ class Picture extends Migration
         Schema::create('pictures', function(Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('link');
+
+            $table->unsignedBigInteger('compagny_id');
+            $table->unsignedBigInteger('activity_id');
+
             $table->foreign('compagny_id')->references('id')->on('compagnies');
             $table->foreign('activity_id')->references('id')->on('activities');
         });

@@ -14,14 +14,18 @@ class ActivitiesOrders extends Migration
     public function up()
     {
         Schema::create('activities_orders', function(Blueprint $table) {
-            $table->primary(['order_id','activity_id']);
-            $table->foreign('order_id')->references('id')->on('orders');
-            $table->foreign('activity_id')->references('id')->on('activities');
-            $table->string('code');
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('activity_id');
+            
+            $table->string('code')->unique();
             $table->binary('collect');
             $table->integer('quantity');
             $table->text('text');
             $table->string('email');
+
+            $table->primary(['order_id','activity_id']);
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('activity_id')->references('id')->on('activities');
         });
     }
 

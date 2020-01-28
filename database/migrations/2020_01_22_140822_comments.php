@@ -17,8 +17,13 @@ class Comments extends Migration
             $table->bigIncrements('id');
             $table->text('message');
             $table->string('title');
-            $table->binary('validate')->default(0);
-            $table->foreign('activiy_order_code')->references('code')->on('activites_orders');
+            $table->integer('note');
+            $table->boolean('validate')->default(0);
+
+            $table->unsignedBigInteger('activiy_order_order_id');
+            $table->unsignedBigInteger('activiy_order_activity_id');
+
+            // $table->foreign('activiy_order_code')->references(['order_id','activity_id'])->on('activites_orders');
         });
     }
 
