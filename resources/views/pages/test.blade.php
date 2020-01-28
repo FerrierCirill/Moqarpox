@@ -12,6 +12,7 @@
         <style>
             #cluster {
                 height: 500px;
+                width: 70vw;
             }
 
             .mycluster {
@@ -41,10 +42,16 @@
             let map = L.map('cluster').setView([46.90296, 1.90925], 5);
             let stamenToner = L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
                 attribution: 'Map tiles by Stamen Design, CC BY 3.0 — &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                minZoom: 1,
-                maxZoom: 20,
+                minZoom: 4,
+                maxZoom: 17,
             });
             map.addLayer(stamenToner);
+
+            map.fitBounds([
+                [41.323717,-4.995212],
+                [52.197928,10.242972]
+            ]);
+            map.setMaxBounds(map.getBounds());
 
             let markersCluster = new L.MarkerClusterGroup({
                 iconCreateFunction: function(cluster) {return L.divIcon({html: cluster.getChildCount(), className: 'mycluster', iconSize: null});}
