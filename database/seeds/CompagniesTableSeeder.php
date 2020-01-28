@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Compagny;
 
-class CompagniesSeeder extends Seeder
+class CompagniesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -26,7 +26,7 @@ class CompagniesSeeder extends Seeder
             $compagny->adress2 = ($i%5==0)? $faker->streetSuffix : null;
             $compagny->lat     = $faker->latitude($min = -90, $max = 90);
             $compagny->lng     = $faker->longitude($min = -180, $max = 180);
-            $compagny->user_id = $faker->$faker->numberBetween($min = 1, $max = 300);
+            $compagny->user_id = $faker->numberBetween($min = 1, $max = 300);
         }
     }
 }

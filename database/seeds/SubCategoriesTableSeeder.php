@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class SubCategories extends Seeder
+class SubCategoriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -122,6 +122,6 @@ class SubCategories extends Seeder
             'name'        => 'Oenologie',
             'category_id' => '4'
         ]);
-    
+
     }
 }

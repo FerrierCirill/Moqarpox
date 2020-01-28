@@ -11,4 +11,4 @@
 |
 */
 
-Route::get('/{name?}', 'PageController@hello');
+Route::get('/', 'PageController@test');

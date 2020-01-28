@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\User;
 
-class Users extends Seeder
+class UsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,13 +19,13 @@ class Users extends Seeder
 
             $gender = [null, 'male', 'female'];
 
-            $user->first_name        = firstName($gender[$i%3]);
-            $user->second_name       = lastName();
+            $user->first_name        = $faker->firstName($gender[$i%3]);
+            $user->second_name       = $faker->lastName();
             $user->phone             = $faker->e164PhoneNumber();
             $user->email             = $faker->email();
             $user->email_verified_at = ($i%50 == 0)? null : DateTime::getTimestamp();
             $user->password          = $faker->password();
-            $user->civility          = title($gender[$i%3]);
+            $user->civility          = $faker->title($gender[$i%3]);
         }
     }
 }

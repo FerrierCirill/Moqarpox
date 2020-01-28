@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Activity;
 
-class ActivitiesSeeder extends Seeder
+class ActivitiesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,9 +14,9 @@ class ActivitiesSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        for ($i=0; $i < 5000; $i++) { 
+        for ($i=0; $i < 5000; $i++) {
             $activity = new Activity;
- 
+
             $activity->name           = $faker->sentence($nbWords = 6, $variableNbWords = true);
             $activity->price          = $faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 1000);
             $activity->description    = $faker->text($maxNbChars = 250);
