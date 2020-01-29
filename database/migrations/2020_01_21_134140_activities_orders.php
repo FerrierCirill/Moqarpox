@@ -23,6 +23,9 @@ class ActivitiesOrders extends Migration
             $table->text('text');
             $table->string('email');
 
+            $table->timestamps();
+
+
             $table->primary(['order_id','activity_id']);
             $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('activity_id')->references('id')->on('activities');
@@ -36,6 +39,7 @@ class ActivitiesOrders extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('activities_orders');
+
     }
 }

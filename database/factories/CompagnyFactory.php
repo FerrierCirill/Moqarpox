@@ -16,6 +16,7 @@ $factory->define(Compagny::class, function (Faker $faker) {
         'adress2' => $faker->streetSuffix,
         'lat'     => $faker->latitude($min = -90, $max = 90),
         'lng'     => $faker->longitude($min = -180, $max = 180),
-        'user_id' => $faker->numberBetween($min = 1, $max = 300)
+        'user_id' => $faker->numberBetween($min = 1, $max = 300),
+        'city_id' => $faker->postcode()
     ];
 });

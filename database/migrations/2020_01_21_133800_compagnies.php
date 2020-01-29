@@ -24,7 +24,7 @@ class Compagnies extends Migration
             $table->string('adress2');
             $table->float('lat');
             $table->float('lng');
-            $table->bigInteger('city_id');
+            $table->string('city_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
@@ -38,6 +38,7 @@ class Compagnies extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('compagnies');
         //
     }
 }

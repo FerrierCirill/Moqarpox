@@ -20,6 +20,8 @@ class Pictures extends Migration
             $table->unsignedBigInteger('compagny_id');
             $table->unsignedBigInteger('activity_id');
 
+            $table->timestamps();
+
             $table->foreign('compagny_id')->references('id')->on('compagnies');
             $table->foreign('activity_id')->references('id')->on('activities');
         });
@@ -32,6 +34,7 @@ class Pictures extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('pictures');
         //
     }
 }

@@ -16,6 +16,7 @@ class Categories extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +27,7 @@ class Categories extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('categories');
         //
     }
 }

@@ -20,6 +20,8 @@ class Comments extends Migration
             $table->integer('note');
             $table->boolean('validate')->default(0);
 
+            $table->timestamps();
+            
             $table->unsignedBigInteger('activiy_order_order_id');
             $table->unsignedBigInteger('activiy_order_activity_id');
 
@@ -34,6 +36,6 @@ class Comments extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('comments');
     }
 }
