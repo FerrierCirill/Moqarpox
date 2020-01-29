@@ -1,3 +1,27 @@
+## How to install my project in Wamp
+
+- git clone the project to Wamp in `${INSTALL_DIR}/www/`
+- update `httpd-vhosts.conf` file in `${INSTALL_DIR}/bin/apache/apache{version}/conf/extra/` with adding this : 
+```
+<VirtualHost *:80>
+  DocumentRoot "${INSTALL_DIR}/www/{projectName}/public"
+  ServerName {urlOfProject} //like myproject.dev
+  <Directory "${INSTALL_DIR}/www/{projectName}/public">
+   	AllowOverride All
+   	Options +FollowSymLinks +Indexes
+   	Order allow,deny
+   	Allow from all
+  </Directory>
+</VirtualHost>
+```
+- update `hosts` file in `C:\Windows\System32\drivers\etc\` with adding this : 
+```
+127.0.0.1 {urlOfProject}
+```
+- In your project directory, with a terminal write `composer install` then press enter.
+- In `.env` file in your project, edit the line `APP_URL=http://localhost` by replacing with `APP_URL=http://{urlOfProject}`
+- All good ! good work !
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
