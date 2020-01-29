@@ -1,4 +1,8 @@
 <?php
+$comps = [];
+for($i = 0; $i < sizeof($compagnies); $i++) {
+    array_push($comps, array('name'=> $compagnies[$i]['name'], 'lat' => $compagnies[$i]['lat'], 'lng' => $compagnies[$i]['lng'], 'adress' => $compagnies[$i]['adress1'], 'phone' => $compagnies[$i]['phone'], 'email' => $compagnies[$i]['email']));
+}
 
 ?><!doctype html>
 <html lang="fr">
@@ -30,13 +34,13 @@
         </style>
     </head>
     <body>
+        <div>
+
+        </div>
         <div id="cluster"></div>
         <script>
             function getCities() {
-                return [
-                    {'name': 'Test', 'lat': 51, 'lon': 6},
-                    {'name': 'yo', 'lat': 45, 'lon': 7}
-                ];
+                return <?php echo json_encode($comps)?>;
             }
 
             let map = L.map('cluster').setView([46.90296, 1.90925], 5);
@@ -59,9 +63,14 @@
 
             let cities = getCities();
             for (let i = 0; i < cities.length; i++) {
-                let latLng = new L.LatLng(cities[i]['lat'], cities[i]['lon']);
+                let latLng = new L.LatLng(cities[i]['lat'], cities[i]['lng']);
                 let marker = new L.Marker(latLng, {title: cities[i][0]});
-                marker.bindPopup(cities[i]['name']);
+                marker.bindPopup(
+                    '<strong>' + cities[i]['name'] + '</strong>'
+                    + '<br>Adresse : ' + cities[i]['adress']
+                    + '<br>Téléphone : ' + cities[i]['phone']
+                    + '<br>E-mail : ' + cities[i]['email']
+                );
                 markersCluster.addLayer(marker);
             }
 
