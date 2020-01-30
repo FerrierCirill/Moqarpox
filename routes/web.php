@@ -11,4 +11,5 @@
 |
 */
 
-Route::get('/', 'PageController@test');
+Route::get('/'      , 'Home@test');
+Route::get('/design', 'Home@design');

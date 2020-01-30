@@ -9,10 +9,9 @@ for($i = 0; $i < sizeof($compagnies); $i++) {
     <head>
         <meta charset="utf-8">
         <title>Titre de la page</title>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
-        <link rel="stylesheet" href="{{ URL::to('/') }}/leaflet/MarkerCluster.css">
-        <script src="{{ URL::to('/') }}/leaflet/leaflet.markercluster.js"></script>
+        
+
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
             #cluster {
                 height: 500px;
@@ -37,6 +36,18 @@ for($i = 0; $i < sizeof($compagnies); $i++) {
         <div>
 
         </div>
+
+        <div class="md:flex container border p-4">
+            <div class="md:flex-shrink-0">
+                <img class="rounded-lg md:w-56" src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=448&q=80" alt="Woman paying for a purchase">
+            </div>
+            <div class="mt-4 md:mt-0 md:ml-6">
+                <div class="uppercase tracking-wide text-sm text-indigo-600 font-bold">Marketing</div>
+                <a href="#" class="block mt-1 text-lg leading-tight font-semibold text-gray-900 hover:underline">Finding customers for your new business</a>
+                <p class="mt-2 text-gray-600">Getting a new business off the ground is a lot of hard work. Here are five ideas you can use to find your first customers.</p>
+            </div>
+        </div>
+
         <div id="cluster"></div>
         <script>
             function getCities() {
@@ -76,5 +87,6 @@ for($i = 0; $i < sizeof($compagnies); $i++) {
 
             map.addLayer(markersCluster);
         </script>
+        
     </body>
 </html>
