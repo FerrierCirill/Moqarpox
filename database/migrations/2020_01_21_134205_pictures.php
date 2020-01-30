@@ -17,8 +17,8 @@ class Pictures extends Migration
             $table->bigIncrements('id');
             $table->string('link');
 
-            $table->unsignedBigInteger('compagny_id');
-            $table->unsignedBigInteger('activity_id');
+            $table->unsignedBigInteger('compagny_id')->nullable();
+            $table->unsignedBigInteger('activity_id')->nullable();
 
             $table->timestamps();
 

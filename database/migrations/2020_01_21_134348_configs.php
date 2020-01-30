@@ -30,6 +30,7 @@ class Configs extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('configs');
         //
     }
 }
