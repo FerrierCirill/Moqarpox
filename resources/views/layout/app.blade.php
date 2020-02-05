@@ -8,7 +8,7 @@
 			@include('layout.utils.nav')
 		{{-- EndNav --}}
 
-		<div class="container mx-auto min-h-screen">
+		<div class="min-h-screen">
 		{{-- Content --}}
 			@yield('content')
 		{{-- EndContent --}}

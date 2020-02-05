@@ -3392,7 +3392,7 @@ video {
 .flex-row {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  flex-direction: row;
+          flex-direction: row;
 }
 
 .flex-row-reverse {
@@ -3521,7 +3521,7 @@ video {
 
 .flex-auto {
   -webkit-box-flex: 1;
-  flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 
 .flex-initial {
@@ -11399,6 +11399,15 @@ video {
 
 .z-auto {
   z-index: auto;
+}
+
+select:disabled {
+  background: #ddd;
+}
+
+header {
+  background-size: cover !important;
+  background-position: center !important;
 }
 
 @media (min-width: 640px) {

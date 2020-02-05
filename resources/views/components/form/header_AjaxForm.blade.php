@@ -1,6 +1,6 @@
 <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     <div class="mb-4">
-        <h1>Trouvez des activités, des séjours et plus encore pour vous ou pour offrir !</h1>
+        <h1 class="text-2xl font-black">Trouvez des activités, des séjours et plus encore pour vous ou pour offrir !</h1>
     </div>
 
     <div class="flex flex-row mb-4 flex-wrap">
@@ -18,7 +18,7 @@
         @include('components.form.search_filter.range.budget')
     </div>
 
-    <button class="goSearch btn mb-4">Rechercher</button>
+    <button class="goSearch btn mb-4 w-full bg-gray-500 p-2 mt-5 text-white">Rechercher</button>
 
     <div class=""></div>
 </div>

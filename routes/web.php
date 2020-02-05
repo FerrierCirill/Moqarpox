@@ -11,5 +11,5 @@
 |
 */
 
-Route::get('/'      , 'Home@test');
-Route::get('/design', 'Home@design');
+Route::get('/'      , 'HomeController@test');
+Route::get('/design', 'HomeController@design');
