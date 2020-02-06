@@ -65,9 +65,35 @@ for($i = 0; $i < sizeof($compagnies); $i++) {
             });
 
             let cities = getCities();
+
+            let cyanIcon = L.icon({
+                iconUrl: '{{ asset('images/geo/gpsCyan.svg') }}',
+                iconSize:     [38, 95], // size of the icon
+                iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+                popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+            });
+            let greenIcon = L.icon({
+                iconUrl: '{{ asset('images/geo/gpsGreen.svg') }}',
+                iconSize:     [38, 95], // size of the icon
+                iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+                popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+            });
+            let redIcon = L.icon({
+                iconUrl: '{{ asset('images/geo/gpsRed.svg') }}',
+                iconSize:     [38, 95], // size of the icon
+                iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+                popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+            });
+            let violetIcon = L.icon({
+                iconUrl: '{{ asset('images/geo/gpsViolet.svg') }}',
+                iconSize:     [38, 95], // size of the icon
+                iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+                popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+            });
+
             for (let i = 0; i < cities.length; i++) {
                 let latLng = new L.LatLng(cities[i]['lat'], cities[i]['lng']);
-                let marker = new L.Marker(latLng, {title: cities[i][0]});
+                let marker = new L.Marker(latLng, {title: cities[i][0], icon: cyanIcon});
                 marker.bindPopup(
                     '<strong>' + cities[i]['name'] + '</strong>'
                     + '<br>Adresse : ' + cities[i]['adress']
@@ -79,6 +105,6 @@ for($i = 0; $i < sizeof($compagnies); $i++) {
 
             map.addLayer(markersCluster);
         </script>
-        
+
     </body>
 </html>
