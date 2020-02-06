@@ -12,12 +12,17 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
-     *
+     * On liste ce que l'on veut envoyer à la bdd
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name','second_name','phone','civility', 'email', 'password','facebook_api_token',
     ];
+    /**
+     * inverse fillable
+     * @var array
+     */
+//    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for arrays.
