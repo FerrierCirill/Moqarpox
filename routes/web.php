@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@test');
+Route::get('/random', 'HomeController@index');
 
 Route::get('/activities', 'ActivitiesController@getActivities')->name('activity_get_all');
 Route::get('/activity/add', 'ActivitiesController@getAddActivity')->name('activity_add_get');
@@ -33,7 +34,7 @@ Route::get('/legalMentions', 'HomeController@LM')->name('legal_mentions');
 Route::get('/termsConditionsUse', 'HomeController@TCU')->name('terms_conditions_use');
 Route::get('/termsConditionsSale', 'HomeController@TCS')->name('terms_conditions_sale');
 
-Route::get('/design', 'HomeController@design');
+Route::get('/design', 'HomeController@index'); // a edit quand ca sera bon pour la route '/'
 
 /*
  * TODO

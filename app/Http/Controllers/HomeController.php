@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\SubCategory;
 use Illuminate\Http\Request;
 use App\Compagny;
 use App\Activity;
@@ -16,34 +18,32 @@ class HomeController extends Controller
         ]);
     }
 
-    public function design() {
-        // do {
-        //     $activity = Activity::where('state', 'activer')
-        //                       ->where('note', '>', 4.5)
-        //                       ->get()->random();
-        //     $pictures = Picture::where('activity_id', $activity->id)->get();
-        // } while ($pictures->count() == 0);
+    public function index() {
+        $picture = Picture::inRandomOrder()->first();
+        $activity = Activity::findOrFail($picture->activity_id);
 
-        $activity   = Activity::find(4937);
-        $pictures   = Picture::where('activity_id', $activity->id)->get();
+        $pictures = Picture::where('activity_id', $activity->id)->get();
+        $categories = Category::get();
         $compagnies = Compagny::get();
 
         return view('pages.home', [
+            'activity' => $activity,
+            'pictures' => $pictures,
             'compagnies' => $compagnies,
-            'activity'   => $activity,
-            'pictures'   => $pictures
+            'categories' => $categories
         ]);
+
     }
 
     public function LM() {
-        //TODO
+        return view('pages.lm');
     }
 
     public function TCU() {
-        //TODO
+        return view('pages.tcu');
     }
 
     public function TCS() {
-        //TODO
+        return view('pages.tcs');
     }
 }
