@@ -27,8 +27,8 @@ class Compagnies extends Migration
             $table->string('city_id');
             $table->text('description');
 
-            $table->unsignedBigInteger('subcategories_id');
-            $table->foreign('subcategories_id')->references('id')->on('subcategories');
+            $table->unsignedBigInteger('subcategorie_id');
+            $table->foreign('subcategorie_id')->references('id')->on('subcategories');
 
             $table->smallInteger('state')->default(0); // 0: en attente de validation- 1: Active - -1: désactivée
 

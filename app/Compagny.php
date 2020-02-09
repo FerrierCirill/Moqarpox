@@ -17,4 +17,8 @@ class Compagny extends Model
     public function pictures() {
         return $this->hasMany(Picture::class);
     }
+
+    public function subcategorie(){
+        return $this->hasOne(SubCategory::class);
+    }
 }

@@ -21,4 +21,5 @@ class Activity extends Model
     public function pictures() {
         return $this->hasMany(Picture::class);
     }
+
 }
