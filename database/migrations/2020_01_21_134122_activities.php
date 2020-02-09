@@ -20,7 +20,7 @@ class Activities extends Migration
             $table->text('description'); // long texte
             $table->text('resume');      // court texte
             $table->string('description_perso');      //court text (25)
-            $table->text('information');
+            $table->text('information');  // texte personalisable + info form date
             $table->string('state');
             $table->float('note');
 
