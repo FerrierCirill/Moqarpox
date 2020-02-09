@@ -23,7 +23,7 @@ class ActivitiesOrders extends Migration
             $table->text('text');
             $table->string('email');
             $table->string('friend_name')->nullable(); // à voir si on ne le regroupe pas dans text
-            $table->string('firend_mail')->nullable(); // à voir si on ne le regroupe pas dans text
+            $table->string('friend_mail')->nullable(); // à voir si on ne le regroupe pas dans text
 
             $table->timestamps();
 
