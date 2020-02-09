@@ -16,12 +16,14 @@ class ActivitiesOrders extends Migration
         Schema::create('activities_orders', function(Blueprint $table) {
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('activity_id');
-            
+
             $table->string('code')->unique();
-            $table->binary('collect');
-            $table->integer('quantity');
+            $table->integer('state')->default(1);
+            $table->integer('quantity')->default(1);
             $table->text('text');
             $table->string('email');
+            $table->string('friend_name')->nullable(); // à voir si on ne le regroupe pas dans text
+            $table->string('firend_mail')->nullable(); // à voir si on ne le regroupe pas dans text
 
             $table->timestamps();
 

@@ -17,8 +17,9 @@ class Activities extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->float('price');
-            $table->text('description');
-            $table->text('resume');
+            $table->text('description'); // long texte
+            $table->text('resume');      // court texte
+            $table->string('description_perso');      //court text (25)
             $table->text('information');
             $table->string('state');
             $table->float('note');
