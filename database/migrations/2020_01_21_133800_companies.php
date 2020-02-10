@@ -24,21 +24,19 @@ class Companies extends Migration
             $table->string('adress2');
             $table->float('lat');
             $table->float('lng');
-            $table->binary('state')->default(0);
-
+            $table->smallInteger('state')->default(0);
             $table->string('city_id');
             $table->text('description');
 
-            $table->unsignedBigInteger('subcategorie_id');
-            $table->foreign('subcategorie_id')->references('id')->on('subcategories');
-
-            $table->smallInteger('state')->default(0); // 0: en attente de validation- 1: Active - -1: désactivée
-
+            $table->unsignedBigInteger('subcategory_id');
             $table->unsignedBigInteger('user_id');
-            $table->timestamps();
+            $table->unsignedBigInteger('category_id');
 
+            $table->foreign('subcategory_id')->references('id')->on('subcategories');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('category_id')->references('id')->on('categories');
+
+            $table->timestamps();
         });
     }
 
