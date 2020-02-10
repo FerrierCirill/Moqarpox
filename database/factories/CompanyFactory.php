@@ -17,6 +17,9 @@ $factory->define(Company::class, function (Faker $faker) {
         'lat'     => $faker->latitude($min = 43.6225, $max = 49.2913),
         'lng'     => $faker->longitude($min = -1.0361, $max = 6.7587),
         'user_id' => $faker->numberBetween($min = 1, $max = 300),
-        'city_id' => $faker->postcode()
+        'city_id' => $faker->postcode(),
+        'description' => $faker->text(150),
+        'subCategory_id' => $faker->numberBetween($min = 1, $max = 20),
+        'category_id' => $faker->numberBetween($min = 1, $max = 5)
     ];
 });

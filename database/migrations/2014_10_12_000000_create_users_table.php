@@ -21,13 +21,14 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->binary('state')->default(0);
-            $table->rememberToken();
-            $table->timestamps();
+            $table->smallInteger('state')->default(0); // 0: client - 1: prestataire
             $table->string('civility')->nullable();
             $table->string('facebook_api_token')->nullable();
             $table->boolean('provider')->default(false);
             $table->smallInteger('admin')->default(0);
+
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 

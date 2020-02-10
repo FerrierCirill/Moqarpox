@@ -28,11 +28,11 @@ class Companies extends Migration
             $table->string('city_id');
             $table->text('description');
 
-            $table->unsignedBigInteger('subcategory_id');
+            $table->unsignedBigInteger('subCategory_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
 
-            $table->foreign('subcategory_id')->references('id')->on('subcategories');
+            $table->foreign('subCategory_id')->references('id')->on('subcategories');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('category_id')->references('id')->on('categories');
 
