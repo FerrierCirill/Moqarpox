@@ -1,7 +1,7 @@
 <?php
 $comps = [];
-for($i = 0; $i < sizeof($compagnies); $i++) {
-    array_push($comps, array('name'=> $compagnies[$i]['name'], 'lat' => $compagnies[$i]['lat'], 'lng' => $compagnies[$i]['lng'], 'adress' => $compagnies[$i]['adress1'], 'phone' => $compagnies[$i]['phone'], 'email' => $compagnies[$i]['email']));
+for($i = 0; $i < sizeof($companies); $i++) {
+    array_push($comps, array('name'=> $companies[$i]['name'], 'lat' => $companies[$i]['lat'], 'lng' => $companies[$i]['lng'], 'adress' => $companies[$i]['adress1'], 'phone' => $companies[$i]['phone'], 'email' => $companies[$i]['email'], 'category_id' => $companies[$i]['category_id']));
 }
 
 ?><!doctype html>
@@ -16,16 +16,20 @@ for($i = 0; $i < sizeof($compagnies); $i++) {
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
             #cluster {
-                height: 500px;
-                width: 70vw;
+                height: 100vh;
+                width: 100vw;
             }
 
             .mycluster {
                 height: 40px;
                 width: 40px;
                 border-radius: 50%;
-                background-color: #3498db;
+                background-color: #1EA7C8;
                 color: white;
                 text-align: center;
                 font-size: 20px;
@@ -42,63 +46,64 @@ for($i = 0; $i < sizeof($compagnies); $i++) {
 
         <div id="cluster"></div>
         <script>
-            function getCities() {
+            function getCompanies() {
                 return <?php echo json_encode($comps)?>;
             }
 
             let map = L.map('cluster').setView([46.90296, 1.90925], 5);
-            let stamenToner = L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
-                attribution: 'Map tiles by Stamen Design, CC BY 3.0 — &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                 minZoom: 4,
                 maxZoom: 17,
-            });
-            map.addLayer(stamenToner);
+                id: 'mapbox/streets-v11',
+                accessToken: 'pk.eyJ1IjoibjRpdmx5cyIsImEiOiJjazU4YThxYTcwYzZrM21tdXRxOXk5b3J6In0.F8-mFYmaIsB1PJMMTrzu6Q',
+                tileSize: 512,
+                zoomOffset: -1
+            }).addTo(map);
 
-            map.fitBounds([
-                [41.323717,-4.995212],
-                [52.197928,10.242972]
-            ]);
+            map.fitBounds([[41.323717,-4.995212], [52.197928,10.242972]]);
             map.setMaxBounds(map.getBounds());
 
             let markersCluster = new L.MarkerClusterGroup({
                 iconCreateFunction: function(cluster) {return L.divIcon({html: cluster.getChildCount(), className: 'mycluster', iconSize: null});}
             });
 
-            let cities = getCities();
+            let companies = getCompanies();
 
-            let cyanIcon = L.icon({
-                iconUrl: '{{ asset('images/geo/gpsCyan.svg') }}',
+            let cyanIcon = L.icon({iconUrl: '{{ asset('images/geo/gpsCyan.svg') }}',
                 iconSize:     [38, 95], // size of the icon
                 iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
                 popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
             });
-            let greenIcon = L.icon({
-                iconUrl: '{{ asset('images/geo/gpsGreen.svg') }}',
-                iconSize:     [38, 95], // size of the icon
-                iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-                popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-            });
-            let redIcon = L.icon({
-                iconUrl: '{{ asset('images/geo/gpsRed.svg') }}',
-                iconSize:     [38, 95], // size of the icon
-                iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-                popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-            });
-            let violetIcon = L.icon({
-                iconUrl: '{{ asset('images/geo/gpsViolet.svg') }}',
-                iconSize:     [38, 95], // size of the icon
-                iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-                popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-            });
+            let greenIcon = L.icon({iconUrl: '{{ asset('images/geo/gpsGreen.svg') }}', iconSize: [38, 95], iconAnchor: [22, 94], popupAnchor: [-3, -76]});
+            let redIcon = L.icon({iconUrl: '{{ asset('images/geo/gpsRed.svg') }}', iconSize: [38, 95], iconAnchor: [22, 94], popupAnchor: [-3, -76]});
+            let violetIcon = L.icon({iconUrl: '{{ asset('images/geo/gpsViolet.svg') }}', iconSize: [38, 95], iconAnchor: [22, 94], popupAnchor:  [-3, -76]});
+            let yellowIcon = L.icon({iconUrl: '{{ asset('images/geo/gpsYellow.svg') }}', iconSize: [38, 95], iconAnchor: [22, 94], popupAnchor:  [-3, -76]});
 
-            for (let i = 0; i < cities.length; i++) {
-                let latLng = new L.LatLng(cities[i]['lat'], cities[i]['lng']);
-                let marker = new L.Marker(latLng, {title: cities[i][0], icon: cyanIcon});
+            for (let i = 0; i < companies.length; i++) {
+                let latLng = new L.LatLng(companies[i]['lat'], companies[i]['lng']);
+                switch (companies[i]['category_id']) {
+                    case 1 :
+                        var marker = new L.Marker(latLng, {title: companies[i][0], icon: violetIcon});
+                        break;
+                    case 2 :
+                        var marker = new L.Marker(latLng, {title: companies[i][0], icon: cyanIcon});
+                        break;
+                    case 3 :
+                        var marker = new L.Marker(latLng, {title: companies[i][0], icon: greenIcon});
+                        break;
+                    case 4 :
+                        var marker = new L.Marker(latLng, {title: companies[i][0], icon: redIcon});
+                        break;
+                    case 5 :
+                        var marker = new L.Marker(latLng, {title: companies[i][0], icon: yellowIcon});
+                        break;
+                }
                 marker.bindPopup(
-                    '<strong>' + cities[i]['name'] + '</strong>'
-                    + '<br>Adresse : ' + cities[i]['adress']
-                    + '<br>Téléphone : ' + cities[i]['phone']
-                    + '<br>E-mail : ' + cities[i]['email']
+                    '<strong>' + companies[i]['name'] + '</strong>'
+                    + '<br>Adresse : ' + companies[i]['adress']
+                    + '<br>Téléphone : ' + companies[i]['phone']
+                    + '<br>E-mail : ' + companies[i]['email']
                 );
                 markersCluster.addLayer(marker);
             }

@@ -1,17 +1,8 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\User;
 
-Route::get('/', 'HomeController@test'); // Accueil
+Route::get('/', 'HomeController@test')->name('main'); // Accueil
 Route::get('/random', 'HomeController@index');
 
 Route::get('/activities', 'ActivitiesController@getActivities')->name('activity_get_all');           // liste toutes les activitées
@@ -19,11 +10,11 @@ Route::get('/activity/add', 'ActivitiesController@getAddActivity')->name('activi
 Route::post('/activity/add', 'ActivitiesController@postAddActivity')->name('activity_add_post');     // Add Act
 Route::get('/activity/{activity_id}', 'ActivitiesController@getActivity')->name('activity_details'); // Détail Act
 
-Route::get('/compagnies', 'CompaniesController@getCompagnies')->name('compagny_get_all');              // Liste les compagny
-Route::get('/compagny/add', 'CompaniesController@getAddCompagny')->name('compagny_add_get');           // Add comp
-Route::post('/compagny/add', 'CompaniesController@postAddCompagny')->name('compagny_add_post');        // Add comp
-Route::get('/compagny/{compagny_id}', 'CompaniesController@getCompagny')->name('compagny_details');    // Mon entreprise/struct
-Route::get('/compagny/{compagny_id}/edit', 'CompaniesController@editCompagny')->name('compagny_edit'); // Edit comp
+Route::get('/companies', 'CompaniesController@getCompanies')->name('company_get_all');              // Liste les compagny
+Route::get('/company/add', 'CompaniesController@getAddCompany')->name('company_add_get');           // Add comp
+Route::post('/company/add', 'CompaniesController@postAddCompany')->name('company_add_post');        // Add comp
+Route::get('/company/{company_id}', 'CompaniesController@getCompany')->name('company_details');    // Mon entreprise/struct
+Route::get('/company/{company_id}/edit', 'CompaniesController@editCompany')->name('company_edit'); // Edit comp
 
 Route::get('/customer/{user_id}', 'UsersController@getCustomer')->name('customer_details');                   // Profil
 Route::get('/customer/{user_id}/historical', 'UsersController@historical')->name('customer_historical');      // Historique
@@ -36,10 +27,11 @@ Route::get('/termsConditionsSale', 'HomeController@TCS')->name('terms_conditions
 
 Route::get('/panier', 'PanierVenteController@panier')->name('panier');
 
-
 Route::get('/design', 'HomeController@index'); // a edit quand ca sera bon pour la route '/'
-
 Route::get('/admin','AdminController@index'); // a edit
+
+Auth::routes();
+
 /*
  * TODO
  * Paiement / Remboursement(optionel)

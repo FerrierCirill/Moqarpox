@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('head-needMapScript', 'ON')
 
@@ -21,8 +21,8 @@
 	<script>
 		<?php
 			$comps = [];
-			for($i = 0; $i < sizeof($compagnies); $i++) {
-				array_push($comps, array('name'=> $compagnies[$i]['name'], 'lat' => $compagnies[$i]['lat'], 'lng' => $compagnies[$i]['lng'], 'adress' => $compagnies[$i]['adress1'], 'phone' => $compagnies[$i]['phone'], 'email' => $compagnies[$i]['email']));
+			for($i = 0; $i < sizeof($companies); $i++) {
+				array_push($comps, array('name'=> $companies[$i]['name'], 'lat' => $companies[$i]['lat'], 'lng' => $companies[$i]['lng'], 'adress' => $companies[$i]['adress1'], 'phone' => $companies[$i]['phone'], 'email' => $companies[$i]['email']));
 			}
 		?>
 

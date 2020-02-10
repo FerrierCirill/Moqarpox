@@ -13,7 +13,7 @@ class HomeController extends Controller
 {
     public function test()
     {
-        $compagnies = Compagny::get();
+        $companies = Company::get();
         return view('pages.test', [
             'companies' => $companies,
         ]);
@@ -34,7 +34,6 @@ class HomeController extends Controller
             'companies' => $companies,
             'categories' => $categories
         ]);
-
     }
 
     public function LM()

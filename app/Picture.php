@@ -10,7 +10,7 @@ class Picture extends Model
         return $this->belongsTo(Activity::class);
     }
 
-    public function compagny() {
+    public function company() {
         return $this->belongsTo(Company::class);
     }
 }
