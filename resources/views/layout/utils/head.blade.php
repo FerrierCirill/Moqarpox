@@ -14,7 +14,7 @@
 	</title>
 	
 	{{-- CSS --}}
-	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/materialize.css') }}" rel="stylesheet">
 	
 	{{-- JS --}}
 	<script src="{{asset('/js/script.js')}}"></script>

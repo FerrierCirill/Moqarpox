@@ -1,5 +1,11 @@
-<nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6 ">
-    <div class="container mx-auto">
-        
-    </div>
-</nav>
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper container">
+        <a href="#!" class="brand-logo">Logo</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+        </ul>
+        </div>
+    </nav>
+</div>
