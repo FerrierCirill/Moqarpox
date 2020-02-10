@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Activity extends Model
 {
     public function compagny() {
-        return $this->belongsTo(Compagny::class);
+        return $this->belongsTo(Company::class);
     }
 
     public function subCategory() {

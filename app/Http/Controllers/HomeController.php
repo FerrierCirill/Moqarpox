@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\SubCategory;
 use Illuminate\Http\Request;
-use App\Compagny;
+use App\Company;
 use App\Activity;
 use App\Picture;
 
 class HomeController extends Controller
 {
     public function test() {
-        $compagnies = Compagny::get();
+        $companies = Company::get();
         return view('pages.test', [
-            'compagnies' => $compagnies,
+            'companies' => $companies,
         ]);
     }
 
@@ -24,12 +24,12 @@ class HomeController extends Controller
 
         $pictures = Picture::where('activity_id', $activity->id)->get();
         $categories = Category::get();
-        $compagnies = Compagny::get();
+        $companies = Company::get();
 
         return view('pages.home', [
             'activity' => $activity,
             'pictures' => $pictures,
-            'compagnies' => $compagnies,
+            'companies' => $companies,
             'categories' => $categories
         ]);
 

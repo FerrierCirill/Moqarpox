@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
 
     public function compagnies() {
-        return $this->hasMany(Compagny::class);
+        return $this->hasMany(Company::class);
     }
 
     public function orders() {

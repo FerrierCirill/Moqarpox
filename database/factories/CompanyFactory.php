@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Compagny;
+use App\Company;
 use Faker\Generator as Faker;
 
-$factory->define(Compagny::class, function (Faker $faker) {
+$factory->define(Company::class, function (Faker $faker) {
     return [
         'name'    => $faker->company(),
         'phone'   => $faker->e164PhoneNumber(),

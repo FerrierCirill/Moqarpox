@@ -19,11 +19,11 @@ Route::get('/activity/add', 'ActivitiesController@getAddActivity')->name('activi
 Route::post('/activity/add', 'ActivitiesController@postAddActivity')->name('activity_add_post');     // Add Act
 Route::get('/activity/{activity_id}', 'ActivitiesController@getActivity')->name('activity_details'); // Détail Act
 
-Route::get('/compagnies', 'CompagniesController@getCompagnies')->name('compagny_get_all');              // Liste les compagny
-Route::get('/compagny/add', 'CompagniesController@getAddCompagny')->name('compagny_add_get');           // Add comp
-Route::post('/compagny/add', 'CompagniesController@postAddCompagny')->name('compagny_add_post');        // Add comp
-Route::get('/compagny/{compagny_id}', 'CompagniesController@getCompagny')->name('compagny_details');    // Mon entreprise/struct
-Route::get('/compagny/{compagny_id}/edit', 'CompagniesController@editCompagny')->name('compagny_edit'); // Edit comp
+Route::get('/compagnies', 'CompaniesController@getCompagnies')->name('compagny_get_all');              // Liste les compagny
+Route::get('/compagny/add', 'CompaniesController@getAddCompagny')->name('compagny_add_get');           // Add comp
+Route::post('/compagny/add', 'CompaniesController@postAddCompagny')->name('compagny_add_post');        // Add comp
+Route::get('/compagny/{compagny_id}', 'CompaniesController@getCompagny')->name('compagny_details');    // Mon entreprise/struct
+Route::get('/compagny/{compagny_id}/edit', 'CompaniesController@editCompagny')->name('compagny_edit'); // Edit comp
 
 Route::get('/customer/{user_id}', 'UsersController@getCustomer')->name('customer_details');                   // Profil
 Route::get('/customer/{user_id}/historical', 'UsersController@historical')->name('customer_historical');      // Historique

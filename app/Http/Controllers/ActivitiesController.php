@@ -37,7 +37,7 @@ class ActivitiesController extends Controller
             'resume' => 'required',
             'information' => 'required',
             'subCategory_id' => 'required|exists:subCategories,id',
-            'compagny_id' => 'required|exists:compagnies,id'
+            'company_id' => 'required|exists:companies,id'
         ]);
 
         $activity = new Activity();
@@ -49,7 +49,7 @@ class ActivitiesController extends Controller
         $activity->state = 'A vérifier';
         $activity->note = 2.5;
         $activity->subCategory_id = $request->input('subCategory_id');
-        $activity->compagny_id = $request->input('compagny_id');
+        $activity->company_id = $request->input('company_id');
         $activity->save();
 
         return redirect()->back();

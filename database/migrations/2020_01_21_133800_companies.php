@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Compagnies extends Migration
+class Companies extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class Compagnies extends Migration
      */
     public function up()
     {
-        Schema::create('compagnies', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('phone');
@@ -39,7 +39,6 @@ class Compagnies extends Migration
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('category_id')->references('id')->on('categories');
-
         });
     }
 
@@ -50,7 +49,7 @@ class Compagnies extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('compagnies');
+        Schema::dropIfExists('companies');
         //
     }
 }

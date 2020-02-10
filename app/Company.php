@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Compagny extends Model
+class Company extends Model
 {
     public function activities() {
         return $this->hasMany(Activity::class);
