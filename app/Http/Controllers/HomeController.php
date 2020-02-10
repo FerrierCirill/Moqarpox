@@ -11,14 +11,16 @@ use App\Picture;
 
 class HomeController extends Controller
 {
-    public function test() {
-        $companies = Company::get();
+    public function test()
+    {
+        $compagnies = Compagny::get();
         return view('pages.test', [
             'companies' => $companies,
         ]);
     }
 
-    public function index() {
+    public function index()
+    {
         $picture = Picture::inRandomOrder()->first();
         $activity = Activity::findOrFail($picture->activity_id);
 
@@ -35,15 +37,28 @@ class HomeController extends Controller
 
     }
 
-    public function LM() {
+    public function LM()
+    {
         return view('pages.lm');
     }
 
-    public function TCU() {
+    public function TCU()
+    {
         return view('pages.tcu');
     }
 
-    public function TCS() {
+    public function TCS()
+    {
         return view('pages.tcs');
+    }
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 }
