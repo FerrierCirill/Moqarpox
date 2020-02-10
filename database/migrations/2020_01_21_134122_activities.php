@@ -17,10 +17,11 @@ class Activities extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->float('price');
-            $table->text('description');
-            $table->text('resume');
-            $table->text('information');
-            $table->string('state');
+            $table->text('description'); // long texte
+            $table->text('resume');      // court texte
+            $table->string('description_perso');      //court text (25)
+            $table->text('information');  // texte personalisable + info form date
+            $table->smallInteger('state')->default(0); // 0: en attente de validation- 1: Active - -1: désactivée
             $table->float('note');
 
             $table->unsignedBigInteger('subCategory_id');
