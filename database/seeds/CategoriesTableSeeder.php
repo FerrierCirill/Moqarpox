@@ -23,5 +23,8 @@ class CategoriesTableSeeder extends Seeder
         DB::table('categories')->insert([
             'name' => 'Gastronomie'
         ]);
+        DB::table('categories')->insert([
+            'name' => 'Multi-Categorie'
+        ]);
     }
 }

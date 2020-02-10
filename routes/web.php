@@ -34,6 +34,9 @@ Route::get('/legalMentions', 'HomeController@LM')->name('legal_mentions');
 Route::get('/termsConditionsUse', 'HomeController@TCU')->name('terms_conditions_use');
 Route::get('/termsConditionsSale', 'HomeController@TCS')->name('terms_conditions_sale');
 
+Route::get('/panier', 'PanierVenteController@panier')->name('panier');
+
+
 Route::get('/design', 'HomeController@index'); // a edit quand ca sera bon pour la route '/'
 
 /*
