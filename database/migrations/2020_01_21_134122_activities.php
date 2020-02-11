@@ -25,12 +25,12 @@ class Activities extends Migration
             $table->float('note');
 
             $table->unsignedBigInteger('subCategory_id');
-            $table->unsignedBigInteger('compagny_id');
+            $table->unsignedBigInteger('company_id');
 
             $table->timestamps();
 
             $table->foreign('subCategory_id')->references('id')->on('subCategories');
-            $table->foreign('compagny_id')->references('id')->on('compagnies');
+            $table->foreign('company_id')->references('id')->on('companies');
         });
     }
 
