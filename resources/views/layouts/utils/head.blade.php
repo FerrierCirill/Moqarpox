@@ -15,8 +15,12 @@
 	
 	{{-- CSS --}}
 	<link href="{{ asset('css/materialize.css') }}" rel="stylesheet">
+
+	{{-- FontAwsome --}}
+	<script src="https://kit.fontawesome.com/e6fd80ae53.js" crossorigin="anonymous"></script>
 	
 	{{-- JS --}}
+	<script src="{{asset('/js/materialize/bin/materialize.min.js')}}"></script>
 	<script src="{{asset('/js/script.js')}}"></script>
 		{{-- MAP SCRIPT --}}
 			@if(View::hasSection('head-needMapScript'))
@@ -27,5 +31,4 @@
 				<script src="{{ URL::to('/') }}/leaflet/leaflet.markercluster.js"></script>
 			@endif
 		{{--  --}}
-	
 </head>
