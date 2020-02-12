@@ -26,14 +26,17 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        Blade::directive('isClient', function ($expression) {
 
+        Blade::if('isClient', function () {
+            if(\Auth::check() && \Auth::user()->state == \App\User::CLIENT) return true;
+            else return false;
         });
-        Blade::directive('isProvider', function ($expression) {
-
+        Blade::if('isProvider', function () {
+            if(\Auth::check() && \Auth::user()->state == \App\User::PROVIDER) return true;
+            else return false;
         });
         Blade::if('isAdmin', function () {
-            if(\Auth::user()->admin == \App\User::ADMIN) return true;
+            if(\Auth::check() && \Auth::user()->admin == \App\User::ADMIN) return true;
             else return false;
         });
     }
