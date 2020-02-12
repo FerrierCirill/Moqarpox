@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('isProvider', function ($expression) {
 
         });
-        Blade::directive('isAdmin', function () {
+        Blade::if('isAdmin', function () {
             if(\Auth::user()->admin == \App\User::ADMIN) return true;
             else return false;
         });
