@@ -3,6 +3,7 @@
 use App\User;
 
 Route::get('/', 'HomeController@test')->name('main'); // Accueil
+Route::get('/redir', 'HomeController@testDir');
 Route::get('/random', 'HomeController@index');
 
 Route::get('/activities', 'ActivitiesController@getActivities')->name('activity_get_all');           // liste toutes les activitées
