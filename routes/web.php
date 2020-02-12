@@ -60,6 +60,10 @@ Route::get('/payment', 'HomeController@payment')->name('payment');              
 
 Route::get('/admin','AdminController@index')->name('admin');                                             // MIDDLEWARE
 
+
+///////////////////////////////////////
+
+
 Auth::routes();
 
 /*
