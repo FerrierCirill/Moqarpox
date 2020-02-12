@@ -22,7 +22,7 @@ class ActivitiesController extends Controller
         $categories = Category::get();
         $subCategories = SubCategory::get();
 
-        return view('pages.activity_add', [
+        return view('pages.user.company.activity.add', [
             'categories' => $categories,
             'subCategories' => $subCategories
         ]);

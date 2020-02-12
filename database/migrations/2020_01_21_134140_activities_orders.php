@@ -14,23 +14,22 @@ class ActivitiesOrders extends Migration
     public function up()
     {
         Schema::create('activities_orders', function(Blueprint $table) {
-            $table->unsignedBigInteger('order_id');
-            $table->unsignedBigInteger('activity_id');
-
+            $table->bigIncrements('id');
             $table->string('code')->unique();
             $table->integer('state')->default(1);
             $table->integer('quantity')->default(1);
             $table->text('text');
             $table->string('email');
-            $table->string('friend_name')->nullable(); // à voir si on ne le regroupe pas dans text
-            $table->string('friend_mail')->nullable(); // à voir si on ne le regroupe pas dans text
+            $table->string('friend_name')->nullable();
+            $table->string('friend_mail')->nullable();
 
-            $table->timestamps();
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('activity_id');
 
-
-            $table->primary(['order_id','activity_id']);
             $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('activity_id')->references('id')->on('activities');
+
+            $table->timestamps();
         });
     }
 
@@ -42,6 +41,5 @@ class ActivitiesOrders extends Migration
     public function down()
     {
         Schema::dropIfExists('activities_orders');
-
     }
 }

@@ -20,6 +20,7 @@ for($i = 0; $i < sizeof($companies); $i++) {
                 margin: 0;
                 padding: 0;
             }
+
             #cluster {
                 height: 100vh;
                 width: 100vw;
@@ -53,7 +54,7 @@ for($i = 0; $i < sizeof($companies); $i++) {
             let map = L.map('cluster').setView([46.90296, 1.90925], 5);
             L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                minZoom: 4,
+                minZoom: 5.5,
                 maxZoom: 17,
                 id: 'mapbox/streets-v11',
                 accessToken: 'pk.eyJ1IjoibjRpdmx5cyIsImEiOiJjazU4YThxYTcwYzZrM21tdXRxOXk5b3J6In0.F8-mFYmaIsB1PJMMTrzu6Q',

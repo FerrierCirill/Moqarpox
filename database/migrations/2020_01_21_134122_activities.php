@@ -27,10 +27,10 @@ class Activities extends Migration
             $table->unsignedBigInteger('subCategory_id');
             $table->unsignedBigInteger('company_id');
 
-            $table->timestamps();
-
             $table->foreign('subCategory_id')->references('id')->on('subCategories');
             $table->foreign('company_id')->references('id')->on('companies');
+
+            $table->timestamps();
         });
     }
 
@@ -42,6 +42,5 @@ class Activities extends Migration
     public function down()
     {
         Schema::dropIfExists('activities');
-        //
     }
 }

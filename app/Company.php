@@ -18,7 +18,7 @@ class Company extends Model
         return $this->hasMany(Picture::class);
     }
 
-    public function subcategorie(){
+    public function subcategory(){
         return $this->hasOne(SubCategory::class);
     }
 }

@@ -20,12 +20,13 @@ class Comments extends Migration
             $table->integer('note');
             $table->boolean('validate')->default(0);
 
-            $table->timestamps();
-            
-            $table->unsignedBigInteger('activiy_order_order_id');
-            $table->unsignedBigInteger('activiy_order_activity_id');
+            $table->unsignedBigInteger('activity_order_id');
+            $table->unsignedBigInteger('activity_id');
 
-            // $table->foreign('activiy_order_code')->references(['order_id','activity_id'])->on('activites_orders');
+            $table->foreign('activity_order_id')->references('id')->on('activities_orders');
+            $table->foreign('activity_id')->references('id')->on('activities');
+
+            $table->timestamps();
         });
     }
 

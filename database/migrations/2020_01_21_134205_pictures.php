@@ -20,10 +20,10 @@ class Pictures extends Migration
             $table->unsignedBigInteger('company_id')->nullable();
             $table->unsignedBigInteger('activity_id')->nullable();
 
-            $table->timestamps();
-
             $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('activity_id')->references('id')->on('activities');
+
+            $table->timestamps();
         });
     }
 
