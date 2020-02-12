@@ -10,6 +10,10 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const CLIENT = 0;
+    const PROVIDER = 1;
+    const ADMIN = 1;
+
     /**
      * The attributes that are mass assignable.
      * On liste ce que l'on veut envoyer à la bdd

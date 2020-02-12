@@ -38,17 +38,17 @@ class HomeController extends Controller
 
     public function LM()
     {
-        return view('pages.lm');
+        return view('pages.right.lm');
     }
 
     public function TCU()
     {
-        return view('pages.tcu');
+        return view('pages.right.tcu');
     }
 
     public function TCS()
     {
-        return view('pages.tcs');
+        return view('pages.right.tcs');
     }
 
     /**

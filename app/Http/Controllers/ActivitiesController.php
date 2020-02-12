@@ -58,7 +58,7 @@ class ActivitiesController extends Controller
     public function getActivity($activity_id){
         $activity = Activity::findOrFail($activity_id);
 
-        return view('pages.activity_details', [
+        return view('pages.company.activity.activity_details', [
             'activity' => $activity
         ]);
     }
