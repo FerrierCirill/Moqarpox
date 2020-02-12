@@ -2,14 +2,32 @@
 
 use App\User;
 
+// ================== //
+//      Classic       //
+// ================== //
+
 Route::get('/', 'HomeController@index')->name('main');
 Route::get('/map', 'HomeController@test')->name('sylvian_map');
 Route::get('/redir', 'HomeController@testDir');
+
+Route::get('/legalMentions', 'HomeController@LM')->name('legal_mentions');
+Route::get('/termsConditionsUse', 'HomeController@TCU')->name('terms_conditions_use');
+Route::get('/termsConditionsSale', 'HomeController@TCS')->name('terms_conditions_sale');
+
+
+// ================== //
+//     Activity       //
+// ================== //
 
 Route::get('/activity/add', 'ActivitiesController@getAddActivity')->name('activity_add_get');    // MIDDLEWARE
 Route::post('/activity/add', 'ActivitiesController@postAddActivity')->name('activity_add_post'); // MIDDLEWARE
 
 Route::get('/activity/{activity_id}', 'ActivitiesController@getActivity')->name('activity_details');
+
+
+// ================== //
+//      Company       //
+// ================== //
 
 Route::get('/company/add', 'CompaniesController@getAddCompany')->name('company_add_get');    // MIDDLEWARE
 Route::post('/company/add', 'CompaniesController@postAddCompany')->name('company_add_post'); // MIDDLEWARE
@@ -19,15 +37,26 @@ Route::get('/company/{company_id}', 'CompaniesController@getCompany')->name('com
 Route::get('/company/{company_id}/edit', 'CompaniesController@getEditCompany')->name('company_edit');   // MIDDLEWARE
 Route::post('/company/{company_id}/edit', 'CompaniesController@PostEditCompany')->name('company_edit'); // MIDDLEWARE
 
+
+// ================== //
+//        User        //
+// ================== //
+
 Route::get('/user/{user_id}', 'UsersController@getClient')->name('client_details');                      // MIDDLEWARE
 Route::get('/user/{user_id}/historical', 'UsersController@historical')->name('client_historical');       // MIDDLEWARE
+
+
+// ================== //
+//    ShoppingCart    //
+// ================== //
 
 Route::get('/shoppingCart', 'HomeController@shoppingCart')->name('shopping_cart');                       // MIDDLEWARE
 Route::get('/payment', 'HomeController@payment')->name('payment');                                       // MIDDLEWARE
 
-Route::get('/legalMentions', 'HomeController@LM')->name('legal_mentions');
-Route::get('/termsConditionsUse', 'HomeController@TCU')->name('terms_conditions_use');
-Route::get('/termsConditionsSale', 'HomeController@TCS')->name('terms_conditions_sale');
+
+// ================== //
+//        Admin       //
+// ================== //
 
 Route::get('/admin','AdminController@index')->name('admin');                                             // MIDDLEWARE
 
