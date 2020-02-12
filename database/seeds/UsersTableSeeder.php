@@ -18,10 +18,34 @@ class UsersTableSeeder extends Seeder
             'phone' => '0000000000',
             'email' => 'admin@admin.com',
             'password' => bcrypt('admin'),
-            'state' => 0,
+            'state' => 1,
             'civility' => 'Mr.',
             'provider' => 0,
             'admin' => 1
+        ]);
+
+        DB::table('users')->insert([
+            'first_name' => 'client',
+            'second_name' => 'client',
+            'phone' => '0000000000',
+            'email' => 'client@client.com',
+            'password' => bcrypt('client'),
+            'state' => 0,
+            'civility' => 'Mr.',
+            'provider' => 0,
+            'admin' => 0
+        ]);
+
+        DB::table('users')->insert([
+            'first_name' => 'provider',
+            'second_name' => 'provider',
+            'phone' => '0000000000',
+            'email' => 'provider@provider.com',
+            'password' => bcrypt('provider'),
+            'state' => 1,
+            'civility' => 'Mr.',
+            'provider' => 0,
+            'admin' => 0
         ]);
 
         factory(\App\User::class, 1000)->create();
