@@ -29,7 +29,7 @@ Route::get('/termsConditionsSale', 'HomeController@TCS')->name('terms_conditions
 Route::get('/panier', 'PanierVenteController@panier')->name('panier');
 
 Route::get('/design', 'HomeController@index'); // a edit quand ca sera bon pour la route '/'
-Route::get('/admin','AdminController@index'); // a edit
+Route::get('/admin','AdminController@index')->name('admin'); // a edit
 
 Auth::routes();
 
