@@ -2,34 +2,34 @@
 
 use App\User;
 
-Route::get('/', 'HomeController@test')->name('main'); // Accueil
+Route::get('/', 'HomeController@index')->name('main');
+Route::get('/map', 'HomeController@test')->name('sylvian_map');
 Route::get('/redir', 'HomeController@testDir');
-Route::get('/random', 'HomeController@index');
 
-Route::get('/activities', 'ActivitiesController@getActivities')->name('activity_get_all');           // liste toutes les activitées
-Route::get('/activity/add', 'ActivitiesController@getAddActivity')->name('activity_add_get');        // Add Act
-Route::post('/activity/add', 'ActivitiesController@postAddActivity')->name('activity_add_post');     // Add Act
-Route::get('/activity/{activity_id}', 'ActivitiesController@getActivity')->name('activity_details'); // Détail Act
+Route::get('/activity/add', 'ActivitiesController@getAddActivity')->name('activity_add_get');    // MIDDLEWARE
+Route::post('/activity/add', 'ActivitiesController@postAddActivity')->name('activity_add_post'); // MIDDLEWARE
 
-Route::get('/companies', 'CompaniesController@getCompanies')->name('company_get_all');              // Liste les compagny
-Route::get('/company/add', 'CompaniesController@getAddCompany')->name('company_add_get');           // Add comp
-Route::post('/company/add', 'CompaniesController@postAddCompany')->name('company_add_post');        // Add comp
-Route::get('/company/{company_id}', 'CompaniesController@getCompany')->name('company_details');    // Mon entreprise/struct
-Route::get('/company/{company_id}/edit', 'CompaniesController@editCompany')->name('company_edit'); // Edit comp
+Route::get('/activity/{activity_id}', 'ActivitiesController@getActivity')->name('activity_details');
 
-Route::get('/customer/{user_id}', 'UsersController@getCustomer')->name('customer_details');                   // Profil
-Route::get('/customer/{user_id}/historical', 'UsersController@historical')->name('customer_historical');      // Historique
-Route::get('/customer/{user_id}/shoppingCart', 'HomeController@shoppingCart')->name('customer_shopping_cart');// Panier
-Route::get('/provider/{user_id}', 'UsersController@getProvider')->name('provider_details');                   // Mes entreprises/struct
+Route::get('/company/add', 'CompaniesController@getAddCompany')->name('company_add_get');    // MIDDLEWARE
+Route::post('/company/add', 'CompaniesController@postAddCompany')->name('company_add_post'); // MIDDLEWARE
 
-Route::get('/legalMentions', 'HomeController@LM')->name('legal_mentions');                 //Mentions légal
-Route::get('/termsConditionsUse', 'HomeController@TCU')->name('terms_conditions_use');     // CGU
-Route::get('/termsConditionsSale', 'HomeController@TCS')->name('terms_conditions_sale');   // CGV
+Route::get('/company/{company_id}', 'CompaniesController@getCompany')->name('company_details');
 
-Route::get('/panier', 'PanierVenteController@panier')->name('panier');
+Route::get('/company/{company_id}/edit', 'CompaniesController@getEditCompany')->name('company_edit');   // MIDDLEWARE
+Route::post('/company/{company_id}/edit', 'CompaniesController@PostEditCompany')->name('company_edit'); // MIDDLEWARE
 
-Route::get('/design', 'HomeController@index'); // a edit quand ca sera bon pour la route '/'
-Route::get('/admin','AdminController@index')->name('admin'); // a edit
+Route::get('/user/{user_id}', 'UsersController@getClient')->name('client_details');                      // MIDDLEWARE
+Route::get('/user/{user_id}/historical', 'UsersController@historical')->name('client_historical');       // MIDDLEWARE
+
+Route::get('/shoppingCart', 'HomeController@shoppingCart')->name('shopping_cart');                       // MIDDLEWARE
+Route::get('/payment', 'HomeController@payment')->name('payment');                                       // MIDDLEWARE
+
+Route::get('/legalMentions', 'HomeController@LM')->name('legal_mentions');
+Route::get('/termsConditionsUse', 'HomeController@TCU')->name('terms_conditions_use');
+Route::get('/termsConditionsSale', 'HomeController@TCS')->name('terms_conditions_sale');
+
+Route::get('/admin','AdminController@index')->name('admin');                                             // MIDDLEWARE
 
 Auth::routes();
 
