@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
+use App\Category;
 use App\City;
 use App\Company;
 use App\SubCategory;
@@ -18,14 +19,14 @@ class ApiController extends Controller
     }
 
     public function datalist($value) {
-        $activities = Activity::where('name', 'like', '%'.$value.'%')->get();
-        $companies = Company::where('name', 'like', '%'.$value.'%')->get();
-        $cities = City::where('name', 'like', '%'.$value.'%')->get();
-        $subCategories = SubCategory::where('name', 'like', '%'.$value.'%')->get();
+        $activities = Activity::where('name', 'like', '%'.$value.'%')->skip(0)->take(5)->orderBy('name', 'asc')->get();
+        $cities = City::where('name', 'like', '%'.$value.'%')->skip(0)->take(3)->orderBy('name', 'asc')->get();
+        $categories = Category::where('name', 'like', '%'.$value.'%')->orderBy('name', 'asc')->get();
+        $subCategories = SubCategory::where('name', 'like', '%'.$value.'%')->skip(0)->take(3)->orderBy('name', 'asc')->get();
 
         return [
             'activities' => $activities,
-            'companies' => $companies,
+            'categories' => $categories,
             'cities' => $cities,
             'subCategories' => $subCategories
         ];
