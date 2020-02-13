@@ -30,6 +30,7 @@ class ActivitiesOrders extends Migration
             $table->foreign('activity_id')->references('id')->on('activities');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

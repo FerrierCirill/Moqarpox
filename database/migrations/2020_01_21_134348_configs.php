@@ -19,7 +19,7 @@ class Configs extends Migration
             $table->string('value');
 
             $table->timestamps();
-
+            $table->softDeletes();
         });
     }
 
