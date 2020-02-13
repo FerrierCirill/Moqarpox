@@ -17,8 +17,8 @@ Route::get('/termsConditionsSale', 'HomeController@TCS')->name('terms_conditions
 //     Activity       //
 // ================== //
 
-Route::get('/activity/add', 'ActivitiesController@getAddActivity')->name('activity_add_get');              // MIDDLEWARE
-Route::post('/activity/add', 'ActivitiesController@postAddActivity')->name('activity_add_post');           // MIDDLEWARE
+Route::get('/activity/add', 'ActivitiesController@getAddActivity')->name('activity_add_get')->middleware('AuthIsProvider');
+Route::post('/activity/add', 'ActivitiesController@postAddActivity')->name('activity_add_post')->middleware('AuthIsProvider');
 
 Route::get('/activity/{activity_id}', 'ActivitiesController@getActivity')->name('activity_details');
 
@@ -27,37 +27,36 @@ Route::get('/activity/{activity_id}', 'ActivitiesController@getActivity')->name(
 //      Company       //
 // ================== //
 
-Route::get('/company/add', 'CompaniesController@getAddCompany')->name('company_add_get');                  // MIDDLEWARE
-Route::post('/company/add', 'CompaniesController@postAddCompany')->name('company_add_post');               // MIDDLEWARE
+Route::get('/company/add', 'CompaniesController@getAddCompany')->name('company_add_get')->middleware('auth');
+Route::post('/company/add', 'CompaniesController@postAddCompany')->name('company_add_post')->middleware('auth');
 
 Route::get('/company/{company_id}', 'CompaniesController@getCompany')->name('company_details');
 
-Route::get('/company/{company_id}/edit', 'CompaniesController@getEditCompany')->name('company_edit');      // MIDDLEWARE
-Route::post('/company/{company_id}/edit', 'CompaniesController@PostEditCompany')->name('company_edit');    // MIDDLEWARE
+Route::get('/company/{company_id}/edit', 'CompaniesController@getEditCompany')->name('company_edit')->middleware('AuthIsProviderAndItsHisCompany');
+Route::post('/company/{company_id}/edit', 'CompaniesController@PostEditCompany')->name('company_edit')->middleware('AuthIsProviderAndItsHisCompany');
 
 
 // ================== //
 //        User        //
 // ================== //
 
-Route::get('/user', 'UsersController@getClient')->name('user_details');                                    // MIDDLEWARE
-Route::get('/user/companies', 'UsersController@getCompanies')->name('user_companies');                     // MIDDLEWARE
-Route::get('/user/historical', 'UsersController@historical')->name('user_historical');                     // MIDDLEWARE
+Route::get('/user', 'UsersController@getClient')->name('user_details')->middleware('auth');
+Route::get('/user/historical', 'UsersController@historical')->name('user_historical')->middleware('auth');
 
 
 // ================== //
 //    ShoppingCart    //
 // ================== //
 
-Route::get('/shoppingCart', 'HomeController@shoppingCart')->name('shopping_cart');                         // MIDDLEWARE
-Route::get('/payment', 'HomeController@payment')->name('payment');                                         // MIDDLEWARE
+Route::get('/shoppingCart', 'HomeController@shoppingCart')->name('shopping_cart');                         // MIDDLEWARE : yolo
+Route::get('/payment', 'HomeController@payment')->name('payment')->middleware('auth');
 
 
 // ================== //
 //        Admin       //
 // ================== //
 
-Route::get('/admin','AdminController@moderation')->name('admin')->middleware('AuthIsAdmin');                                               // MIDDLEWARE
+Route::get('/admin','AdminController@moderation')->name('admin')->middleware('AuthIsAdmin');
 
 
 ///////////////////////////////////////

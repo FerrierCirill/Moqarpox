@@ -51,14 +51,12 @@ class HomeController extends Controller
         return view('pages.right.tcs');
     }
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
+    /*FORCE CONTROLLER TO USE MIDDLEWARE AUTH BEFORE INITIALIZE
     public function __construct()
     {
         $this->middleware('auth');
     }
+    */
 
 }

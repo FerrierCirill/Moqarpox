@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class AuthIsAdmin
+class AuthIsProvider
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class AuthIsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (!\Auth::check() || \Auth::user()->admin != \App\User::ADMIN) {
+        if (!\Auth::check() || \Auth::user()->state != \App\User::PROVIDER) {
             return back();
         }
         return $next($request);
