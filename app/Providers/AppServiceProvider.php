@@ -39,5 +39,9 @@ class AppServiceProvider extends ServiceProvider
             if(\Auth::check() && \Auth::user()->admin == \App\User::ADMIN) return true;
             else return false;
         });
+        Blade::if('isLog', function () {
+            if(\Auth::check()) return true;
+            else return false;
+        });
     }
 }

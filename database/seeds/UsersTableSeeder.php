@@ -20,7 +20,6 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('admin'),
             'state' => 1,
             'civility' => 'Mr.',
-            'provider' => 0,
             'admin' => 1
         ]);
 
@@ -32,7 +31,6 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('client'),
             'state' => 0,
             'civility' => 'Mr.',
-            'provider' => 0,
             'admin' => 0
         ]);
 
@@ -44,7 +42,6 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('provider'),
             'state' => 1,
             'civility' => 'Mr.',
-            'provider' => 0,
             'admin' => 0
         ]);
 

@@ -40,8 +40,9 @@ Route::post('/company/{company_id}/edit', 'CompaniesController@PostEditCompany')
 //        User        //
 // ================== //
 
-Route::get('/user/{user_id}', 'UsersController@getClient')->name('client_details');                      // MIDDLEWARE
-Route::get('/user/{user_id}/historical', 'UsersController@historical')->name('client_historical');       // MIDDLEWARE
+Route::get('/user', 'UsersController@getClient')->name('user_details');                      // MIDDLEWARE
+Route::get('/user', 'UsersController@getCompanies')->name('user_companies');                 // MIDDLEWARE
+Route::get('/user/historical', 'UsersController@historical')->name('user_historical');       // MIDDLEWARE
 
 
 // ================== //

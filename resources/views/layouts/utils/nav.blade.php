@@ -1,25 +1,25 @@
 <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper container">
-        <a href="{{ route('main') }}" class="brand-logo">Mouqapox</a>
+        <a href="{{ route('main') }}" class="brand-logo">Mouqarpox</a>
         <ul class="right hide-on-med-and-down">
             @isAdmin
                 <li>
                     <a href="{{route('admin')}}"><i class="fas fa-user-lock"></i></a>
-                </li>    
+                </li>
             @endisAdmin
 
             @isProvider
                 <li>
                     <a href="{{route('admin')}}"><i class="far fa-building"></i></a>
-                </li> 
+                </li>
             @endisProvider
 
-            @isClient
+            @isLog
                 <li>
-                    <a href="{{route('customer_details')}}"><i class="fas fa-user"></i></a>
-                </li> 
-            @endisClient
+                    <a href="{{route('user_details')}}"><i class="fas fa-user"></i></a>
+                </li>
+            @endisLog
 
 
             @guest
@@ -44,11 +44,11 @@
                     </form>
                 </li>
 
-                
+
             @endguest
 
 
-            
+
         </ul>
         </div>
     </nav>
