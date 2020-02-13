@@ -2,6 +2,6 @@
 
 {{-- @section('head-needMapScript', 'ON') --}}
 
-@section('infos')
+@section('content')
 
 @endsection
