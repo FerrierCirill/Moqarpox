@@ -10,14 +10,6 @@ use Symfony\Component\HttpFoundation\AcceptHeaderItem;
 
 class ActivitiesController extends Controller
 {
-    public function getActivities(){
-        $activities = Activity::get();
-
-        return view('pages.activities', [
-            'activities' => $activities
-        ]);
-    }
-
     public function getAddActivity(){
         $categories = Category::get();
         $subCategories = SubCategory::get();
@@ -61,5 +53,9 @@ class ActivitiesController extends Controller
         return view('pages.company.activity.activity_details', [
             'activity' => $activity
         ]);
+    }
+
+    public function changeState(Request $request) {
+        //TODO
     }
 }

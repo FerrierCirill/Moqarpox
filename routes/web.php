@@ -59,6 +59,12 @@ Route::get('/payment', 'HomeController@payment')->name('payment')->middleware('a
 Route::get('/admin','AdminController@moderation')->name('admin')->middleware('AuthIsAdmin');
 
 
+// ================== //
+//     Route AJAX     //
+// ================== //
+
+//TODO
+
 ///////////////////////////////////////
 
 

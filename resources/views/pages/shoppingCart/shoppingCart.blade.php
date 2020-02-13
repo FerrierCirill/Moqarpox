@@ -23,7 +23,6 @@
                 'qte'  => 1
             ]
         ];
-
     ?>
 
     <div class="flex justify-center w-full flex-wrap bg-gray-400">

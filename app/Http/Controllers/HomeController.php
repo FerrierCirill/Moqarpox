@@ -36,6 +36,14 @@ class HomeController extends Controller
         ]);
     }
 
+    public function shoppingCart() {
+        return view('pages.shoppingCart.shoppingCart');
+    }
+
+    public function payment() {
+        return view('pages.shoppingCart.payment');
+    }
+
     public function LM()
     {
         return view('pages.right.lm');
