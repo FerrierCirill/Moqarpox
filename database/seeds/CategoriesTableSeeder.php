@@ -12,19 +12,25 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            'name' => 'Sport & Aventure'
+            'name' => 'Sport & Aventure', 
+            'link' => 'images/categories/sport.jpg'
         ]);
         DB::table('categories')->insert([
-            'name' => 'Séjour & Weekend'
+            'name' => 'Séjour & Weekend',
+            'link' => 'images/categories/sejour.jpg'
         ]);
         DB::table('categories')->insert([
-            'name' => 'Beauté & Bien-être'
+            'name' => 'Beauté & Bien-être',
+            'link' => 'images/categories/spa.jpg'
         ]);
         DB::table('categories')->insert([
-            'name' => 'Gastronomie'
+            'name' => 'Gastronomie',
+            'link' => 'images/categories/gastro.jpg'
+
         ]);
         DB::table('categories')->insert([
-            'name' => 'Multi-Categorie'
+            'name' => 'Multi-Categories', 
+            'link' => 'images/categories/multi'
         ]);
     }
 }

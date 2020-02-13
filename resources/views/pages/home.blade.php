@@ -4,16 +4,20 @@
 
 @section('content')
 	{{-- Header --}}
-	@include('components.header')
+	@include('components.home.header')
+
+
+	{{-- Categorie --}}
+	<div class="container">
+		@include('components.home.categorie')
+	</div>
 
 	{{-- Map Zone --}}
-	<div class="flex min-h-screen">
-		<div class="w-2/3">
+	<div class="container">
+		<div class="col s12 m4 l5">
 			@include('components.map')
 		</div>
-		<div>
-			@include('components.filter')
-
+		<div class="col s12 m8 l7">
 			@include('components.home.displayActivity')
 		</div>
 	</div>

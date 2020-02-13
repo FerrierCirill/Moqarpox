@@ -1,4 +1,47 @@
 header {
     background-size: cover !important;
     background-position: center !important;
+    padding: 2em;
+
+    .H1-call-to-action {
+        margin-top: 0em;
+        font-size: 2.5em;
+        font-weight: 600;
+        margin-bottom: 1.2em;
+    }
+
+
+    .H2-title-header {
+        padding: 0.8em;
+        background-color: rgba($secondary-color, 0.8);
+        color: #fff;
+
+        font-size: 2.2em;
+        font-weight: 600;
+        margin: 0;
+        margin-bottom: 0.5em;
+    }
+
+
+
+    .H2-container-header {
+        padding: 0.8em;
+        background-color: rgba($secondary-color, 0.8);
+        color: #fff;
+        margin-bottom: 0.5em;
+    }
+
+    .price {
+        text-align: right;
+        font-size: 1.8em;
+        font-weight: 400;
+    }
+
+    .note {
+        text-align: right;
+        font-size: 1em;
+        font-weight: 400;
+    }
+    
 }
+
