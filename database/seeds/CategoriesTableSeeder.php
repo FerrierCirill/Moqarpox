@@ -30,7 +30,7 @@ class CategoriesTableSeeder extends Seeder
         ]);
         DB::table('categories')->insert([
             'name' => 'Multi-Categories', 
-            'link' => 'images/categories/multi'
+            'link' => 'images/categories/multi.jpg'
         ]);
     }
 }

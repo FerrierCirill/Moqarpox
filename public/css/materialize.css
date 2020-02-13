@@ -3305,7 +3305,7 @@ table span.badge {
 }
 @media only screen and (min-width : 993px) {
   .container {
-    width: 70%;
+    width: 90%;
   }
 }
 .col .row {
@@ -8755,6 +8755,19 @@ header .note {
   line-height: 40px;
   margin-top: -20px;
   margin-left: -20px;
+}
+
+.card-category {
+  height: -webkit-fill-available !important;
+}
+
+.card.small .card-image {
+  max-height: 100%;
+}
+
+.card-title {
+  background-color: #aed581;
+  width: 100%;
 }
 
 /*# sourceMappingURL=materialize.css.map */

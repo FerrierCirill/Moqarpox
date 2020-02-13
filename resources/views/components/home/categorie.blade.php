@@ -1,10 +1,10 @@
 <div class="row">
-    @forelse($companies as $company)
-        <div class="col s12 m6 l3">
-             <div class="card">
+    @forelse($categories as $category)
+        <div class="col s12 m6 l4">
+             <div class="card small hoverable">
                 <div class="card-image">
-                    <img src="images/sample-1.jpg">
-                    <span class="card-title">{{$company->name}}</span>
+                    <img class="card-category" src="{{ asset($category->link) }}">
+                    <span class="card-title">{{$category->name}}</span>
                     {{-- <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a> --}}
                 </div>
             </div>
