@@ -1,0 +1,70 @@
+.bg-white {
+    background-color: #fff;
+}
+
+.small-text {
+    font-size: 0.9em;
+}
+
+.col-sparator-r {
+    border-right: solid #c7c7c7 0.5px;
+}
+
+.col-sparator-l {
+    border-left: solid #c7c7c7 0.5px;
+}
+
+// =============== //
+    //  Padding & margin
+
+@for $i from 1 through 10 {
+    .p-#{$i} {
+        padding: #{$i}rem;
+    }
+    .pt-#{$i} {
+        padding-top: #{$i}rem;
+    }
+    .pr-#{$i} {
+        padding-right: #{$i}rem;
+    }
+    .pb-#{$i} {
+        padding-bottom: #{$i}rem;
+    }
+    .pl-#{$i} {
+        padding-left: #{$i}rem;
+    }
+    .py-#{$i} {
+        padding-bottom: #{$i}rem;
+        padding-top: #{$i}rem;
+    }
+    .px-#{$i} {
+        padding-right: #{$i}rem;
+        padding-left: #{$i}rem;
+    }
+
+    .m-#{$i} {
+        margin: #{$i}rem;
+    }
+    .mt-#{$i} {
+        margin-top: #{$i}rem;
+    }
+    .mr-#{$i} {
+        margin-right: #{$i}rem;
+    }
+    .mb-#{$i} {
+        margin-bottom: #{$i}rem;
+    }
+    .ml-#{$i} {
+        margin-left: #{$i}rem;
+    }
+    .my-#{$i} {
+        margin-bottom: #{$i}rem;
+        margin-top: #{$i}rem;
+    }
+    .mx-#{$i} {
+        margin-right: #{$i}rem;
+        margin-left: #{$i}rem;
+    }
+
+
+}
