@@ -3,17 +3,14 @@
         <div class="nav-wrapper container">
         <a href="{{ route('main') }}" class="brand-logo">Mouqarpox</a>
         <ul class="right hide-on-med-and-down">
+            <li>
+                <a href="{{route('shopping_cart')}}"><i class="fas fa-shopping-cart"></i></a>
+            </li>
             @isAdmin
                 <li>
                     <a href="{{route('admin')}}"><i class="fas fa-user-lock"></i></a>
                 </li>
             @endisAdmin
-
-            @isProvider
-                <li>
-                    <a href="{{route('admin')}}"><i class="far fa-building"></i></a>
-                </li>
-            @endisProvider
 
             @isLog
                 <li>
