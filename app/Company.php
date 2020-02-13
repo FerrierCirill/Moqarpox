@@ -21,4 +21,8 @@ class Company extends Model
     public function subcategory(){
         return $this->hasOne(SubCategory::class);
     }
+
+    public function city() {
+        return $this->belongsTo(City::class);
+    }
 }

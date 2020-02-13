@@ -6,19 +6,16 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    public function getCustomer() {
-        //TODO
+    public function getClient() {
+        $user = \Auth::user();
+
+        return view('pages.user.profile', [
+            'user' => $user
+        ]);
     }
 
     public function historical() {
-        //TODO
-    }
 
-    public function shoppingCart() {
-        //TODO
-    }
-
-    public function getProvider() {
-        //TODO
+        return view('pages.user.historical');
     }
 }

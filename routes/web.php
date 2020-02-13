@@ -6,6 +6,7 @@
 
 Route::get('/', 'HomeController@index')->name('main');
 Route::get('/map', 'HomeController@test')->name('sylvian_map');
+Route::get('/map-v2', 'HomeController@map')->name('sylvian_map-v2');
 Route::get('/redir', 'HomeController@testDir');
 
 Route::get('/legalMentions', 'HomeController@LM')->name('legal_mentions');
@@ -63,7 +64,7 @@ Route::get('/admin','AdminController@moderation')->name('admin')->middleware('Au
 //     Route AJAX     //
 // ================== //
 
-//TODO
+Route::get('/api/mapUpdate/{category_id}/{subCategory_id}/{what}/{where}', 'ApiController@mapUpdate')->name('api_map_update');
 
 ///////////////////////////////////////
 
