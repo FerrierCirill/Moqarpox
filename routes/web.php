@@ -57,7 +57,7 @@ Route::get('/payment', 'HomeController@payment')->name('payment');              
 //        Admin       //
 // ================== //
 
-Route::get('/admin','AdminController@moderation')->name('admin');                                               // MIDDLEWARE
+Route::get('/admin','AdminController@moderation')->name('admin')->middleware('AuthIsAdmin');                                               // MIDDLEWARE
 
 
 ///////////////////////////////////////
