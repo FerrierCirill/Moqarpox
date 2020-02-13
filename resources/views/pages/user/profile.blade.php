@@ -1,7 +1,7 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 {{-- @section('head-needMapScript', 'ON') --}}
 
 @section('infos')
-    
+
 @endsection
