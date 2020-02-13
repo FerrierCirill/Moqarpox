@@ -42,9 +42,10 @@
             <div id="cluster"></div>
             <div>
                 <form>
-                    <label for="what">Recherche : </label>
-                    <input type="text" id="what"><br>
-                    <button type="button" onclick="recherche()">Rechercher</button>
+                    <label for="search">Recherche :</label>
+                    <input list="results" type="text" id="search" onkeyup="setdatalist()">
+                    <datalist id="results"></datalist>
+                    <button type="button" id="recherche" onclick="search()">Rechercher</button>
                 </form>
             </div>
         </div>
@@ -145,27 +146,45 @@
                 req.send(null);
             };
 
-            initialisation = () => {
-                let categories = getCategories();
-                let select = document.getElementById('category');
-                for(let i = 0; i < categories.length; i++) {
-                    select.innerHTML += '<option value="' + categories[i]['id'] + '">' + categories[i]['name'] + '</option>';
-                }
-            };
+            setdatalist = () => {
+                let value = document.getElementById('search').value;
+                let datalist = document.getElementById('results');
 
-            updateSubCategories = () => {
-                let subCategories = getSubCategories();
-                let category_id = document.getElementById('category').value;
-                let select = document.getElementById('subCategory');
-                select.innerHTML = '<option value="null">--</option>';
-                for(let i = 0; i < subCategories.length; i++) {
-                    if (subCategories[i]['category_id'] == category_id) {
-                        select.innerHTML += '<option value="' + subCategories[i]['id'] + '">' + subCategories[i]['name'] + '</option>';
-                    }
-                }
-            };
+                let req = new XMLHttpRequest();
+                let url = '{{route('api_datalist', [':value'])}}';
+                url = url.replace(':value',value);
 
-            initialisation();
+                req.open("GET", url, true);
+                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                req.onload = function(){
+                    if (this.status == 200) {
+                        let json = JSON.parse(this.responseText);
+                        datalist.innerHTML = '';
+                        if (json['activities'].length != 0) {
+                            for(let i = 0; i < json['activities'].length; i++) {
+                                datalist.innerHTML += '<option value="' + json['activities'][i]['name'] + '">Activités</option>';
+                            }
+                        }
+                        if (json['cities'].length != 0) {
+                            for(let i = 0; i < json['cities'].length; i++) {
+                                datalist.innerHTML += '<option value="' + json['cities'][i]['name'] + '">Villes</option>';
+                            }
+                        }
+                        if (json['categories'].length != 0) {
+                            for(let i = 0; i < json['categories'].length; i++) {
+                                datalist.innerHTML += '<option value="' + json['categories'][i]['name'] + '">Catégories</option>';
+                            }
+                        }
+                        if (json['subCategories'].length != 0) {
+                            for(let i = 0; i < json['subCategories'].length; i++) {
+                                datalist.innerHTML += '<option value="' + json['subCategories'][i]['name'] + '">Sous-catégories</option>';
+                            }
+                        }
+
+                    } else {console.error('erreur de requete AJAX');}
+                };
+                req.send(null);
+            };
         </script>
 
     </body>

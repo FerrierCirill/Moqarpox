@@ -1,7 +1,84 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
+  <div class="card">
+    <div class="row">
+      <h2 class="center">
+        Inscription
+      </h2>
+    </div>
+    <div class="row">
+      <div class="input-field col s5">
+        <select id="civility" class="form-control @error('civility') is-invalid @enderror" required>
+          <option value="" disabled selected>Sélectionnez votre genre</option>
+          <option value="man">Monsieur</option>
+          <option value="woman">Madame</option>
+          <option value="else">Autre</option>
+        </select>
+      <label>Genre</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s5">
+        <input id="first_name" type="text" class="validate form-control @error('first_name') is-invalid @enderror" required>
+        <label for="first_name">Nom</label>
+      </div>
+      <div class="input-field col s5 offset-s1">
+        <input id="surname" type="text" class="validate form-control @error('surname') is-invalid @enderror" required>
+        <label for="surname">Prénom</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field inline col s5">
+        <input id="phone" type="tel" class="validate form-control @error('phone') is-invalid @enderror" maxlength="10" pattern="[0-9]{10}" required>
+        <label for="phone">Téléphone</label>
+        <span class="helper-text" data-error="Veuillez entrer un numéro de téléphone valide">
+      </div>
+      <div class="input-field inline col s5 offset-s1">
+        <input id="email" type="email" class="validate form-control @error('email') is-invalid @enderror" required>
+        <label for="email">Email</label>
+        <span class="helper-text" data-error="Veuillez entrer une adresse Email valide.">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field inline col s5">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate form-control @error('password') is-invalid @enderror">
+          <label for="password">Mot de passe</label>
+        </div>
+      </div>
+      <div class="input-field inline col s5 offset-s1">
+        <div class="input-field col s12">
+          <input id="verif_password" type="password" class="validate form-control @error('verif_password') is-invalid @enderror">
+          <label for="verif_password">Retapez votre mot de passe</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <label class="col s12 center">
+        <input type="checkbox" class="filled-in"/>
+        <span>Vous acceptez nos conditions d'utilisation</span>
+      </label>
+    </div>
+
+    <div class="row">
+      <div class="col s12 center">
+        <button class="btn waves-effect waves-light" type="submit" name="action">
+          S'inscrire !
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+    </div>
+</div>
+<!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -159,5 +236,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 @endsection
