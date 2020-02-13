@@ -61,7 +61,7 @@
     </div>
 
     <div class="row">
-      <label class="col s12 center">
+      <label class="col s11 offset-s1">
         <input type="checkbox" class="filled-in"/>
         <span>Vous acceptez nos conditions d'utilisation</span>
       </label>
@@ -71,6 +71,14 @@
       <div class="col s12 center">
         <button class="btn waves-effect waves-light" type="submit" name="action">
           S'inscrire !
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 center">
+        <button class="btn waves-effect waves-light blue" type="submit" name="action">
+          Inscription via Facebook
         </button>
       </div>
     </div>
