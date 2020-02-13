@@ -11,11 +11,27 @@ use App\Picture;
 
 class HomeController extends Controller
 {
+    public function map()
+    {
+        $companies = Company::get();
+        $categories = Category::get();
+        $subCategories = SubCategory::get();
+        return view('pages.map', [
+            'companies' => $companies,
+            'categories' => $categories,
+            'subCategories' => $subCategories
+        ]);
+    }
+
     public function test()
     {
         $companies = Company::get();
+        $categories = Category::get();
+        $subCategories = SubCategory::get();
         return view('pages.test', [
             'companies' => $companies,
+            'categories' => $categories,
+            'subCategories' => $subCategories
         ]);
     }
 
@@ -41,7 +57,11 @@ class HomeController extends Controller
     }
 
     public function payment() {
-        return view('pages.shoppingCart.payment');
+        $user = \Auth::user();
+
+        return view('pages.shoppingCart.payment', [
+            'user' => $user
+        ]);
     }
 
     public function LM()

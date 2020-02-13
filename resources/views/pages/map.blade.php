@@ -42,18 +42,8 @@
             <div id="cluster"></div>
             <div>
                 <form>
-                    <label for="what">Quoi ? </label>
+                    <label for="what">Recherche : </label>
                     <input type="text" id="what"><br>
-                    <label for="where">Où ? </label>
-                    <input type="text" id="where"><br>
-                    <label for="category">Catégorie : </label>
-                    <select id="category" onchange="updateSubCategories()">
-                        <option value="null">--</option>
-                    </select><br>
-                    <label for="subCategory">Sous-catégorie : </label>
-                    <select id="subCategory">
-                        <option value="null">--</option>
-                    </select><br>
                     <button type="button" onclick="recherche()">Rechercher</button>
                 </form>
             </div>
