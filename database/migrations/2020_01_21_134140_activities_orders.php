@@ -17,7 +17,6 @@ class ActivitiesOrders extends Migration
             $table->bigIncrements('id');
             $table->string('code')->unique();
             $table->integer('state')->default(1);
-            $table->integer('quantity')->default(1);
             $table->text('text');
             $table->string('email');
             $table->string('friend_name')->nullable();
