@@ -4596,7 +4596,7 @@ small {
   border-radius: 0 0 2px 2px;
 }
 .card .card-action a:not(.btn):not(.btn-small):not(.btn-large):not(.btn-large):not(.btn-floating) {
-  color: #ffab40;
+  color: #5c6bc0;
   margin-right: 24px;
   transition: color 0.3s ease;
   text-transform: uppercase;
@@ -8806,6 +8806,19 @@ option {
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.card-title-company {
+  background-color: #5c6bc0;
+}
+
+.card-image-company {
+  min-height: 80px;
+  overflow: hidden;
+}
+
+.title-category {
+  font-size: 1.4em;
 }
 
 /*# sourceMappingURL=materialize.css.map */
