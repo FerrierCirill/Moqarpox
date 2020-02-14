@@ -1,6 +1,6 @@
 <header class="parallax-container h-full">
     <div class="parallax">
-        <img src="{{$activity->link}}">
+        <img src="{{$activity->link0}}">
     </div>
     
     <div class="row">

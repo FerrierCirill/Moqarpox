@@ -103,6 +103,7 @@
         @endisClient
 
         @isProvider
+            <a class="btn right mb-2" href="{{route('company_moneyback_get')}}">Récupéré un code <i class="fas fa-plus-square"></i></a>
             <a class="btn right mb-2" href="{{route('company_add_get')}}">Créé une entreprise <i class="fas fa-plus-square"></i></a>
             <h3>Vos entreprises :</h3>
 

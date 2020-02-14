@@ -37,6 +37,9 @@ Route::get('/company/{company_id}', 'CompaniesController@getCompany')->name('com
 Route::get('/company/{company_id}/edit', 'CompaniesController@getEditCompany')->name('company_edit')->middleware('AuthIsProviderAndItsHisCompany');
 Route::post('/company/{company_id}/edit', 'CompaniesController@PostEditCompany')->name('company_edit')->middleware('AuthIsProviderAndItsHisCompany');
 
+Route::get('/company/moneyBack', 'CompaniesController@getMoneyBack')->name('company_moneyback_get')->middleware('auth');
+Route::post('/company/moneyBack', 'CompaniesController@postMoneyBack')->name('company_moneyback_post')->middleware('auth');
+
 
 // ================== //
 //        User        //

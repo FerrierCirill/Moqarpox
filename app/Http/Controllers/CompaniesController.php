@@ -73,4 +73,14 @@ class CompaniesController extends Controller
             'company' => $company
         ]);
     }
+
+
+    public function getMoneyBack() {
+        return view('pages.user.company.money_back', [
+        ]);
+    }
+
+    public function postMoneyBack() {
+        //Todo
+    }
 }
