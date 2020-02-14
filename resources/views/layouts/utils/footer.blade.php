@@ -1,25 +1,27 @@
 <footer class="page-footer">
     <div class="container">
+        @php
+            $footer_category = App\Category::all()
+        @endphp
         <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
-            </div>
+            @foreach ($footer_category as $category)
+                <div class="col s12 m6 l3">
+                    <h5 class="white-text">{{$category->name}}</h5>
+                    <ul>
+                        @foreach($category->subcategories as $subcategory)
+                            <li><a class="grey-text text-lighten-3" href="#!">{{$subcategory->name}}</a></li>
+                        @endforeach
+                    </ul> 
+                </div>
+            @endforeach
         </div>
     </div>
     <div class="footer-copyright">
         <div class="container">
-            © 2014 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            © {{date('Y')}} Mouqarpox
+            <a class="grey-text text-lighten-4 right ml-1" href="{{route('legal_mentions')}}">Mentions légales</a>
+            <a class="grey-text text-lighten-4 right ml-1" href="{{route('terms_conditions_use')}}">CGU</a>
+            <a class="grey-text text-lighten-4 right ml-1" href="{{route('terms_conditions_sale')}}">CGV</a>
         </div>
     </div>
 </footer>

@@ -10,7 +10,6 @@
                     <img class="responsive-img" src="{{$company->link}} alt="{{$company->name}}">
                 @else
                     <img class="responsive-img" src="https://via.placeholder.com/300" alt="{{$company->name}}">
-
                 @endif
             </div>
             <div class="col s12 m8 l9">

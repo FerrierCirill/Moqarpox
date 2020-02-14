@@ -8821,4 +8821,11 @@ input::-webkit-inner-spin-button {
   font-size: 2.4em;
 }
 
+li {
+  margin-left: 1em;
+}
+li::before {
+  content: "• ";
+}
+
 /*# sourceMappingURL=materialize.css.map */
