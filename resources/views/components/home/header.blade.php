@@ -1,10 +1,10 @@
-<header class="parallax-container">
+<header class="parallax-container h-full">
     <div class="parallax">
-        <img src="{{$activity->pictures[0]->link}}">
+        <img src="{{$activity->link}}">
     </div>
     
     <div class="row">
-        <div class="col s12 l6 mb-2 ">
+        <div class="col s12 l7 mb-2 ">
             <h2 class="H2-title-header">{{$activity->name}}</h2>
             
             <div class="H2-container-header right">
@@ -15,11 +15,11 @@
                 </div>
             </div>
         </div>
-        <div class="col s12 l6">
+        <div class="col s12 l5">
             <div class="bg-white px-2 pb-2 pt-1 mb-1">
-                <h1 class="H1-call-to-action">Trouvez des activités, des séjours et plus encore pour vous ou pour offrir !</h1>
+                <h1 class="H1-call-to-action mb-1">Trouvez des activités, des séjours et plus encore pour vous ou pour offrir !</h1>
 
-                <div class="input-field">
+                <div class="input-field mb-3">
                     <label for   = "generalInputSearch">Recherche</label>
                     <input class="validate"
                         id          = "generalInputSearch"
@@ -27,7 +27,7 @@
                         placeholder = "Chercher une formule">
                 </div>
 
-                <button class="btn">Rechercher</button>
+                <button class="btn mb-1">Rechercher</button>
             </div>
 
             <div class="bg-white px-2 py-1 show-on-small hide-on-med-and-up center-align">

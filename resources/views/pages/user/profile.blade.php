@@ -6,22 +6,62 @@
 {{-- {{var_dump($user)}} --}}
     <div class="container">
         <div class="row">
-            <h1><span class="uppercase">{{$user->first_name}}</span> {{$user->second_name}}</h1>
-            <div class="col s12 m10">
-                <h3>Données personnel</h3>
-                <p>
-                    Email : {{$user->email}}<br>
-                    Téléphone : {{$user->phone}}
-                </p>
-            </div>
+            <a class="btn right mb-2" href="{{route('user_historical')}}">Historique d'achat <i class="fas fa-box"></i></a>
 
-            <div class="col s12 m2">
-                <a class="btn" href="{{route('user_historical')}}">Historique d'achat <i class="fas fa-box"></i></a>
+            <h1>
+                <span class="uppercase">{{$user->first_name}}</span> {{$user->second_name}}  
+            </h1>
+            <h3>Données personnel </h3>
+
+            <div class="input-field col s12 m6">
+                <label>Email</label>
+                <input class="validate" type = "text" value="{{$user->email}}" readonly disabled>
             </div>
-            
+            <form action="{-- TODO --}">
+                <div class="input-field col s12 m6">
+                    <select id="civility" class="form-control @error('civility') is-invalid @enderror" value="{{ old('civility') }}">
+                        <option value="" disabled selected>Sélectionnez votre genre</option>
+                        <option value="man">Monsieur</option>
+                        <option value="woman">Madame</option>
+                        <option value="else">Autre</option>
+                    </select>
+                    <label>Genre</label>
+                </div>
+
+                <div class="input-field col s12 m12 l4">
+                    <label>Téléphone</label>
+                    <input  class="validate"
+                            type = "text" 
+                            name = "phone"
+                            value="{{$user->phone}}">
+                    
+                    @if($errors->has('phone'))
+                        <p>{{$errors->first('phone')}}</p>
+                    @endif
+                </div>
+
+                <div class="input-field col s6 l4">
+                    <label>Mot de passe</label>
+                    <input  class="validate"
+                            type = "text" 
+                            name = "password">
+                    @if($errors->has('password'))
+                        <p>{{$errors->first('password')}}</p>
+                    @endif
+                </div>
+
+                <div class="input-field col s6 l4">
+                    <label for="verif_password">Retapez votre mot de passe</label>
+                    <input id="verif_password" type="password" class="validate">
+                </div>
+
+                <div class="col s12">
+                    <button type="submit" class="btn mb-2 right">Sauvegardé <i class="fas fa-save"></i></button>
+                </div>
+            </form>         
         </div>
         
-{{-- ce quon avais dit (avecflo) c'est que on le defini mais on ne le fait pas --}}
+
 
         @isClient
             <div class="row">
@@ -63,7 +103,39 @@
         @endisClient
 
         @isProvider
-            <h3></h3>
+            <a class="btn right mb-2" href="{{route('company_add_get')}}">Créé une entreprise <i class="fas fa-plus-square"></i></a>
+            <h3>Vos entreprises :</h3>
+
+            <div class="row">
+                @forelse($user->companies as $company)
+
+                    <div class="col s12 m6 l4">
+                        <div class="card small">
+                            <div class="card-image">
+                                <img src="{{asset($company->link)}}">
+                                <span class="card-title hoverable">{{$company->name}}</span>
+                            </div>
+                            <div class="card-content">
+                                <p>
+                                    Adresse : {{$company->adress1}} {{$company->adress2 || ''}}, {{$company->city_id}}<br>
+                                    Description : {{ \Illuminate\Support\Str::limit($company->description, 80, $end='...') }}
+
+
+                                </p>
+                            </div>
+                            <div class="card-action">
+                                <a href="{{route('company_details', ['company_id' => $company->id])}}">Voir</a>
+                                <a href="{{route('company_edit',  ['company_id' => $company->id])}}">Modifier</a>
+                            </div>
+                        </div>
+                    </div>
+
+                @empty
+                    <h4>Vous n'avez pas encore d'entreprise</h4>
+                    <a class="btn mb-2" href="{{route('company_add_get')}}">Créé une entreprise <i class="fas fa-plus-square"></i></a>
+                @endforelse
+            </div>
+            
         @endisProvider
 
 

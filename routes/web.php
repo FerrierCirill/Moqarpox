@@ -5,6 +5,7 @@
 // ================== //
 
 Route::get('/', 'HomeController@index')->name('main');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/map', 'HomeController@test')->name('sylvian_map');
 Route::get('/map-v2', 'HomeController@map')->name('sylvian_map-v2');
 Route::get('/redir', 'HomeController@testDir');

@@ -8116,6 +8116,10 @@ input[type=range]::-ms-thumb {
   color: #5c6bc0;
 }
 
+.h-full {
+  min-height: 100vh;
+}
+
 .p-1 {
   padding: 1rem;
 }

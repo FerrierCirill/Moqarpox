@@ -8,7 +8,7 @@
 			@include('layouts.utils.nav')
 		{{-- EndNav --}}
 
-		<div class="min-h-screen">
+		<div class="h-full">
 		{{-- Content --}}
 			@yield('content')
 		{{-- EndContent --}}
