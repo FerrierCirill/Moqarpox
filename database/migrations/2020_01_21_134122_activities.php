@@ -23,6 +23,9 @@ class Activities extends Migration
             $table->text('information');  // texte personalisable + info form date
             $table->smallInteger('state')->default(0); // 0: en attente de validation - 1: Active - -1: désactivée
             $table->float('note')->nullable();
+            $table->string('link0')->nullable();
+            $table->string('link1')->nullable();
+            $table->string('link2')->nullable();
 
             $table->unsignedBigInteger('subCategory_id');
             $table->unsignedBigInteger('company_id');

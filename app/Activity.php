@@ -18,8 +18,4 @@ class Activity extends Model
         return $this->belongsTo(ActivityOrder::class);
     }
 
-    public function pictures() {
-        return $this->hasMany(Picture::class);
-    }
-
 }

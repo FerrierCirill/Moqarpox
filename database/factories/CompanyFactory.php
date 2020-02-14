@@ -19,7 +19,6 @@ $factory->define(Company::class, function (Faker $faker) {
         'user_id' => $faker->numberBetween($min = 1, $max = 300),
         'city_id' => $faker->numberBetween($min = 1, $max = 36830),
         'description' => $faker->text(150),
-        'subCategory_id' => $faker->numberBetween($min = 1, $max = 20),
         'category_id' => $faker->numberBetween($min = 1, $max = 5)
     ];
 });

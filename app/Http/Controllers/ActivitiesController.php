@@ -43,6 +43,8 @@ class ActivitiesController extends Controller
         $activity->company_id = $request->input('company_id');
         $activity->save();
 
+        //Voir pour le cas d'envoie d'images
+
         return redirect()->back();
     }
 

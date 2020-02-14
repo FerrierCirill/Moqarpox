@@ -14,10 +14,6 @@ class Company extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function pictures() {
-        return $this->hasMany(Picture::class);
-    }
-
     public function subcategory(){
         return $this->hasOne(SubCategory::class);
     }

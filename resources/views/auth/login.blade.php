@@ -12,29 +12,53 @@
     <div class="row">
     </div>
     <div class="row">
-    </div>
-    <div class="row">
-      <div class="input-field col s6 offset-s3">
-        <input id="mail" type="text" class="validate form-control @error('mail') is-invalid @enderror" value="{{ old('mail') }}" required>
-        <label for="mail">Votre mail</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s6 offset-s3">
-        <input id="password" type="password" class="validate form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" required>
-        <label for="password">Mot de passe</label>
-        <a href="" class="right">Mot de passe oublié ?</a>
-      </div>
-    </div>
-    <div class="row">
       <div class="col s12 center">
-        <button class="btn waves-effect waves-light" type="submit" name="action">
-          Connectez vous !
-        </button>
+        Mouqarpox
       </div>
     </div>
-    <div class="row">
-    </div>
+
+    <form method="POST" action="{{ route('login') }}">
+      @csrf
+
+      <div class="row">
+        <div class="input-field col s6 offset-s3">
+          <input id="mail" type="text" class="validate form-control @error('mail') is-invalid @enderror" value="{{ old('mail') }}" required>
+          <label for="mail">Votre mail</label>
+          @error('mail')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6 offset-s3">
+          <input id="password" type="password" class="validate form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" required>
+          <label for="password">Mot de passe</label>
+          <a href="" class="right">Mot de passe oublié ?</a>
+          @error('password')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
+        </div>
+      </div>
+
+      <div class="row">
+      </div>
+
+      <div class="row">
+        <div class="col s12 center">
+          <button class="btn waves-effect waves-light light-green" type="submit" name="action">
+            Connectez vous !
+          </button>
+        </div>
+      </div>
+      <div class="row">
+      </div>
+
+    </form>
     <div class="row">
       <div class="col s8 offset-s2">
         <hr/>
@@ -42,7 +66,7 @@
     </div>
     <div class="row">
       <div class="col s12 center">
-        <button class="btn waves-effect waves-light blue" type="submit" name="action">
+        <button class="btn waves-effect waves-light  blue darken-4" type="submit" name="action">
           Connexion via Facebook
         </button>
       </div>
