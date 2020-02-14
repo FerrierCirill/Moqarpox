@@ -43,5 +43,11 @@ class AppServiceProvider extends ServiceProvider
             if(\Auth::check()) return true;
             else return false;
         });
+        Blade::if('isMyCompany', function ($user_id) {
+            if( \Auth::check() && 
+                \Auth::user()->state == \App\User::PROVIDER && 
+                \Auth::user()->id == $user_id) return true;
+            else return false;
+        });
     }
 }
