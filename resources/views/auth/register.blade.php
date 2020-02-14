@@ -11,7 +11,7 @@
     </div>
     <div class="row">
       <div class="input-field col s5">
-        <select id="civility" class="form-control @error('civility') is-invalid @enderror" required>
+        <select id="civility" class="form-control @error('civility') is-invalid @enderror" value="{{ old('civility') }}" required>
           <option value="" disabled selected>Sélectionnez votre genre</option>
           <option value="man">Monsieur</option>
           <option value="woman">Madame</option>
@@ -23,23 +23,23 @@
 
     <div class="row">
       <div class="input-field col s5">
-        <input id="first_name" type="text" class="validate form-control @error('first_name') is-invalid @enderror" required>
+        <input id="first_name" type="text" class="validate form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" required>
         <label for="first_name">Nom</label>
       </div>
       <div class="input-field col s5 offset-s1">
-        <input id="surname" type="text" class="validate form-control @error('surname') is-invalid @enderror" required>
+        <input id="surname" type="text" class="validate form-control @error('surname') is-invalid @enderror" value="{{ old('surname') }}" required>
         <label for="surname">Prénom</label>
       </div>
     </div>
 
     <div class="row">
       <div class="input-field inline col s5">
-        <input id="phone" type="tel" class="validate form-control @error('phone') is-invalid @enderror" maxlength="10" pattern="[0-9]{10}" required>
+        <input id="phone" type="tel" class="validate form-control @error('phone') is-invalid @enderror" maxlength="10" pattern="[0-9]{10}" value="{{ old('phone') }}"required>
         <label for="phone">Téléphone</label>
         <span class="helper-text" data-error="Veuillez entrer un numéro de téléphone valide">
       </div>
       <div class="input-field inline col s5 offset-s1">
-        <input id="email" type="email" class="validate form-control @error('email') is-invalid @enderror" required>
+        <input id="email" type="email" class="validate form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required>
         <label for="email">Email</label>
         <span class="helper-text" data-error="Veuillez entrer une adresse Email valide.">
       </div>
@@ -48,20 +48,20 @@
     <div class="row">
       <div class="input-field inline col s5">
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate form-control @error('password') is-invalid @enderror">
+          <input id="password" type="password" class="validate form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" required>
           <label for="password">Mot de passe</label>
         </div>
       </div>
       <div class="input-field inline col s5 offset-s1">
         <div class="input-field col s12">
-          <input id="verif_password" type="password" class="validate form-control @error('verif_password') is-invalid @enderror">
+          <input id="verif_password" type="password" class="validate form-control @error('verif_password') is-invalid @enderror" value="{{ old('verif_password') }}" required>
           <label for="verif_password">Retapez votre mot de passe</label>
         </div>
       </div>
     </div>
 
     <div class="row">
-      <label class="col s12 center">
+      <label class="col s11 offset-s1">
         <input type="checkbox" class="filled-in"/>
         <span>Vous acceptez nos conditions d'utilisation</span>
       </label>
@@ -71,6 +71,14 @@
       <div class="col s12 center">
         <button class="btn waves-effect waves-light" type="submit" name="action">
           S'inscrire !
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 center">
+        <button class="btn waves-effect waves-light blue" type="submit" name="action">
+          Inscription via Facebook
         </button>
       </div>
     </div>
