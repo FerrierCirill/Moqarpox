@@ -64,6 +64,8 @@
 
 
         @isClient
+            <hr class="my-8">
+
             <div class="row">
                 <div class="col s12 m6 l4">
                     <div class="card-panel grey lighten-5 z-depth-1">
@@ -103,8 +105,11 @@
         @endisClient
 
         @isProvider
-            <a class="btn right mb-2" href="{{route('company_moneyback_get')}}">Récupéré un code <i class="fas fa-plus-square"></i></a>
+            <hr class="my-8">
+
             <a class="btn right mb-2" href="{{route('company_add_get')}}">Créé une entreprise <i class="fas fa-plus-square"></i></a>
+            <a class="btn right mb-2 mr-1" href="{{route('company_moneyback_get')}}">Récupéré un code <i class="fas fa-money-bill-wave"></i></i></a>
+            
             <h3>Vos entreprises :</h3>
 
             <div class="row">
@@ -112,14 +117,15 @@
 
                     <div class="col s12 m6 l4">
                         <div class="card small">
-                            <div class="card-image">
+                            <div class="card-image card-image-company">
                                 <img src="{{asset($company->link)}}">
-                                <span class="card-title hoverable">{{$company->name}}</span>
+                                <span class="card-title card-title-company hoverable">{{$company->name}}</span>
                             </div>
                             <div class="card-content">
                                 <p>
-                                    Adresse : {{$company->adress1}} {{$company->adress2 || ''}}, {{$company->city_id}}<br>
-                                    Description : {{ \Illuminate\Support\Str::limit($company->description, 80, $end='...') }}
+                                    <strong>Téphone :</strong> {{$company->phone}}<br>
+                                    <strong>Adresse :</strong> {{$company->adress1}} {{$company->adress2 || ''}}, {{$company->city->code_postal}} {{$company->city->name}}<br>
+                                    <strong>Description :</strong> {{ \Illuminate\Support\Str::limit($company->description, 80, $end='...') }}
 
 
                                 </p>
