@@ -69,6 +69,7 @@ Route::get('/admin','AdminController@moderation')->name('admin')->middleware('Au
 // ================== //
 
 Route::get('/api/mapUpdate/{category_id}/{subCategory_id}/{what}/{where}', 'ApiController@mapUpdate')->name('api_map_update');
+Route::get('/api/activities/{company_id}', 'ApiController@getActivitiesOfCompany')->name('api_activities_of_company');
 
 Route::get('/api/datalist/{value}', 'ApiController@datalist')->name('api_datalist');
 Route::get('/api/main_search/{type}/{value}', 'ApiController@mainSearch')->name('api_main_search');

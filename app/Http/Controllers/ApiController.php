@@ -31,4 +31,9 @@ class ApiController extends Controller
             'subCategories' => $subCategories
         ];
     }
+
+    public function getActivitiesOfCompany($company_id) {
+        $activities = Activity::where('company_id', '=', $company_id)->get();
+        return $activities;
+    }
 }

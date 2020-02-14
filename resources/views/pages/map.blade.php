@@ -35,18 +35,33 @@
                 margin-top: -20px;
                 margin-left: -20px;
             }
+
+            .activities {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .activity {
+                border: 1px solid black;
+                margin: 5px;
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <div id="cluster"></div>
             <div>
-                <form>
-                    <label for="search">Recherche :</label>
-                    <input list="results" type="text" id="search" onkeyup="setdatalist()">
-                    <datalist id="results"></datalist>
-                    <button type="button" id="recherche" onclick="search()">Rechercher</button>
-                </form>
+                <div>
+                    <form>
+                        <label for="search">Recherche :</label>
+                        <input list="results" type="text" id="search" onkeyup="setdatalist()">
+                        <datalist id="results"></datalist>
+                        <button type="button" id="recherche" onclick="search()">Rechercher</button>
+                    </form>
+                </div>
+                <div id="activities">
+
+                </div>
             </div>
         </div>
         <script>
@@ -102,6 +117,35 @@
                             var marker = new L.Marker(latLng, {title: companies[i][0], icon: yellowIcon});
                             break;
                     }
+                    marker.on('click', function () {
+                        let result = document.getElementById('activities');
+                        let req = new XMLHttpRequest();
+                        let url = '{{route('api_activities_of_company', [':company_id'])}}';
+                        url = url.replace(':company_id',companies[i]['id']);
+                        req.open("GET", url, true);
+                        req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        req.onload = function(){
+                            if (this.status == 200) {
+                                let json = JSON.parse(this.responseText);
+                                result.innerHTML = '';
+                                for(let i = 0; i < json.length; i++) {
+                                    console.log(json[i]);
+                                    let url = '{{route('activity_details', [':activity_id'])}}';
+                                    url = url.replace(':activity_id',json[i]['id']);
+
+                                    let html = '<div class="activity">Nom : ' + json[i]['name'] + '<br>' +
+                                        'Prix : ' + json[i]['price'] + ' € <br>' +
+                                        'Description : ' + json[i]['description_perso'] + '<br>' +
+                                        '<a href="' + url + '">Voir l\'activité</a></div>';
+                                    result.innerHTML += html;
+                                }
+                            } else {
+                                console.error('erreur de requete AJAX');
+                            }
+                        };
+                        req.send(null);
+
+                    });
                     marker.bindPopup(
                         '<strong>' + companies[i]['name'] + '</strong>'
                         + '<br>Adresse : ' + companies[i]['adress']
