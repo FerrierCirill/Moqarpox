@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div class="container">
-  <div class="card">
+<div class="container row">
+  <div class="container col s5 offset-s7 white">
     <div class="row">
       <h2 class="center">
         Inscription
@@ -85,6 +85,7 @@
 
     <div class="row">
     </div>
+  </div>
 </div>
 <!-- <div class="container">
     <div class="row justify-content-center">
