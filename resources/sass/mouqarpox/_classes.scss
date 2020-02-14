@@ -6,12 +6,23 @@
     font-size: 0.9em;
 }
 
+.uppercase {
+    text-transform: uppercase;
+}
+
 .col-sparator-r {
     border-right: solid #c7c7c7 0.5px;
 }
 
 .col-sparator-l {
     border-left: solid #c7c7c7 0.5px;
+}
+
+
+
+.big-I {
+    font-size: 5em;
+    color: $secondary-color;
 }
 
 // =============== //

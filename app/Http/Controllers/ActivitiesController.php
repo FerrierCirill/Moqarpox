@@ -35,11 +35,10 @@ class ActivitiesController extends Controller
         $activity = new Activity();
         $activity->name = $request->input('name');
         $activity->price = $request->input('price');
-        $activity->description = $request->input('description');
         $activity->resume = $request->input('resume');
+        $activity->description = $request->input('description');
+        $activity->description_perso = $request->input('description_perso');
         $activity->information = $request->input('information');
-        $activity->state = 'A vérifier';
-        $activity->note = 2.5;
         $activity->subCategory_id = $request->input('subCategory_id');
         $activity->company_id = $request->input('company_id');
         $activity->save();
