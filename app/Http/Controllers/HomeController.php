@@ -37,16 +37,12 @@ class HomeController extends Controller
 
     public function index()
     {
-        $picture = Picture::inRandomOrder()->first();
-        $activity = Activity::findOrFail($picture->activity_id);
-
-        $pictures = Picture::where('activity_id', $activity->id)->get();
+        $activity = Activity::inRandomOrder()->first();
         $categories = Category::get();
         $companies = Company::get();
 
         return view('pages.home', [
             'activity' => $activity,
-            'pictures' => $pictures,
             'companies' => $companies,
             'categories' => $categories
         ]);

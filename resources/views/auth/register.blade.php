@@ -54,19 +54,23 @@
 
         <div class="row">
           <div class="input-field inline col s5">
-            <input id="phone" type="tel" class="validate form-control @error('phone') is-invalid @enderror" maxlength="10" pattern="[0-9]{10}" value="{{ old('phone') }}"required>
+            <input id="phone" type="tel" class="validate form-control @error('phone') is-invalid @enderror" maxlength="10" pattern="[0-9]{10}" value="{{ old('phone') }}" required>
             <label for="phone">Téléphone</label>
-            <span class="helper-text" data-error="Veuillez entrer un numéro de téléphone valide">
+              @error('phone')
+              <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+              @enderror
           </div>
           <div class="input-field inline col s5 offset-s1">
             <input id="email" type="email" class="validate form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required>
             <label for="email">Email</label>
-            <span class="helper-text" data-error="Veuillez entrer une adresse Email valide."/>
-            @error('phone')
-                <span class="invalid-feedback" role="alert">
+              @error('email')
+              <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
-            @enderror
+              @enderror
+
           </div>
         </div>
 
@@ -75,13 +79,14 @@
             <div class="input-field col s12">
               <input id="password" type="password" class="validate form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" required>
               <label for="password">Mot de passe</label>
+              @error('password')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
             </div>
           </div>
-          @error('password')
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
-          @enderror
+
 
           <div class="input-field inline col s5 offset-s1">
             <div class="input-field col s12">
@@ -111,12 +116,8 @@
           </div>
         </div>
 
-
-
       <div class="row">
       </div>
-
-
 
     </form>
     <div class="row">
