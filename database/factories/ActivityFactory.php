@@ -17,5 +17,8 @@ $factory->define(Activity::class, function (Faker $faker) {
         'subCategory_id'    => $faker->numberBetween($min = 1, $max = 20),
         'company_id'        => $faker->numberBetween($min = 1, $max = 1000),
         'note'              => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 5),
+        'link0' => 'https://picsum.photos/1080/720',
+        'link1' => 'https://picsum.photos/1080/720',
+        'link2' => 'https://picsum.photos/1080/720',
     ];
 });
