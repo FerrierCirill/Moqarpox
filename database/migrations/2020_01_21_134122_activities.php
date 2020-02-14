@@ -19,10 +19,10 @@ class Activities extends Migration
             $table->float('price');
             $table->text('description'); // long texte
             $table->text('resume');      // court texte
-            $table->string('description_perso');      //court text (25)
+            $table->string('description_perso')->nullable();      //court text (25)
             $table->text('information');  // texte personalisable + info form date
             $table->smallInteger('state')->default(0); // 0: en attente de validation - 1: Active - -1: désactivée
-            $table->float('note');
+            $table->float('note')->nullable();
 
             $table->unsignedBigInteger('subCategory_id');
             $table->unsignedBigInteger('company_id');

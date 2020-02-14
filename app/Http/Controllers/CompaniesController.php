@@ -17,7 +17,8 @@ class CompaniesController extends Controller
     }
 
     public function postAddCompany() {
-        //TODO
+        $companny = new Company;
+
     }
 
     public function getCompany($company_id) {
