@@ -46,6 +46,7 @@
       bottom: 0;
       left: 0;
       right: 0;
+
     }
   }
 
@@ -166,7 +167,7 @@
     padding: 16px $card-padding;
 
     a:not(.btn):not(.btn-large):not(.btn-floating) {
-      color: $card-link-color;
+      color: $secondary-color;
       margin-right: $card-padding;
       transition: color .3s ease;
       text-transform: uppercase;
