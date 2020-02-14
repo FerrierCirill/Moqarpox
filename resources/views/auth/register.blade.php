@@ -2,7 +2,7 @@
 
 @section('content')
 
-<!-- <div class="">
+<div class="">
   <div class="row">
   </div>
   <div class="row no-margin">
@@ -21,55 +21,64 @@
 
         <div class="row">
           <div class="input-field col s5">
-            <select id="civility" class="form-control @error('civility') is-invalid @enderror" value="{{ old('civility') }}" required>
-              <option value="" disabled selected>Sélectionnez votre genre</option>
+            <select id="civility" type="text" class="form-control @error('civility') is-invalid @enderror" name="civility" value="{{ old('civility') }}" autocomplete="civility" autofocus>
               <option value="man">Monsieur</option>
               <option value="woman">Madame</option>
-              <option value="else">Autre</option>
+              <option value="other" disabled selected>Autre</option>
             </select>
-          <label>Genre</label>
+          <label>Genre*</label>
+
           @error('civility')
           <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
+            <strong>{{ $message }}</strong>
+          </span>
           @enderror
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s5">
-            <input id="first_name" type="text" class="validate form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" required>
-            <label for="first_name">Nom</label>
+            <input id="first_name" name="first_name" type="text" class="validate form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" required>
+            <label for="first_name">Nom*</label>
+
+            @error('name')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+            @enderror
           </div>
+
           <div class="input-field col s5 offset-s1">
-            <input id="surname" type="text" class="validate form-control @error('surname') is-invalid @enderror" value="{{ old('surname') }}" required>
-            <label for="surname">Prénom</label>
-            @error('surname')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+            <input id="second_name" type="text" class="form-control @error('second_name') is-invalid @enderror" name="second_name" value="{{ old('second_name') }}" required autocomplete="second_name" autofocus>
+            <label for="second_name">Prénom*</label>
+
+            @error('second_name')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
             @enderror
           </div>
         </div>
 
         <div class="row">
           <div class="input-field inline col s5">
-            <input id="phone" type="tel" class="validate form-control @error('phone') is-invalid @enderror" maxlength="10" pattern="[0-9]{10}" value="{{ old('phone') }}" required>
-            <label for="phone">Téléphone</label>
-              @error('phone')
+            <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+            <label for="phone">Téléphone*</label>
+            @error('phone')
               <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-              @enderror
+                <strong>{{ $message }}</strong>
+              </span>
+            @enderror
           </div>
+
           <div class="input-field inline col s5 offset-s1">
-            <input id="email" type="email" class="validate form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required>
-            <label for="email">Email</label>
-              @error('email')
+            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+            <label for="email">Email*</label>
+            @error('email')
               <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-              @enderror
+                <strong>{{ $message }}</strong>
+              </span>
+            @enderror
 
           </div>
         </div>
@@ -77,12 +86,12 @@
         <div class="row">
           <div class="input-field inline col s5">
             <div class="input-field col s12">
-              <input id="password" type="password" class="validate form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" required>
-              <label for="password">Mot de passe</label>
+              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+              <label for="password">Mot de passe*</label>
               @error('password')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
               @enderror
             </div>
           </div>
@@ -90,13 +99,8 @@
 
           <div class="input-field inline col s5 offset-s1">
             <div class="input-field col s12">
-              <input id="verif_password" type="password" class="validate form-control @error('verif_password') is-invalid @enderror" value="{{ old('verif_password') }}" required>
-              <label for="verif_password">Retapez votre mot de passe</label>
-              @error('verif_password')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-              @enderror
+              <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+              <label for="verif_password">Retapez votre mot de passe*</label>
             </div>
           </div>
         </div>
@@ -134,9 +138,9 @@
     <div class="row">
     </div>
   </div>
-</div> -->
+</div>
 
-<div class="container">
+<!-- <div class="container">
     <div class="row no-margin">
         <div class="col-md-8">
             <div class="card">
@@ -294,7 +298,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 <!-- <div class="container">
