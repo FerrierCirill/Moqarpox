@@ -116,7 +116,7 @@
                 @forelse($user->companies as $company)
 
                     <div class="col s12 m6 l4">
-                        <div class="card small">
+                        <div class="card medium">
                             <div class="card-image card-image-company">
                                 <img src="{{asset($company->link)}}">
                                 <span class="card-title card-title-company hoverable">{{$company->name}}</span>
@@ -131,6 +131,7 @@
                                 </p>
                             </div>
                             <div class="card-action">
+                                @include('components.company.state', ['state' => $company->state])
                                 <a href="{{route('company_details', ['company_id' => $company->id])}}">Voir</a>
                                 <a href="{{route('company_edit',  ['company_id' => $company->id])}}">Modifier</a>
                             </div>

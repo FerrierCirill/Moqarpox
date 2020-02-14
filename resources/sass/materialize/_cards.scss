@@ -172,7 +172,7 @@
       transition: color .3s ease;
       text-transform: uppercase;
 
-      &:hover { color: $card-link-color-light; }
+      &:hover { color: darken($secondary-color, 20); }
     }
   }
 

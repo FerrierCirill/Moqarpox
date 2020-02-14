@@ -4602,7 +4602,7 @@ small {
   text-transform: uppercase;
 }
 .card .card-action a:not(.btn):not(.btn-small):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
-  color: #ffd8a6;
+  color: #333f83;
 }
 .card .card-reveal {
   padding: 24px;
@@ -8818,7 +8818,7 @@ input::-webkit-inner-spin-button {
 }
 
 .title-category {
-  font-size: 1.4em;
+  font-size: 2.4em;
 }
 
 /*# sourceMappingURL=materialize.css.map */
