@@ -18,5 +18,11 @@
             M.Parallax.init(elems);
         });
 
+    // MODAL
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.modal');
+            M.Modal.init(elems);
+        });
+
 
 // END _ MATERIALIZE //

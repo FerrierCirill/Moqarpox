@@ -8427,6 +8427,66 @@ input[type=range]::-ms-thumb {
   min-height: 100vh;
 }
 
+.p-0 {
+  padding: 0rem;
+}
+
+.pt-0 {
+  padding-top: 0rem;
+}
+
+.pr-0 {
+  padding-right: 0rem;
+}
+
+.pb-0 {
+  padding-bottom: 0rem;
+}
+
+.pl-0 {
+  padding-left: 0rem;
+}
+
+.py-0 {
+  padding-bottom: 0rem;
+  padding-top: 0rem;
+}
+
+.px-0 {
+  padding-right: 0rem;
+  padding-left: 0rem;
+}
+
+.m-0 {
+  margin: 0rem;
+}
+
+.mt-0 {
+  margin-top: 0rem;
+}
+
+.mr-0 {
+  margin-right: 0rem;
+}
+
+.mb-0 {
+  margin-bottom: 0rem;
+}
+
+.ml-0 {
+  margin-left: 0rem;
+}
+
+.my-0 {
+  margin-bottom: 0rem;
+  margin-top: 0rem;
+}
+
+.mx-0 {
+  margin-right: 0rem;
+  margin-left: 0rem;
+}
+
 .p-1 {
   padding: 1rem;
 }
@@ -9126,6 +9186,23 @@ input::-webkit-inner-spin-button {
 
 .title-category {
   font-size: 2.4em;
+}
+
+.price {
+  right: 15px;
+  position: absolute;
+  bottom: -25px;
+  background: white;
+  min-height: fit-content;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+.price span:first-child {
+  margin-right: 20px;
+  text-align: left;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 footer li {

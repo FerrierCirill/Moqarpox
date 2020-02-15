@@ -12,143 +12,27 @@
                 <span class="uppercase">{{$user->first_name}}</span> {{$user->second_name}}  
             </h1>
             <h3>Données personnel </h3>
+            <p>
+                <strong>Email :</strong> {{$user->email}}<br>
+                <strong>Téléphone :</strong> {{$user->phone}}<br>
+                <strong>Compte créé le :</strong> {{$user->created_at}}<br>
+            </p>
+            
 
-            <div class="input-field col s12 m6">
-                <label>Email</label>
-                <input class="validate" type = "text" value="{{$user->email}}" readonly disabled>
-            </div>
-            <form action="{-- TODO --}">
-                <div class="input-field col s12 m6">
-                    <select id="civility" class="form-control @error('civility') is-invalid @enderror" value="{{ old('civility') }}">
-                        <option value="" disabled selected>Sélectionnez votre genre</option>
-                        <option value="man">Monsieur</option>
-                        <option value="woman">Madame</option>
-                        <option value="else">Autre</option>
-                    </select>
-                    <label>Genre</label>
-                </div>
+            <a class="btn modal-trigger" href="#modal_user_modification">Modifier mes information</a>
+            @include('components.user.profile.modal_for_change_information')
 
-                <div class="input-field col s12 m12 l4">
-                    <label>Téléphone</label>
-                    <input  class="validate"
-                            type = "text" 
-                            name = "phone"
-                            value="{{$user->phone}}">
-                    
-                    @if($errors->has('phone'))
-                        <p>{{$errors->first('phone')}}</p>
-                    @endif
-                </div>
 
-                <div class="input-field col s6 l4">
-                    <label>Mot de passe</label>
-                    <input  class="validate"
-                            type = "text" 
-                            name = "password">
-                    @if($errors->has('password'))
-                        <p>{{$errors->first('password')}}</p>
-                    @endif
-                </div>
-
-                <div class="input-field col s6 l4">
-                    <label for="verif_password">Retapez votre mot de passe</label>
-                    <input id="verif_password" type="password" class="validate">
-                </div>
-
-                <div class="col s12">
-                    <button type="submit" class="btn mb-2 right">Sauvegardé <i class="fas fa-save"></i></button>
-                </div>
-            </form>         
         </div>
         
 
 
         @isClient
-            <hr class="my-8">
-
-            <div class="row">
-                <div class="col s12 m6 l4">
-                    <div class="card-panel grey lighten-5 z-depth-1">
-                        <i class="fas fa-bullhorn big-I"></i>
-                        <h5>Développer votre activité</h5>
-                        <span class="black-text">
-                            <p>Vous êtes un professionnel et vous proposer des activités ou des séjours a vos clients ? Mettais vous en avant en apparaissent sur Mouqarpox</p>
-                            <a class="btn" href="{{route('company_add_get')}}">Déposer une offre <i class="fas fa-paper-plane"></i></a> 
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col s12 m6 l4">
-                    <div class="card-panel grey lighten-5 z-depth-1">
-                        <i class="fas fa-money-bill-wave big-I"></i>
-                        <h5>Développer votre activité</h5>
-                        <span class="black-text">
-                            <p>Vous êtes un professionnel et vous proposer des activités ou des séjours a vos clients ? Mettais vous en avant en apparaissent sur Mouqarpox</p>
-                            <a class="btn" href="{{route('company_add_get')}}">Déposer une offre <i class="fas fa-paper-plane"></i></a> 
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col s12 m6 l4">
-                    <div class="card-panel grey lighten-5 z-depth-1">
-                        <i class="fas fa-chart-line big-I"></i>
-                        <h5>Développer votre activité</h5>
-                        <span class="black-text">
-                            <p>Vous êtes un professionnel et vous proposer des activités ou des séjours a vos clients ? Mettais vous en avant en apparaissent sur Mouqarpox</p>
-                            <a class="btn" href="{{route('company_add_get')}}">Déposer une offre <i class="fas fa-paper-plane"></i></a> 
-                        </span>
-                    </div>
-                </div>
-
-
-            </div>
+            @include('components.user.profile.isClient')
         @endisClient
 
         @isProvider
-            <hr class="my-8">
-
-            <a class="btn right mb-2" href="{{route('company_add_get')}}">Créé une entreprise <i class="fas fa-plus-square"></i></a>
-            <a class="btn right mb-2 mr-1" href="{{route('company_moneyback_get')}}">Récupéré un code <i class="fas fa-money-bill-wave"></i></i></a>
-            
-            <h3>Vos entreprises :</h3>
-
-            <div class="row">
-                @forelse($user->companies as $company)
-
-                    <div class="col s12 m6 l4">
-                        <div class="card medium">
-                            <div class="card-image card-image-company">
-                                @if ($company->link)
-                                    <img src="{{$company->link}} alt="{{$company->name}}">
-                                @else
-                                    <img src="https://via.placeholder.com/300" alt="{{$company->name}}">
-                                @endif
-
-                                <span class="card-title card-title-company hoverable">{{$company->name}}</span>
-                            </div>
-                            <div class="card-content">
-                                <p>
-                                    <strong>Téphone :</strong> {{$company->phone}}<br>
-                                    <strong>Adresse :</strong> {{$company->adress1}} {{$company->adress2 || ''}}, {{$company->city->code_postal}} {{$company->city->name}}<br>
-                                    <strong>Description :</strong> {{ \Illuminate\Support\Str::limit($company->description, 80, $end='...') }}
-
-
-                                </p>
-                            </div>
-                            <div class="card-action">
-                                @include('components.company.state', ['state' => $company->state])
-                                <a href="{{route('company_details', ['company_id' => $company->id])}}">Voir</a>
-                                <a href="{{route('company_edit',  ['company_id' => $company->id])}}">Modifier</a>
-                            </div>
-                        </div>
-                    </div>
-
-                @empty
-                    <h4>Vous n'avez pas encore d'entreprise</h4>
-                    <a class="btn mb-2" href="{{route('company_add_get')}}">Créé une entreprise <i class="fas fa-plus-square"></i></a>
-                @endforelse
-            </div>
-            
+            @include('components.user.profile.isProvider')            
         @endisProvider
 
 

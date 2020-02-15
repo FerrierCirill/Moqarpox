@@ -32,7 +32,7 @@
 // =============== //
     //  Padding & margin
 
-@for $i from 1 through 10 {
+@for $i from 0 through 10 {
     .p-#{$i} {
         padding: #{$i}rem;
     }
