@@ -8821,10 +8821,10 @@ input::-webkit-inner-spin-button {
   font-size: 2.4em;
 }
 
-li {
+footer li {
   margin-left: 1em;
 }
-li::before {
+footer li::before {
   content: "• ";
 }
 
