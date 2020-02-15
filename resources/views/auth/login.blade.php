@@ -7,13 +7,13 @@
 </div>
 <div class="row">
 </div>
-  <div class="card col s4 offset-s4">
+  <div class="card col l4 offset-l4 m6 offset-m3 s11 offset-1">
 
     <div class="row">
     </div>
     <div class="row">
       <div class="col s12 center">
-        Mouqarpox
+      <img src="{{asset('images/logo.svg')}}" alt="logo mouqarpox" class="responsive-img">
       </div>
     </div>
 
@@ -21,7 +21,7 @@
       @csrf
 
       <div class="row">
-        <div class="input-field col s6 offset-s3">
+        <div class="input-field col s8 offset-s2">
           <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
           <label for="email">Votre mail</label>
           @error('email')
@@ -33,7 +33,7 @@
       </div>
 
       <div class="row">
-        <div class="input-field col s6 offset-s3">
+        <div class="input-field col s8 offset-s2">
           <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
           <label for="password">Mot de passe</label>
           <a href="" class="right">Mot de passe oublié ?</a>
