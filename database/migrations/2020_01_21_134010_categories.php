@@ -17,6 +17,7 @@ class Categories extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('link')->nullable();
+            $table->string('hexa')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

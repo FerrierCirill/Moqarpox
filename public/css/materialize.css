@@ -2577,6 +2577,16 @@ html {
   box-sizing: inherit;
 }
 
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
 button,
 input,
 optgroup,
@@ -9203,6 +9213,50 @@ input::-webkit-inner-spin-button {
   text-align: left;
   font-size: 22px;
   font-weight: 600;
+}
+
+.activity-nav {
+  min-height: 50px;
+  display: flex;
+  align-content: space-around;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+.activity-nav .valign-wrapper {
+  flex-direction: column;
+  align-content: center;
+}
+
+@media only screen and (min-width : 993px) {
+  .activity-nav .valign-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+}
+.breadcrumb:before {
+  content: ">";
+  font-size: 1em;
+  font-weight: 900;
+  font-family: cursive;
+  position: relative;
+  top: -1px;
+}
+
+.title-category-n-sub {
+  font-size: 1.8em;
+  padding: 0.4em;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
+  color: #fff;
+  font-weight: 800;
+}
+.title-category-n-sub span {
+  font-size: 0.8em;
+}
+
+.activity-title {
+  font-size: 3em;
+  margin-top: 0.5em;
 }
 
 footer li {

@@ -18,4 +18,7 @@ class Activity extends Model
         return $this->belongsTo(ActivityOrder::class);
     }
 
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
 }
