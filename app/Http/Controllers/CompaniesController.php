@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\Activity;
 use App\City;
 use App\Picture;
 use Illuminate\Http\Request;
@@ -60,9 +61,12 @@ class CompaniesController extends Controller
 
     public function getCompany($company_id) {
         $company = Company::findOrFail($company_id);
+        $activities = Activity::where('company_id', $company->id)->paginate(12);
+
 
         return view('pages.company.company_details', [
-            'company' => $company
+            'company' => $company,
+            'activities' => $activities
         ]);
     }
 
