@@ -39,7 +39,6 @@ class ApiController extends Controller
 
     public function mainSearch($type, $value) {
         $companies = [];
-
         switch ($type) {
             case 'Villes':
                 $city = City::where('name', '=', $value)->first();
@@ -47,19 +46,39 @@ class ApiController extends Controller
                 $companies = Company::where('city_id', '=', $city_id)->get();
                 break;
             case 'Catégories' :
-                $category = Category::where('name', '=', $value)->get(); //A CORRIGER
+                $category = Category::where('name', '=', $value)->first();
                 $category_id = $category->id;
                 $companies = Company::where('category_id', '=', $category_id)->get();
                 break;
             case 'Sous-catégories' :
-                //TODO
+                $subCategory = SubCategory::where('name', '=', $value)->first();
+                $subCategory_id = $subCategory->id;
+                $idOfCompaniesFromActivities = Activity::select('company_id')->where('subCategory_id', '=', $subCategory_id)->get();
+                $ids = array();
+                foreach ($idOfCompaniesFromActivities as $id) {
+                    array_push($ids, $id->company_id);
+                }
+                $companies_id  = array_unique($ids);
+                $companies = array();
+                foreach ($companies_id as $id) {
+                    $company = Company::find($id);
+                    array_push($companies, $company);
+                }
                 break;
             case 'Activités' :
-                //todo
+                $idOfCompaniesFromActivities = Activity::select('company_id')->where('name', '=', $value)->get();
+                $ids = array();
+                foreach ($idOfCompaniesFromActivities as $id) {
+                    array_push($ids, $id->company_id);
+                }
+                $companies_id  = array_unique($ids);
+                $companies = array();
+                foreach ($companies_id as $id) {
+                    $company = Company::find($id);
+                    array_push($companies, $company);
+                }
                 break;
         }
-        var_dump($companies);
-        die;
         return $companies;
     }
 }
