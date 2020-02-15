@@ -7,6 +7,7 @@
         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
         <link rel="stylesheet" href="{{ URL::to('/') }}/leaflet/MarkerCluster.css">
         <script src="{{ URL::to('/') }}/leaflet/leaflet.markercluster.js"></script>
+
         <style>
             * {
                 margin: 0;
@@ -54,20 +55,27 @@
                 <div>
                     <form>
                         <label for="search">Recherche :</label>
-                        <input list="results" type="text" id="search" onkeyup="setdatalist()">
-                        <datalist id="results"></datalist>
-                        <button type="button" id="recherche" onclick="search()">Rechercher</button>
+                        <input list="results" type="text" id="search" oninput="setdatalist()">
+                        <input list="type" id="type" type="text" hidden>
+                        <datalist id="results"></datalist><br>
+                        <p>
+                            Budget Minimal : <span id="result-min"></span>
+                            <input type="range" id="min-price" min="{{ $minPrice['price'] }}" max="{{ $maxPrice['price'] }}" />
+                        </p>
+                        <p>
+                            Budget Maximal : <span id="result-max"></span>
+                            <input type="range" id="max" min="{{ $minPrice['price'] }}" max="{{ $maxPrice['price'] }}" />
+                        </p>
+                        <button type="button" id="recherche" onclick="searchCompanies()">Rechercher</button>
                     </form>
                 </div>
-                <div id="activities">
-
-                </div>
+                <div id="activities"></div>
             </div>
         </div>
         <script>
-            function getCompanies() {return <?php echo json_encode($companies)?>;}
-            function getCategories() {return <?php echo json_encode($categories)?>;}
-            function getSubCategories() {return <?php echo json_encode($subCategories)?>;}
+            function getCompanies() {return @json($companies);}
+            function getCategories() {return @json($categories);}
+            function getSubCategories() {return @json($subCategories);}
 
             let companies = getCompanies();
             let map = L.map('cluster').setView([46.90296, 1.90925], 5);
@@ -98,6 +106,7 @@
                 let violetIcon = L.icon({iconUrl: '{{ asset('images/geo/gpsViolet.svg') }}', iconSize: [38, 95], iconAnchor: [22, 94], popupAnchor:  [-3, -76]});
                 let yellowIcon = L.icon({iconUrl: '{{ asset('images/geo/gpsYellow.svg') }}', iconSize: [38, 95], iconAnchor: [22, 94], popupAnchor:  [-3, -76]});
 
+                console.log(companies.length);
                 for (let i = 0; i < companies.length; i++) {
                     let latLng = new L.LatLng(companies[i]['lat'], companies[i]['lng']);
                     switch (companies[i]['category_id']) {
@@ -129,7 +138,6 @@
                                 let json = JSON.parse(this.responseText);
                                 result.innerHTML = '';
                                 for(let i = 0; i < json.length; i++) {
-                                    console.log(json[i]);
                                     let url = '{{route('activity_details', [':activity_id'])}}';
                                     url = url.replace(':activity_id',json[i]['id']);
 
@@ -148,7 +156,7 @@
                     });
                     marker.bindPopup(
                         '<strong>' + companies[i]['name'] + '</strong>'
-                        + '<br>Adresse : ' + companies[i]['adress']
+                        + '<br>Adresse : ' + companies[i]['adress1']
                         + '<br>Téléphone : ' + companies[i]['phone']
                         + '<br>E-mail : ' + companies[i]['email']
                     );
@@ -159,27 +167,22 @@
 
             generateMap(companies);
 
-            recherche = () => {
-                let category_id = document.getElementById('category').value;
-                let subCategory_id = document.getElementById('subCategory').value;
-                let what = document.getElementById('what').value;
-                if (what == '') what = 'null';
-                let where = document.getElementById('where').value;
-                if (where == '') where = 'null';
+            searchCompanies = () => {
+                let value = document.getElementById('search').value;
+                let type = document.getElementById('type').value;
 
                 let req = new XMLHttpRequest();
 
-                let url = '{{route('api_map_update', [':category_id', ':subCategory_id', ':what', ':where'])}}';
-                url = url.replace(':category_id',category_id);
-                url = url.replace(':subCategory_id',subCategory_id);
-                url = url.replace(':what',what);
-                url = url.replace(':where',where);
+                let url = '{{route('api_main_search', [':type', ':value'])}}';
+                url = url.replace(':type',type);
+                url = url.replace(':value',value);
 
                 req.open("GET", url, true);
                 req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 req.onload = function(){
                     if (this.status == 200) {
                         let json = JSON.parse(this.responseText);
+                        console.log(json);
                         map.remove();
                         map = L.map('cluster').setView([46.90296, 1.90925], 5);
                         generateMap(json);
@@ -224,12 +227,19 @@
                                 datalist.innerHTML += '<option value="' + json['subCategories'][i]['name'] + '">Sous-catégories</option>';
                             }
                         }
-
                     } else {console.error('erreur de requete AJAX');}
                 };
                 req.send(null);
+
+                var opts = datalist.childNodes;
+                for (var i = 0; i < opts.length; i++) {
+                    if (opts[i].value === value) {
+                        console.log('test');
+                        document.getElementById('type').value = opts[i].textContent;
+                        break;
+                    }
+                }
             };
         </script>
-
     </body>
 </html>

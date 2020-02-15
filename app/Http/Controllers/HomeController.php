@@ -16,7 +16,11 @@ class HomeController extends Controller
         $companies = Company::get();
         $categories = Category::get();
         $subCategories = SubCategory::get();
+        $maxPrice = Activity::orderBy('price', 'desc')->first();
+        $minPrice = Activity::orderBy('price', 'asc')->first();
         return view('pages.map', [
+            'minPrice' => $minPrice,
+            'maxPrice' => $maxPrice,
             'companies' => $companies,
             'categories' => $categories,
             'subCategories' => $subCategories

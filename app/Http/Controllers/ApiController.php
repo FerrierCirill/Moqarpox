@@ -36,4 +36,30 @@ class ApiController extends Controller
         $activities = Activity::where('company_id', '=', $company_id)->get();
         return $activities;
     }
+
+    public function mainSearch($type, $value) {
+        $companies = [];
+
+        switch ($type) {
+            case 'Villes':
+                $city = City::where('name', '=', $value)->first();
+                $city_id = $city->id;
+                $companies = Company::where('city_id', '=', $city_id)->get();
+                break;
+            case 'Catégories' :
+                $category = Category::where('name', '=', $value)->get(); //A CORRIGER
+                $category_id = $category->id;
+                $companies = Company::where('category_id', '=', $category_id)->get();
+                break;
+            case 'Sous-catégories' :
+                //TODO
+                break;
+            case 'Activités' :
+                //todo
+                break;
+        }
+        var_dump($companies);
+        die;
+        return $companies;
+    }
 }
