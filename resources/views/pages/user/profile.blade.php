@@ -19,7 +19,7 @@
             </p>
             
 
-            <a class="btn modal-trigger" href="#modal_user_modification">Modifier mes information</a>
+            <a class="btn modal-trigger" href="#modal_user_modification">Modifier mes informations</a>
             @include('components.user.profile.modal_for_change_information')
 
 
