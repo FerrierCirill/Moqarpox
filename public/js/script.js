@@ -8,20 +8,26 @@
 
     // DROPDOWN
         document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.dropdown-trigger');
+            let elems = document.querySelectorAll('.dropdown-trigger');
             M.Dropdown.init(elems);
         });
 
     // PARALAX
         document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.parallax');
+            let elems = document.querySelectorAll('.parallax');
             M.Parallax.init(elems);
         });
 
     // MODAL
         document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.modal');
+            let elems = document.querySelectorAll('.modal');
             M.Modal.init(elems);
+        });
+    
+    // COLLAPSIBLE
+        document.addEventListener('DOMContentLoaded', function () {
+            let elems = document.querySelectorAll('.collapsible');
+            M.Collapsible.init(elems);
         });
 
 

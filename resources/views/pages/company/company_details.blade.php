@@ -21,6 +21,7 @@
                 <p>
                     <strong>Téphone :</strong> {{$company->phone}}<br>
                     <strong>Adresse :</strong> {{$company->adress1}} {{$company->adress2 || ''}}, {{$company->city->code_postal}} {{$company->city->name}}<br>
+                    <strong>Siret   :</strong> {{$company->siret}}
                     <strong>Créé le :</strong> {{$company->created_at}}
                 </p>
             </div>
@@ -47,7 +48,7 @@
                                     {{$activity->price}} $ 
                                 </span>
                                 <span>
-                                    <a class="btn">
+                                    <a class="btn" >
                                         <i class="fas fa-cart-arrow-down"></i>
                                     </a>
                                 </span>
@@ -59,6 +60,8 @@
                                 <h5>{{$activity->name}}</h5>
                                 <p>
                                     <div class="mb-1">
+                                        <span class="categori-show" style="background : {{ \App\SubCategory::find($activity->subCategory_id)->category->hexa }}"></span>
+                                        {{ \App\SubCategory::find($activity->subCategory_id)->category->name }}<br>
                                         {{$activity->note}} / 5 @include('components.star', ['note' => $activity->note])<br>
                                     </div>
                                     {{\Illuminate\Support\Str::limit($activity->description, 150, $end='...') }}

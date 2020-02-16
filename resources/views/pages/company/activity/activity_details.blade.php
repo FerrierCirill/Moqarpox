@@ -11,51 +11,133 @@
     </div>
 
     <div class="container">
-        <div class="row mt-2">
-            <div class="col s12">
-                <span class="title-category-n-sub" style="background :{{ \App\SubCategory::find($activity->subCategory_id)->category->hexa }}">
-                    {{ \App\SubCategory::find($activity->subCategory_id)->category->name }} > 
-                    <span>{{ \App\SubCategory::find($activity->subCategory_id)->name }}</span>
-                </span>
-            </div>
-        </div>
         <div class="row">
-            <div class="col s12 m4 l3 mt-2 center-align">
+            <div class="col s12 m4 l4 mt-2 center-align">
                 @if (isset($activity->link0))
                     <img class="responsive-img" src="{{$activity->link0}}" alt="{{$activity->name}}">
                 @else
                     <img class="responsive-img" src="https://via.placeholder.com/300" alt="{{$activity->name}}">
                 @endif
+                <span class="activity-price  btn">{{$activity->price}} $</span>
             </div>
-            <div class="col s12 m8 l9">
+            <div class="col s12 m8 l8">
+                
                 <h1 class="activity-title">{{$activity->name}}</h1>
                 
                 <div class="mb-1">
-                    {{$activity->note}} / 5 @include('components.star', ['note' => $activity->note]) |
+                    {{$activity->note}} / 5 @include('components.star', ['note' => $activity->note]) |   
+                    <span class="categori-show" style="background :{{ \App\SubCategory::find($activity->subCategory_id)->category->hexa }}"></span>
+                     {{ \App\SubCategory::find($activity->subCategory_id)->category->name }} > 
+                    <span>{{ \App\SubCategory::find($activity->subCategory_id)->name }}</span> |
                     <a href="#comments">{{sizeof($activity->comments)}} commentaires</a>
+
+                    <p>
+                        {{$activity->resume}}
+                    </p>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col s12 m6">
-                <p>
-                    <strong>Description :</strong> {{$activity->description}}
-                </p>
-            </div>
-            <div class="col s12 m6">
-                <p>
-                    <strong>Information :</strong> {{$activity->information}}
-                </p>
+            <div class="col s12 m12 l12">
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header"><strong><i class="fas fa-list"></i> Description</strong></div>
+                        <div class="collapsible-body">
+                            <h5>Description</h5>
+                            {{$activity->description}}
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><strong><i class="fas fa-info-circle"></i> Information</strong></div>
+                        <div class="collapsible-body">
+                            <h5>Information</h5>
+                            {{$activity->information}}
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><strong><i class="fas fa-building"></i> Entreprise</strong></div>
+                        <div class="collapsible-body">
+                            <a href="{{route('company_details', ['company_id' => $activity->company->id])}}">
+                                <h5>{{$activity->company->name}}</h5>
+                            </a>
+                            <table>
+                                <tr>
+                                    <td><strong>Email  : </strong></td>
+                                    <td>{{$activity->company->email}}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Téphone: </strong></td>
+                                    <td>{{$activity->company->phone}}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Siret  : </strong></td>
+                                    <td>{{$activity->company->siret}}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Adresse : </strong></td>
+                                    <td>{{$activity->company->adress1}} {{$activity->company->adress2 || ''}}, {{$activity->company->city->code_postal}} {{$activity->company->city->name}}</td>
+                                </tr>
+                            </table>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
 
+        <div class="row mt-5">
+            @php
+                $tab_pic =  array();
+                if ( isset($activity->link0) && $activity->link0 != '') {
+                    echo ' <div class="col s12"><h4>Photo :</h4></div>';
+                    $tab_pic[] = $activity->link0;
+                }
+                if ( isset($activity->link1) && $activity->link1 != '') {
+                    $tab_pic[] = $activity->link1;
+                }
+                if ( isset($activity->link2) && $activity->link2 != '') {
+                    $tab_pic[] = $activity->link2;
+                }
+            @endphp
+
+            @if(sizeof ($tab_pic) == 1)
+                <div class="col s12">
+                    <img src="{{$activity->link0}}" class="responsive-img" alt="Photo {{$activity->name}}" srcset="">
+                </div>
+            @elseif(sizeof ($tab_pic) == 2)
+                @foreach($tab_pic as $key => $img)
+                    <div class="col s12 m6">
+                        <img src="{{$img}}" class="responsive-img" alt="Photo {{$key}} {{$activity->name}}" srcset="">
+                    </div>
+                @endforeach
+            @elseif(sizeof ($tab_pic) == 3)
+                @foreach($tab_pic as $key => $img)
+                    <div class="col s12 m4">
+                        <img src="{{$img}}" class="responsive-img" alt="Photo {{$key}} {{$activity->name}}" srcset="">
+                    </div>
+                @endforeach
+            @endif
+        </div>
+
         <div class="row" id="comments">
-            <h4>Commentaires :</h4>
+            <div class="col s12">
+                <h4>Commentaires :</h4>
+            </div>
             @forelse($activity->comments as $comment)
                 
             @empty
-                <p>Il n'y as pas encore de commentaire pour cette activité, commendez la ou <a href="#//TODO">déposé un commentaire ici</a></p>
+                <div class="col s12">
+                    <p>Il n'y as pas encore de commentaire pour cette activité, commendez la ou <a href="#//TODO">déposé un commentaire ici</a></p>
+                </div>
             @endforelse
         </div>
     </div>
