@@ -13,7 +13,7 @@ class HomeController extends Controller
 {
     public function map()
     {
-        $companies = Company::get();
+        $companies = Company::where('state', 1)->get();
         $categories = Category::get();
         $subCategories = SubCategory::get();
         $maxPrice = Activity::orderBy('price', 'desc')->first();

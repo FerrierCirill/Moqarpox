@@ -13,7 +13,7 @@ class CompaniesController extends Controller
 {
     public function getAddCompany() {
         $cities = City::all();
-        $categories = Category::all();        
+        $categories = Category::all();
 
         return view('pages.user.company.add', [
             'cities' => $cities,
@@ -63,7 +63,8 @@ class CompaniesController extends Controller
     }
 
     public function getCompany($company_id) {
-        $company = Company::findOrFail($company_id);
+        $company = Company::where('state', 1)->where('id', $company_id)->first();
+        if($company == null) return back();
         $activities = Activity::where('company_id', $company->id)->paginate(12);
 
 

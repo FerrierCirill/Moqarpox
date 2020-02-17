@@ -14,6 +14,7 @@ $factory->define(Company::class, function (Faker $faker) {
         'rib'     => $faker->iban($countryCode = 'FR'),
         'adress1' => $faker->streetAddress(),
         'adress2' => $faker->streetSuffix,
+        'state'   => $faker->numberBetween($min = 0, $max = 2),
         'lat'     => $faker->latitude($min = 43.6225, $max = 49.2913),
         'lng'     => $faker->longitude($min = -1.0361, $max = 6.7587),
         'user_id' => $faker->numberBetween($min = 1, $max = 300),
