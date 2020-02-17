@@ -38,51 +38,51 @@
 
 @for $i from 0 through 10 {
     .p-#{$i} {
-        padding: #{$i}rem;
+        padding: #{$i}rem !important;
     }
     .pt-#{$i} {
-        padding-top: #{$i}rem;
+        padding-top: #{$i}rem !important;
     }
     .pr-#{$i} {
-        padding-right: #{$i}rem;
+        padding-right: #{$i}rem !important;
     }
     .pb-#{$i} {
-        padding-bottom: #{$i}rem;
+        padding-bottom: #{$i}rem !important;
     }
     .pl-#{$i} {
-        padding-left: #{$i}rem;
+        padding-left: #{$i}rem !important;
     }
     .py-#{$i} {
-        padding-bottom: #{$i}rem;
-        padding-top: #{$i}rem;
+        padding-bottom: #{$i}rem !important;
+        padding-top: #{$i}rem !important;
     }
     .px-#{$i} {
-        padding-right: #{$i}rem;
-        padding-left: #{$i}rem;
+        padding-right: #{$i}rem !important;
+        padding-left: #{$i}rem !important;
     }
 
     .m-#{$i} {
-        margin: #{$i}rem;
+        margin: #{$i}rem !important;
     }
     .mt-#{$i} {
-        margin-top: #{$i}rem;
+        margin-top: #{$i}rem !important;
     }
     .mr-#{$i} {
-        margin-right: #{$i}rem;
+        margin-right: #{$i}rem !important;
     }
     .mb-#{$i} {
-        margin-bottom: #{$i}rem;
+        margin-bottom: #{$i}rem !important;
     }
     .ml-#{$i} {
-        margin-left: #{$i}rem;
+        margin-left: #{$i}rem !important;
     }
     .my-#{$i} {
-        margin-bottom: #{$i}rem;
-        margin-top: #{$i}rem;
+        margin-bottom: #{$i}rem !important;
+        margin-top: #{$i}rem !important;
     }
     .mx-#{$i} {
-        margin-right: #{$i}rem;
-        margin-left: #{$i}rem;
+        margin-right: #{$i}rem !important;
+        margin-left: #{$i}rem !important;
     }
 
 
@@ -107,3 +107,4 @@ span.categori-show {
     margin-right: 5px;
     background  : #000;
 }
+

@@ -1,0 +1,20 @@
+
+.inscription-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.inscription-img {
+    background :url('https://www.guderzo.eu/site/images/normal/adobestock57042247jpg5970bd4f8e9b1jpg_5975ab1126c5e.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    min-height: 120px !important;
+}
+
+@media #{$medium-and-up} {
+    .inscription-flex {
+        flex-direction: row;
+    }
+}

@@ -184,12 +184,12 @@
                     <div class="row">
                         <div class="col s6 m4 input-field">
                             <select name="category_id" required>
-                                <option value="" disabled selected>Categori principal</option>
+                                <option value="" disabled selected>Catégorie principal</option>
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
                             </select>
-                            <label>Categori principal *</label>
+                            <label>Catégorie principal *</label>
                             
                         </div>
                         <div class="col s6 m8 file-field input-field">
