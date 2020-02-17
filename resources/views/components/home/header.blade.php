@@ -8,7 +8,7 @@
             <h2 class="H2-title-header">{{$activity->name}}</h2>
             
             <div class="H2-container-header right">
-                <div class="price">{{$activity->price}} $</div>
+                <div class="home-price">{{$activity->price}} $</div>
                 <div class="note">
                     {{-- {{$activity->note}} / 5<br> --}}
                     @include('components.star', ['note' => $activity->note])

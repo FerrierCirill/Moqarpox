@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\Category;
 use App\Activity;
 use App\City;
 use App\Picture;
@@ -11,10 +12,12 @@ use Illuminate\Http\Request;
 class CompaniesController extends Controller
 {
     public function getAddCompany() {
-        $cities = City::get();
+        $cities = City::all();
+        $categories = Category::all();        
 
         return view('pages.user.company.add', [
-            'cities' => $cities
+            'cities' => $cities,
+            'categories' => $categories
         ]);
     }
 

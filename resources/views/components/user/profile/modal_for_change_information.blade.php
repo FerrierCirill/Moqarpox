@@ -43,7 +43,7 @@
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Annulé</a>
-            <button type="submit" class="btn mb-2 right">Sauvegardé <i class="fas fa-save"></i></button>
+            <button type="submit" class="btn mb-2 right">Sauvegarder <i class="fas fa-save"></i></button>
         </div>
     </form>
 </div>

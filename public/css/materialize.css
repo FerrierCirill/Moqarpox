@@ -8416,6 +8416,10 @@ input[type=range]::-ms-thumb {
   font-size: 0.9em;
 }
 
+.h2-like {
+  font-size: 3em;
+}
+
 .uppercase {
   text-transform: uppercase;
 }
@@ -9143,9 +9147,9 @@ header .H2-container-header {
   color: #fff;
   margin-bottom: 0.5em;
 }
-header .price {
+header .home-price {
   text-align: right;
-  font-size: 1.8em;
+  font-size: 1.8rem;
   font-weight: 400;
 }
 header .note {
