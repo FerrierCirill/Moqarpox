@@ -7,7 +7,6 @@ use App\SubCategory;
 use Illuminate\Http\Request;
 use App\Company;
 use App\Activity;
-use App\Picture;
 
 class HomeController extends Controller
 {
@@ -79,6 +78,23 @@ class HomeController extends Controller
         return view('pages.right.tcs');
     }
 
+    public function getAddComment() {
+        return view('pages.comment');
+        //TODO
+    }
+
+    public function postAddComment(Request $request) {
+        //TODO
+    }
+
+    public function getRepayment() {
+        return view('pages/repayment');
+        //TODO
+    }
+
+    public function postRepayment(Request $request) {
+        //TODO
+    }
 
     /*FORCE CONTROLLER TO USE MIDDLEWARE AUTH BEFORE INITIALIZE
     public function __construct()
@@ -86,5 +102,4 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
     */
-
 }

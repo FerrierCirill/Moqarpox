@@ -6,7 +6,6 @@ use App\Company;
 use App\Category;
 use App\Activity;
 use App\City;
-use App\Picture;
 use Illuminate\Http\Request;
 
 class CompaniesController extends Controller

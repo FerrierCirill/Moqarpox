@@ -48,6 +48,12 @@ Route::post('/company/moneyBack', 'CompaniesController@postMoneyBack')->name('co
 Route::get('/user', 'UsersController@getClient')->name('user_details')->middleware('auth');
 Route::get('/user/historical', 'UsersController@historical')->name('user_historical')->middleware('auth');
 
+Route::get('/comment/add', 'HomeController@getAddComment')->name('get_add_comment');     //MIDDLEWARE ?
+Route::post('/comment/add', 'HomeController@postAddComment')->name('post_add_comment');  //MIDDLEWARE ?
+
+Route::get('/repayment', 'HomeController@getRepayment')->name('get_repayment');          //MIDDLEWARE ?
+Route::post('/repayment', 'HomeController@postRepayment')->name('post_repayment');       //MIDDLEWARE ?
+
 
 // ================== //
 //    ShoppingCart    //
