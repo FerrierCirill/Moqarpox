@@ -26,6 +26,9 @@ Route::get('/activity/{activity_id}', 'ActivitiesController@getActivity')->name(
 
 Route::get('/activity/{activity_id}/{state}', 'ActivitiesController@changeState')->name('changeState');
 
+Route::get('/comment', 'ActivitiesController@getComment')->name('getComment');
+Route::post('/comment', 'ActivitiesController@postComment')->name('postComment');
+
 
 // ================== //
 //      Company       //
@@ -95,7 +98,7 @@ Auth::routes();
  * Rembourser un bon-cadeau
  * Tout le systeme d'authentification (floren est dessus)
  * Modérateur / Admin
- * Déposer un avis
+ * (OK) Déposer un avis 
  * Gestion commentaire
  * Gestion Activités
  * Gestion Structures
