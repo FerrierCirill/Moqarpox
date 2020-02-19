@@ -163,50 +163,48 @@
                     <div class="input-field col s12">
                         {{-- // TODO Map --}}
                     </div>
-
-                    <div class="row">
-                        <div class="col s12">
-                            <label>Description *</label>
-                            <textarea type="text" 
-                                class="validate materialize-textarea"
-                                name="description" required
-                                value="{{ old('description') }}"
-                                ></textarea>
-
-                            @error('description')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col s6 m4 input-field">
-                            <select name="category_id" required>
-                                <option value="" disabled selected>Catégorie principal</option>
-                                @foreach($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                @endforeach
-                            </select>
-                            <label>Catégorie principal *</label>
-                            
-                        </div>
-                        <div class="col s6 m8 file-field input-field">
-                            <div class="btn">
-                                <span>Logo, photo...</span>
-                                <input type="file" name="link">
-                            </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" name="link_path" type="text" placeholder="Votre logo ou photo de l'entreprise">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12"><button class="btn" type="submit">Ajouter</button></div>
-                    </div>
                 </div>
                 
+                <div class="row">
+                    <div class="col s12">
+                        <label>Description *</label>
+                        <textarea type="text" 
+                            class="validate materialize-textarea"
+                            name="description" required
+                            >{{ old('description') }}</textarea>
+
+                        @error('description')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s6 m4 input-field">
+                        <select name="category_id" required>
+                            <option value="" disabled selected>Catégorie principal</option>
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
+                        <label>Catégorie principal *</label>
+                        
+                    </div>
+                    <div class="col s6 m8 file-field input-field">
+                        <div class="btn">
+                            <span>Logo, photo...</span>
+                            <input type="file" name="link">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" name="link_path" type="text" placeholder="Votre logo ou photo de l'entreprise">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12"><button class="btn" type="submit">Ajouter <i class="fas fa-save"></i></button></div>
+                </div>               
 
             </form>
 

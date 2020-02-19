@@ -33,7 +33,7 @@
         @endisMyCompany
 
         <div class="row mt-2">
-            @forelse($activities as $activity)
+            @forelse($activities_activer as $activity)
                 <div class="col s12 m12 l4">
                          <div class="card">
                         <div class="card-image">
@@ -69,6 +69,9 @@
                             </div>
                             <div class="card-action">
                                 <a href="{{route('activity_details', ['activity_id' => $activity->id])}}">En voir plus</a>
+                                @isMyCompany($company->user_id)
+                                    <a class="btn" href="{{route('changeState', ['activity_id' => $activity->id, 'state', '-1'])}}">Désactiver</a>
+                                @endisMyCompany
                             </div>
                         </div>
                     </div>
@@ -78,8 +81,61 @@
             @endforelse
             
 
-            {{ $activities->links('components.pagination') }}
+            {{ $activities_activer->links('components.pagination') }}
         </div>
+        
 
+        @isMyCompany($company->user_id)
+            <h4>Vos activité en cours de validation ou désactiver</h4>
+            <div class="row mt-2">
+                @forelse($activities_forValideOrNotActi as $activity)
+                    <div class="col s12 m12 l4">
+                        <div class="card">
+                            <div class="card-image">
+                                @if (isset($activity->link0))
+                                    <img src="{{asset($activity->link0)}}" alt="{{$activity->name}}">
+                                @else
+                                    <img src="https://via.placeholder.com/300" alt="{{$activity->name}}">
+                                @endif
+
+                                <div class="price">
+                                    <span>
+                                        {{$activity->price}} $ 
+                                    </span>
+                                    <span>
+                                        <a class="btn" >
+                                            <i class="fas fa-cart-arrow-down"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                                
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <h5>{{$activity->name}}</h5>
+                                    <p>
+                                        <div class="mb-1">
+                                            <span class="categori-show" style="background : {{ \App\SubCategory::find($activity->subCategory_id)->category->hexa }}"></span>
+                                            {{ \App\SubCategory::find($activity->subCategory_id)->category->name }}<br>
+                                            {{$activity->note}} / 5 @include('components.star', ['note' => $activity->note])<br>
+                                        </div>
+                                        {{\Illuminate\Support\Str::limit($activity->description, 150, $end='...') }}
+                                    </p>
+                                </div>
+                                <div class="card-action">
+                                @if ($activity->state == -1)
+                                    <a href="{{route('changeState', ['activity_id' => $activity->id, 'state', '1'])}}">Activer</a>
+                                @else
+                                    Entreprise en cours de validation <i class="fas fa-hourglass-half"></i>
+                                @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @empty       
+                    <h3>Cette entreprise n'as pas encore de formule</h3>
+                @endforelse
+            </div>
+        @endisMyCompany
     </div>
 @endsection

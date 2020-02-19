@@ -25,8 +25,10 @@
                 </div>
                 <div class="card-action">
                     @include('components.company.state', ['state' => $company->state])
-                    <a href="{{route('company_details', ['company_id' => $company->id])}}">Voir</a>
-                    <a href="{{route('company_edit',  ['company_id' => $company->id])}}">Modifier</a>
+                    @if($company->state == 1)
+                        <a href="{{route('company_details', ['company_id' => $company->id])}}">Voir</a>
+                        <a href="{{route('company_edit',  ['company_id' => $company->id])}}">Modifier</a>
+                    @endif
                 </div>
             </div>
         </div>

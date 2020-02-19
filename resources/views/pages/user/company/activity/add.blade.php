@@ -10,7 +10,7 @@
             </div>
 
         </div>
-        <form action="//TODO" method="POST">
+        <form action="//TODO" method="POST" enctype="multipart/form-data">
 
           <div class="row">
             <div class="col s6">
@@ -179,6 +179,10 @@
                   </div>
               </div>
             </div>
+          </div>
+
+          <div class="row">
+             <div class="col s12"><button class="btn" type="submit">Ajouter <i class="fas fa-save"></i></button></div>
           </div>
 
             </form>

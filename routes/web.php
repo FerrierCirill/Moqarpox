@@ -24,6 +24,8 @@ Route::post('/activity/add', 'ActivitiesController@postAddActivity')->name('acti
 
 Route::get('/activity/{activity_id}', 'ActivitiesController@getActivity')->name('activity_details');
 
+Route::get('/activity/{activity_id}/{state}', 'ActivitiesController@changeState')->name('changeState');
+
 
 // ================== //
 //      Company       //
@@ -35,7 +37,7 @@ Route::post('/company/add', 'CompaniesController@postAddCompany')->name('company
 Route::get('/company/{company_id}', 'CompaniesController@getCompany')->name('company_details');
 
 Route::get('/company/{company_id}/edit', 'CompaniesController@getEditCompany')->name('company_edit')->middleware('AuthIsProviderAndItsHisCompany');
-Route::post('/company/{company_id}/edit', 'CompaniesController@PostEditCompany')->name('company_edit')->middleware('AuthIsProviderAndItsHisCompany');
+Route::post('/company/{company_id}/edit', 'CompaniesController@postEditCompany')->name('company_edit')->middleware('AuthIsProviderAndItsHisCompany');
 
 Route::get('/company/moneyBack', 'CompaniesController@getMoneyBack')->name('company_moneyback_get')->middleware('auth');
 Route::post('/company/moneyBack', 'CompaniesController@postMoneyBack')->name('company_moneyback_post')->middleware('auth');
