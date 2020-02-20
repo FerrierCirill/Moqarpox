@@ -20,6 +20,7 @@
 	<script src="https://kit.fontawesome.com/e6fd80ae53.js" crossorigin="anonymous"></script>
 	
 	{{-- JS --}}
+	<script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
 	<script src="{{asset('/js/materialize/bin/materialize.min.js')}}"></script>
 	<script src="{{asset('/js/script.js')}}"></script>
 		{{-- MAP SCRIPT --}}

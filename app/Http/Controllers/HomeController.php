@@ -79,8 +79,7 @@ class HomeController extends Controller
     }
 
     public function getAddComment() {
-        return view('pages.comment');
-        //TODO
+        return view('pages.company.activity.add_comment');
     }
 
     public function postAddComment(Request $request) {

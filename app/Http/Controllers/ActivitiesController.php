@@ -60,13 +60,4 @@ class ActivitiesController extends Controller
     public function changeState(Request $request) {
         //TODO
     }
-
-
-    public function getComment() {
-        return view('pages.company.activity.add_comment');
-    }
-
-    public function postComment() {
-        //TODO
-    }
 }
