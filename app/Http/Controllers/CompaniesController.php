@@ -21,6 +21,8 @@ class CompaniesController extends Controller
     }
 
     public function postAddCompany(Request $request) {
+        var_dump($request);
+
         $this->validate ($request, [
             'name' => 'required',
             'phone' => 'required|number',
@@ -28,9 +30,9 @@ class CompaniesController extends Controller
             'siret' => 'required',
             'rib' => 'required',
             'adress1' => 'required',
-            'adress2' => 'required',
-            'lat' => 'required',
-            'lng' => 'required',
+            //'adress2' => 'required',
+          //  'lat' => 'required',
+          //  'lng' => 'required',
             'city_id' => 'required',
             'description' => 'required',
             'category_id' => 'required|exists:categories,id',
@@ -57,7 +59,7 @@ class CompaniesController extends Controller
         //Voir pour le cas ou l'on envoie une image
 
 
-        return redirect()->back();
+     //   return redirect()->back();
 
     }
 
