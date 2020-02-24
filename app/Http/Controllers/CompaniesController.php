@@ -30,8 +30,8 @@ class CompaniesController extends Controller
             'siret' => 'required',
             'rib' => 'required',
             'adress1' => 'required',
-            //'adress2' => 'required',   //test github
-          //  'lat' => 'required',
+            //'adress2' => 'required',
+            //'lat' => 'required',
           //  'lng' => 'required',
             'city_id' => 'required',
             'description' => 'required',
