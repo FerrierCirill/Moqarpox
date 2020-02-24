@@ -90,8 +90,8 @@ Route::get('/api/budget/{value}/{budget}', 'ApiController@budget')->name('api_bu
 //     Route Google     //
 // ================== //
 
-Route :: get ('/ auth / redirect / {provider}', ' SocialController @ redirect ');
-Route :: get ('/ callback / {provider}', ' SocialController @ callback ');
+Route::get('/ auth / redirect / {provider}', ' SocialController @ redirect ');
+Route::get('/ callback / {provider}', ' SocialController @ callback ');
 
 ///////////////////////////////////////
 
@@ -110,7 +110,3 @@ Auth::routes();
  * Gestion Structures
  * Gestions ( admin panel)
  */
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
