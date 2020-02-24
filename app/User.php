@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name','second_name','phone','civility', 'email', 'password','facebook_api_token',
+        'first_name','second_name','phone','civility', 'email', 'password','facebook_api_token','provider','provider_id'
     ];
     /**
      * inverse fillable
@@ -53,4 +53,6 @@ class User extends Authenticatable
     public function orders() {
         return $this->hasMany(Order::class);
     }
+
+
 }

@@ -25,6 +25,10 @@ class CreateUsersTable extends Migration
             $table->string('civility')->nullable();
             $table->string('facebook_api_token')->nullable();
             $table->smallInteger('admin')->default(0);
+            $table->string('provider');
+            $table->string('provider_id');
+            $table->string('name'); // test pour l'api google/facebook
+            $table->rememberToken()->nullable();
 
             $table->rememberToken();
             $table->timestamps();

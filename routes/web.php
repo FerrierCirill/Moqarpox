@@ -86,6 +86,12 @@ Route::get('/api/datalist/{value}', 'ApiController@datalist')->name('api_datalis
 Route::get('/api/main_search/{type}/{value}', 'ApiController@mainSearch')->name('api_main_search');
 Route::get('/api/budget/{value}/{budget}', 'ApiController@budget')->name('api_budget');
 
+// ================== //
+//     Route Google     //
+// ================== //
+
+Route :: get ('/ auth / redirect / {provider}', ' SocialController @ redirect ');
+Route :: get ('/ callback / {provider}', ' SocialController @ callback ');
 
 ///////////////////////////////////////
 
@@ -98,9 +104,13 @@ Auth::routes();
  * Rembourser un bon-cadeau
  * Tout le systeme d'authentification (floren est dessus)
  * Modérateur / Admin
- * (OK) Déposer un avis 
+ * (OK) Déposer un avis
  * Gestion commentaire
  * Gestion Activités
  * Gestion Structures
  * Gestions ( admin panel)
  */
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
