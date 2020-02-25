@@ -36,7 +36,7 @@ class SocialController extends Controller
                 'provider' => $provider,
                 'provider_id' => $getInfo->id,
                 'password' => $getInfo->id,
-                'email_verified_at' => now(),
+                'email_verified_at' => date(now()),
             ]);
 
         }
