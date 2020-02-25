@@ -37,11 +37,10 @@ class SocialController extends Controller
                 'provider_id' => $getInfo->id,
                 'password' => $getInfo->id,
             ]);
-            if($getInfo['verified_email']){
+            if($getInfo['verified_email'])
                 $user->email_verified_at = date(now());
-                echo'verified_email !!';
-            }
+
         }
-       // return $user;
+        return $user;
     }
 }
