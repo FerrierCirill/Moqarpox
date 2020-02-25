@@ -124,4 +124,88 @@
     </div>
   </div>
 
+  <style>
+      .row_act {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          padding: 2px;
+          margin: 5px;
+      }
+      .zone {
+          margin: 15px 0;
+      }
+  </style>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 z-depth-3 center-align">
+                Je le vois comme ca perso (EN GROS), apres vous me dirai ! (et je maitrise pas matérialize donc c'est moche ^^)
+            </div>
+            <div class="col s12 z-depth-3 zone">
+                <h5>Activités en attente</h5>
+                <ul>
+                    @foreach($activities as $activity)
+                        <li>
+                            <div class="row_act z-depth-3">
+                                <div>
+                                    Nom : {{ $activity->name }} <br>
+                                    Description : {{ \Illuminate\Support\Str::limit($activity->description, $limit = 75, $end = '...') }}
+                                </div>
+                                <div>
+                                    <a href="#" class="btn" style="margin: 1px"><i class="fas fa-book-open"></i></a>
+                                    <a href="#" class="btn" style="margin: 1px"><i class="fas fa-check"></i></a>
+                                    <a href="#" class="btn" style="margin: 1px"><i class="fas fa-ban"></i></a>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                    {{ $activities->links() }}
+                </ul>
+            </div>
+            <div class="col s12 z-depth-3 zone">
+                <h5>Compagnies en attente</h5>
+                <ul>
+                    @foreach($companies as $company)
+                        <li>
+                            <div class="row_act z-depth-3">
+                                <div>
+                                    Nom : {{ $company->name }} <br>
+                                    Description : {{ \Illuminate\Support\Str::limit($company->description, $limit = 75, $end = '...') }}
+                                </div>
+                                <div>
+                                    <a href="#" class="btn" style="margin: 1px"><i class="fas fa-book-open"></i></a>
+                                    <a href="#" class="btn" style="margin: 1px"><i class="fas fa-check"></i></a>
+                                    <a href="#" class="btn" style="margin: 1px"><i class="fas fa-ban"></i></a>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                    {{ $companies->links() }}
+                </ul>
+            </div>
+            <div class="col s12 z-depth-3 zone">
+                <h5>Commentaires en attente</h5>
+                <ul>
+                    @foreach($comments as $comment)
+                        <li>
+                            <div class="row_act z-depth-3">
+                                <div>
+                                    Titre : {{ $comment->title }} <br>
+                                    Message : {{ \Illuminate\Support\Str::limit($comment->message, $limit = 75, $end = '...') }}
+                                </div>
+                                <div>
+                                    <a href="#" class="btn" style="margin: 1px"><i class="fas fa-book-open"></i></a>
+                                    <a href="#" class="btn" style="margin: 1px"><i class="fas fa-check"></i></a>
+                                    <a href="#" class="btn" style="margin: 1px"><i class="fas fa-ban"></i></a>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                    {{ $comments->links() }}
+                </ul>
+            </div>
+        </div>
+    </div>
+
 @endsection

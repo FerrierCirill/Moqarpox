@@ -18,7 +18,7 @@ class Comments extends Migration
             $table->text('message');
             $table->string('title');
             $table->integer('note');
-            $table->boolean('validate')->default(0);
+            $table->boolean('state')->default(0); // 0 en attente de validation | 1 validé | -1 refusé
 
             $table->unsignedBigInteger('activity_order_id');
             $table->unsignedBigInteger('activity_id');
