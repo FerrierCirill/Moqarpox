@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator,Redirect,Response,File;
 use Laravel\Socialite\Facades\Socialite;
-use app\User;
+use App\User;
 class SocialController extends Controller
 {
     public function redirect($provider)
@@ -17,7 +17,7 @@ class SocialController extends Controller
     {
         var_dump($provider);
         $getInfo = Socialite::driver($provider)->user();
-
+        var_dump($getInfo);
         $user = $this->createUser($getInfo,$provider);
 
         auth()->login($user);
