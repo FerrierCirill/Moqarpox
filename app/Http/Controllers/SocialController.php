@@ -17,7 +17,7 @@ class SocialController extends Controller
     {
         var_dump($provider);
         $getInfo = Socialite::driver($provider)->user();
-
+        var_dump($getInfo);
         $user = $this->createUser($getInfo,$provider);
 
         auth()->login($user);
@@ -26,16 +26,20 @@ class SocialController extends Controller
 
     }
     function createUser($getInfo,$provider){
-
         $user = User::where('provider_id', $getInfo->id)->first();
-
         if (!$user) {
+
             $user = User::create([
-                'name'     => $getInfo->name,
+                'first_name'     => $getInfo['given_name'],
+                'second_name'  =>$getInfo['family_name'],
                 'email'    => $getInfo->email,
                 'provider' => $provider,
-                'provider_id' => $getInfo->id
+                'provider_id' => $getInfo->id,
+                'password' => $getInfo->id,
             ]);
+            if($getInfo['verified_email'])
+                $user->email_verified_at = date(now());
+
         }
         return $user;
     }
