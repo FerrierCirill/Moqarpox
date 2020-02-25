@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Validator,Redirect,Response,File;
+//use Validator,Redirect,Response,File;
 use Laravel\Socialite\Facades\Socialite;
 use app\User;
 class SocialController extends Controller
 {
     public function redirect($provider)
     {
-        var_dump("$provider");
-       // return Socialite::driver($provider)->redirect();
+        return Socialite::driver($provider)->redirect();
     }
 
     public function callback($provider)
