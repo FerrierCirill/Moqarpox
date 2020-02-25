@@ -41,11 +41,12 @@
 @import "materialize/timepicker";
 
 // == No UI Slider //@extend
-@import "noUiSlider/noUiSlider";
+// @import "noUiSlider/noUiSlider";
 
 // == MOUQUARPOX ==//
 
 // @import 'input';
+
 @import "mouqarpox/classes";
 @import "mouqarpox/header";
 @import "mouqarpox/map";
@@ -54,5 +55,7 @@
 @import "mouqarpox/user";
 @import "mouqarpox/company";
 @import "mouqarpox/activity";
+@import "mouqarpox/comment";
 @import "mouqarpox/inscription";
 @import "mouqarpox/footer";
+@import "mouqarpox/row&col";

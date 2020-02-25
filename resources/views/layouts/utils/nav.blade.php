@@ -24,7 +24,7 @@
 
             @guest
                 <li>
-                    <a  href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <a  href="{{ route('login') }}">Connexion</a>
                 </li>
                 @if (Route::has('register'))
                     <li>

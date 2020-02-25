@@ -132,13 +132,33 @@
             <div class="col s12">
                 <h4>Commentaires :</h4>
             </div>
-            @forelse($activity->comments as $comment)
-                
-            @empty
-                <div class="col s12">
-                    <p>Il n'y as pas encore de commentaire pour cette activité, commendez la ou <a href="#//TODO">déposé un commentaire ici</a></p>
-                </div>
-            @endforelse
+            <div class="row">
+
+                <div class="col s12 mb-2 comment">
+                    <span class="title">Trop cool {{--{{$comment->title}}--}}</span> | 
+                        {{--{{$comment->note*/}} --}} 5 / 5 @include('components.star', ['note' => 5/*$comment->note*/]) | 
+                        {{--{{$comment->created_at*/--}} 19/02/2055
+                    <p>
+                        {{--{{$comment->message*/}}--}}
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga ipsam non facere aliquid recusandae quia quo ex natus eveniet neque. Deleniti iure mollitia saepe velit, modi ab nulla odit iusto?
+                        Accusamus magni dolorem inventore aut omnis, molestias, ratione consequatur eligendi temporibus incidunt ea obcaecati nobis debitis porro natus ipsum a. Numquam officiis fugiat praesentium accusantium iusto repellat repellendus nemo temporibus!
+                        Nemo molestiae maiores dolorem est veniam esse obcaecati amet quisquam enim perferendis expedita repellendus facilis voluptate, accusantium beatae tenetur eligendi minima cum unde fugit in, quo blanditiis! Natus, nisi vel?
+                    </p>
+                </div> 
+
+
+
+
+                @forelse($activity->comments as $comment)
+                    <div class="col s12">
+                    </div>   
+                @empty
+                    <div class="col s12">
+                        <p>Il n'y as pas encore de commentaire pour cette activité, commendez la ou <a href="{{route('get_add_comment')}}">déposé un commentaire ici</a></p>
+                    </div>
+                @endforelse
+            </div>
+
         </div>
     </div>
 @endsection
