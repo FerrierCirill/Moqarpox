@@ -33,7 +33,7 @@ return [
     'google' => [
         'client_id' => '1059929325834-l2eekvc94ugb3emg9qh9b5905armq7cq.apps.googleusercontent.com',
         'client_secret' => 'u59lkBQ-eqvzcknTYzS8ePZf',
-        'redirect' => '/callback/{provider}',
+        'redirect' => '/callback/google',
     ],
 
 ];
