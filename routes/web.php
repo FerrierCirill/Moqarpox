@@ -88,8 +88,8 @@ Route::get('/api/budget/{value}/{budget}', 'ApiController@budget')->name('api_bu
 //     Route Google     //
 // ================== //
 
-Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
-Route::get('/callback/{provider}', 'SocialController@callback');
+Route::get('/auth/redirect/google', 'SocialController@redirect');
+Route::get('/callback/google', 'SocialController@callback');
 
 ///////////////////////////////////////
 
