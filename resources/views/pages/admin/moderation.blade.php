@@ -15,19 +15,124 @@
     </div>
     <div class="row">
 
-      <div class="col s6 z-depth-3">
-        Structures en attente
+      <div class="col s6">
+        <div class="row z-depth-1 px-2">
+          Structures en attente
+
+          <div class="card px-2 pb-1 pt-1">
+            <div class="row">
+              <div class="col s10">
+                Nom : Nom structure 1
+              </div>
+              <div class="col s2 center">
+                <a href="#">Détails</a>
+              </div>
+            </div>
+            <div class="row no-margin no-padding">
+              <div class="col s8 offset-s2">
+                <hr/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s10">
+                Description de la structure 1
+              </div>
+              <div class="col s2 center">
+                <a href="#" class="small-btn" style="margin: 1px"><i class="fas fa-check"></i></a> <a href="#" class="small-btn" style="margin: 1px"><i class="fas fa-ban"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="card px-2 pb-1 pt-1">
+            <div class="row">
+              <div class="col s10">
+                Nom : Nom structure 2
+              </div>
+              <div class="col s2 center">
+                <a href="#">Détails</a>
+              </div>
+            </div>
+            <div class="row no-margin no-padding">
+              <div class="col s8 offset-s2">
+                <hr/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s10">
+                Description de la structure 2
+              </div>
+              <div class="col s2 center">
+                <a href="#" class="small-btn" style="margin: 1px"><i class="fas fa-check"></i></a> <a href="#" class="small-btn" style="margin: 1px"><i class="fas fa-ban"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row z-depth-1 px-2">
+          Activités en attente
+
+          <div class="card px-2 pb-1 pt-1">
+            <div class="row">
+              <div class="col s5">
+                Nom : Nom activité 1
+              </div>
+              <div class="col s5">
+                Structure : Structure 1
+              </div>
+              <div class="col s2 center">
+                <a href="#">Détails</a>
+              </div>
+            </div>
+            <div class="row no-margin no-padding">
+              <div class="col s8 offset-s2">
+                <hr/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s10">
+                Description de l'activité 1
+              </div>
+              <div class="col s2 center">
+                <a href="#" class="small-btn" style="margin: 1px"><i class="fas fa-check"></i></a> <a href="#" class="small-btn" style="margin: 1px"><i class="fas fa-ban"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="card px-2 pb-1 pt-1">
+            <div class="row">
+              <div class="col s5">
+                Nom : Nom activité 2
+              </div>
+              <div class="col s5">
+                Structure : Structure 1
+              </div>
+              <div class="col s2 center">
+                <a href="#">Détails</a>
+              </div>
+            </div>
+            <div class="row no-margin no-padding">
+              <div class="col s8 offset-s2">
+                <hr/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s10">
+                Description de l'activité 2
+              </div>
+              <div class="col s2 center">
+                <a href="#" class="small-btn" style="margin: 1px"><i class="fas fa-check"></i></a> <a href="#" class="small-btn" style="margin: 1px"><i class="fas fa-ban"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <div class="col offset-s1 s5">
         <div class="row">
-          <div class="col s12 z-depth-3">
+          <div class="col s12 z-depth-1 px-2 pb-1 pt-1">
             Commentaires
-            <div class="card">
+            <div class="card px-2 pb-1 pt-1">
               <div class="row">
-              </div>
-              <div class="row">
-                <div class="col s4 offset-s1">
+                <div class="col s5">
                   <!-- TODO : Nom de l'activité --> Nom de l'activité 1
                 </div>
                 <div class="col s3 offset-s4">
@@ -35,14 +140,14 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col offset-s2 s7">
+                <div class="col offset-s1 s8">
                   <hr/>
                 </div>
-                <div class="col s1 center">
-                  <a href="#" class=""> <i class="material-icons green">check</i> </a>
+                <div class="col s1">
+                  <a href="#" class="btn-floating green center"> <i class="material-icons green">check</i> </a>
                 </div>
-                <div class="col s1 center">
-                  <a href="#" class=""> <i class="material-icons red">clear</i> </a>
+                <div class="col s1">
+                  <a href="#" class="btn-floating red center"> <i class="material-icons red">clear</i> </a>
                 </div>
               </div>
               <div class="row">
@@ -53,7 +158,7 @@
               <div class="row">
               </div>
             </div>
-            <div class="card">
+            <div class="card px-2 pb-1 pt-1">
               <div class="row">
                 <div class="col s5">
                   <!-- TODO : Nom de l'activité --> Nom de l'activité 2
@@ -88,8 +193,8 @@
         </div>
 
         <div class="row">
-          <div class="col s12 z-depth-3">
-            <form class="" action="" method="post">
+          <div class="col s12 z-depth-3 px-1">
+            <form class=" valign-wrapper" action="" method="post">
               <div class="col s4">
                 Ajouter un admin :
               </div>
@@ -103,15 +208,15 @@
           </div>
         </div>
 
-        <div class="row z-depth-3">
-          <form class="" action="index.html" method="post">
-            <div class="row col s4">
+        <div class="row z-depth-3 px-1">
+          <form class=" valign-wrapper" action="index.html" method="post">
+            <div class="col s4">
               Supprimer un admin :
             </div>
             <div class="col s4">
               <input type="text" name="delAdmin" value="">
             </div>
-            <div class="col s4">
+            <div class="col s2">
               <button type="button" class="btn-small" name="button">></button>
             </div>
           </form>
