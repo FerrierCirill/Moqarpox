@@ -2,6 +2,13 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
+    
+    width: 100%;
+
+    h1,h2,h3,h4,h5,h6,p,section {
+        display: block;
+        width: 100%;
+    }
 }
 
 .col {

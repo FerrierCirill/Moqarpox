@@ -53,18 +53,7 @@ class HomeController extends Controller
         ]);
     }
 
-    public function shoppingCart() {
-        return view('pages.shoppingCart.shoppingCart');
-    }
-
-    public function payment() {
-        $user = \Auth::user();
-
-        return view('pages.shoppingCart.payment', [
-            'user' => $user
-        ]);
-    }
-
+    
     public function LM() {
         return view('pages.right.lm');
     }

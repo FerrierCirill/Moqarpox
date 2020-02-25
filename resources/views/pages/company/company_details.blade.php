@@ -133,7 +133,7 @@
                         </div>
                     </div>
                 @empty       
-                    <h3>Cette entreprise n'as pas encore de formule</h3>
+                    <h5>Cette entreprise n'as pas d'activité en cours de validation ou désactiver</h5>
                 @endforelse
             </div>
         @endisMyCompany

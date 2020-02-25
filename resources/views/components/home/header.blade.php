@@ -13,6 +13,7 @@
                     {{-- {{$activity->note}} / 5<br> --}}
                     @include('components.star', ['note' => $activity->note])
                 </div>
+                <a href="{{route('activity_details', ['activity_id' => $activity->id ])}}"></a>
             </div>
         </div>
         <div class="col s12 l5">

@@ -61,8 +61,9 @@ Route::post('/repayment', 'HomeController@postRepayment')->name('post_repayment'
 //    ShoppingCart    //
 // ================== //
 
-Route::get('/shoppingCart', 'HomeController@shoppingCart')->name('shopping_cart');                         // MIDDLEWARE : yolo
-Route::get('/payment', 'HomeController@payment')->name('payment')->middleware('auth');
+Route::get('/shoppingCart', 'ShoppingCartController@shoppingCart')->name('shopping_cart');    
+Route::post('/shoppingCart/addItem', 'ShoppingCartController@shoppingCartAdd')->name('shopping_cart_add');    
+Route::get('/payment', 'ShoppingCartController@payment')->name('payment')->middleware('auth');
 
 
 // ================== //

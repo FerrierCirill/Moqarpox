@@ -48,7 +48,7 @@ class ActivitiesController extends Controller
     }
 
     public function getActivity($activity_id){
-        if (\Auth::user()->admin != \App\User::ADMIN)
+        if (\Auth::check() && \Auth::user()->admin != \App\User::ADMIN)
             $activity = Activity::where('state', 1)->where('id',$activity_id)->first();
         else
             $activity = Activity::where('id',$activity_id)->first();

@@ -5,9 +5,11 @@
 @section('content')
 {{-- {{var_dump($user)}} --}}
     <div class="container">
+        <div class="row mt-2">
+            <a class="btn right" href="{{route('user_historical')}}">Historique d'achat <i class="fas fa-box"></i></a>
+            <a class="btn modal-trigger ml-1" href="#modal_user_modification">Modifier mes informations</a>
+        </div>
         <div class="row">
-            <a class="btn right mb-2" href="{{route('user_historical')}}">Historique d'achat <i class="fas fa-box"></i></a>
-
             <h1>
                 <span class="uppercase">{{$user->first_name}}</span> {{$user->second_name}}  
             </h1>
@@ -19,7 +21,6 @@
             </p>
             
 
-            <a class="btn modal-trigger" href="#modal_user_modification">Modifier mes informations</a>
             @include('components.user.profile.modal_for_change_information')
 
 
