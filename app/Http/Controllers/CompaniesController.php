@@ -21,8 +21,6 @@ class CompaniesController extends Controller
     }
 
     public function postAddCompany(Request $request) {
-        var_dump($request);
-
         $this->validate ($request, [
             'name' => 'required',
             'phone' => 'required|number',

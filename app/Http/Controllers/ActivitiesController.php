@@ -6,7 +6,6 @@ use App\Activity;
 use App\Category;
 use App\SubCategory;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\AcceptHeaderItem;
 
 class ActivitiesController extends Controller
 {

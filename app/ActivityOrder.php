@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ActivityOrder extends Model
 {
+
+    protected $table = 'activities_orders';
+
     public function activity() {
         return $this->belongsTo(Activity::class);
     }

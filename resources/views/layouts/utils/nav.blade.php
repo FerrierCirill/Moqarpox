@@ -4,7 +4,7 @@
         <a href="{{ route('main') }}" class="brand-logo">Mouqarpox</a>
         <ul class="right hide-on-med-and-down">
             <li>
-                <a href="{{route('getComment')}}">Déposer un avis</a>
+                <a href="{{route('get_add_comment')}}">Déposer un avis</a>
             </li>
             <li>
                 <a href="{{route('shopping_cart')}}"><i class="fas fa-shopping-cart"></i></a>

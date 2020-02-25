@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\ActivityOrder;
 use App\Category;
+use App\Comment;
 use App\SubCategory;
 use Illuminate\Http\Request;
 use App\Company;
@@ -63,18 +65,15 @@ class HomeController extends Controller
         ]);
     }
 
-    public function LM()
-    {
+    public function LM() {
         return view('pages.right.lm');
     }
 
-    public function TCU()
-    {
+    public function TCU() {
         return view('pages.right.tcu');
     }
 
-    public function TCS()
-    {
+    public function TCS() {
         return view('pages.right.tcs');
     }
 
@@ -83,7 +82,21 @@ class HomeController extends Controller
     }
 
     public function postAddComment(Request $request) {
-        //TODO
+        $this->validate($request, [
+            'code' => 'required',
+            'title' => 'required',
+            'message' => 'required',
+            'note' => 'required'
+        ]);
+
+        $code_exists = ActivityOrder::where('code', $request->input('code'))->first();
+        var_dump($code_exists);
+        /*$code_used = Comment::where('code', $request->input('code'))->first();
+        var_dump($code_used);*/
+        if($code_exists == null) {
+            return back(); //
+        }
+        return route('home');
     }
 
     public function getRepayment() {
