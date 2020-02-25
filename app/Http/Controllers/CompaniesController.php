@@ -23,20 +23,25 @@ class CompaniesController extends Controller
     public function postAddCompany(Request $request) {
         $this->validate ($request, [
             'name' => 'required',
-            'phone' => 'required|number',
+            'phone' => 'required|numeric',
             'email' => 'required',
             'siret' => 'required',
             'rib' => 'required',
             'adress1' => 'required',
-            //'adress2' => 'required',
-            //'lat' => 'required',
-          //  'lng' => 'required',
-            'city_id' => 'required',
+            'lat' => 'required',
+            'lng' => 'required',
+            'link' => 'required|image',
+            'city_id' => 'required|exists:cities,id',
             'description' => 'required',
             'category_id' => 'required|exists:categories,id',
-            'user_id' => 'required',
+            'user_id' => 'required|exists:users,id',
         ]);
 
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('images/upload/companies'), $imageName);
+
+        var_dump(public_path('images/upload/companies') . $imageName);
+        die;
 
         $compagny = new Company();
         $compagny->name        = $request->input('name');
@@ -50,19 +55,21 @@ class CompaniesController extends Controller
         $compagny->description = $request->input('description');
         $compagny->category_id = $request->input('category_id');
         $compagny->user_id     = $request->input('user_id');
+        $compagny->link        = public_path('images/upload/companies') . $imageName;
         $compagny->lat         = $request->input('lat');
         $compagny->lng         = $request->input('lng');
         $compagny->save();
 
-        //Voir pour le cas ou l'on envoie une image
-
-
-     //   return redirect()->back();
+        return redirect()->back();
 
     }
 
     public function getCompany($company_id) {
-        $company = Company::where('state', 1)->where('id', $company_id)->first();
+        if (\Auth::user()->admin != \App\User::ADMIN)
+            $company = Company::where('state', 1)->where('id', $company_id)->first();
+        else
+            $company = Company::where('id', $company_id)->first();
+
         if($company == null) return back();
         $activities_activer = Activity::where('company_id', $company->id)->where('state', '1')->paginate(12);
         $activities_forValideOrNotActi = Activity::where('company_id', $company->id)->where('state', '<>', '1')->get();

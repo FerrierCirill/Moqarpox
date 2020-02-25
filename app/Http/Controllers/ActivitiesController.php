@@ -48,7 +48,10 @@ class ActivitiesController extends Controller
     }
 
     public function getActivity($activity_id){
-        $activity = Activity::where('state', 1)->where('id',$activity_id)->first();
+        if (\Auth::user()->admin != \App\User::ADMIN)
+            $activity = Activity::where('state', 1)->where('id',$activity_id)->first();
+        else
+            $activity = Activity::where('id',$activity_id)->first();
         if($activity == null) return back();
 
         return view('pages.company.activity.activity_details', [

@@ -83,6 +83,8 @@ Route::get('/api/datalist/{value}', 'ApiController@datalist')->name('api_datalis
 Route::get('/api/main_search/{type}/{value}', 'ApiController@mainSearch')->name('api_main_search');
 Route::get('/api/budget/{value}/{budget}', 'ApiController@budget')->name('api_budget');
 
+Route::get('/api/marker/{address}', 'ApiController@returnLatlng')->name('api_lat_lng');
+
 
 // ================== //
 //     Route Google     //

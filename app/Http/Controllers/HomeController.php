@@ -91,12 +91,11 @@ class HomeController extends Controller
 
         $code_exists = ActivityOrder::where('code', $request->input('code'))->first();
         var_dump($code_exists);
-        /*$code_used = Comment::where('code', $request->input('code'))->first();
-        var_dump($code_used);*/
-        if($code_exists == null) {
-            return back(); //
+        if($code_exists != null) {
+            $code_used = Comment::where('activity_order_id', $code_exists->id)->first();
+            var_dump($code_used);
         }
-        return route('home');
+        return redirect()->route('home');
     }
 
     public function getRepayment() {

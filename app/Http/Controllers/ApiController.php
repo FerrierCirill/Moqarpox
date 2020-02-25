@@ -81,4 +81,27 @@ class ApiController extends Controller
         }
         return $companies;
     }
+
+    public function returnLatLng($address) {
+        $data = array(
+            'q'      => $address,
+            'format' => 'json',
+        );
+        $url = 'https://nominatim.openstreetmap.org/?' . http_build_query($data);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36'); //https://deviceatlas.com/lp/user-agent
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $geopos = curl_exec($ch);
+        curl_close($ch);
+        $json_data = json_decode($geopos, true);
+
+        $result = [];
+        $lat = $json_data[0]['lat'];
+        $lon = $json_data[0]['lon'];
+        array_push($result, $lat);
+        array_push($result, $lon);
+        return $result;
+    }
 }
