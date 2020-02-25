@@ -32,8 +32,8 @@ class SocialController extends Controller
         if (!$user) {
 
             $user = User::create([
-                'first_name'     => $getInfo->given_name,
-                'second_name'  =>$getInfo->family_name,
+                'first_name'     => $getInfo['given_name'],
+                'second_name'  =>$getInfo['family_name'],
                 'email'    => $getInfo->email,
                 'provider' => $provider,
                 'provider_id' => $getInfo->id
