@@ -26,9 +26,6 @@ Route::get('/activity/{activity_id}', 'ActivitiesController@getActivity')->name(
 
 Route::get('/activity/{activity_id}/{state}', 'ActivitiesController@changeState')->name('changeState');
 
-Route::get('/comment', 'ActivitiesController@getComment')->name('getComment');
-Route::post('/comment', 'ActivitiesController@postComment')->name('postComment');
-
 
 // ================== //
 //      Company       //
@@ -86,15 +83,15 @@ Route::get('/api/datalist/{value}', 'ApiController@datalist')->name('api_datalis
 Route::get('/api/main_search/{type}/{value}', 'ApiController@mainSearch')->name('api_main_search');
 Route::get('/api/budget/{value}/{budget}', 'ApiController@budget')->name('api_budget');
 
+
 // ================== //
 //     Route Google     //
 // ================== //
 
-Route::get('/ auth / redirect / {provider}', ' SocialController @ redirect ');
-Route::get('/ callback / {provider}', ' SocialController @ callback ');
+Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
+Route::get('/callback/{provider}', 'SocialController@callback');
 
 ///////////////////////////////////////
-
 
 Auth::routes();
 
