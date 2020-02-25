@@ -26,8 +26,6 @@ class SocialController extends Controller
 
     }
     function createUser($getInfo,$provider){
-        echo"<br><br><br>";
-        var_dump($getInfo['given_name']);
         $user = User::where('provider_id', $getInfo->id)->first();
         if (!$user) {
 
@@ -39,8 +37,9 @@ class SocialController extends Controller
                 'provider_id' => $getInfo->id,
                 'password' => $getInfo->id,
             ]);
-
+            if($getInfo[''])
+                $user->email_verified_at = date(now());
         }
-        return $user;
+       // return $user;
     }
 }
