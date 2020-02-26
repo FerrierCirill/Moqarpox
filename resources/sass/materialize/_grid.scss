@@ -42,7 +42,7 @@
 }
 @mixin grid-classes($size, $i, $perc) {
   &.offset-#{$size}#{$i} {
-    margin-left: $perc;
+    margin-left: $perc !important;
   }
   &.pull-#{$size}#{$i} {
     right: $perc;
