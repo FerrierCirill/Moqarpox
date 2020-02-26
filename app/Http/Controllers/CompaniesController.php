@@ -65,7 +65,7 @@ class CompaniesController extends Controller
     }
 
     public function getCompany($company_id) {
-        if (\Auth::user()->admin != \App\User::ADMIN)
+        if (\Auth::check() && \Auth::user()->admin != \App\User::ADMIN)
             $company = Company::where('state', 1)->where('id', $company_id)->first();
         else
             $company = Company::where('id', $company_id)->first();

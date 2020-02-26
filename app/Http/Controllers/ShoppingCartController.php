@@ -8,10 +8,8 @@ use App\Activity;
 class ShoppingCartController extends Controller
 {
     public function shoppingCart() {
-        if(\Auth::check()) {
-            $shoppingCart = \Auth::user()->shoppingCarts;
-        }
-
+        $shoppingCart = (\Auth::check()) ? \Auth::user()->shoppingCarts : null;
+        
         return view('pages.shoppingCart.shoppingCart', [
             'shoppingCart', $shoppingCart
         ]);
