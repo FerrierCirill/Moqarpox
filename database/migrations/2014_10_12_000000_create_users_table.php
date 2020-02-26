@@ -23,10 +23,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->smallInteger('state')->default(0); // 0: client - 1: prestataire
             $table->string('civility')->nullable();
-            $table->string('facebook_api_token')->nullable();
+            $table->string('facebook_api_token')->nullable(); // a supr ?
             $table->smallInteger('admin')->default(0);
-            $table->string('provider')->nullable(); // A VERIF
-            $table->string('provider_id')->nullable(); // A VERIF
+            $table->string('provider')->nullable();
+            $table->string('provider_id')->nullable();
             $table->rememberToken()->nullable();
 
             $table->timestamps();

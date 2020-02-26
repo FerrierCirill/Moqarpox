@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name','second_name','phone','civility', 'email', 'password','facebook_api_token','provider','provider_id',
+        'first_name','second_name','phone','civility', 'email', 'password','facebook_api_token','provider','provider_id','email_verified_at'
     ];
     /**
      * inverse fillable
