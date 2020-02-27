@@ -256,7 +256,7 @@
                                     {{ $activity->name }}
                                 </div>
                                 <div>
-                                    <a href="#" class="btn" style="margin: 1px"><i class="fas fa-book-open"></i></a>
+                                    <a href="{{ route('activity_details', ['activity_id' => $activity->id]) }}" class="btn" style="margin: 1px"><i class="fas fa-book-open"></i></a>
                                     <a href="#" class="btn" style="margin: 1px"><i class="fas fa-check"></i></a>
                                     <a href="#" class="btn" style="margin: 1px"><i class="fas fa-ban"></i></a>
                                 </div>
@@ -276,9 +276,9 @@
                                     {{ $company->name }}
                                 </div>
                                 <div>
-                                    <a href="#" class="btn" style="margin: 1px"><i class="fas fa-book-open"></i></a>
+                                    <a href="{{ route('company_details', ['company_id' => $company->id]) }}" class="btn" style="margin: 1px"><i class="fas fa-book-open"></i></a>
                                     <a href="{{ route('confirm_company', ['company_id' => $company->id]) }}" class="btn" style="margin: 1px"><i class="fas fa-check"></i></a>
-                                    <a href="#" class="btn" style="margin: 1px"><i class="fas fa-ban"></i></a>
+                                    <a href="{{ route('refuse_company', ['company_id' => $company->id]) }}" class="btn" style="margin: 1px"><i class="fas fa-ban"></i></a>
                                 </div>
                             </div>
                         </li>

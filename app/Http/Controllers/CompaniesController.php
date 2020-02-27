@@ -102,6 +102,14 @@ class CompaniesController extends Controller
         return redirect()->back();
     }
 
+    public function refuseCompany($company_id) {
+        $company = Company::findOrFail($company_id);
+        $company->state = 2;
+        $company->save();
+
+        return redirect()->back();
+    }
+
     public function postEditCompany($company_id) {
         //ToDo
     }

@@ -43,6 +43,7 @@ Route::get('/company/moneyBack', 'CompaniesController@getMoneyBack')->name('comp
 Route::post('/company/moneyBack', 'CompaniesController@postMoneyBack')->name('company_moneyback_post')->middleware('auth');
 
 Route::get('/company/confirm/{company_id}', 'CompaniesController@confirmCompany')->name('confirm_company')->middleware('AuthIsAdmin');
+Route::get('/company/refuse/{company_id}', 'CompaniesController@refuseCompany')->name('refuse_company')->middleware('AuthIsAdmin');
 
 
 // ================== //
