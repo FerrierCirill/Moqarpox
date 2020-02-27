@@ -17,18 +17,18 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(User::class, function (Faker $faker) {
-    
+
     $gender = [null, 'male', 'female'];
     $g = $gender[rand(0,2)];
-    
-    return [ 
+
+    return [
         'first_name'        => $faker->firstName($g),
         'second_name'       => $faker->lastName() ,
         'phone'             => $faker->e164PhoneNumber() ,
         'email'             => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password'          => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-        'civility'          => $faker->title($g),
+        'civility'          => $faker->randomElement(['man', 'woman', 'other']),
         'remember_token'    => Str::random(10),
     ];
 });

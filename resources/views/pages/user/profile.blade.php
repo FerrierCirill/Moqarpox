@@ -11,7 +11,7 @@
         </div>
         <div class="row">
             <h1>
-                <span class="uppercase">{{$user->first_name}}</span> {{$user->second_name}}  
+                {{$user->first_name}} <span class="uppercase"> {{$user->second_name}} </span>
             </h1>
             <h3>Données personnel </h3>
             <p>
@@ -19,13 +19,13 @@
                 <strong>Téléphone :</strong> {{$user->phone}}<br>
                 <strong>Compte créé le :</strong> {{$user->created_at}}<br>
             </p>
-            
+
 
             @include('components.user.profile.modal_for_change_information')
 
 
         </div>
-        
+
 
 
         @isClient
@@ -33,7 +33,7 @@
         @endisClient
 
         @isProvider
-            @include('components.user.profile.isProvider')            
+            @include('components.user.profile.isProvider')
         @endisProvider
 
 

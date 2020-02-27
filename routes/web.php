@@ -49,6 +49,7 @@ Route::post('/company/moneyBack', 'CompaniesController@postMoneyBack')->name('co
 
 Route::get('/user', 'UsersController@getClient')->name('user_details')->middleware('auth');
 Route::get('/user/historical', 'UsersController@historical')->name('user_historical')->middleware('auth');
+Route::post('/user/edit', 'UsersController@postUserEdit')->name('user_edit')->middleware('auth');
 
 Route::get('/comment/add', 'HomeController@getAddComment')->name('get_add_comment');     //MIDDLEWARE ?
 Route::post('/comment/add', 'HomeController@postAddComment')->name('post_add_comment');  //MIDDLEWARE ?
@@ -61,8 +62,8 @@ Route::post('/repayment', 'HomeController@postRepayment')->name('post_repayment'
 //    ShoppingCart    //
 // ================== //
 
-Route::get('/shoppingCart', 'ShoppingCartController@shoppingCart')->name('shopping_cart');    
-Route::post('/shoppingCart/addItem', 'ShoppingCartController@shoppingCartAdd')->name('shopping_cart_add');    
+Route::get('/shoppingCart', 'ShoppingCartController@shoppingCart')->name('shopping_cart');
+Route::post('/shoppingCart/addItem', 'ShoppingCartController@shoppingCartAdd')->name('shopping_cart_add');
 Route::get('/payment', 'ShoppingCartController@payment')->name('payment')->middleware('auth');
 
 

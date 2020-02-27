@@ -12,9 +12,10 @@
 			<div class="row">
 				<div class="input-field col s10">
 					<select id="civility" type="text" class="form-control @error('civility') is-invalid @enderror" name="civility" value="{{ old('civility') }}" autocomplete="civility" autofocus>
-						<option value="man">Monsieur</option>
+                        <option value="" disabled selected>Sélectionnez votre genre</option>
+                        <option value="man">Monsieur</option>
 						<option value="woman">Madame</option>
-						<option value="other" disabled selected>Autre</option>
+						<option value="other">Autre</option>
 					</select>
 					<label>Genre*</label>
 
