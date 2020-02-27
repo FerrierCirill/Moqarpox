@@ -9,17 +9,17 @@
 @section('content')
 
 
-  <div class="container">
+  <div class="container pt-2">
+
 
     <div class="row">
-    </div>
-    <div class="row">
 
-      <div class="col s6">
+      <div class="col s12 l6">
         <div class="row z-depth-1 px-2">
-          Structures en attente
-
-          <div class="card px-2 pb-1 pt-1">
+          <div class="col s12">
+            Structures en attente
+          </div>
+          <div class="card col s12 px-2 pb-1 pt-1">
             <div class="row">
               <div class="col s10">
                 Nom : Nom structure 1
@@ -42,7 +42,7 @@
               </div>
             </div>
           </div>
-          <div class="card px-2 pb-1 pt-1">
+          <div class="card col s12 px-2 pb-1 pt-1">
             <div class="row">
               <div class="col s10">
                 Nom : Nom structure 2
@@ -70,7 +70,7 @@
         <div class="row z-depth-1 px-2">
           Activités en attente
 
-          <div class="card px-2 pb-1 pt-1">
+          <div class="card col s12 px-2 pb-1 pt-1">
             <div class="row">
               <div class="col s5">
                 Nom : Nom activité 1
@@ -96,7 +96,7 @@
               </div>
             </div>
           </div>
-          <div class="card px-2 pb-1 pt-1">
+          <div class="card col s12 px-2 pb-1 pt-1">
             <div class="row">
               <div class="col s5">
                 Nom : Nom activité 2
@@ -126,7 +126,7 @@
 
       </div>
 
-      <div class="col offset-s1 s5">
+      <div class="col offset-l1 s12 l5">
         <div class="row">
           <div class="col s12 z-depth-1 px-2 pb-1 pt-1">
             Commentaires
@@ -193,12 +193,12 @@
         </div>
 
         <div class="row">
-          <div class="col s12 z-depth-3 px-1">
+          <div class="col s12 z-depth-1 px-1">
             <form class=" valign-wrapper" action="" method="post">
-              <div class="col s4">
+              <div class="col s5">
                 Ajouter un admin :
               </div>
-              <div class="col s4">
+              <div class="col s5">
                   <input type="text" name="addAdmin" value="">
               </div>
               <div class="col s2">
@@ -208,18 +208,20 @@
           </div>
         </div>
 
-        <div class="row z-depth-3 px-1">
-          <form class=" valign-wrapper" action="index.html" method="post">
-            <div class="col s4">
-              Supprimer un admin :
-            </div>
-            <div class="col s4">
-              <input type="text" name="delAdmin" value="">
-            </div>
-            <div class="col s2">
-              <button type="button" class="btn-small" name="button">></button>
-            </div>
-          </form>
+        <div class="row">
+          <div class="col s12 z-depth-1 px-1">
+            <form class=" valign-wrapper" action="index.html" method="post">
+              <div class="col s5">
+                Supprimer un admin :
+              </div>
+              <div class="col s5">
+                <input type="text" name="delAdmin" value="">
+              </div>
+              <div class="col s2">
+                <button type="button" class="btn-small" name="button">></button>
+              </div>
+            </form>
+          </div>
         </div>
 
         </div>
@@ -244,10 +246,7 @@
   </style>
     <div class="container">
         <div class="row">
-            <div class="col s12 z-depth-3 center-align">
-                Je le vois comme ca perso (EN GROS), apres vous me dirai ! (et je maitrise pas matérialize donc c'est moche ^^)
-            </div>
-            <div class="col s12 z-depth-3 zone">
+            <div class="col s12 z-depth-1 zone">
                 <h5>Activités en attente</h5>
                 <ul>
                     @foreach($activities as $activity)
@@ -268,12 +267,12 @@
                     {{ $activities->links() }}
                 </ul>
             </div>
-            <div class="col s12 z-depth-3 zone">
+            <div class="col s12 z-depth-1 zone">
                 <h5>Compagnies en attente</h5>
                 <ul>
                     @foreach($companies as $company)
                         <li>
-                            <div class="row_act z-depth-3">
+                            <div class="row_act z-depth-1">
                                 <div>
                                     Nom : {{ $company->name }} <br>
                                     Description : {{ \Illuminate\Support\Str::limit($company->description, $limit = 75, $end = '...') }}
@@ -289,12 +288,12 @@
                     {{ $companies->links() }}
                 </ul>
             </div>
-            <div class="col s12 z-depth-3 zone">
+            <div class="col s12 z-depth-1 zone">
                 <h5>Commentaires en attente</h5>
                 <ul>
                     @foreach($comments as $comment)
                         <li>
-                            <div class="row_act z-depth-3">
+                            <div class="row_act z-depth-1">
                                 <div>
                                     Titre : {{ $comment->title }} <br>
                                     Message : {{ \Illuminate\Support\Str::limit($comment->message, $limit = 75, $end = '...') }}
