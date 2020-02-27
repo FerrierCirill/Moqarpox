@@ -42,6 +42,8 @@ Route::post('/company/{company_id}/edit', 'CompaniesController@postEditCompany')
 Route::get('/company/moneyBack', 'CompaniesController@getMoneyBack')->name('company_moneyback_get')->middleware('auth');
 Route::post('/company/moneyBack', 'CompaniesController@postMoneyBack')->name('company_moneyback_post')->middleware('auth');
 
+Route::get('/company/confirm/{company_id}', 'CompaniesController@confirmCompany')->name('confirm_company')->middleware('AuthIsAdmin');
+
 
 // ================== //
 //        User        //

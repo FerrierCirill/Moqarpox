@@ -53,7 +53,7 @@ class HomeController extends Controller
         ]);
     }
 
-    
+
     public function LM() {
         return view('pages.right.lm');
     }
@@ -79,12 +79,26 @@ class HomeController extends Controller
         ]);
 
         $code_exists = ActivityOrder::where('code', $request->input('code'))->first();
-        var_dump($code_exists);
         if($code_exists != null) {
             $code_used = Comment::where('activity_order_id', $code_exists->id)->first();
-            var_dump($code_used);
+            if ($code_used == null) {
+                $comment = new Comment();
+
+                $comment->code = $request->input('code');
+                $comment->title = $request->input('title');
+                $comment->message = $request->input('message');
+                $comment->note = $request->input('note');
+                $comment->state = 0;
+
+                $comment->save();
+
+                return redirect()->back();
+            } else {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
         }
-        return redirect()->route('home');
     }
 
     public function getRepayment() {

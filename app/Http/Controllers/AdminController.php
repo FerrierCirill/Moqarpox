@@ -10,9 +10,9 @@ class AdminController extends Controller
 {
     public function moderation() {
 
-        $activities = Activity::where('state', 0)->paginate(10);
-        $companies  = Company::where('state', 0)->paginate(10);
-        $comments   = Comment::where('state', 0)->paginate(10);
+        $activities = Activity::where('state', 0)->paginate(5);
+        $companies  = Company::where('state', 0)->paginate(5);
+        $comments   = Comment::where('state', 0)->paginate(5);
 
         return view('pages.admin.moderation', [
             'activities' => $activities,

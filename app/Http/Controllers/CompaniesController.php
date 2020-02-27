@@ -94,6 +94,13 @@ class CompaniesController extends Controller
         ]);
     }
 
+    public function confirmCompany($company_id) {
+        $company = Company::findOrFail($company_id);
+        $company->state = 1;
+        $company->save();
+
+        return redirect()->back();
+    }
 
     public function postEditCompany($company_id) {
         //ToDo
