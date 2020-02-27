@@ -6,6 +6,7 @@ use App\Company;
 use App\Category;
 use App\Activity;
 use App\City;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -62,17 +63,28 @@ class CompaniesController extends Controller
         $company->lng         = $request->input('lng');
         $company->save();
 
-        return redirect()->route('company_details', ['company_id'=>$company->id]);
+        $user = User::findOrFail(Auth::id());
+        $user->state = 1 ;
+        $user->save();
+
+        return redirect()->route('user_details'); //('company_details', ['company_id'=>$company->id]);
 
     }
 
     public function getCompany($company_id) {
-        if (\Auth::check() && \Auth::user()->admin != \App\User::ADMIN)
-            $company = Company::where('state', 1)->where('id', $company_id)->first();
-        else
-            $company = Company::where('id', $company_id)->first();
+        $company = Company::where('id', $company_id)->first();
 
-        if($company == null) return back();
+        /**
+         * Si
+         * - l'entreprise n'existe pas
+         * ou
+         * - l'entreprise n'est pas encore validée
+         *  et
+         * - l'utilisateur est connecté  + ( utilisateur = (admin  [ou  propriétaire]* ) )
+         *  *à voir
+         */
+        if($company == null  || $company->state=!1 && ( !\Auth::check() && \Auth::user()->admin != \App\User::ADMIN ))//|| \Auth::id()!=$company->user_id) )
+            return back();
         $activities_activer = Activity::where('company_id', $company->id)->where('state', '1')->paginate(12);
         $activities_forValideOrNotActi = Activity::where('company_id', $company->id)->where('state', '<>', '1')->get();
 
