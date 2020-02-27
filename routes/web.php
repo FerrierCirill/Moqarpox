@@ -26,6 +26,9 @@ Route::get('/activity/{activity_id}', 'ActivitiesController@getActivity')->name(
 
 Route::get('/activity/{activity_id}/{state}', 'ActivitiesController@changeState')->name('changeState');
 
+Route::get('/activity/confirm/{activity_id}', 'ActivitiesController@confirmActivity')->name('confirm_activity')->middleware('AuthIsAdmin');
+Route::get('/activity/refuse/{activity_id}', 'ActivitiesController@refuseActivity')->name('refuse_activity')->middleware('AuthIsAdmin');
+
 
 // ================== //
 //      Company       //

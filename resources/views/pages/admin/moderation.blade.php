@@ -257,8 +257,8 @@
                                 </div>
                                 <div>
                                     <a href="{{ route('activity_details', ['activity_id' => $activity->id]) }}" class="btn" style="margin: 1px"><i class="fas fa-book-open"></i></a>
-                                    <a href="#" class="btn" style="margin: 1px"><i class="fas fa-check"></i></a>
-                                    <a href="#" class="btn" style="margin: 1px"><i class="fas fa-ban"></i></a>
+                                    <a href="{{ route('confirm_activity', ['activity_id' => $activity->id]) }}" class="btn" style="margin: 1px"><i class="fas fa-check"></i></a>
+                                    <a href="{{ route('refuse_activity', ['activity_id' => $activity->id]) }}" class="btn" style="margin: 1px"><i class="fas fa-ban"></i></a>
                                 </div>
                             </div>
                         </li>
