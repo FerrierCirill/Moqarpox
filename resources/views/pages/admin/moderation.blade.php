@@ -246,6 +246,38 @@
   </style>
     <div class="container">
         <div class="row">
+            <div class="col s6 z-depth-1 px-1">
+                <form class="valign-wrapper" action="{{ route('add_admin') }}" method="POST">
+                    @csrf
+                    <div class="col s4">
+                        Ajouter un admin :
+                    </div>
+                    <div class="col s5 input-field">
+                        <input type="text" id="addAdmin" name="email" value="">
+                        <label for="email">e-mail*</label>
+                    </div>
+                    <div class="col s3">
+                        <button type="submit" class="btn-small">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col s6 z-depth-1 px-1">
+                <form class="valign-wrapper" action="{{ route('delete_admin') }}" method="POST">
+                    @csrf
+                    <div class="col s4">
+                        Supprimer un admin :
+                    </div>
+                    <div class="col s5 input-field">
+                        <input type="text" id="delAdmin" name="email" value="">
+                        <label for="email">e-mail*</label>
+                    </div>
+                    <div class="col s3">
+                        <button type="submit" class="btn-small">Supprimer</button>
+                    </div>
+                </form>
+            </div>
+
             <div class="col s12 z-depth-1 zone">
                 <h5>Activités en attente</h5>
                 <ul>

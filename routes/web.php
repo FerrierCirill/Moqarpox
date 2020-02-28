@@ -81,6 +81,8 @@ Route::get('/payment', 'ShoppingCartController@payment')->name('payment')->middl
 
 Route::get('/admin','AdminController@moderation')->name('admin')->middleware('AuthIsAdmin');
 
+Route::post('/admin/add', 'AdminController@addAdmin')->name('add_admin')->middleware('AuthIsAdmin');
+Route::post('/admin/delete', 'AdminController@deleteAdmin')->name('delete_admin')->middleware('AuthIsAdmin');
 
 // ================== //
 //     Route AJAX     //
