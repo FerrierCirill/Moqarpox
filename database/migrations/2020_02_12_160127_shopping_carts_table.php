@@ -13,7 +13,7 @@ class ShoppingCartsTable extends Migration
      */
     public function up()
     {
-        Schema::create('shoppingCarts', function (Blueprint $table) {
+        Schema::create('shopping_carts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('quantity');
 
@@ -35,6 +35,6 @@ class ShoppingCartsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shoppingCarts');
+        Schema::dropIfExists('shopping_carts');
     }
 }

@@ -14,11 +14,52 @@
                 },
                 method: 'post',
                 body: JSON.stringify({
-                    activity_id: shoppingCart_idActivity
+                    activity_id : shoppingCart_idActivity,
+                    shoppingCart: localStorage.getItem('moqarpox_your_shopping_cart') 
+                                        ? JSON.stringify(localStorage.getItem('moqarpox_your_shopping_cart'))
+                                        : null
                 })
         })
         .then(response => response.text())
-        .then(result => console.log(result))
+        .then(result => {
+            if (result != 'OK') {
+                ajoutOnLocalStorage(result);
+            } else {
+                messageOK();
+                localStorage.removeItem('moqarpox_your_shopping_cart');
+            }
+        })
         .catch(error => console.log('error', error));
     });
+
+
+    function ajoutOnLocalStorage(activity) {
+        activity     = JSON.parse(activity);
+        shoppingCart = localStorage.getItem('moqarpox_your_shopping_cart') ? JSON.parse(localStorage.getItem('moqarpox_your_shopping_cart')) : [] ;
+
+        let found =  false;
+        shoppingCart.forEach(row => {
+            if (row.id == activity.id) {
+                row.quantity++;
+                found = true;
+            }
+        });
+        if (!found) {
+            shoppingCart.push({
+                id      : activity.id,
+                name    : activity.name,
+                quantity: 1,
+                price   : activity.price
+            });
+        }
+
+        localStorage.setItem('moqarpox_your_shopping_cart', JSON.stringify(shoppingCart));
+        messageOK();
+    }
+
+
+
+    function messageOK() {
+        M.toast({html: 'Produit ajouté à votre panier'});
+    }
 </script>
