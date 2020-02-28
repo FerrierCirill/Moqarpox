@@ -83,7 +83,7 @@ class CompaniesController extends Controller
          * - l'utilisateur est connecté  + ( utilisateur = (admin  [ou  propriétaire]* ) )
          *  *à voir
          */
-        if($company == null  || $company->state=!1 && ( !\Auth::check() && \Auth::user()->admin != \App\User::ADMIN ))//|| \Auth::id()!=$company->user_id) )
+        if($company == null  || $company->state=!1 || $company->state== -1 && ( !\Auth::check() && \Auth::user()->admin != \App\User::ADMIN ))//|| \Auth::id()!=$company->user_id) )
             return back();
         $activities_activer = Activity::where('company_id', $company->id)->where('state', '1')->paginate(12);
         $activities_forValideOrNotActi = Activity::where('company_id', $company->id)->where('state', '<>', '1')->get();
@@ -119,6 +119,14 @@ class CompaniesController extends Controller
     public function refuseCompany($company_id) {
         $company = Company::findOrFail($company_id);
         $company->state = 2;
+        $company->save();
+
+        return redirect()->back();
+    }
+
+    public function disableCompany($company_id) {
+        $company = Company::findOrFail($company_id);
+        $company->state = -1;
         $company->save();
 
         return redirect()->back();

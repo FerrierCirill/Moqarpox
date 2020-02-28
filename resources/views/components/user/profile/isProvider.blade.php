@@ -28,6 +28,9 @@
                     @if($company->state == 1)
                         <a href="{{route('company_details', ['company_id' => $company->id])}}">Voir</a>
                         <a href="{{route('company_edit',  ['company_id' => $company->id])}}">Modifier</a>
+                        <a href="{{route('disable_company', ['company_id' => $company->id])}}">Désactiver</a>
+                    @elseif ($company->state == -1)
+                        <a href="{{route('enable_company', ['company_id' => $company->id])}}">Activer</a>
                     @endif
                 </div>
             </div>

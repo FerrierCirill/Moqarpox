@@ -21,7 +21,7 @@ class Activities extends Migration
             $table->text('resume');     // court texte
             $table->string('description_perso')->nullable();      //court text (25)
             $table->text('information');  // texte personalisable + info form date
-            $table->smallInteger('state')->default(0); // 0: en attente de validation - 1: Active - -1: désactivée
+            $table->smallInteger('state')->default(0); // 0: en attente de validation - 1: Active | 2 : refusé | -1: désactivée
             $table->float('note')->nullable();
             $table->string('link0')->nullable();
             $table->string('link1')->nullable();

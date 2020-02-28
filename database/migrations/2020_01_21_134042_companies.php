@@ -24,7 +24,7 @@ class Companies extends Migration
             $table->string('adress2')->nullable();
             $table->float('lat');
             $table->float('lng');
-            $table->smallInteger('state')->default(0); // 0 : en attente de validation | 1 : validé | 2 : refusé
+            $table->smallInteger('state')->default(0); // 0 : en attente de validation | 1 : validé | 2 : refusé | -1 : desactivé
             $table->string('city_id');
             $table->text('description');
             $table->string('link')->nullable();
