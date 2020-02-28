@@ -8,7 +8,7 @@
             <div class="col s12 row">
                 <div class="col s12">
                     {{-- <img src="https://picsum.photos/150/150" alt=""> --}}
-                    <div class="">{{ $panier->activity->name }}, <span class="small-text">{{ $panier->activity->price }} €</span></div>
+                    <div class="">{{ $panier->activity->name }} <span class="small-text">{{ $panier->activity->price }} €</span></div>
                     <button class="btn">Supprimer</button>
                 </div>
                 <div class="col s12">
@@ -52,7 +52,7 @@
                     pR.innerHTML += `
                         <div class="col s12 row">
                             <div class="col s12">
-                                <div class="">${panier.name}, <span class="small-text">${panier.price} €</span></div>
+                                <div class="">${panier.name} <span class="small-text">${panier.price} €</span></div>
                                 <button class="btn">Supprimer</button>
                             </div>
                             <div class="col s12">

@@ -51,7 +51,7 @@
       <div class="row">
         <div class="col s12 center">
           <button class="btn waves-effect waves-light light-green" type="submit" name="action">
-            Connectez vous !
+            Se connecter
           </button>
         </div>
       </div>
@@ -66,14 +66,9 @@
     </div>
     <div class="row">
       <div class="col s12 center">
-        <button class="btn waves-effect waves-light  blue darken-4" type="submit" name="action">
-          Connexion via Facebook
-        </button>
+        <a href="{{ url('/auth/redirect/google') }}" class="btn btn-primary"><i class="fab fa-google"></i> Google</a>
       </div>
     </div>
-    <div class="row">
-    </div>
-
   </div>
 </div>
 
@@ -90,7 +85,7 @@
 <div class="container row">
 <div class="form-group row mb-0">
     <div class="col-md-8 offset-md-4">
-        <a href="{{ url('/auth/redirect/google') }}" class="btn btn-primary"><i class="fa fa-google"></i> Google</a>
+        
     </div>
 </div>
 </div>
