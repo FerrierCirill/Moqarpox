@@ -61,5 +61,22 @@ class ActivitiesController extends Controller
 
     public function changeState(Request $request) {
         //TODO
+        //utile ?
+    }
+
+    public function confirmCompany($activity_id) {
+        $activity = Activity::findOrFail($activity_id);
+        $activity->state = 1;
+        $activity->save();
+
+        return redirect()->back();
+    }
+
+    public function refuseCompany($activity_id) {
+        $activity = Activity::findOrFail($activity_id);
+        $activity->state = 2;
+        $activity->save();
+
+        return redirect()->back();
     }
 }

@@ -6,7 +6,9 @@ use App\Company;
 use App\Category;
 use App\Activity;
 use App\City;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CompaniesController extends Controller
 {
@@ -21,6 +23,7 @@ class CompaniesController extends Controller
     }
 
     public function postAddCompany(Request $request) {
+
         $this->validate ($request, [
             'name' => 'required',
             'phone' => 'required|numeric',
@@ -30,47 +33,58 @@ class CompaniesController extends Controller
             'adress1' => 'required',
             'lat' => 'required',
             'lng' => 'required',
-            'link' => 'required|image',
+           'link' => 'required|image',
             'city_id' => 'required|exists:cities,id',
             'description' => 'required',
             'category_id' => 'required|exists:categories,id',
-            'user_id' => 'required|exists:users,id',
         ]);
 
-        $imageName = time().'.'.$request->image->extension();
-        $request->image->move(public_path('images/upload/companies'), $imageName);
 
-        var_dump(public_path('images/upload/companies') . $imageName);
-        die;
+       // $imageName = time().'.'.$request->image->extension();
+      //  $request->image->move(public_path('images/upload/companies'), $imageName);
 
-        $compagny = new Company();
-        $compagny->name        = $request->input('name');
-        $compagny->phone       = $request->input('phone');
-        $compagny->email       = $request->input('email');
-        $compagny->siret       = $request->input('siret');
-        $compagny->rib         = $request->input('rib');
-        $compagny->adress1     = $request->input('adress1');
-        $compagny->adress2     = $request->input('adress2');
-        $compagny->city_id     = $request->input('city_id');
-        $compagny->description = $request->input('description');
-        $compagny->category_id = $request->input('category_id');
-        $compagny->user_id     = $request->input('user_id');
-        $compagny->link        = public_path('images/upload/companies') . $imageName;
-        $compagny->lat         = $request->input('lat');
-        $compagny->lng         = $request->input('lng');
-        $compagny->save();
+      // var_dump(public_path('images/upload/companies') . $imageName);
 
-        return redirect()->back();
+
+        $company = new Company();
+        $company->name        = $request->input('name');
+        $company->phone       = $request->input('phone');
+        $company->email       = $request->input('email');
+        $company->siret       = $request->input('siret');
+        $company->rib         = $request->input('rib');
+        $company->adress1     = $request->input('adress1');
+        $company->adress2     = $request->input('adress2');
+        $company->city_id     = $request->input('city_id');
+        $company->description = $request->input('description');
+        $company->category_id = $request->input('category_id');
+        $company->user_id     = Auth::id();
+        $company->link        = $request->input('link_path');// public_path('images/upload/companies') . $imageName;
+        $company->lat         = $request->input('lat');
+        $company->lng         = $request->input('lng');
+        $company->save();
+
+        $user = User::findOrFail(Auth::id());
+        $user->state = 1 ;
+        $user->save();
+
+        return redirect()->route('user_details'); //('company_details', ['company_id'=>$company->id]);
 
     }
 
     public function getCompany($company_id) {
-        if (\Auth::check() && \Auth::user()->admin != \App\User::ADMIN)
-            $company = Company::where('state', 1)->where('id', $company_id)->first();
-        else
-            $company = Company::where('id', $company_id)->first();
+        $company = Company::where('id', $company_id)->first();
 
-        if($company == null) return back();
+        /**
+         * Si
+         * - l'entreprise n'existe pas
+         * ou
+         * - l'entreprise n'est pas encore validée
+         *  et
+         * - l'utilisateur est connecté  + ( utilisateur = (admin  [ou  propriétaire]* ) )
+         *  *à voir
+         */
+        if($company == null  || $company->state=!1 || $company->state== -1 && ( !\Auth::check() && \Auth::user()->admin != \App\User::ADMIN ))//|| \Auth::id()!=$company->user_id) )
+            return back();
         $activities_activer = Activity::where('company_id', $company->id)->where('state', '1')->paginate(12);
         $activities_forValideOrNotActi = Activity::where('company_id', $company->id)->where('state', '<>', '1')->get();
 
@@ -94,6 +108,29 @@ class CompaniesController extends Controller
         ]);
     }
 
+    public function confirmCompany($company_id) {
+        $company = Company::findOrFail($company_id);
+        $company->state = 1;
+        $company->save();
+
+        return redirect()->back();
+    }
+
+    public function refuseCompany($company_id) {
+        $company = Company::findOrFail($company_id);
+        $company->state = 2;
+        $company->save();
+
+        return redirect()->back();
+    }
+
+    public function disableCompany($company_id) {
+        $company = Company::findOrFail($company_id);
+        $company->state = -1;
+        $company->save();
+
+        return redirect()->back();
+    }
 
     public function postEditCompany($company_id) {
         //ToDo

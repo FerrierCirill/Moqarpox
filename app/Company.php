@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
+    private $id;
+
     public function activities() {
         return $this->hasMany(Activity::class);
     }

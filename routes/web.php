@@ -26,6 +26,9 @@ Route::get('/activity/{activity_id}', 'ActivitiesController@getActivity')->name(
 
 Route::get('/activity/{activity_id}/{state}', 'ActivitiesController@changeState')->name('changeState');
 
+Route::get('/activity/confirm/{activity_id}', 'ActivitiesController@confirmActivity')->name('confirm_activity')->middleware('AuthIsAdmin');
+Route::get('/activity/refuse/{activity_id}', 'ActivitiesController@refuseActivity')->name('refuse_activity')->middleware('AuthIsAdmin');
+
 
 // ================== //
 //      Company       //
@@ -41,6 +44,11 @@ Route::post('/company/{company_id}/edit', 'CompaniesController@postEditCompany')
 
 Route::get('/company/moneyBack', 'CompaniesController@getMoneyBack')->name('company_moneyback_get')->middleware('auth');
 Route::post('/company/moneyBack', 'CompaniesController@postMoneyBack')->name('company_moneyback_post')->middleware('auth');
+
+Route::get('/company/confirm/{company_id}', 'CompaniesController@confirmCompany')->name('confirm_company')->middleware('AuthIsAdmin');
+Route::get('/company/refuse/{company_id}', 'CompaniesController@refuseCompany')->name('refuse_company')->middleware('AuthIsAdmin');
+Route::get('/company/disable/{company_id}', 'CompaniesController@disableCompany')->name('disable_company')->middleware('AuthIsProviderAndItsHisCompany');
+Route::get('/company/enable/{company_id}', 'CompaniesController@confirmCompany')->name('enable_company')->middleware('AuthIsProviderAndItsHisCompany');
 
 
 // ================== //

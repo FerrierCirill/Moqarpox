@@ -116,7 +116,7 @@
                                    list="city"
                                    id="_city"
                                    data-city="-1"
-                                   autocomplete="off"
+                                   autocomplete="no"
                                    required
                             >
                             <datalist id="city">
@@ -247,4 +247,6 @@
             </form>
         </div>
     </div>
+
+    <label for="ville" style="display: none">ville</label>
 @endsection

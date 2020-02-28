@@ -67,7 +67,8 @@
                         <label>Saisissez votre mot de passe pour valider</label>
                         <input  class="validate"
                                 type = "password"
-                                name = "password">
+                                name = "password"
+                                required>
                         @if($errors->has('password'))
                             <p>{{$errors->first('password')}}</p>
                         @endif
