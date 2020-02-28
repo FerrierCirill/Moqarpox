@@ -22,9 +22,9 @@ class Companies extends Migration
             $table->string('rib');
             $table->string('adress1');
             $table->string('adress2')->nullable();
-            $table->float('lat');
-            $table->float('lng');
-            $table->smallInteger('state')->default(0); // 0 : en attente de validation | 1 : validé | 2 : refusé | -1 : desactivé
+            $table->float('lat',100,10);
+            $table->float('lng',100,10);
+            $table->smallInteger('state')->default(0); // 0 : en attente de validation | 1 : validé | 2 : refusé
             $table->string('city_id');
             $table->text('description');
             $table->string('link')->nullable();
