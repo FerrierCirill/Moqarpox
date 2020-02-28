@@ -1,50 +1,74 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <?php
-        session_start();
-        $_SESSION['panier'] = [
-            [
-                'name' => 'Vol en montgolfière',
-                'prix' => 150.99,
-                'qte'  => 1
-            ],
-
-            [
-                'name' => 'Diner à thème',
-                'prix' => 42,
-                'qte'  => 3
-            ],
-
-            [
-                'name' => 'Saut en parachute',
-                'prix' => 404,
-                'qte'  => 1
-            ]
-        ];
-    ?>
-
-    <div class="flex justify-center w-full flex-wrap bg-gray-400">
-        @forelse($_SESSION['panier'] as $panier)
-            <div class="w-8/12 bg-gray-200 my-5 p-3 shadow-lg align-middle">
-                <div class="flex justify-between">
+<div class="container">
+    <div class="row" id="panier_row">
+        @php $total = 0 @endphp 
+        @forelse($shoppingCart as $panier)
+            <div class="col s12 row">
+                <div class="col s12">
                     {{-- <img src="https://picsum.photos/150/150" alt=""> --}}
-                    <div class="panier_name font-medium text-2xl">{{ $panier['name'] }}, <span class="panier_prix text-sm font-normal">{{ $panier['prix'] }} €</span></div>
-                    <button class="btn py-1 px-3 rounded-full bg-gray-300 hover:bg-red-200 panier_btn_supp">Supprimer</button>
+                    <div class="">{{ $panier->activity->name }} <span class="small-text">{{ $panier->activity->price }} €</span></div>
+                    <button class="btn">Supprimer</button>
                 </div>
-                <div class="flex my-1">
-                    <button class="btn py-1 px-3 mr-3 rounded-full hover:bg-gray-600 hover:text-white bg-gray-500 panier_btn_moin">-</button>
-                    <div    class="btn py-1 px-3 mr-3 panier_nombreQte">{{ $panier['qte'] }}</div>
-                    <button class="btn py-1 px-3 mr-3 rounded-full hover:bg-gray-600 hover:text-white bg-gray-500 panier_btn_plus">+</button>
+                <div class="col s12">
+                    <button class="btn">-</button>
+                    <div    class="btn">{{ $panier->quantity }}</div>
+                    <button class="btn">+</button>
                 </div>
-                <div class="flex justify-end">
-                    <div class="panier_ligneTotal">Total : {{ $panier['qte'] * $panier['prix'] }} €</div>
+                <div class="col s12">
+                    <div class="panier_ligneTotal">Total : {{ $panier->quantity * $panier->activity->price }} €</div>
                 </div>
             </div>
-            <hr class="w-8/12">
+            <hr>
+            @php $total += $panier->quantity * $panier->activity->price @endphp 
         @empty
             <p class="panier_noPanier">Il n'y à pas de panier ; <a href="{{route('home')}}">Retour à l'acueil</a></p>
         @endforelse
+
+        @if($total != 0)
+            Total = {{$total}}
+        @endif
     </div>
+
+
+    <script>
+        var shoppingCart = 
+            @if($shoppingCart == null) 
+                null; 
+            @else 
+                0; 
+            @endif
+
+        if(shoppingCart == null) {
+            shoppingCart = (localStorage.getItem('moqarpox_your_shopping_cart')) 
+                                ? JSON.parse(localStorage.getItem('moqarpox_your_shopping_cart'))
+                                : null;
+            if (shoppingCart != null) {
+                document.querySelector('#panier_row').innerHTML = "";
+
+                var pR = document.querySelector('#panier_row');
+                shoppingCart.forEach(panier => {
+                    pR.innerHTML += `
+                        <div class="col s12 row">
+                            <div class="col s12">
+                                <div class="">${panier.name} <span class="small-text">${panier.price} €</span></div>
+                                <button class="btn">Supprimer</button>
+                            </div>
+                            <div class="col s12">
+                                <button class="btn">-</button>
+                                <div    class="btn">${panier.quantity}</div>
+                                <button class="btn">+</button>
+                            </div>
+                            <div class="col s12">
+                                <div class="panier_ligneTotal">Total : ${panier.quantity * panier.price } €</div>
+                            </div>
+                        </div>
+                        <hr>
+                    `
+                });
+            }
+        }
+    </script>
+</div>
 @endsection
