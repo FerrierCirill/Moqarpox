@@ -15,12 +15,13 @@ class SocialController extends Controller
     public function callback($provider)
     {
         if(
-            'given_name'  == null ||
-            'family_name' == null ||
-            'email'       == null ||
-            'provider'    == null ||
-            'provider_id' == null )
+            strlen('given_name') < 1 ||
+            strlen('family_name') < 1 ||
+            strlen('email'      ) < 1 ||
+            strlen('provider'   ) < 1 ||
+            strlen('provider_id') < 1 )
             return redirect()->to('/')->withErrors(['Profil'.$provider.' incomplet. Nécessite un nom, prénom, mail']);
+
         var_dump($provider);
         $getInfo = Socialite::driver($provider)->user();
         var_dump($getInfo);
