@@ -25,7 +25,7 @@ class SocialController extends Controller
 
     }
     function createUser( $getInfo,$provider){
-        $user = User::where('provider_id', $getInfo->id)->first();
+       // $user = User::where('provider_id', $getInfo->id)->first();
 
        //if($provider=='google' )
 //           if(
@@ -34,7 +34,7 @@ class SocialController extends Controller
 //            'email'       == null ||
 //            'provider'    == null ||
 //            'provider_id' == null )
-            return redirect()->back()->withErrors(['msg_error', `Profil $provider incomplet. Nécessite un nom, prénom, mail`]);;
+            return redirect()->back()->withErrors(['msg_error', `Profil $provider incomplet. Nécessite un nom, prénom, mail`]);
 
         if (!$user) {
             $user = User::create([
