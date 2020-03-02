@@ -24,17 +24,17 @@ class SocialController extends Controller
         return redirect()->to('/home');
 
     }
-    function createUser(Request $getInfo,$provider){
+    function createUser( $getInfo,$provider){
         $user = User::where('provider_id', $getInfo->id)->first();
 
-       if($provider=='google')
-        $this->validate ($getInfo, [
-            'given_name' => 'required',
-            'family_name' => 'required',
-            'email' => 'required',
-            'provider' => 'required',
-            'provider_id' => 'required',
-        ]);
+       if($provider=='google' )
+           if(
+            'given_name'  == null ||
+            'family_name' == null ||
+            'email'       == null ||
+            'provider'    == null ||
+            'provider_id' == null )
+            return $user;
 
         if (!$user) {
             $user = User::create([
@@ -48,7 +48,7 @@ class SocialController extends Controller
             ]);
 
         }
-        die();
-      //  return $user;
+
+        return $user;
     }
 }
