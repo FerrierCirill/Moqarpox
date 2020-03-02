@@ -14,6 +14,13 @@ class SocialController extends Controller
 
     public function callback($provider)
     {
+        if(
+            'given_name'  == null ||
+            'family_name' == null ||
+            'email'       == null ||
+            'provider'    == null ||
+            'provider_id' == null )
+            return redirect()->to('/')->withErrors(['Profil'.$provider.' incomplet. Nécessite un nom, prénom, mail']);
         var_dump($provider);
         $getInfo = Socialite::driver($provider)->user();
         var_dump($getInfo);
@@ -26,15 +33,6 @@ class SocialController extends Controller
     }
     function createUser( $getInfo,$provider){
         $user = User::where('provider_id', $getInfo->id)->first();
-
-       if($provider=='google' )
-           if(
-            'given_name'  == null ||
-            'family_name' == null ||
-            'email'       == null ||
-            'provider'    == null ||
-            'provider_id' == null )
-            return redirect()->to('/')->withErrors(['Profil'.$provider.' incomplet. Nécessite un nom, prénom, mail']);
 
         if (!$user) {
             $user = User::create([
