@@ -25,7 +25,7 @@ class SocialController extends Controller
             isset($getInfo['email'      ]) ||
             isset($getInfo['provider'   ]) ||
             isset($getInfo['provider_id']) )
-            return redirect()->to('/')->withErrors(['Profil'.$provider.' incomplet. Nécessite un nom, prénom, mail']);
+            return redirect()->to('/register')->withErrors(['Profil'.$provider.' incomplet. Nécessite un nom, prénom, mail']);
 
         var_dump($getInfo);
         $user = $this->createUser($getInfo,$provider);
