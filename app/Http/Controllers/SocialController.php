@@ -14,16 +14,19 @@ class SocialController extends Controller
 
     public function callback($provider)
     {
-        if(
-            strlen('given_name') < 1 ||
-            strlen('family_name') < 1 ||
-            strlen('email'      ) < 1 ||
-            strlen('provider'   ) < 1 ||
-            strlen('provider_id') < 1 )
-            return redirect()->to('/')->withErrors(['Profil'.$provider.' incomplet. Nécessite un nom, prénom, mail']);
+
 
         var_dump($provider);
         $getInfo = Socialite::driver($provider)->user();
+
+        if(
+            strlen($getInfo['given_name']) < 1 ||
+            strlen($getInfo['family_name']) < 1 ||
+            strlen($getInfo['email'      ]) < 1 ||
+            strlen($getInfo['provider'   ]) < 1 ||
+            strlen($getInfo['provider_id']) < 1 )
+            return redirect()->to('/')->withErrors(['Profil'.$provider.' incomplet. Nécessite un nom, prénom, mail']);
+
         var_dump($getInfo);
         $user = $this->createUser($getInfo,$provider);
 
