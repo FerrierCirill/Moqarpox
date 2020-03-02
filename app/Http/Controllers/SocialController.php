@@ -24,7 +24,7 @@ class SocialController extends Controller
         return redirect()->to('/home');
 
     }
-    function createUser($getInfo,$provider){
+    function createUser(Request $getInfo,$provider){
         $user = User::where('provider_id', $getInfo->id)->first();
 
        if($provider=='google')
