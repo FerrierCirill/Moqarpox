@@ -26,16 +26,15 @@ class SocialController extends Controller
     }
     function createUser($getInfo,$provider){
         $user = User::where('provider_id', $getInfo->id)->first();
-        ;
-        echo '<br>';
+
        if($provider=='google')
-        var_dump($this->validate ($getInfo, [
+        $this->validate ($getInfo, [
             'given_name' => 'required',
             'family_name' => 'required',
             'email' => 'required',
             'provider' => 'required',
             'provider_id' => 'required',
-        ]));
+        ]);
 
         if (!$user) {
             $user = User::create([
