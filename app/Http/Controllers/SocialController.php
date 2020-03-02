@@ -22,7 +22,7 @@ class SocialController extends Controller
             isset($getInfo['given_name'])  ||
             isset($getInfo['family_name']) ||
             isset($getInfo['email'      ]) ||
-            isset($getInfo['provider'   ]) ||
+            isset($provider) ||
             isset($getInfo['provider_id']) )
             return redirect()->to('/register')->withErrors(['Profil'.$provider.' incomplet. Nécessite un nom, prénom, mail']);
 
