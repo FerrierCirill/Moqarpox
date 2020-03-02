@@ -15,8 +15,7 @@ class SocialController extends Controller
     public function callback($provider)
     {
 
-
-        var_dump($provider);
+      //  var_dump($provider);
         $getInfo = Socialite::driver($provider)->user();
 
         if(
@@ -27,7 +26,7 @@ class SocialController extends Controller
             isset($getInfo['provider_id']) )
             return redirect()->to('/register')->withErrors(['Profil'.$provider.' incomplet. Nécessite un nom, prénom, mail']);
 
-        var_dump($getInfo);
+       // var_dump($getInfo);
         $user = $this->createUser($getInfo,$provider);
 
         auth()->login($user);
