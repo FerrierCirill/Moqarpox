@@ -27,14 +27,14 @@ class SocialController extends Controller
     function createUser( $getInfo,$provider){
         $user = User::where('provider_id', $getInfo->id)->first();
 
-       if($provider=='google' )
-           if(
-            'given_name'  == null ||
-            'family_name' == null ||
-            'email'       == null ||
-            'provider'    == null ||
-            'provider_id' == null )
-            return $user;
+       //if($provider=='google' )
+//           if(
+//            'given_name'  == null ||
+//            'family_name' == null ||
+//            'email'       == null ||
+//            'provider'    == null ||
+//            'provider_id' == null )
+            return redirect()->back()->withErrors(['msg_error', `Profil $provider incomplet. Nécessite un nom, prénom, mail`]);;
 
         if (!$user) {
             $user = User::create([

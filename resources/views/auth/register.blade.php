@@ -6,6 +6,11 @@
 	</div>
 
 	<div class="col s12 m6 l4 white p-2 pt-3 pb-3">
+        @if($errors->any())
+            <h4>{{$errors->first()}}</h4>
+        @endif
+
+
 		<form method="POST" action="{{ route('register') }}">
 			@csrf
 
