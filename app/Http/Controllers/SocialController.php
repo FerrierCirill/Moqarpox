@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Validator,Redirect,Response,File;
 use Laravel\Socialite\Facades\Socialite;
 use App\User;
 class SocialController extends Controller
@@ -27,6 +26,8 @@ class SocialController extends Controller
     }
     function createUser($getInfo,$provider){
         $user = User::where('provider_id', $getInfo->id)->first();
+        ;
+        echo '<br>';
        if($provider=='google')
         var_dump($this->validate ($getInfo, [
             'given_name' => 'required',
