@@ -122,6 +122,9 @@
               <div class="input-field col s6">
                 <select id="subCategory" type="text" class="form-control @error('subCategory') is-invalid @enderror" name="subCategory" value="{{ old('subCategory') }}" autocomplete="subCategory" autofocus>
                   <option value="other" disabled selected> </option>
+                    @foreach($subCategories as $subCategorie)
+                        <option value="{{$subCategorie->id}}">{{$subCategorie->name}}</option>
+                    @endforeach
                 </select>
               <label>Sous-catégorie*</label>
 
