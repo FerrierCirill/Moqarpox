@@ -9,7 +9,22 @@ use App\ShoppingCart;
 class ShoppingCartController extends Controller
 {
     public function shoppingCart() {
-        $shoppingCart = (\Auth::check()) ? \Auth::user()->shoppingCarts : [];
+        session_start();
+        
+        if(\Auth::check()) {
+            $shoppingCart      = [];
+            $FuturShoppingCart = \Auth::user()->shoppingCarts;
+
+            foreach ($FuturShoppingCart as $value) {
+                $shoppingCart[] = Activity::findOrFail($value->activity_id);
+            }
+
+            $shoppingCart = array_merge($shoppingCart, $_SESSION['shoppingCart']);
+            unset($_SESSION['shoppingCart']);
+        }
+        else {
+            $shoppingCart = isset($_SESSION['shoppingCart']) ? $_SESSION['shoppingCart'] : [];
+        }
         
         return view('pages.shoppingCart.shoppingCart', [
             'shoppingCart' => $shoppingCart
@@ -24,39 +39,44 @@ class ShoppingCartController extends Controller
             $activity = Activity::findOrFail($request->input('activity_id'));
 
             if(\Auth::check()) {
-                $localStorage_sC = $request->input('shoppingCart');
-                $bdd_sC          = ShoppingCart::where('user_id', \Auth::user()->id)->get();
-                $localStorage_sC = ($localStorage_sC !== null) 
-                                        ? json_decode($localStorage_sC) 
-                                        : array();
-                foreach ($localStorage_sC as $key => $localStr) {
-                    foreach ($bdd_sC as $bddRow) {
-                        if ($localStr->id ==  $bddRow->activity_id) {
-                            $bddRow->quantity = $localStr->quantity + 1;
-                            unset($localStorage_sC[$key]);
-                        }
-                    }
-                }
-
-                foreach ($localStorage_sC as $localStr) {
-                    $shoppingCart = new ShoppingCart();
-                    $shoppingCart->quantity    = $localStr->quantity;
-                    $shoppingCart->activity_id = $localStr->id;
-                    $shoppingCart->user_id     = \Auth::user()->id;
-
-                    $shoppingCart->save();
-                }
+                // $localStorage_sC = $request->input('shoppingCart');
+                    // $bdd_sC          = ShoppingCart::where('user_id', \Auth::user()->id)->get();
+                    // $localStorage_sC = ($localStorage_sC !== null) 
+                    //                         ? json_decode($localStorage_sC) 
+                    //                         : array();
+                    //
+                    // foreach ($localStorage_sC as $key => $localStr) {
+                    //     foreach ($bdd_sC as $bddRow) {
+                    //         if ($localStr->id ==  $bddRow->activity_id) {
+                    //             $bddRow->quantity = $localStr->quantity + 1;
+                    //             unset($localStorage_sC[$key]);
+                    //         }
+                    //     }
+                    // }
+                    //
+                    // foreach ($localStorage_sC as $localStr) {
+                    //     $shoppingCart = new ShoppingCart();
+                    //     $shoppingCart->quantity    = $localStr->quantity;
+                    //     $shoppingCart->activity_id = $localStr->id;
+                    //     $shoppingCart->user_id     = \Auth::user()->id;
+                    //     $shoppingCart->save();
+                // }
 
                 $shoppingCart = new ShoppingCart();
-                $shoppingCart->quantity    = 1;
                 $shoppingCart->activity_id = $activity->id;
                 $shoppingCart->user_id     = \Auth::user()->id;
-
                 $shoppingCart->save();
+
                 return 'OK';
             }
             else {
-                return $activity;
+                session_start();
+                if (!isset($_SESSION['shoppingCart'])) {
+                    $_SESSION['shoppingCart'] = [];
+                }
+
+                $_SESSION['shoppingCart'][] = $activity;
+                return 'OK SESSION';
             }
         }
         abort(402);
@@ -68,5 +88,12 @@ class ShoppingCartController extends Controller
         return view('pages.shoppingCart.payment', [
             'user' => $user
         ]);
+    }
+
+    public function testSession(Request $request) {
+        // phpinfo();
+        session_start();
+        dd($_SESSION);
+        return '<br><br>O';
     }
 }

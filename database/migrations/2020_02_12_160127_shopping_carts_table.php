@@ -15,7 +15,6 @@ class ShoppingCartsTable extends Migration
     {
         Schema::create('shopping_carts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('quantity');
 
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('activity_id');

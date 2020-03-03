@@ -74,6 +74,8 @@ Route::get('/shoppingCart', 'ShoppingCartController@shoppingCart')->name('shoppi
 Route::post('/shoppingCart/addItem', 'ShoppingCartController@shoppingCartAdd')->name('shopping_cart_add');
 Route::get('/payment', 'ShoppingCartController@payment')->name('payment')->middleware('auth');
 
+Route::get('/testSession', 'ShoppingCartController@testSession');
+
 
 // ================== //
 //        Admin       //

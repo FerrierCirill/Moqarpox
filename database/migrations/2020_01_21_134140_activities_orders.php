@@ -23,7 +23,7 @@ class ActivitiesOrders extends Migration
             $table->string('friend_mail')->nullable();
 
             $table->unsignedBigInteger('order_id');
-            $table->unsignedBigInteger('activity_id');
+            $table->unsignedBigInteger('activity_id'); 
 
             $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('activity_id')->references('id')->on('activities');

@@ -14,48 +14,45 @@
                 },
                 method: 'post',
                 body: JSON.stringify({
-                    activity_id : shoppingCart_idActivity,
-                    shoppingCart: localStorage.getItem('moqarpox_your_shopping_cart') 
-                                        ? JSON.stringify(localStorage.getItem('moqarpox_your_shopping_cart'))
-                                        : null
+                    activity_id : shoppingCart_idActivity
                 })
         })
         .then(response => response.text())
         .then(result => {
             if (result != 'OK') {
-                ajoutOnLocalStorage(result);
+                alert('Erreur d\'ajout de votre produit à votre panier');
             } else {
                 messageOK();
-                localStorage.removeItem('moqarpox_your_shopping_cart');
             }
         })
         .catch(error => console.log('error', error));
     });
 
 
-    function ajoutOnLocalStorage(activity) {
-        activity     = JSON.parse(activity);
-        shoppingCart = localStorage.getItem('moqarpox_your_shopping_cart') ? JSON.parse(localStorage.getItem('moqarpox_your_shopping_cart')) : [] ;
+    // function ajoutOnLocalStorage(activity) {
+        //     activity     = JSON.parse(activity);
+        //     shoppingCart = localStorage.getItem('moqarpox_your_shopping_cart') ? JSON.parse(localStorage.getItem('moqarpox_your_shopping_cart')) : [] ;
 
-        let found =  false;
-        shoppingCart.forEach(row => {
-            if (row.id == activity.id) {
-                row.quantity++;
-                found = true;
-            }
-        });
-        if (!found) {
-            shoppingCart.push({
-                id      : activity.id,
-                name    : activity.name,
-                quantity: 1,
-                price   : activity.price
-            });
-        }
+        //     let found =  false;
+        //     shoppingCart.forEach(row => {
+        //         if (row.id == activity.id) {
+        //             row.quantity++;
+        //             found = true;
+        //         }
+        //     });
+        //     if (!found) {
+        //         shoppingCart.push({
+        //             id      : activity.id,
+        //             link    : activity.link1,
+        //             name    : activity.name,
+        //             quantity: 1,
+        //             price   : activity.price
+        //         });
+        //     }
 
-        localStorage.setItem('moqarpox_your_shopping_cart', JSON.stringify(shoppingCart));
-        messageOK();
-    }
+        //     localStorage.setItem('moqarpox_your_shopping_cart', JSON.stringify(shoppingCart));
+        //     messageOK();
+    // }
 
 
 

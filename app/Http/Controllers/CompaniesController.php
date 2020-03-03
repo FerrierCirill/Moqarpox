@@ -103,8 +103,8 @@ class CompaniesController extends Controller
 
 
         return view('pages.user.company.edit', [
-            'company' => $company,
-            'cities' => $cities,
+            'company'    => $company,
+            'cities'     => $cities,
             'categories' => $categories
         ]);
     }
