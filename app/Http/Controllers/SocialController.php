@@ -14,19 +14,16 @@ class SocialController extends Controller
 
     public function callback($provider)
     {
-
-      //  var_dump($provider);
         $getInfo = Socialite::driver($provider)->user();
 
         if(
-            isset($getInfo['given_name'])  ||
-            isset($getInfo['family_name']) ||
-            isset($getInfo['email'      ]) ||
-            isset($provider) ||
-            isset($getInfo['provider_id']) )
+            !isset($getInfo['given_name'])  ||
+            !isset($getInfo['family_name']) ||
+            !isset($getInfo['email'      ]) ||
+            !isset($provider) ||
+            !isset($getInfo['id']) )
             return redirect()->to('/register')->withErrors(['Profil'.$provider.' incomplet. Nécessite un nom, prénom, mail']);
 
-       // var_dump($getInfo);
         $user = $this->createUser($getInfo,$provider);
 
         auth()->login($user);
