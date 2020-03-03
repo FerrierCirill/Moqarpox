@@ -14,12 +14,13 @@ class ShoppingCartController extends Controller
         if(\Auth::check()) {
             $shoppingCart      = [];
             $FuturShoppingCart = \Auth::user()->shoppingCarts;
-
             foreach ($FuturShoppingCart as $value) {
                 $shoppingCart[] = Activity::findOrFail($value->activity_id);
             }
-
-            $shoppingCart = array_merge($shoppingCart, $_SESSION['shoppingCart']);
+            
+            if (isset($_SESSION['shoppingCart'])) {
+                $shoppingCart = array_merge($shoppingCart, $_SESSION['shoppingCart']);
+            }
             unset($_SESSION['shoppingCart']);
         }
         else {

@@ -1,87 +1,118 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row mt-3" id="panier_row">
-        @php $total = 0 @endphp 
-        @forelse($shoppingCart as $panier)
-            <div class="col s12">
-                <img src="{{ $panier->link0 }}" alt="{{ $panier->name }}" class="circle">
-                <span class="title">
-                    <h5>{{ $panier->name }}</h5>
-                </span>
+<div class="row h-full m-0">
+    @if($shoppingCart != [])
+        <div class="h-full col l8 m12 pl-5 pt-1">
+            <h4>Votre panier</h4>
+    @else
+        <div class="col s12">
+    @endif
+            <div class="row m-0 mt-3">
+                @php $total = 0 @endphp 
+                @forelse($shoppingCart as $panier)
+                    <div class="col s12">
+                        <div class="row m-0">
+                            <div class="col l4 circle shoppingCart-circle">
+                                <div class="shoppingCart-img" style="background:url('{{ $panier->link0 }}')">
 
-                <span class="small-text">{{ $panier->price }} €</span>
-
-                <a href="#!" class="secondary-content red-text text-darken-4">
-                    <i class="fas fa-times-circle"></i>
-                </a>
-            </div>
-            @php $total += $panier->price @endphp
-        @empty
-            <p class="panier_noPanier">Il n'y à pas de panier ; <a href="{{route('home')}}">Retour à l'acueil</a></p>
-        @endforelse
-
-        @if($total != 0)
-            Total = {{$total}}
-        @endif
-    </div>
-
-
-    {{-- <script>
-        var shoppingCart = 
-            @if($shoppingCart == null) 
-                null; 
-            @else 
-                0; 
-            @endif
-
-        if(shoppingCart == null) {
-            shoppingCart = (localStorage.getItem('moqarpox_your_shopping_cart')) 
-                                ? JSON.parse(localStorage.getItem('moqarpox_your_shopping_cart'))
-                                : null;
-            if (shoppingCart != null) {
-                document.querySelector('#panier_row').innerHTML = "<ul>";
-
-                var pR = document.querySelector('#panier_row');
-                shoppingCart.forEach(panier => {
-                    pR.innerHTML += `
-                        <div class="col s12 row">
-                            <div class="col s12">
-                                <h5>${panier.name} <span class="small-text">${panier.price} €</span></h5>
-                                <button class="btn">Supprimer</button>
+                                </div>
                             </div>
-                            <div class="col s12">
-                                <button class="btn">-</button>
-                                <div    class="btn">${panier.quantity}</div>
-                                <button class="btn">+</button>
+                            <div class="col l6">
+                                <span class="title">
+                                    <h5>{{ $panier->name }}</h5>
+                                </span>
                             </div>
-                            <div class="col s12">
-                                <div class="panier_ligneTotal">Total : ${(panier.quantity * panier.price).toFixed(2) } €</div>
+                            <div class="col l2">
+                                <span class="small-text">{{ $panier->price }} €</span>
+
+                                <a href="#!" class="">
+                                    <i class="fas fa-times-circle deep-orange-text text-darken-1"></i>
+                                </a>
                             </div>
                         </div>
-                        <hr>
+                    </div>
+                    <div class="shoppingCart-separator">
 
+                    </div>
+                    @php $total += $panier->price @endphp
+                @empty
+                    <div class="center-align col s12">
+                        <h4>Il n'y à pas de panier  <i class="far fa-frown"></i></h4>
+                        <p>Retouner <a href="{{route('home')}}">à l'acueil</a> pour chercher des activitées à ajouter ici</p>
+                    </div>
+                @endforelse
 
-                        <li class="collection-item avatar">
-                            <img src="images/yuna.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                                Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                        </li>
-                    `
-                });
-                document.querySelector('#panier_row').innerHTML = "</ul>";
-            }
-        }
-    </script> --}}
+                @if($total != 0)
+                    {{-- Total = {{$total}} --}}
+                @endif
+            </div>        
+        </div>
 
-    {{-- <p>
-        <button class="btn">-</button>
-        <div    class="btn">{{ $panier->quantity }}</div>
-        <button class="btn">+</button>
-    </p> --}}
+    @if($shoppingCart != [])
+        <div class="h-full col l4 m12 shoppingCart-rightZone pt-2 px-2">
+            @if(\Auth::check())
+                <h5 class="white-text mb-2">Total : {{$total}}</h5>
+                <div id="paypal-button-container">
+
+                </div>
+            @else
+
+            @endif
+            
+            <div class="pt-1">
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="fas fa-shield-alt"></i> Paiement sécurisé
+                        </div>
+                        <div class="collapsible-body shoppingCart-collapsible-body">
+                            <span>Lorem ipsum dolor sit amet.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="far fa-calendar-check"></i> Vos activitées assurées
+                        </div>
+                        <div class="collapsible-body shoppingCart-collapsible-body">
+                            <span>Lorem ipsum dolor sit amet.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="fas fa-shipping-fast"></i> Livraison instané
+                        </div>
+                        <div class="collapsible-body shoppingCart-collapsible-body">
+                            <span>Lorem ipsum dolor sit amet.</span>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    @endif
+        
 </div>
+
+<script src="https://www.paypal.com/sdk/js?client-id=access_token$sandbox$q887x2qg93khjss8$a27a096cca4ae5a9405962f6e298799e&currency=EUR"></script>
+<script>
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            return actions.order.create({ purchase_units: [{ amount: { value: {{$total}} } }] });
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                var xhr  = new XMLHttpRequest();
+                xhr.open("GET", "{{route('home')}}"+ data.orderID);
+                xhr.send();
+            });
+        },
+        style: {
+            layout:  'vertical',
+            color:   'blue',
+            shape:   'rect',
+            label:   'paypal'
+        },
+        }).render('#paypal-button-container');
+</script>
 @endsection
