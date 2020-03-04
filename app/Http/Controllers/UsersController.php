@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\ActivityOrder;
+use App\Order;
 
 class UsersController extends Controller
 {
@@ -16,8 +18,13 @@ class UsersController extends Controller
     }
 
     public function historical() {
+        $orders = Order::where('user_id', \Auth::user()->id)->orderBy('id', 'desc')->get();
 
-        return view('pages.user.historical');
+        // $orders = $orders->count() != 0 ? $orders : [] ;
+
+        return view('pages.user.historical', [
+            'orders' => $orders
+        ]);
     }
 
     public function postUserEdit(Request $request) {

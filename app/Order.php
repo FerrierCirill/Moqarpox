@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     public function activityOrder() {
-        return $this->belongsTo(ActivityOrder::class);
+        return $this->hasMany(ActivityOrder::class);
     }
 
     public function user() {
