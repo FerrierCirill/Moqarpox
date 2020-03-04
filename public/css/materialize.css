@@ -8849,6 +8849,13 @@ span.categori-show {
   background-color: #fff;
 }
 
+.nav-logo-svg {
+  height: 50px;
+  position: relative;
+  width: auto;
+  top: 3px;
+}
+
 header {
   background-size: cover !important;
   background-position: center !important;
