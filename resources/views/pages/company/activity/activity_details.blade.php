@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col s12 m4 l4 mt-2 center-align">
                 @if (isset($activity->link0))
-                    <img class="responsive-img" src="{{$activity->link0}}" alt="{{$activity->name}}">
+                    <img class="responsive-img" src="{{asset($activity->link0)}}" alt="{{$activity->name}}">
                 @else
                     <img class="responsive-img" src="https://via.placeholder.com/300" alt="{{$activity->name}}">
                 @endif
@@ -113,18 +113,18 @@
 
             @if(sizeof ($tab_pic) == 1)
                 <div class="col s12">
-                    <img src="{{$activity->link0}}" class="responsive-img" alt="Photo {{$activity->name}}" srcset="">
+                    <img src="{{asset($activity->link0)}}" class="responsive-img" alt="Photo {{$activity->name}}" srcset="">
                 </div>
             @elseif(sizeof ($tab_pic) == 2)
                 @foreach($tab_pic as $key => $img)
                     <div class="col s12 m6">
-                        <img src="{{$img}}" class="responsive-img" alt="Photo {{$key}} {{$activity->name}}" srcset="">
+                        <img src="{{asset($img)}}" class="responsive-img" alt="Photo {{$key}} {{$activity->name}}" srcset="">
                     </div>
                 @endforeach
             @elseif(sizeof ($tab_pic) == 3)
                 @foreach($tab_pic as $key => $img)
                     <div class="col s12 m4">
-                        <img src="{{$img}}" class="responsive-img" alt="Photo {{$key}} {{$activity->name}}" srcset="">
+                        <img src="{{asset($img)}}" class="responsive-img" alt="Photo {{$key}} {{$activity->name}}" srcset="">
                     </div>
                 @endforeach
             @endif

@@ -1,6 +1,6 @@
 <header class="parallax-container h-full">
     <div class="parallax">
-        <img src="{{$activity->link0}}">
+        <img src="{{asset($activity->link0)}}">
     </div>
 
     <div class="row">
@@ -10,7 +10,6 @@
             <div class="H2-container-header right">
                 <div class="home-price">{{$activity->price}} $</div>
                 <div class="note">
-                    {{-- {{$activity->note}} / 5<br> --}}
                     @include('components.star', ['note' => $activity->note])
                 </div>
                 <a href="{{route('activity_details', ['activity_id' => $activity->id ])}}"></a>
