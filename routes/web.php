@@ -24,10 +24,10 @@ Route::post('/activity/add', 'ActivitiesController@postAddActivity')->name('acti
 
 Route::get('/activity/{activity_id}', 'ActivitiesController@getActivity')->name('activity_details');
 
-Route::get('/activity/{activity_id}/{state}', 'ActivitiesController@changeState')->name('changeState');
-
 Route::get('/activity/confirm/{activity_id}', 'ActivitiesController@confirmActivity')->name('confirm_activity')->middleware('AuthIsAdmin');
 Route::get('/activity/refuse/{activity_id}', 'ActivitiesController@refuseActivity')->name('refuse_activity')->middleware('AuthIsAdmin');
+
+Route::get('/activity/{activity_id}/{state}', 'ActivitiesController@changeState')->name('change_state_activity'); //TODO middleware AuthIsProviderAndItsHisActivity
 
 
 // ================== //
@@ -47,9 +47,9 @@ Route::post('/company/moneyBack', 'CompaniesController@postMoneyBack')->name('co
 
 Route::get('/company/confirm/{company_id}', 'CompaniesController@confirmCompany')->name('confirm_company')->middleware('AuthIsAdmin');
 Route::get('/company/refuse/{company_id}', 'CompaniesController@refuseCompany')->name('refuse_company')->middleware('AuthIsAdmin');
+
 Route::get('/company/disable/{company_id}', 'CompaniesController@disableCompany')->name('disable_company')->middleware('AuthIsProviderAndItsHisCompany');
 Route::get('/company/enable/{company_id}', 'CompaniesController@confirmCompany')->name('enable_company')->middleware('AuthIsProviderAndItsHisCompany');
-
 
 // ================== //
 //        User        //

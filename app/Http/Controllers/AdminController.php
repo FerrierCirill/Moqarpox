@@ -12,14 +12,20 @@ class AdminController extends Controller
 {
     public function moderation() {
 
-        $activities = Activity::where('state', 0)->paginate(5);
-        $companies  = Company::where('state', 0)->paginate(5);
-        $comments   = Comment::where('state', 0)->paginate(5);
+        $activities = Activity::where('state', 0)->paginate();
+        $nombre_activities = Activity::where('state', 0)->get()->count();
+        $companies  = Company::where('state', 0)->paginate();
+        $nombre_companies = Company::where('state', 0)->get()->count();
+        $comments   = Comment::where('state', 0)->paginate();
+        $nombre_comments = Comment::where('state', 0)->get()->count();
 
         return view('pages.admin.moderation', [
             'activities' => $activities,
+            'nombre_activities' => $nombre_activities,
             'companies' => $companies,
-            'comments' => $comments
+            'nombre_companies' => $nombre_companies,
+            'comments' => $comments,
+            'nombre_comments' => $nombre_comments
         ]);
     }
 

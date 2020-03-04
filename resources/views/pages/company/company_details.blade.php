@@ -70,7 +70,7 @@
                             <div class="card-action">
                                 <a href="{{route('activity_details', ['activity_id' => $activity->id])}}">En voir plus</a>
                                 @isMyCompany($company->user_id)
-                                    <a class="btn" href="{{route('changeState', ['activity_id' => $activity->id, 'state', '-1'])}}">Désactiver</a>
+                                    <a class="btn" href="{{route('change_state_activity', ['activity_id' => $activity->id, 'state' => '-1'])}}">Désactiver</a>
                                 @endisMyCompany
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="card-action">
                                 @if ($activity->state == -1)
-                                    <a href="{{route('changeState', ['activity_id' => $activity->id, 'state', '1'])}}">Activer</a>
+                                    <a href="{{route('change_state_activity', ['activity_id' => $activity->id, 'state' => '1'])}}">Activer</a>
                                 @else
                                     Entreprise en cours de validation <i class="fas fa-hourglass-half"></i>
                                 @endif
