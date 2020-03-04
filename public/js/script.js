@@ -30,5 +30,10 @@
             M.Collapsible.init(elems);
         });
 
+    // NAV
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.sidenav');
+            M.Sidenav.init(elems);
+        });
 
 // END _ MATERIALIZE //

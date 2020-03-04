@@ -8849,6 +8849,13 @@ span.categori-show {
   background-color: #fff;
 }
 
+.nav-logo-svg {
+  height: 50px;
+  position: relative;
+  width: auto;
+  top: 3px;
+}
+
 header {
   background-size: cover !important;
   background-position: center !important;
@@ -9045,10 +9052,10 @@ input::-webkit-inner-spin-button {
     flex-direction: row;
   }
 }
-footer li {
+footer a {
   margin-left: 1em;
 }
-footer li::before {
+footer a::before {
   content: "• ";
 }
 

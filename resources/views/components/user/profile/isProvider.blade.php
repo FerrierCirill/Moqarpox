@@ -8,7 +8,7 @@
 <div class="row">
     @forelse($user->companies as $company)
         <div class="col s12 m6 l4">
-            <div class="card medium">
+            <div class="card">
                 <div class="card-image card-image-company">
                     @if (isset($company->link))
                         <img src="{{ asset($company->link) }}" alt="{{$company->name}}">
