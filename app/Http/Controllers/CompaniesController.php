@@ -26,16 +26,16 @@ class CompaniesController extends Controller
     public function postAddCompany(Request $request) {
 
         $this->validate ($request, [
-            'name' => 'required',
-            'phone' => 'required|numeric',
-            'email' => 'required',
-            'siret' => 'required',
-            'rib' => 'required',
-            'adress1' => 'required',
-            'lat' => 'required',
-            'lng' => 'required',
-           'link' => 'required|image',
-            'city_id' => 'required|exists:cities,id',
+            'name'        => 'required',
+            'phone'       => 'required|numeric',
+            'email'       => 'required',
+            'siret'       => 'required',
+            'rib'         => 'required',
+            'adress1'     => 'required',
+            'lat'         => 'required',
+            'lng'         => 'required',
+            'link'        => 'required|image',
+            'city_id'     => 'required|exists:cities,id',
             'description' => 'required',
             'category_id' => 'required|exists:categories,id',
         ]);
