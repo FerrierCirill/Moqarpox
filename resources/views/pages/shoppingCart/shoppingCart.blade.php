@@ -38,8 +38,8 @@
                     @php $total += $panier->price @endphp
                 @empty
                     <div class="center-align col s12">
-                        <h4>Il n'y à pas de panier  <i class="far fa-frown"></i></h4>
-                        <p>Retouner <a href="{{route('home')}}">à l'acueil</a> pour chercher des activitées à ajouter ici</p>
+                        <h4>Il n'y a pas de panier  <i class="far fa-frown"></i></h4>
+                        <p>Retouner <a href="{{route('home')}}">à l'accueil</a> pour trouver des activitées à ajouter ici</p>
                     </div>
                 @endforelse
 
