@@ -51,9 +51,9 @@
                             {{ $activity->name }}
                         </div>
                         <div class="col s4 right-align">
+                            <a href="{{ route('activity_details', ['activity_id' => $activity->id]) }}" class="btn"><i class="fas fa-book-open"></i></a>
                             <a href="{{ route('confirm_activity', ['activity_id' => $activity->id]) }}" class="btn"><i class="fas fa-check"></i></a>
                             <a href="{{ route('refuse_activity', ['activity_id' => $activity->id]) }}" class="btn"><i class="fas fa-ban"></i></a>
-                            <a href="{{ route('activity_details', ['activity_id' => $activity->id]) }}" class="btn"><i class="fas fa-book-open"></i></a>
                         </div>
                     </div>
                 </li>
