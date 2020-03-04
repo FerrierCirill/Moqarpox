@@ -257,7 +257,7 @@
                                @endif
                                hidden>
                         <label for="password">Mot de passe</label>
-                        <input type="text" name="password" required>
+                        <input type="password" name="password" required>
                         <div class="col s12"><button class="btn" type="submit">Enregistrer <i class="fas fa-save"></i></button></div>
                     </div>
                 </div>

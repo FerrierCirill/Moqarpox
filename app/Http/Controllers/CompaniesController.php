@@ -54,7 +54,6 @@ class CompaniesController extends Controller
             $company->description = $request->input('description');
             $company->category_id = $request->input('category_id');
             $company->user_id     = Auth::id();
-            $company->link        = $request->input('link_path');// public_path('images/upload/companies') . $imageName;
             $company->lat         = $request->input('lat');
             $company->lng         = $request->input('lng');
             $company->save();
@@ -111,6 +110,31 @@ class CompaniesController extends Controller
         ]);
     }
 
+    public function postEditCompany(Request $request, $company_id) {
+        $company = Company::findOrFail($company_id);
+
+        if($request->hasFile('link')) {
+            $company->name        = $request->input('name');
+            $company->phone       = $request->input('phone');
+            $company->email       = $request->input('email');
+            $company->siret       = $request->input('siret');
+            $company->rib         = $request->input('rib');
+            $company->adress1     = $request->input('adress1');
+            $company->adress2     = $request->input('adress2');
+            $company->city_id     = $request->input('city_id');
+            $company->description = $request->input('description');
+            $company->category_id = $request->input('category_id');
+            $company->lat         = $request->input('lat');
+            $company->lng         = $request->input('lng');
+
+            $path = $request->file('link')->storeAs('public/images/upload/companies', 'company_' . $company->id . '.' . $request->file('link')->extension());
+            $path = str_replace('public', 'storage', $path);
+            $company->link = $path;
+            $company->save();
+        }
+        return redirect()->route('company_details', ['company_id' => $company_id]);
+    }
+
     public function confirmCompany($company_id) {
         $company = Company::findOrFail($company_id);
         $company->state = 1;
@@ -125,10 +149,6 @@ class CompaniesController extends Controller
         $company->save();
 
         return redirect()->back();
-    }
-
-    public function postEditCompany($company_id) {
-        //ToDo
     }
 
     public function getMoneyBack() {
