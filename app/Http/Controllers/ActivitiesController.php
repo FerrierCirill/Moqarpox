@@ -35,20 +35,42 @@ class ActivitiesController extends Controller
             'link0' => 'required|image',
         ]);
 
-        $activity = new Activity();
-        $activity->name = $request->input('name');
-        $activity->price = $request->input('price');
-        $activity->description = $request->input('description');
-        $activity->resume = $request->input('resume');
-        $activity->description_perso = $request->input('description_perso');
-        $activity->information = $request->input('information');
-        $activity->subCategory_id = $request->input('subCategory_id');
-        $activity->company_id = $company_id;
-        $activity->save();
+        if($request->hasFile('link0')) {
+            $activity = new Activity();
+            $activity->name = $request->input('name');
+            $activity->price = $request->input('price');
+            $activity->description = $request->input('description');
+            $activity->resume = $request->input('resume');
+            $activity->description_perso = $request->input('description_perso');
+            $activity->information = $request->input('information');
+            $activity->subCategory_id = $request->input('subCategory_id');
+            $activity->company_id = $company_id;
+            $activity->save();
+
+            $path = $request->file('link0')->storeAs('public/images/upload/activities', 'activity_0_' . $activity->id . '.' . $request->file('link0')->extension());
+            $path = str_replace('public', 'storage', $path);
+            $activity->link0 = $path;
+            $activity->save();
+
+            if($request->hasFile('link1')){
+                $path = $request->file('link1')->storeAs('public/images/upload/activities', 'activity_1_' . $activity->id . '.' . $request->file('link1')->extension());
+                $path = str_replace('public', 'storage', $path);
+                $activity->link1 = $path;
+                $activity->save();
+            }
+            if($request->hasFile('link2')){
+                $path = $request->file('link2')->storeAs('public/images/upload/activities', 'activity_2_' . $activity->id . '.' . $request->file('link2')->extension());
+                $path = str_replace('public', 'storage', $path);
+                $activity->link2 = $path;
+                $activity->save();
+            }
 
         //Voir pour le cas d'envoie d'images
         //var_dump('test');
-        return  redirect()->route('user_details');
+        return redirect()->route('company_details', ['company_id' => $company_id]);
+        } else {
+            return redirect()->back();
+        }
     }
 
     public function getActivity($activity_id){
