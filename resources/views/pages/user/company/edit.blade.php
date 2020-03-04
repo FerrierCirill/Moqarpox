@@ -197,11 +197,7 @@
                         <textarea type="text"
                                   class="validate materialize-textarea"
                                   name="description" required
-                        > @if(old('description'))
-                                {{ old('description') }}
-                            @else
-                                {{ $company->description }}
-                            @endif</textarea>
+                        >@if(old('description')){{ old('description') }}@else{{ $company->description }}@endif</textarea>
 
                         @error('description')
                         <span class="invalid-feedback" role="alert">
