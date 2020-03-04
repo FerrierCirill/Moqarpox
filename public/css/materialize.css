@@ -9052,10 +9052,10 @@ input::-webkit-inner-spin-button {
     flex-direction: row;
   }
 }
-footer li {
+footer a {
   margin-left: 1em;
 }
-footer li::before {
+footer a::before {
   content: "• ";
 }
 
