@@ -8,9 +8,9 @@
             <div class="col s12">
                 <h1 class="h2-like">Créer une entreprise</h1>
             </div>
-            <form action="{{ route('company_add_post') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('company_add_post') }}" method="POST" enctype="multipart/form-data" class="col s12">
                 @csrf
-                <div class="col s12 m7">
+                <div class="col m12 l7">
                     <div class="row">
                         <div class="input-field col s12 m12">
                             <label>Nom de votre entreprise *</label>
@@ -196,7 +196,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s12 m5">
+                <div class="col m12 l5">
                     <style>
                         #mapid { height: 450px; }
                     </style>
