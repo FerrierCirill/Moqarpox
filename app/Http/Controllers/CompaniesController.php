@@ -40,36 +40,38 @@ class CompaniesController extends Controller
             'category_id' => 'required|exists:categories,id',
         ]);
 
+        if($request->hasFile('link')) {
 
-       // $imageName = time().'.'.$request->image->extension();
-      //  $request->image->move(public_path('images/upload/companies'), $imageName);
+            $company = new Company();
+            $company->name        = $request->input('name');
+            $company->phone       = $request->input('phone');
+            $company->email       = $request->input('email');
+            $company->siret       = $request->input('siret');
+            $company->rib         = $request->input('rib');
+            $company->adress1     = $request->input('adress1');
+            $company->adress2     = $request->input('adress2');
+            $company->city_id     = $request->input('city_id');
+            $company->description = $request->input('description');
+            $company->category_id = $request->input('category_id');
+            $company->user_id     = Auth::id();
+            $company->link        = $request->input('link_path');// public_path('images/upload/companies') . $imageName;
+            $company->lat         = $request->input('lat');
+            $company->lng         = $request->input('lng');
+            $company->save();
 
-      // var_dump(public_path('images/upload/companies') . $imageName);
+            $path = $request->file('link')->storeAs('public/images/upload/companies', 'company_' . $company->id . '.' . $request->file('link')->extension());
+            $path = str_replace('public', 'storage', $path);
+            $company->link = $path;
+            $company->save();
 
+            $user = User::findOrFail(Auth::id());
+            $user->state = 1;
+            $user->save();
 
-        $company = new Company();
-        $company->name        = $request->input('name');
-        $company->phone       = $request->input('phone');
-        $company->email       = $request->input('email');
-        $company->siret       = $request->input('siret');
-        $company->rib         = $request->input('rib');
-        $company->adress1     = $request->input('adress1');
-        $company->adress2     = $request->input('adress2');
-        $company->city_id     = $request->input('city_id');
-        $company->description = $request->input('description');
-        $company->category_id = $request->input('category_id');
-        $company->user_id     = Auth::id();
-        $company->link        = $request->input('link_path');// public_path('images/upload/companies') . $imageName;
-        $company->lat         = $request->input('lat');
-        $company->lng         = $request->input('lng');
-        $company->save();
-
-        $user = User::findOrFail(Auth::id());
-        $user->state = 1 ;
-        $user->save();
-
-        return redirect()->route('user_details'); //('company_details', ['company_id'=>$company->id]);
-
+            return redirect()->route('user_details');
+        } else {
+            return redirect()->back();
+        }
     }
 
     public function getCompany($company_id) {

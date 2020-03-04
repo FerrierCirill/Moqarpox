@@ -11,11 +11,10 @@
             <div class="card medium">
                 <div class="card-image card-image-company">
                     @if (isset($company->link))
-                        <img src="{{$company->link}} alt="{{$company->name}}">
+                        <img src="{{ asset($company->link) }}" alt="{{$company->name}}">
                     @else
                         <img src="https://via.placeholder.com/300" alt="{{$company->name}}">
                     @endif
-
                     <span class="card-title card-title-company hoverable">{{$company->name}}</span>
                 </div>
                 <div class="card-content">
