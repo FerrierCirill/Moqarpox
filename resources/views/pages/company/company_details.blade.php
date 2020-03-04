@@ -77,7 +77,7 @@
                     </div>
                 </div>
             @empty
-                <h3>Cette entreprise n'as pas encore de formule</h3>
+                <h3>Cette entreprise n'a pas encore de formule</h3>
             @endforelse
 
 
@@ -86,7 +86,7 @@
 
 
         @isMyCompany($company->user_id)
-            <h4>Vos activité en cours de validation ou désactiver</h4>
+            <h4>Vos activités en cours de validation ou désactivée</h4>
             <div class="row mt-2">
                 @forelse($activities_forValideOrNotActi as $activity)
                     <div class="col s12 m12 l4">
@@ -133,7 +133,7 @@
                         </div>
                     </div>
                 @empty
-                    <h5>Cette entreprise n'as pas d'activité en cours de validation ou désactiver</h5>
+                    <h5>Cette entreprise n'a pas d'activité en cours de validation ou désactivée</h5>
                 @endforelse
             </div>
         @endisMyCompany

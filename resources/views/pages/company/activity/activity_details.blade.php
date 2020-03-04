@@ -6,7 +6,7 @@
     <div class="light-green activity-nav">
         <div class="container valign-wrapper">
             <a href="{{route('company_details', ['company_id' => $activity->company->id])}}" class="breadcrumb">{{ $activity->company->name }}</a>
-            <a href="#!" class="breadcrumb">{{$activity->name}}</a>    
+            <a href="#!" class="breadcrumb">{{$activity->name}}</a>
         </div>
     </div>
 
@@ -21,13 +21,13 @@
                 <span class="activity-price  btn">{{$activity->price}} $</span>
             </div>
             <div class="col s12 m8 l8">
-                
+
                 <h1 class="activity-title">{{$activity->name}}</h1>
-                
+
                 <div class="mb-1">
-                    {{$activity->note}} / 5 @include('components.star', ['note' => $activity->note]) |   
+                    {{$activity->note}} / 5 @include('components.star', ['note' => $activity->note]) |
                     <span class="categori-show" style="background :{{ \App\SubCategory::find($activity->subCategory_id)->category->hexa }}"></span>
-                     {{ \App\SubCategory::find($activity->subCategory_id)->category->name }} > 
+                     {{ \App\SubCategory::find($activity->subCategory_id)->category->name }} >
                     <span>{{ \App\SubCategory::find($activity->subCategory_id)->name }}</span> |
                     <a href="#comments">{{sizeof($activity->comments)}} commentaires</a>
 
@@ -79,7 +79,7 @@
                                     <td>{{$activity->company->phone}}</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Siret  : </strong></td>
+                                    <td><strong>SIRET  : </strong></td>
                                     <td>{{$activity->company->siret}}</td>
                                 </tr>
                                 <tr>
@@ -137,19 +137,19 @@
             <div class="row">
 
                 @forelse($activity->comments as $comment)
-                    <p>Vous avez fait cette activité ? <a href="{{route('get_add_comment')}}">Déposé un commentaire ici !</a></p>
+                    <p>Vous avez participé à cette activité ? <a href="{{route('get_add_comment')}}">Déposer un commentaire ici !</a></p>
 
                     <div class="col s12 mb-2 comment">
-                        <span class="title">{{$comment->title}}</span> | 
-                            {{$comment->note}} / 5 @include('components.star', ['note' => $comment->note]) |  
+                        <span class="title">{{$comment->title}}</span> |
+                            {{$comment->note}} / 5 @include('components.star', ['note' => $comment->note]) |
                             {{$comment->created_at}}
                         <p>
                             {{$comment->message}}
                         </p>
-                    </div> 
+                    </div>
                 @empty
                     <div class="col s12">
-                        <p>Il n'y as pas encore de commentaire pour cette activité, <a href="{{route('get_add_comment')}}">déposé un commentaire ici</a></p>
+                        <p>Il n'y as pas encore de commentaire pour cette activité, <a href="{{route('get_add_comment')}}">déposer un commentaire ici</a></p>
                     </div>
                 @endforelse
             </div>

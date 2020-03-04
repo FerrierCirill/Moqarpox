@@ -80,7 +80,7 @@
                     </li>
                     <li>
                         <div class="collapsible-header">
-                            <i class="fas fa-shipping-fast"></i> Livraison instanée
+                            <i class="fas fa-shipping-fast"></i> Livraison instantanée
                         </div>
                         <div class="collapsible-body shoppingCart-collapsible-body">
                             <span>Recevez directement votre code par mail pour pouvoir en profiter n'importe quand !</span>

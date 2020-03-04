@@ -20,7 +20,7 @@
         .then(response => response.text())
         .then(result => {
             if (result != 'OK') {
-                alert('Erreur d\'ajout de votre produit à votre panier');
+                alert('Erreur lors de l\'ajout de votre produit à votre panier');
             } else {
                 messageOK();
             }

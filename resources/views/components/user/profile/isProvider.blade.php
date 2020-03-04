@@ -36,6 +36,6 @@
         </div>
     @empty
         <h4>Vous n'avez pas encore d'entreprise</h4>
-        <a class="btn mb-2" href="{{route('company_add_get')}}">Créé une entreprise <i class="fas fa-plus-square"></i></a>
+        <a class="btn mb-2" href="{{route('company_add_get')}}">Créez une entreprise <i class="fas fa-plus-square"></i></a>
     @endforelse
 </div>

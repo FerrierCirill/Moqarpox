@@ -1,6 +1,6 @@
 <div class="input-field">
     <label for   = "{{$from_include}}-category">
-        Categorie
+        Catégorie
     </label>
     <select id    = "{{$from_include}}-category">
             <option>Really long option that will likely overlap the chevron</option>

@@ -2,10 +2,10 @@
     @if ($state == 0)
         Entreprise en cours de validation <i class="fas fa-hourglass-half"></i>
     @elseif ($state == 1)
-        Entreprise validé <i class="fas fa-check"></i>
+        Entreprise validée <i class="fas fa-check"></i>
     @elseif ($state == 2)
-        Entreprise refusé <i class="fas fa-times"></i>
+        Entreprise refusée <i class="fas fa-times"></i>
     @elseif ($state == -1)
-        Entreprise Désactivé <i class="fas fa-eye-slash"></i>
+        Entreprise désactivée <i class="fas fa-eye-slash"></i>
     @endif
 </div>
