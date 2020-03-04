@@ -9,7 +9,7 @@
         <div class="col s12">
     @endif
             <div class="row m-0 mt-3">
-                @php $total = 0 @endphp 
+                @php $total = 0 @endphp
                 @forelse($shoppingCart as $panier)
                     <div class="col s12">
                         <div class="row m-0">
@@ -38,15 +38,15 @@
                     @php $total += $panier->price @endphp
                 @empty
                     <div class="center-align col s12">
-                        <h4>Il n'y à pas de panier  <i class="far fa-frown"></i></h4>
-                        <p>Retouner <a href="{{route('home')}}">à l'acueil</a> pour chercher des activitées à ajouter ici</p>
+                        <h4>Il n'y a pas de panier  <i class="far fa-frown"></i></h4>
+                        <p>Retouner <a href="{{route('home')}}">à l'accueil</a> pour trouver des activitées à ajouter ici</p>
                     </div>
                 @endforelse
 
                 @if($total != 0)
                     {{-- Total = {{$total}} --}}
                 @endif
-            </div>        
+            </div>
         </div>
 
     @if($shoppingCart != [])
@@ -59,7 +59,7 @@
             @else
 
             @endif
-            
+
             <div class="pt-1">
                 <ul class="collapsible">
                     <li>
@@ -67,7 +67,7 @@
                             <i class="fas fa-shield-alt"></i> Paiement sécurisé
                         </div>
                         <div class="collapsible-body shoppingCart-collapsible-body">
-                            <span>Lorem ipsum dolor sit amet.</span>
+                            <span>En utilisant PayPal, vous vous assurez que votre paiement est sécurisé par une des entreprises les plus populaire au monde !</span>
                         </div>
                     </li>
                     <li>
@@ -75,15 +75,15 @@
                             <i class="far fa-calendar-check"></i> Vos activitées assurées
                         </div>
                         <div class="collapsible-body shoppingCart-collapsible-body">
-                            <span>Lorem ipsum dolor sit amet.</span>
+                            <span>Soyez serein à propos de vos activités. Si vous avez un problème, nous mettrons tout en oeuvre pour vous aider !</span>
                         </div>
                     </li>
                     <li>
                         <div class="collapsible-header">
-                            <i class="fas fa-shipping-fast"></i> Livraison instané
+                            <i class="fas fa-shipping-fast"></i> Livraison instanée
                         </div>
                         <div class="collapsible-body shoppingCart-collapsible-body">
-                            <span>Lorem ipsum dolor sit amet.</span>
+                            <span>Recevez directement votre code par mail pour pouvoir en profiter n'importe quand !</span>
                         </div>
                     </li>
 
@@ -91,7 +91,7 @@
             </div>
         </div>
     @endif
-        
+
 </div>
 
 <script src="https://www.paypal.com/sdk/js?client-id=access_token$sandbox$q887x2qg93khjss8$a27a096cca4ae5a9405962f6e298799e&currency=EUR"></script>

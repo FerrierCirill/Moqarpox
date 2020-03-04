@@ -1,4 +1,4 @@
- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('head-needMapScript', 'ON')
 
@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col s12 m4 l3 mt-2 center-align">
                 @if (isset($company->link))
-                    <img class="responsive-img" src="{{$company->link}} alt="{{$company->name}}">
+                    <img class="responsive-img" src="{{ asset($company->link) }}" alt="{{$company->name}}">
                 @else
                     <img class="responsive-img" src="https://via.placeholder.com/300" alt="{{$company->name}}">
                 @endif
@@ -45,7 +45,7 @@
 
                             <div class="price">
                                 <span>
-                                    {{$activity->price}} $ 
+                                    {{$activity->price}} $
                                 </span>
                                 <span>
                                     <a class="btn" >
@@ -53,7 +53,7 @@
                                     </a>
                                 </span>
                             </div>
-                            
+
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
@@ -76,14 +76,14 @@
                         </div>
                     </div>
                 </div>
-            @empty       
+            @empty
                 <h3>Cette entreprise n'as pas encore de formule</h3>
             @endforelse
-            
+
 
             {{ $activities_activer->links('components.pagination') }}
         </div>
-        
+
 
         @isMyCompany($company->user_id)
             <h4>Vos activité en cours de validation ou désactiver</h4>
@@ -100,7 +100,7 @@
 
                                 <div class="price">
                                     <span>
-                                        {{$activity->price}} $ 
+                                        {{$activity->price}} $
                                     </span>
                                     <span>
                                         <a class="btn" >
@@ -108,7 +108,7 @@
                                         </a>
                                     </span>
                                 </div>
-                                
+
                             </div>
                             <div class="card-stacked">
                                 <div class="card-content">
@@ -132,7 +132,7 @@
                             </div>
                         </div>
                     </div>
-                @empty       
+                @empty
                     <h5>Cette entreprise n'as pas d'activité en cours de validation ou désactiver</h5>
                 @endforelse
             </div>
