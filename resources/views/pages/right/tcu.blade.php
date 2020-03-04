@@ -9,9 +9,8 @@
 
 
   <div class="row">
-<div class="offset-s1 col"> Mise à jour le 27 Janvier 2019 </div></div></br>
-
-  <h3> 1. Condtions Générales d'Utilisations Clients </h3>
+    <div class="offset-s1 col"> Mise à jour le 27 Janvier 2019 </div>
+  </div></br>
 
   <h4> a. Préambule </h4>
 
