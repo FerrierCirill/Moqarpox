@@ -29,7 +29,7 @@
 
         @isMyCompany($company->user_id)
             <a href="{{route('company_edit',  ['company_id' => $company->id])}}" class="btn">Modifier <i class="fas fa-edit"></i></a>
-            <a href="{{route('activity_add_get')}}" class="btn">Ajouter une activité <i class="fas fa-plus-square"></i></a>
+            <a href="{{route('activity_add_get', ['company_id' => $company->id])}}" class="btn">Ajouter une activité <i class="fas fa-plus-square"></i></a>
         @endisMyCompany
 
         <div class="row mt-2">

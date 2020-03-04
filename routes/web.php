@@ -19,8 +19,8 @@ Route::get('/termsConditionsSale', 'HomeController@TCS')->name('terms_conditions
 //     Activity       //
 // ================== //
 
-Route::get('/activity/add', 'ActivitiesController@getAddActivity')->name('activity_add_get')->middleware('AuthIsProvider');
-Route::post('/activity/add', 'ActivitiesController@postAddActivity')->name('activity_add_post')->middleware('AuthIsProvider');
+Route::get('/activity/add/{company_id}', 'ActivitiesController@getAddActivity')->name('activity_add_get')->middleware('AuthIsProviderAndItsHisCompany');
+Route::post('/activity/add/{company_id}', 'ActivitiesController@postAddActivity')->name('activity_add_post')->middleware('AuthIsProviderAndItsHisCompany');
 
 Route::get('/activity/{activity_id}', 'ActivitiesController@getActivity')->name('activity_details');
 
