@@ -101,11 +101,17 @@ Route::get('/api/marker/{address}', 'ApiController@returnLatlng')->name('api_lat
 
 
 // ================== //
-//     Route Google     //
+//     Route Google   //
 // ================== //
 
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
 Route::get('/callback/{provider}', 'SocialController@callback');
+
+// ================== //
+//     Route email    //
+// ================== //
+
+Route::get('send-mail','UsersController@sendEmailToUser');
 
 ///////////////////////////////////////
 
