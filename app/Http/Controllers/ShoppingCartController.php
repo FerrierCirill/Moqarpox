@@ -98,6 +98,8 @@ class ShoppingCartController extends Controller
         $texts         = $request->input('text');
         
         foreach($friend_names as $key => $friend_name) {
+            $shoppingCarts[$key]->email = \Auth::user()->email;
+            
             if ($friend_name         != null &&
                 $friend_emails[$key] != null &&
                 $texts[$key]         != null
@@ -109,10 +111,8 @@ class ShoppingCartController extends Controller
             }
         }
 
-        dd(\Auth::user()->shoppingCarts);
-
         return view('pages.shoppingCart.validate', [
-
+            'shoppingCarts' => $shoppingCarts
         ]);
     }
 

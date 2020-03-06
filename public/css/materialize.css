@@ -8106,7 +8106,7 @@ input[type=range]::-ms-thumb {
 }
 
 .small-text {
-  font-size: 0.9em;
+  font-size: 0.9em !important;
 }
 
 .h2-like {

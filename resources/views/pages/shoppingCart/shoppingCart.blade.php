@@ -61,9 +61,9 @@
 
 
                         </div>
-                        <div class="shoppingCart-separator">
 
-                        </div>
+                        <div class="shoppingCart-separator"></div>
+                        
                         @php $total += $panier->price @endphp
                     @empty
                         <div class="center-align col s12">
@@ -83,31 +83,6 @@
                 @if(\Auth::check())
                     <h5 class="white-text mb-2">Total : {{$total}} €</h5>
                     <button class="btn w-100" type="submit">Valider votre pannier</button>
-                    {{-- <div id="paypal-button-container">
-
-                    </div>
-
-                    <script src="https://www.paypal.com/sdk/js?client-id=access_token$sandbox$q887x2qg93khjss8$a27a096cca4ae5a9405962f6e298799e&currency=EUR"></script>
-                    <script>
-                        paypal.Buttons({
-                            createOrder: function(data, actions) {
-                                return actions.order.create({ purchase_units: [{ amount: { value: {{$total}} } }] });
-                            },
-                            onApprove: function(data, actions) {
-                                return actions.order.capture().then(function(details) {
-                                    var xhr  = new XMLHttpRequest();
-                                    xhr.open("GET", "{{route('home')}}"+ data.orderID);
-                                    xhr.send();
-                                });
-                            },
-                            style: {
-                                layout:  'vertical',
-                                color:   'blue',
-                                shape:   'rect',
-                                label:   'paypal'
-                            },
-                            }).render('#paypal-button-container');
-                    </script> --}}
                 @else
                     <div class="white-text">
                         <h5 class="mb-1">Pour continuer vous devez être connecté</h5>
@@ -115,6 +90,8 @@
                         <hr style="border:none">
                         <a class="btn w-100" href="{{ route('register') }}">Inscription</a>
                     </div>
+
+                    <h5 class="white-text mt-2 mb-2">Total : {{$total}} €</h5>
                 @endif
 
                 <div class="pt-1">
