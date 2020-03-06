@@ -22,7 +22,7 @@
 
       <div class="row">
         <div class="input-field col s8 offset-s2">
-          <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+          <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
           <label for="email">Votre mail</label>
           @error('email')
             <span class="invalid-feedback" role="alert">
@@ -34,7 +34,7 @@
 
       <div class="row">
         <div class="input-field col s8 offset-s2">
-          <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+          <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
           <label for="password">Mot de passe</label>
           <a href="{{ route('password.request') }}" class="right">Mot de passe oublié ?</a>
           @error('password')

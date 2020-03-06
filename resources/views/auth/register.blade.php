@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row no-margin inscription-flex">
-	<div class="col s12 m6 l8 no-padding inscription-img">
-	</div>
+<div class="row no-margin inscription-flex inscription-img	">
 
-	<div class="col s12 m6 l4 white p-2 pt-3 pb-3">
+	<div class="col s12 m6 l4 offset-m6 offset-l8 white p-2 pt-3 pb-6">
         @if($errors->any())
             <h4>{{$errors->first()}}</h4>
         @endif
@@ -17,12 +15,12 @@
 			<div class="row">
 				<div class="input-field col s10">
 					<select id="civility" type="text" class="form-control @error('civility') is-invalid @enderror" name="civility" value="{{ old('civility') }}" autocomplete="civility" autofocus>
-                        <option value="" disabled selected>Sélectionnez votre genre</option>
-                        <option value="man">Monsieur</option>
+            <option value="" disabled selected>Sélectionnez votre genre</option>
+            <option value="man">Monsieur</option>
 						<option value="woman">Madame</option>
 						<option value="other">Autre</option>
 					</select>
-					<label>Genre*</label>
+					<label>Genre</label>
 
 					@error('civility')
 					<span class="invalid-feedback" role="alert">
@@ -34,10 +32,10 @@
 
 			<div class="row">
 				<div class="input-field col s12 m6">
-					<input id="first_name" name="first_name" type="text" class="validate form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" required>
+					<input id="first_name" name="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" autocomplete="first_name">
 					<label for="first_name">Nom*</label>
 
-					@error('name')
+					@error('first_name')
 					<span class="invalid-feedback" role="alert">
 						<strong>{{ $message }}</strong>
 					</span>
@@ -45,7 +43,7 @@
 				</div>
 
 				<div class="input-field col s12 m6">
-					<input id="second_name" type="text" class="form-control @error('second_name') is-invalid @enderror" name="second_name" value="{{ old('second_name') }}" required autocomplete="second_name" autofocus>
+					<input id="second_name" type="text" class="form-control @error('second_name') is-invalid @enderror" name="second_name" value="{{ old('second_name') }}" autocomplete="second_name" autofocus>
 					<label for="second_name">Prénom*</label>
 
 					@error('second_name')
@@ -58,7 +56,7 @@
 
 			<div class="row">
 				<div class="input-field inline col s12">
-					<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+					<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
 					<label for="email">Email*</label>
 					@error('email')
 					<span class="invalid-feedback" role="alert">
@@ -70,7 +68,7 @@
 
 			<div class="row">
 				<div class="input-field inline col s8">
-					<input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+					<input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" autocomplete="phone" autofocus>
 					<label for="phone">Téléphone*</label>
 					@error('phone')
 					<span class="invalid-feedback" role="alert">
@@ -83,7 +81,7 @@
 			<div class="row">
 				<div class="input-field inline col s12 m6">
 					<div class="input-field col s12">
-						<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+						<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
 						<label for="password">Mot de passe*</label>
 						@error('password')
 						<span class="invalid-feedback" role="alert">
@@ -96,15 +94,20 @@
 
 				<div class="input-field inline col s12 m6">
 					<div class="input-field col s12">
-						<input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-						<label for="verif_password">Retapez votre mot de passe*</label>
+						<input id="password_confirmation" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" autocomplete="new-password_confirmation">
+						<label for="password_confirmation">Confirmer votre mdp*</label>
+						@error('password_confirmation')
+						<span class="invalid-feedback" role="alert">
+							<strong>{{ $message }}</strong>
+						</span>
+						@enderror
 					</div>
 				</div>
 			</div>
 
 			<div class="row">
 				<label class="col s12 center center-align">
-					<input type="checkbox" class="filled-in" required/>
+					<input type="checkbox" class="filled-in"/>
 					<span>Vous acceptez nos conditions d'utilisation</span>
 				</label>
 			</div>
@@ -121,18 +124,11 @@
 			</div>
 
 		</form>
-        <div class="row">
+		<hr/>
+        <div class="row pt-1">
             <div class="col s12 center">
-                <button class="btn waves-effect waves-light blue darken-4" type="submit" name="action">
-                    Inscription via Facebook
-                </button>
-            </div>
-        </div>
 
-        <hr>
-        <div class="form-group row mb-0">
-            <div class="col-md-8 offset-md-4">
-                <a href="{{ url('/auth/redirect/google') }}" class="btn btn-primary"><i class="fa fa-google"></i> Google</a>
+								<a href="{{ url('/auth/redirect/google') }}" class="btn waves-effect waves-light blue darken-4">Inscription via Google</a>
             </div>
         </div>
 
