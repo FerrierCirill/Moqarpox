@@ -58,7 +58,7 @@
                         onApprove: function(data, actions) {
                             return actions.order.capture().then(function(details) {
                                 var xhr  = new XMLHttpRequest();
-                                xhr.open("GET", "{{route('home')}}"+ data.orderID);
+                                xhr.open("GET", "{{route('home')}}?idOrderPaypal="+ data.orderID);
                                 xhr.send();
                             });
                         },
