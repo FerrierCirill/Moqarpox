@@ -13,7 +13,7 @@
             <h1>
                 {{$user->first_name}} <span class="uppercase"> {{$user->second_name}} </span>
             </h1>
-            <h3>Données personnel </h3>
+            <h3>Données personnelles </h3>
             <p>
                 <strong>Email :</strong> {{$user->email}}<br>
                 <strong>Téléphone :</strong> {{$user->phone}}<br>

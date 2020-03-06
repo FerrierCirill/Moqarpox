@@ -28,13 +28,13 @@
                                 </div>
                             @endforeach
                         </div>
-                    </li>  
+                    </li>
                 @endforeach
             </ul>
         @else
             <div class="center-align col s12">
                 <h4>Vous n'avez pas d'historique d'achat  <i class="far fa-frown"></i></h4>
-                <p>Retouner <a href="{{route('home')}}">à l'acueil</a> pour chercher des activitées à ajouter ici</p>
+                <p>Retouner <a href="{{route('home')}}">à l'accueil</a> pour chercher des activitées à ajouter ici</p>
             </div>
         @endif
     </div>
