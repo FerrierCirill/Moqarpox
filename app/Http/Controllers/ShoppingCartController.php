@@ -69,11 +69,25 @@ class ShoppingCartController extends Controller
 
     public function shoppingCartDelete(Request $request) {
         if(\Auth::check()) {
-            var_dump($request->input());die;
-            ShoppingCart::where('activity_id', $activity_id)->delete();
+            $item = ShoppingCart::where('activity_id', $request->input('id'))->first();
+            ShoppingCart::where('id', $item->id)->delete();
+
             return redirect()->back();
         } else {
+            session_start();
 
+            $panier = $_SESSION['shoppingCart'];
+            for($i = 0; $i < sizeof($panier); $i++) {
+                if($panier[$i]['id'] == $request->input('id')) {
+                    unset($panier[$i]);
+                    break;
+                }
+            }
+            $_SESSION['shoppingCart'] = [];
+            foreach ($panier as $item) {
+                array_push($_SESSION['shoppingCart'], $item);
+            }
+            return redirect()->back();
         }
     }
 
