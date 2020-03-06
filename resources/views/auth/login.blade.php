@@ -66,7 +66,7 @@
     </div>
     <div class="row">
       <div class="col s12 center">
-        <a href="{{ url('/auth/redirect/google') }}" class="btn btn-primary"><i class="fab fa-google"></i> Google</a>
+        <a href="{{ url('/auth/redirect/google') }}" class="btn btn-primary blue darken-4"><i class="fab fa-google"></i> Google</a>
       </div>
     </div>
   </div>

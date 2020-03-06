@@ -128,7 +128,7 @@
         <div class="row pt-1">
             <div class="col s12 center">
 
-								<a href="{{ url('/auth/redirect/google') }}" class="btn waves-effect waves-light blue darken-4">Inscription via Google</a>
+								<a href="{{ url('/auth/redirect/google') }}" class="btn waves-effect waves-light blue darken-4"><i class="fab fa-google"></i> Inscription via Google</a>
             </div>
         </div>
 
