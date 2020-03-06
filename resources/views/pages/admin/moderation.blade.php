@@ -8,13 +8,60 @@
 
 @section('content')
 
-
 <div class="container pt-2">
-  <h1> Panel admin</h1>
+  <h1> Panel Administration</h1>
+    <div class="row">
+        <div class="col s12 z-depth-1 px-1">
+            <h5>Statistiques</h5>
+            <div>
+                <div class="col s6 z-depth-1 mb-1">
+                    <div class="col s12 pb-1">
+                        <div class="col s8 pt-1">
+                            Nombres d'entreprises créer : <br>
+                            Nombres d'entreprises validé : <br>
+                            Nombres d'entreprises en attente : <br>
+                        </div>
+                        <div class="col s4 right-align pt-1">
+                            {{ $nombre_companies }}<br>
+                            {{ $nombre_companies_valide }} <br>
+                            {{ $nombre_companies_attente }} <br>
+                        </div>
+                    </div>
+                    <div class="col s12 pb-1">
+                        <div class="col s8">
+                            Nombres d'activités créer : <br>
+                            Nombres d'activités validé : <br>
+                            Nombres d'activités en attente : <br>
+                        </div>
+                        <div class="col s4 right-align">
+                            {{ $nombre_activities }} <br>
+                            {{ $nombre_activities_valide }} <br>
+                            {{ $nombre_activities_attente }} <br>
+                        </div>
+                    </div>
+                    <div class="col s12 pb-1">
+                        <div class="col s8">
+                            Nombres de commandes réalisé : <br>
+                            Moyenne de commandes par activité : <br>
+                        </div>
+                        <div class="col s4 right-align">
+                            TODO <br>
+                            TODO <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s6 z-depth-1 mb-1">
+                <div class="col s12 pb-1 pt-1">
+                    TODO
+                </div>
+            </div>
+        </div>
+    </div>
   <ul class="collapsible accordeon">
     <li>
       <div class="collapsible-header">
-        Structures en attente ({{ $nombre_companies }})
+        Structures en attente ({{ $nombre_companies_attente }})
       </div>
       <div class="collapsible-body">
         <h5 class="pb-2">Structures en attente</h5>
@@ -38,7 +85,7 @@
     </li>
     <li>
       <div class="collapsible-header">
-        Activités en attente ({{ $nombre_activities }})
+        Activités en attente ({{ $nombre_activities_attente }})
       </div>
       <div class="collapsible-body">
         <h5 class="pb-2">Activités en attente</h5>
@@ -66,7 +113,7 @@
     </li>
     <li>
       <div class="collapsible-header">
-        Commentaires en attente ({{ $nombre_comments }})
+        Commentaires en attente ({{ $nombre_comments_attente }})
       </div>
       <div class="collapsible-body">
         <h5 class="pb-2">Commentaires en attente</h5>

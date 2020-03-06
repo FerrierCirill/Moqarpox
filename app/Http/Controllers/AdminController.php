@@ -12,20 +12,31 @@ class AdminController extends Controller
 {
     public function moderation() {
 
-        $activities = Activity::where('state', 0)->paginate();
-        $nombre_activities = Activity::where('state', 0)->get()->count();
-        $companies  = Company::where('state', 0)->paginate();
-        $nombre_companies = Company::where('state', 0)->get()->count();
-        $comments   = Comment::where('state', 0)->paginate();
-        $nombre_comments = Comment::where('state', 0)->get()->count();
+        $activities = Activity::where('state', 0)->paginate(5);
+        $companies  = Company::where('state', 0)->paginate(5);
+        $comments   = Comment::where('state', 0)->paginate(5);
+
+        $numberOfCompanies = Company::get()->count();
+        $numberOfActivities = Activity::get()->count();
+
+        $numberOfCompaniesValidate = Company::where('state', 1)->get()->count();
+        $numberOfActivitiesValidate = Activity::where('state', 1)->get()->count();
+
+        $nombre_activities_attente = Activity::where('state', 0)->get()->count();
+        $nombre_companies_attente = Company::where('state', 0)->get()->count();
+        $nombre_comments_attente = Comment::where('state', 0)->get()->count();
 
         return view('pages.admin.moderation', [
             'activities' => $activities,
-            'nombre_activities' => $nombre_activities,
+            'nombre_activities_attente' => $nombre_activities_attente,
             'companies' => $companies,
-            'nombre_companies' => $nombre_companies,
+            'nombre_companies_attente' => $nombre_companies_attente,
             'comments' => $comments,
-            'nombre_comments' => $nombre_comments
+            'nombre_comments_attente' => $nombre_comments_attente,
+            'nombre_companies' => $numberOfCompanies,
+            'nombre_activities' => $numberOfActivities,
+            'nombre_companies_valide' => $numberOfCompaniesValidate,
+            'nombre_activities_valide' => $numberOfActivitiesValidate
         ]);
     }
 
