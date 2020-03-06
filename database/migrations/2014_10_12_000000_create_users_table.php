@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->smallInteger('state')->default(0); // 0: client - 1: prestataire
-            $table->string('civility');
+            $table->string('civility')->default('other');
             $table->string('facebook_api_token')->nullable(); // a supr ?
             $table->smallInteger('admin')->default(0);
             $table->string('provider')->nullable();

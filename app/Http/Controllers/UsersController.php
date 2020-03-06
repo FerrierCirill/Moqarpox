@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\ActivityOrder;
 use App\Order;
+use App\Mail\SendEmail;
+
 
 class UsersController extends Controller
 {
@@ -44,4 +47,15 @@ class UsersController extends Controller
         }
         return redirect()->back();
     }
+
+    public function sendEmailToUser() {
+
+        $to_email = "rajumesh52@gmail.com";
+
+        Mail::to($to_email)->send(new SendEmail);
+
+        return "<p> Your E-mail has been sent successfully. </p>";
+
+    }
+
 }

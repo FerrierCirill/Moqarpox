@@ -19,15 +19,15 @@ Route::get('/termsConditionsSale', 'HomeController@TCS')->name('terms_conditions
 //     Activity       //
 // ================== //
 
-Route::get('/activity/add', 'ActivitiesController@getAddActivity')->name('activity_add_get')->middleware('AuthIsProvider');
-Route::post('/activity/add', 'ActivitiesController@postAddActivity')->name('activity_add_post')->middleware('AuthIsProvider');
+Route::get('/activity/add/{company_id}', 'ActivitiesController@getAddActivity')->name('activity_add_get')->middleware('AuthIsProviderAndItsHisCompany');
+Route::post('/activity/add/{company_id}', 'ActivitiesController@postAddActivity')->name('activity_add_post')->middleware('AuthIsProviderAndItsHisCompany');
 
 Route::get('/activity/{activity_id}', 'ActivitiesController@getActivity')->name('activity_details');
 
 Route::get('/activity/confirm/{activity_id}', 'ActivitiesController@confirmActivity')->name('confirm_activity')->middleware('AuthIsAdmin');
 Route::get('/activity/refuse/{activity_id}', 'ActivitiesController@refuseActivity')->name('refuse_activity')->middleware('AuthIsAdmin');
 
-Route::get('/activity/{activity_id}/{state}', 'ActivitiesController@changeState')->name('change_state_activity'); //TODO middleware AuthIsProviderAndItsHisActivity
+Route::get('/activity/{activity_id}/{state}', 'ActivitiesController@changeState')->name('change_state_activity')->middleware('AuthIsProviderAndItsHisActivity');
 
 
 // ================== //
@@ -101,11 +101,17 @@ Route::get('/api/marker/{address}', 'ApiController@returnLatlng')->name('api_lat
 
 
 // ================== //
-//     Route Google     //
+//     Route Google   //
 // ================== //
 
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
 Route::get('/callback/{provider}', 'SocialController@callback');
+
+// ================== //
+//     Route email    //
+// ================== //
+
+Route::get('send-mail','UsersController@sendEmailToUser');
 
 ///////////////////////////////////////
 

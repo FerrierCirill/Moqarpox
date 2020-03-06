@@ -40,6 +40,7 @@ class SocialController extends Controller
                 'second_name'  =>$getInfo['family_name'],
                 'email'    => $getInfo->email,
                 'provider' => $provider,
+                'civility' => 'other',
                 'provider_id' => $getInfo->id,
                 'password' => $getInfo->id,
                 'email_verified_at' => date(now()),
