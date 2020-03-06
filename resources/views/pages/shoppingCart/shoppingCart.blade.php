@@ -3,34 +3,64 @@
 @section('content')
 <div class="row h-full m-0">
     @if($shoppingCart != [])
-        <div class="h-full col l8 m12 pl-5 pt-1">
+        <div class="h-full col l9 m12 pl-5 pt-1" style="max-height: 92vh;overflow-y: auto;">
             <h4>Votre panier</h4>
     @else
         <div class="col s12">
     @endif
-            <div class="row m-0 mt-3">
+            <div class="row m-0 mt-3 pr-1">
                 @php $total = 0 @endphp
-                @forelse($shoppingCart as $panier)
+                @forelse($shoppingCart as $key => $panier)
                     <div class="col s12">
-                        <div class="row m-0">
+
+                        <form method="POST" action="{{ route('shopping_cart_delete') }}">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="id" value="{{ $panier->id }}">
+                            <button type="submit">
+                                <i class="fas fa-times-circle deep-orange-text text-darken-1"></i>
+                            </button>
+                        </form>
+
+                        <div class="row m-0 p-1 grey lighten-4">
                             <div class="col l4 circle shoppingCart-circle">
-                                <div class="shoppingCart-img" style="background:url('{{ $panier->link0 }}')">
-
-                                </div>
+                                <div class="shoppingCart-img" style="background:url('{{ $panier->link0 }}')"></div>
                             </div>
-                            <div class="col l6">
-                                <span class="title">
-                                    <h5>{{ $panier->name }}</h5>
-                                </span>
-                            </div>
-                            <div class="col l2">
-                                <span class="small-text">{{ $panier->price }} €</span>
-
-                                <a href="#!" class="">
-                                    <i class="fas fa-times-circle deep-orange-text text-darken-1"></i>
+                            <div class="col l10 s12">
+                                <a href="{{route('activity_details', ['activity_id' => $panier->id])}}">
+                                    <h5 class="m-0">{{ $panier->name }}</h5>
                                 </a>
+                                
+                                <p>
+                                    {{$panier->note}} / 5 @include('components.star', ['note' => $panier->note]) |
+                                    <span class="categori-show" style="background :{{ \App\SubCategory::find($panier->subCategory_id)->category->hexa }}"></span>
+                                    {{ \App\SubCategory::find($panier->subCategory_id)->category->name }} >
+                                    <span>{{ \App\SubCategory::find($panier->subCategory_id)->name }}</span> |
+                                    {{sizeof($panier->comments)}} commentaires</a>
+                                </p> 
+                                
+                                
+                                <span class="shoppingCart-price">{{ $panier->price }} €</span> 
                             </div>
                         </div>
+
+                        <div class="row m-0 mt-1 p-1 grey lighten-4">
+                            <div class="row">
+                                <div class="input-field col l6 m6 s12">
+                                    <label>Nom</label>
+                                    <input name="friend_name[]" type="text" class="validate">
+                                </div>
+                                <div class="input-field col l6 m6 s12">
+                                    <label>Email</label>
+                                    <input name="friend_name[]" type="text" class="validate">
+                                </div>
+                                <div class="input-field col s12">
+                                    <label>Votre message</label>
+                                    <textarea name="" class="materialize-textarea"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="shoppingCart-separator">
 
@@ -50,12 +80,34 @@
         </div>
 
     @if($shoppingCart != [])
-        <div class="h-full col l4 m12 shoppingCart-rightZone pt-2 px-2">
+        <div class="h-full col l3 m12 shoppingCart-rightZone pt-2 px-2">
             @if(\Auth::check())
-                <h5 class="white-text mb-2">Total : {{$total}}</h5>
+                <h5 class="white-text mb-2">Total : {{$total}} €</h5>
                 <div id="paypal-button-container">
 
                 </div>
+
+                <script src="https://www.paypal.com/sdk/js?client-id=access_token$sandbox$q887x2qg93khjss8$a27a096cca4ae5a9405962f6e298799e&currency=EUR"></script>
+                <script>
+                    paypal.Buttons({
+                        createOrder: function(data, actions) {
+                            return actions.order.create({ purchase_units: [{ amount: { value: {{$total}} } }] });
+                        },
+                        onApprove: function(data, actions) {
+                            return actions.order.capture().then(function(details) {
+                                var xhr  = new XMLHttpRequest();
+                                xhr.open("GET", "{{route('home')}}"+ data.orderID);
+                                xhr.send();
+                            });
+                        },
+                        style: {
+                            layout:  'vertical',
+                            color:   'blue',
+                            shape:   'rect',
+                            label:   'paypal'
+                        },
+                        }).render('#paypal-button-container');
+                </script>
             @else
 
             @endif
@@ -94,25 +146,5 @@
 
 </div>
 
-<script src="https://www.paypal.com/sdk/js?client-id=access_token$sandbox$q887x2qg93khjss8$a27a096cca4ae5a9405962f6e298799e&currency=EUR"></script>
-<script>
-    paypal.Buttons({
-        createOrder: function(data, actions) {
-            return actions.order.create({ purchase_units: [{ amount: { value: {{$total}} } }] });
-        },
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                var xhr  = new XMLHttpRequest();
-                xhr.open("GET", "{{route('home')}}"+ data.orderID);
-                xhr.send();
-            });
-        },
-        style: {
-            layout:  'vertical',
-            color:   'blue',
-            shape:   'rect',
-            label:   'paypal'
-        },
-        }).render('#paypal-button-container');
-</script>
+
 @endsection

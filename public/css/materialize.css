@@ -8842,11 +8842,26 @@ span.categori-show {
 }
 
 .shoppingCart-rightZone {
-  background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+  background: #aed581;
 }
 
 .shoppingCart-collapsible-body {
   background-color: #fff;
+}
+
+.shoppingCart-price {
+  padding: 0.2em 0.8em;
+  color: #fff;
+  background: #aed581;
+  font-size: 1.5em;
+  border-radius: 10px;
+}
+
+.shoppingCart-delete {
+  position: relative;
+  top: 17px;
+  left: 10px;
+  font-size: 1.5em;
 }
 
 .nav-logo-svg {
