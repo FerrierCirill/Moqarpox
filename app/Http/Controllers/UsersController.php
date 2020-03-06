@@ -9,6 +9,7 @@ use App\ActivityOrder;
 use App\Order;
 use App\Mail\SendEmail;
 
+
 class UsersController extends Controller
 {
     public function getClient() {
@@ -56,4 +57,5 @@ class UsersController extends Controller
         return "<p> Your E-mail has been sent successfully. </p>";
 
     }
+
 }
