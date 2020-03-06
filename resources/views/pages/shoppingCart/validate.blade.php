@@ -43,19 +43,24 @@
                 </label>
             </p>
 
+            <div id="loader">
+
+            </div>
+
             <div id="paypal-button-container"></div>
 
             <script src="https://www.paypal.com/sdk/js?client-id=access_token$sandbox$q887x2qg93khjss8$a27a096cca4ae5a9405962f6e298799e&currency=EUR"></script>
             <script>
                 var OUI = false;
 
-                function cheackCGV() {
-                    OUI = true
-                    paypal.Buttons({
+                async function cheackCGV() {
+                    OUI = true;
+                    await paypal.Buttons({
                         createOrder: function(data, actions) {
                             return actions.order.create({ purchase_units: [{ amount: { value: {{$total}} } }] });
                         },
                         onApprove: function(data, actions) {
+                            document.getElementById('loader').innerHTML = `<div class="progress"><div class="indeterminate"></div></div>`
                             return actions.order.capture().then(function(details) {
                                 var xhr  = new XMLHttpRequest();
                                 xhr.open("GET", "{{route('home')}}?idOrderPaypal="+ data.orderID);
