@@ -10,14 +10,14 @@ class ShoppingCartController extends Controller
 {
     public function shoppingCart() {
         session_start();
-        
+
         if(\Auth::check()) {
             $shoppingCart      = [];
             $FuturShoppingCart = \Auth::user()->shoppingCarts;
             foreach ($FuturShoppingCart as $value) {
                 $shoppingCart[] = Activity::findOrFail($value->activity_id);
             }
-            
+
             if (isset($_SESSION['shoppingCart'])) {
                 $shoppingCart = array_merge($shoppingCart, $_SESSION['shoppingCart']);
             }
@@ -26,7 +26,7 @@ class ShoppingCartController extends Controller
         else {
             $shoppingCart = isset($_SESSION['shoppingCart']) ? $_SESSION['shoppingCart'] : [];
         }
-        
+
         return view('pages.shoppingCart.shoppingCart', [
             'shoppingCart' => $shoppingCart
         ]);
@@ -40,29 +40,6 @@ class ShoppingCartController extends Controller
             $activity = Activity::findOrFail($request->input('activity_id'));
 
             if(\Auth::check()) {
-                // $localStorage_sC = $request->input('shoppingCart');
-                    // $bdd_sC          = ShoppingCart::where('user_id', \Auth::user()->id)->get();
-                    // $localStorage_sC = ($localStorage_sC !== null) 
-                    //                         ? json_decode($localStorage_sC) 
-                    //                         : array();
-                    //
-                    // foreach ($localStorage_sC as $key => $localStr) {
-                    //     foreach ($bdd_sC as $bddRow) {
-                    //         if ($localStr->id ==  $bddRow->activity_id) {
-                    //             $bddRow->quantity = $localStr->quantity + 1;
-                    //             unset($localStorage_sC[$key]);
-                    //         }
-                    //     }
-                    // }
-                    //
-                    // foreach ($localStorage_sC as $localStr) {
-                    //     $shoppingCart = new ShoppingCart();
-                    //     $shoppingCart->quantity    = $localStr->quantity;
-                    //     $shoppingCart->activity_id = $localStr->id;
-                    //     $shoppingCart->user_id     = \Auth::user()->id;
-                    //     $shoppingCart->save();
-                // }
-
                 $shoppingCart = new ShoppingCart();
                 $shoppingCart->activity_id = $activity->id;
                 $shoppingCart->user_id     = \Auth::user()->id;
@@ -81,6 +58,16 @@ class ShoppingCartController extends Controller
             }
         }
         abort(402);
+    }
+
+    public function shoppingCartDelete(Request $request) {
+        if(\Auth::check()) {
+            var_dump($request->input());die;
+            ShoppingCart::where('activity_id', $activity_id)->delete();
+            return redirect()->back();
+        } else {
+
+        }
     }
 
     public function payment() {
