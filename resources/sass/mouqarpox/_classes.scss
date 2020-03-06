@@ -135,12 +135,31 @@ span.categori-show {
 }
 
 .shoppingCart-rightZone {
-    background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+    // background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+    background: $primary-color;
+    // background: $secondary-color;
+
 }
 
 .shoppingCart-collapsible-body {
     background-color: #fff;
 }
+
+.shoppingCart-price {
+    padding: 0.2em 0.8em;
+    color: #fff;
+    background: $primary-color;
+    font-size: 1.5em;
+    border-radius: 10px;
+}
+
+.shoppingCart-delete {
+    position: relative;
+    top: 17px;
+    left: 10px;
+    font-size: 1.5em;
+}
+
 
 .nav-logo-svg {
     height: 50px;

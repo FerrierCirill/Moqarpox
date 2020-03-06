@@ -20,6 +20,13 @@ class ShoppingCartController extends Controller
             
             if (isset($_SESSION['shoppingCart'])) {
                 $shoppingCart = array_merge($shoppingCart, $_SESSION['shoppingCart']);
+
+                foreach ($_SESSION['shoppingCart'] as $sessionStart) {
+                    $shoppingCartAdd = new ShoppingCart();
+                    $shoppingCartAdd->activity_id = $sessionStart->id;
+                    $shoppingCartAdd->user_id     = \Auth::user()->id;
+                    $shoppingCartAdd->save();
+                }
             }
             unset($_SESSION['shoppingCart']);
         }
@@ -77,7 +84,7 @@ class ShoppingCartController extends Controller
                 }
 
                 $_SESSION['shoppingCart'][] = $activity;
-                return 'OK SESSION';
+                return 'OK';
             }
         }
         abort(402);
