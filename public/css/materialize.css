@@ -8794,6 +8794,10 @@ input[type=range]::-ms-thumb {
   margin-left: 10rem !important;
 }
 
+.w-100 {
+  width: 100%;
+}
+
 .no-margin {
   margin: 0 !important;
 }
@@ -8862,6 +8866,9 @@ span.categori-show {
   top: 17px;
   left: 10px;
   font-size: 1.5em;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .nav-logo-svg {

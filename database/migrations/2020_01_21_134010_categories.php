@@ -20,7 +20,7 @@ class Categories extends Migration
             $table->string('hexa')->nullable();
 
             $table->timestamps();
-            $table->softDeletes();
+             
         });
     }
 

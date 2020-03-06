@@ -67,9 +67,9 @@ class ShoppingCartController extends Controller
         abort(402);
     }
 
-    public function shoppingCartDelete(Request $request) {
+    public function shoppingCartDelete($activity_id) {
         if(\Auth::check()) {
-            $item = ShoppingCart::where('activity_id', $request->input('id'))->first();
+            $item = ShoppingCart::where('activity_id', $activity_id)->first();
             ShoppingCart::where('id', $item->id)->delete();
 
             return redirect()->back();
@@ -89,6 +89,31 @@ class ShoppingCartController extends Controller
             }
             return redirect()->back();
         }
+    }
+
+    public function shoppingCartValidate(Request $request) {
+        $shoppingCarts  = \Auth::user()->shoppingCarts;
+        $friend_names  = $request->input('friend_name');
+        $friend_emails = $request->input('friend_name');
+        $texts         = $request->input('text');
+        
+        foreach($friend_names as $key => $friend_name) {
+            if ($friend_name         != null &&
+                $friend_emails[$key] != null &&
+                $texts[$key]         != null
+            ) {
+                $shoppingCarts[$key]->friend_name  = $friend_name;
+                $shoppingCarts[$key]->friend_email = $friend_emails[$key];
+                $shoppingCarts[$key]->text         = $texts[$key];
+                $shoppingCarts[$key]->save();
+            }
+        }
+
+        dd(\Auth::user()->shoppingCarts);
+
+        return view('pages.shoppingCart.validate', [
+
+        ]);
     }
 
     public function payment() {

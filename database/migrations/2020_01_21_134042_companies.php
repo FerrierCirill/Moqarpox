@@ -36,7 +36,7 @@ class Companies extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
 
             $table->timestamps();
-            $table->softDeletes();
+             
         });
     }
 

@@ -17,10 +17,10 @@ class ActivitiesOrders extends Migration
             $table->bigIncrements('id');
             $table->string('code')->unique();
             $table->integer('state')->default(1);
-            $table->text('text');
+            $table->text('text')->nullable();
             $table->string('email');
             $table->string('friend_name')->nullable();
-            $table->string('friend_mail')->nullable();
+            $table->string('friend_email')->nullable();
 
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('activity_id'); 
@@ -29,7 +29,7 @@ class ActivitiesOrders extends Migration
             $table->foreign('activity_id')->references('id')->on('activities');
 
             $table->timestamps();
-            $table->softDeletes();
+             
         });
     }
 
