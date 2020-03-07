@@ -1,14 +1,28 @@
 <div class="input-field m-0" style="height:70vh">
-    <div>
-        <label for="search">Recherche :</label>
-        <input list="results" type="text" id="search" oninput="setdatalist()" placeholder="Votre recherche">
-        <input list="type" id="type" type="text" hidden>
-        <datalist id="results"></datalist>
-        <button type="button" class="btn  mt-2" id="recherche" onclick="searchCompanies()">Rechercher</button>
+    <div class="row m-0">
+        <div class="col s12 m3">
+            <label for="what">Quoi ? </label>
+            <input type="text" id="what">
+        </div>
+        <div class="col s12 m3">
+            <label for="where">Où ? </label>
+            <input type="text" id="where"><br>
+        </div>
+        <div class="col s12 m3">
+            <label for="category">Catégorie : </label>
+            <select id="category" onchange="updateSubCategories()">
+                <option value="null" disabled>--</option>
+            </select>
+        </div>
+        <div class="col s12 m3">
+            <label for="subCategory">Sous-catégorie : </label>
+            <select id="subCategory">
+                <option value="null" disabled>--</option>
+            </select>
+        </div>
     </div>
-    
+    <button type="button" onclick="recherche()" class="btn right mt-1" style="width:42%">Rechercher</button>
 
-    <hr class="my-1">
     
-    <div id="activities" class="row"></div>
+    <div id="activities" class="row mt-5"></div>
 </div>

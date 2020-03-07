@@ -29,16 +29,14 @@
             <div class="bg-white px-2 pb-2 pt-1 mb-1">
                 <h1 class="H1-call-to-action mb-1">Trouvez des activités, des séjours et plus encore pour vous ou pour offrir !</h1>
 
-                <div class="input-field mt-3">
-                    <label for   = "generalInputSearch">Recherche</label>
-                    <input class="validate"
-                        id          = "generalInputSearch"
-                        type        = "text"
-                        placeholder = "Chercher une formule">
+                <div class="input-field mt-2">
+                    <input list="results" type="text" id="search" oninput="setdatalist()" placeholder="Ville, Activité, Domaine..." autocomplete="no">
+                    <input list="type" id="type" type="text" hidden>
+                    <datalist id="results"></datalist>
                 </div>
 
                 <div class="py-1 mb-2">
-                    <button class="btn right" style="width:42%">Rechercher</button>
+                    <a href="#scrollToMap" class="btn right" style="width:42%" id="recherche" onclick="searchCompanies()">Rechercher</a>
                 </div>
             </div>
 

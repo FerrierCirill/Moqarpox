@@ -8905,12 +8905,12 @@ header .note {
   border-radius: 0px;
 }
 .homeActivity:hover .homeActivity-div {
-  padding: 10px;
+  padding: 4px;
   border-radius: 10px;
   border: solid #aed581 3px;
 }
 .homeActivity:hover .homeActivity-div-img {
-  border-radius: 10px;
+  border-radius: 4px;
 }
 .homeActivity-main {
   min-height: 100px;
