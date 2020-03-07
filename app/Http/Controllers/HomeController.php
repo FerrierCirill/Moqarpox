@@ -45,11 +45,23 @@ class HomeController extends Controller
         $activity = Activity::inRandomOrder()->first();
         $categories = Category::get();
         $companies = Company::get();
+        
+        $companiesMap = Company::where('state', 1)->get();
+        $categories = Category::get();
+        $subCategories = SubCategory::get();
+        $maxPrice = Activity::orderBy('price', 'desc')->first();
+        $minPrice = Activity::orderBy('price', 'asc')->first();
 
         return view('pages.home', [
             'activity' => $activity,
             'companies' => $companies,
-            'categories' => $categories
+            'categories' => $categories,
+
+            'minPrice' => $minPrice,
+            'maxPrice' => $maxPrice,
+            'companiesMap' => $companiesMap,
+            'categories' => $categories,
+            'subCategories' => $subCategories
         ]);
     }
 

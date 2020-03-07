@@ -5,14 +5,24 @@
 
     <div class="row">
         <div class="col s12 l7 mb-2 ">
-            <h2 class="H2-title-header">{{$activity->name}}</h2>
+            <a href="{{route('activity_details', ['activity_id' => $activity->id])}}">
+                <h2 class="H2-title-header">{{$activity->name}}</h2>
+            </a>
+                       
 
-            <div class="H2-container-header right">
-                <div class="home-price">{{$activity->price}} $</div>
-                <div class="note">
-                    @include('components.star', ['note' => $activity->note])
+            
+            <div class="right">
+                <div class="H2-container-header">
+                    <div class="home-price">{{$activity->price}} €</div>
+                    <div class="note">
+                        @include('components.star', ['note' => $activity->note])
+                    </div>              
                 </div>
-                <a href="{{route('activity_details', ['activity_id' => $activity->id ])}}"></a>
+
+                <a  class="btn button-acheter-header w-100" 
+                    href="{{route('activity_details', ['activity_id' => $activity->id ])}}">
+                    Acheter
+                </a>
             </div>
         </div>
         <div class="col s12 l5">
@@ -63,7 +73,7 @@
             <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="transform: rotate(0.5turn)">
                 <style>
                     .scroll-mouse{
-                animation-duration: 2s;
+                animation-duration: 1.3s;
                     animation-name: scrolldown;
                     animation-iteration-count: infinite;
                 }

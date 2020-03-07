@@ -8864,10 +8864,11 @@ header .H2-title-header {
   margin-bottom: 0.5em;
 }
 header .H2-container-header {
-  padding: 0.8em;
+  padding: 0em 5em 0.6em;
   background-color: rgba(92, 107, 192, 0.8);
   color: #fff;
   margin-bottom: 0.5em;
+  width: fit-content;
 }
 header .home-price {
   text-align: right;
@@ -8878,6 +8879,30 @@ header .note {
   text-align: right;
   font-size: 1em;
   font-weight: 400;
+}
+
+.button-acheter-header {
+  min-width: 30%;
+}
+
+.homeActivity {
+  margin-bottom: 0.5rem;
+  background: #eee;
+}
+
+.homeActivity-img {
+  height: 150px;
+  background-position: center;
+  background-size: cover;
+}
+
+.homeActivity-main {
+  padding: 0rem 0.5rem 0.5rem;
+}
+
+#activities {
+  overflow-y: scroll;
+  max-height: 70vh;
 }
 
 .mycluster {

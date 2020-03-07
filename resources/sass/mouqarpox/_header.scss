@@ -25,10 +25,11 @@ header {
 
 
     .H2-container-header {
-        padding: 0.8em;
-        background-color: rgba($secondary-color, 0.8);
-        color: #fff;
-        margin-bottom: 0.5em;
+        padding         : 0em 5em 0.6em;
+        background-color: rgba(92, 107, 192, 0.8);
+        color           : #fff;
+        margin-bottom   : 0.5em;
+        width           : fit-content;
     }
 
     .home-price {
@@ -45,3 +46,28 @@ header {
     
 }
 
+.button-acheter-header {
+    // background-color: $primary-color;
+    min-width:30%;
+}
+
+
+.homeActivity {
+    margin-bottom: 0.5rem;
+    background: #eee;
+}
+
+.homeActivity-img {
+   height             : 150px;
+   background-position: center;
+   background-size    : cover;
+}
+
+.homeActivity-main {
+    padding: 0rem 0.5rem 0.5rem;
+}
+
+#activities {
+    overflow-y: scroll;
+    max-height: 70vh;
+}
