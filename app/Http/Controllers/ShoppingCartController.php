@@ -93,22 +93,28 @@ class ShoppingCartController extends Controller
 
     public function shoppingCartValidate(Request $request) {
         $shoppingCarts  = \Auth::user()->shoppingCarts;
-        $friend_names  = $request->input('friend_name');
-        $friend_emails = $request->input('friend_name');
-        $texts         = $request->input('text');
         
-        foreach($friend_names as $key => $friend_name) {
-            $shoppingCarts[$key]->email = \Auth::user()->email;
+        if($request->method() == "POST") {
+            $friend_names  = $request->input('friend_name');
+            $friend_emails = $request->input('friend_name');
+            $texts         = $request->input('text');
             
-            if ($friend_name         != null &&
-                $friend_emails[$key] != null &&
-                $texts[$key]         != null
-            ) {
-                $shoppingCarts[$key]->friend_name  = $friend_name;
-                $shoppingCarts[$key]->friend_email = $friend_emails[$key];
-                $shoppingCarts[$key]->text         = $texts[$key];
-                $shoppingCarts[$key]->save();
+            foreach($friend_names as $key => $friend_name) {
+                if ($friend_name         != null &&
+                    $friend_emails[$key] != null &&
+                    $texts[$key]         != null
+                ) {
+                    $shoppingCarts[$key]->friend_name  = $friend_name;
+                    $shoppingCarts[$key]->friend_email = $friend_emails[$key];
+                    $shoppingCarts[$key]->text         = $texts[$key];
+                    $shoppingCarts[$key]->save();
+                }
             }
+        }
+
+        foreach ($shoppingCarts as $shoppingCart) {
+            $shoppingCart->email = \Auth::user()->email;
+            $shoppingCart->save();
         }
 
         return view('pages.shoppingCart.validate', [
@@ -124,10 +130,14 @@ class ShoppingCartController extends Controller
         ]);
     }
 
-    public function testSession(Request $request) {
-        // phpinfo();
-        session_start();
-        dd($_SESSION);
-        return '<br><br>O';
+    public function thanks() {
+        return view('pages.shoppingCart.thanks');
     }
+
+    // public function testSession(Request $request) {
+    //     // phpinfo();
+    //     session_start();
+    //     dd($_SESSION);
+    //     return '<br><br>O';
+    // }
 }

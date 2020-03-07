@@ -1,0 +1,12 @@
+.thanks {
+    &-background {
+        background: url('../images/thanks.jpg');
+        background-position: bottom;
+        background-size: cover;
+        height: 94vh;
+    }
+
+    &-rounded {
+        border-radius: 20px;
+    }
+}

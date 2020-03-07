@@ -53,9 +53,9 @@
             <script>
                 var OUI = false;
 
-                async function cheackCGV() {
+                function cheackCGV() {
                     OUI = true;
-                    await paypal.Buttons({
+                    paypal.Buttons({
                         createOrder: function(data, actions) {
                             return actions.order.create({ purchase_units: [{ amount: { value: {{$total}} } }] });
                         },
@@ -63,8 +63,10 @@
                             document.getElementById('loader').innerHTML = `<div class="progress"><div class="indeterminate"></div></div>`
                             return actions.order.capture().then(function(details) {
                                 var xhr  = new XMLHttpRequest();
-                                xhr.open("GET", "{{route('home')}}?idOrderPaypal="+ data.orderID);
+                                xhr.open("GET", "{{route('payment')}}?idOrderPaypal="+ data.orderID);
                                 xhr.send();
+
+                                window.location.replace("{{route('thanks')}}");
                             });
                         },
                         style: {
