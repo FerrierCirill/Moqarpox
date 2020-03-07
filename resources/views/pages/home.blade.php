@@ -14,10 +14,10 @@
 
 	{{-- Map Zone --}}
 	<div class="row">
-		<div class="col s12 m4 l8 p-0">
+		<div class="col s12 m4 l5 p-0">
 			@include('components.map')
 		</div>
-		<div class="col s12 m8 l4">
+		<div class="col s12 m8 l7 pl-3">
 			@include('components.home.displayActivity')
 		</div>
 	</div>	

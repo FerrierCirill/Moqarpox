@@ -72,15 +72,23 @@
                             url = url.replace(':activity_id',json[i]['id']);
 
                             let html = 
-                                `<div class="homeActivity">
-                                    <div class="homeActivity-img" style="background:url('{{--asset('storage')--}}${json[i]['link0']}')"></div>
-                                    <div class="homeActivity-main">
-                                        <h6>${json[i]['name']}</h6>
-                                        ${json[i]['price']}
-                                        ${json[i]['description_perso']}
-                                        <a href="${url}">Voir l'activité</a>
+                                `<a href="${url}" class="col s12 m6 l4 ">
+                                    <div class="homeActivity w-100">
+                                        <div class="homeActivity-div">
+                                            <div class="homeActivity-div-img"
+                                                style="background:url('{{--asset('storage')--}}${json[i]['link0']}')">
+                                            </div>    
+                                        </div>
+                                        <div class="homeActivity-main">
+                                            <h6 class="black-text mb-0">${json[i]['name']}</h6>
+                                            <span class="homeActivity-price mt-0">${json[i]['price']} €</span>
+                                        </div>
+                                        <p class="grey-text mt-0">
+                                            Note : ${json[i]['note']} / 5
+                                        </p>
+                                        
                                     </div>
-                                </div>`;
+                                </a>`;
                             result.innerHTML += html;
                         }
                     } else {
