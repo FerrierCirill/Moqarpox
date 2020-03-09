@@ -1,4 +1,4 @@
-<div class="row mt-2" id="scrollToCategorie">
+<div class="row pt-5" id="scrollToCategorie">
     @forelse($categories as $category)
         <div class="col s12 m6 l4">
              <div class="card microSmallCard hoverable">

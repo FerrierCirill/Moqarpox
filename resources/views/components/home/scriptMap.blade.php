@@ -167,8 +167,8 @@
     generateMap();
     generateMultiMarker(companies);
 
-    searchCompanies = () => {
-        let value = document.getElementById('search').value;
+    searchCompanies = (value) => {
+        // let value = document.getElementById('search').value;
         let type = document.getElementById('type').value;
 
         let req = new XMLHttpRequest();
@@ -201,8 +201,8 @@
         req.send(null);
     };
 
-    setdatalist = () => {
-        let value = document.getElementById('search').value;
+    setdatalist = (value) => {
+        // let value = document.getElementById('search').value;
         let datalist = document.getElementById('results');
 
         let req = new XMLHttpRequest();
@@ -301,4 +301,21 @@
     };
 
     initialisation();
+
+
+
+    // Cirill
+    var switchSearchEngine_open = false
+
+    function switchSearchEngine() {
+        if (switchSearchEngine_open) {
+            switchSearchEngine_open = false;
+            document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:none');
+            document.getElementById('switchSearchEngine-0').setAttribute('style', 'display:flex');
+        } else {
+            switchSearchEngine_open = true;
+            document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:flex');
+            document.getElementById('switchSearchEngine-0').setAttribute('style', 'display:none');
+        }
+    }
 </script>

@@ -8814,6 +8814,10 @@ input[type=range]::-ms-thumb {
   width: 100% !important;
 }
 
+.fa-ellipsis-h {
+  cursor: pointer;
+}
+
 span.categori-show {
   display: inline-block;
   width: 12px;
