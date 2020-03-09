@@ -135,23 +135,33 @@
                 <h4>Commentaires :</h4>
             </div>
             <div class="row">
+                @php $test = false; @endphp
 
                 @forelse($activity->comments as $comment)
                     <p>Vous avez participé à cette activité ? <a href="{{route('get_add_comment')}}">Déposer un commentaire ici !</a></p>
 
-                    <div class="col s12 mb-2 comment">
-                        <span class="title">{{$comment->title}}</span> |
-                            {{$comment->note}} / 5 @include('components.star', ['note' => $comment->note]) |
-                            {{$comment->created_at}}
-                        <p>
-                            {{$comment->message}}
-                        </p>
-                    </div>
+                    @if($comment->state == 1)
+                        @php $test = true @endphp
+                        <div class="col s12 mb-2 comment">
+                            <span class="title">{{$comment->title}}</span> |
+                                {{$comment->note}} / 5 @include('components.star', ['note' => $comment->note]) |
+                                {{$comment->created_at}}
+                            <p>
+                                {{$comment->message}}
+                            </p>
+                        </div>
+                    @endif
                 @empty
+                    @php $test = true @endphp
                     <div class="col s12">
                         <p>Il n'y as pas encore de commentaire pour cette activité, <a href="{{route('get_add_comment')}}">déposer un commentaire ici</a></p>
                     </div>
                 @endforelse
+                @if($test == false)
+                    <div class="col s12">
+                        <p>Il n'y as pas encore de commentaire pour cette activité, <a href="{{route('get_add_comment')}}">déposer un commentaire ici</a></p>
+                    </div>
+                @endif
             </div>
 
         </div>

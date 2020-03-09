@@ -16,7 +16,7 @@ class ShoppingCartsTable extends Migration
         Schema::create('shopping_carts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('text')->nullable();
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('friend_name')->nullable();
             $table->string('friend_mail')->nullable();
 
@@ -27,7 +27,7 @@ class ShoppingCartsTable extends Migration
             $table->foreign('activity_id')->references('id')->on('activities');
 
             $table->timestamps();
-             
+
         });
     }
 
