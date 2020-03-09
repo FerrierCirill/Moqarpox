@@ -63,7 +63,7 @@
                             document.getElementById('loader').innerHTML = `<div class="progress"><div class="indeterminate"></div></div>`
                             return actions.order.capture().then(function(details) {
                                 var xhr  = new XMLHttpRequest();
-                                xhr.open("GET", "{{route('payment')}}?idOrderPaypal="+ data.orderID);
+                                xhr.open("GET", "{{route('payment')}}");
                                 xhr.send();
 
                                 window.location.replace("{{route('thanks')}}");

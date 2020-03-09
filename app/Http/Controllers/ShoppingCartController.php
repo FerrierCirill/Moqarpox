@@ -123,11 +123,7 @@ class ShoppingCartController extends Controller
     }
 
     public function payment() {
-        $user = \Auth::user();
-
-        return view('pages.shoppingCart.payment', [
-            'user' => $user
-        ]);
+        //TODO
     }
 
     public function thanks() {
