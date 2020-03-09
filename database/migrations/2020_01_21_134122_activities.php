@@ -30,11 +30,11 @@ class Activities extends Migration
             $table->unsignedBigInteger('subCategory_id');
             $table->unsignedBigInteger('company_id');
 
-            $table->foreign('subCategory_id')->references('id')->on('subCategories');
+            $table->foreign('subCategory_id')->references('id')->on('subcategories');
             $table->foreign('company_id')->references('id')->on('companies');
 
             $table->timestamps();
-             
+
         });
     }
 

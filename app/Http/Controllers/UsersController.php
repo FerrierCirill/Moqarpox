@@ -50,7 +50,7 @@ class UsersController extends Controller
 
     public function sendEmailToUser() {
 
-        $to_email = "rajumesh52@gmail.com";
+        $to_email = "flo-ti@hotmail.fr";
 
         Mail::to($to_email)->send(new SendEmail);
 
