@@ -45,7 +45,7 @@ class HomeController extends Controller
         $activity = Activity::inRandomOrder()->first();
         $categories = Category::get();
         $companies = Company::get();
-        
+
         $companiesMap = Company::where('state', 1)->get();
         $categories = Category::get();
         $subCategories = SubCategory::get();
@@ -114,6 +114,14 @@ class HomeController extends Controller
         } else {
             return redirect()->back();
         }
+    }
+
+    public function changeStateComment($comment_id, $state) {
+        $comment = Comment::findOrFail($comment_id);
+        $comment->state = $state;
+        $comment->save();
+
+        return redirect()->back();
     }
 
     public function getRepayment() {
