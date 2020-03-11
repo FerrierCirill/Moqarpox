@@ -124,15 +124,6 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
-    public function getRepayment() {
-        return view('pages/repayment');
-        //TODO
-    }
-
-    public function postRepayment(Request $request) {
-        //TODO
-    }
-
     /*FORCE CONTROLLER TO USE MIDDLEWARE AUTH BEFORE INITIALIZE
     public function __construct()
     {
