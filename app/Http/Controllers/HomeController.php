@@ -47,7 +47,7 @@ class HomeController extends Controller
         $companies = Company::get();
         
         $companiesMap = Company::where('state', 1)->get();
-        $categories = Category::get();
+        $categories = Category::where('id', '<>', 5)->get();
         $subCategories = SubCategory::get();
         $maxPrice = Activity::orderBy('price', 'desc')->first();
         $minPrice = Activity::orderBy('price', 'asc')->first();
