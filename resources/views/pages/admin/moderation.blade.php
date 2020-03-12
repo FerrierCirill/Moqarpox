@@ -159,6 +159,7 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 	<ul class="collapsible accordeon">
 		<li>
 			<div class="collapsible-header">
@@ -241,6 +242,89 @@
 			</div>
 		</li>
 	</ul>
+=======
+  <ul class="collapsible accordeon">
+    <li>
+      <div class="collapsible-header">
+        Structures en attente ({{ $nombre_companies_attente }})
+      </div>
+      <div class="collapsible-body">
+        <h5 class="pb-2">Structures en attente</h5>
+        <ul>
+            @foreach($companies as $company)
+                <li>
+                    <div class="row z-depth-1 pt-1 px-1 pb-1">
+                        <div class="col s8">
+                            {{ $company->name }}
+                        </div>
+                        <div class="col s4 right-align">
+                            <a href="{{ route('company_details', ['company_id' => $company->id]) }}" class="btn"><i class="fas fa-book-open"></i></a>
+                            <a href="{{ route('confirm_company', ['company_id' => $company->id]) }}" class="btn"><i class="fas fa-check"></i></a>
+                            <a href="{{ route('refuse_company', ['company_id' => $company->id]) }}" class="btn"><i class="fas fa-ban"></i></a>
+                        </div>
+                    </div>
+                </li>
+            @endforeach
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header">
+        Activités en attente ({{ $nombre_activities_attente }})
+      </div>
+      <div class="collapsible-body">
+        <h5 class="pb-2">Activités en attente</h5>
+        <ul>
+            @if (count($activities) >= 1)
+            @foreach($activities as $activity)
+                <li>
+                    <div class="row z-depth-1 pt-1 px-1 pb-1">
+                        <div class="col s8">
+                            {{ $activity->name }}
+                        </div>
+                        <div class="col s4 right-align">
+                            <a href="{{ route('activity_details', ['activity_id' => $activity->id]) }}" class="btn"><i class="fas fa-book-open"></i></a>
+                            <a href="{{ route('confirm_activity', ['activity_id' => $activity->id]) }}" class="btn"><i class="fas fa-check"></i></a>
+                            <a href="{{ route('refuse_activity', ['activity_id' => $activity->id]) }}" class="btn"><i class="fas fa-ban"></i></a>
+                        </div>
+                    </div>
+                </li>
+            @endforeach
+            @else
+              Aucune activité à valider
+            @endif
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header">
+        Commentaires en attente ({{ $nombre_comments_attente }})
+      </div>
+      <div class="collapsible-body">
+        <h5 class="pb-2">Commentaires en attente</h5>
+        <ul>
+            @if (count($comments) >= 1)
+            @foreach($comments as $comment)
+                <li>
+                    <div class="row z-depth-1 pt-1 px-1 pb-1">
+                        <div class="col s8">
+                            {{ $comment->title }} : {{ \Illuminate\Support\Str::limit($comment->message, $limit = 75, $end = '...') }}
+                        </div>
+                        <div class="col s4 right-align">
+                            <a href="{{ route('change_state_comment', ['comment_id' => $comment->id, 'state' => 1]) }}" class="btn" style="margin: 1px"><i class="fas fa-check"></i></a>
+                            <a href="{{ route('change_state_comment', ['comment_id' => $comment->id, 'state' => -1]) }}" class="btn" style="margin: 1px"><i class="fas fa-ban"></i></a>
+                        </div>
+                    </div>
+                </li>
+            @endforeach
+            @else
+              Aucun commentaire à valider !
+            @endif
+        </ul>
+      </div>
+    </li>
+  </ul>
+>>>>>>> 199ba375f1edf12caf3f493e1fb76cbf7c933755
 
   <div class="row">
     <div class="col s12 z-depth-1 px-1">

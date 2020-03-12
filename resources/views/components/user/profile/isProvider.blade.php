@@ -1,7 +1,7 @@
 <hr class="my-8">
 
 <a class="btn right mb-2" href="{{route('company_add_get')}}">Créer une entreprise <i class="fas fa-plus-square"></i></a>
-<a class="btn right mb-2 mr-1" href="{{route('company_moneyback_get')}}">Récupérer un code <i class="fas fa-money-bill-wave"></i></i></a>
+<a class="btn right mb-2 mr-1" href="{{ route('company_moneyback_get') }}">Récupérer un code <i class="fas fa-money-bill-wave"></i></a>
 
 <h3>Vos entreprises :</h3>
 

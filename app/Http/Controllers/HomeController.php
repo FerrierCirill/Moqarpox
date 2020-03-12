@@ -45,7 +45,7 @@ class HomeController extends Controller
         $activity = Activity::inRandomOrder()->first();
         $categories = Category::get();
         $companies = Company::get();
-        
+
         $companiesMap = Company::where('state', 1)->get();
         $categories = Category::where('id', '<>', 5)->get();
         $subCategories = SubCategory::get();
@@ -116,13 +116,12 @@ class HomeController extends Controller
         }
     }
 
-    public function getRepayment() {
-        return view('pages/repayment');
-        //TODO
-    }
+    public function changeStateComment($comment_id, $state) {
+        $comment = Comment::findOrFail($comment_id);
+        $comment->state = $state;
+        $comment->save();
 
-    public function postRepayment(Request $request) {
-        //TODO
+        return redirect()->back();
     }
 
     /*FORCE CONTROLLER TO USE MIDDLEWARE AUTH BEFORE INITIALIZE

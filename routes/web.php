@@ -62,6 +62,8 @@ Route::post('/user/edit', 'UsersController@postUserEdit')->name('user_edit')->mi
 Route::get('/comment/add', 'HomeController@getAddComment')->name('get_add_comment');     //MIDDLEWARE ?
 Route::post('/comment/add', 'HomeController@postAddComment')->name('post_add_comment');  //MIDDLEWARE ?
 
+Route::get('/comment/{comment_id}/{state}', 'HomeController@changeStateComment')->name('change_state_comment')->middleware('AuthIsAdmin');
+
 Route::get('/repayment', 'HomeController@getRepayment')->name('get_repayment');          //MIDDLEWARE ?
 Route::post('/repayment', 'HomeController@postRepayment')->name('post_repayment');       //MIDDLEWARE ?
 
@@ -77,7 +79,7 @@ Route::get(  '/shoppingCart/delItem/{activity_id}', 'ShoppingCartController@shop
 Route::post( '/shoppingCart/validate',              'ShoppingCartController@shoppingCartValidate')  ->name('shopping_cart_validate')->middleware('auth');
 Route::get(  '/shoppingCart/validate',              'ShoppingCartController@shoppingCartValidate')  ->name('shopping_cart_validate')->middleware('auth');
 
-Route::get(  '/shoppingCart/payment',               'ShoppingCartController@payment')               ->name('payment');              //->middleware('auth');
+Route::get('/shoppingCart/payment', 'ShoppingCartController@payment')->name('payment')->middleware('auth');
 Route::get(  '/shoppingCart/thanks',                'ShoppingCartController@thanks')                ->name('thanks');              //->middleware('auth');
 
 // Route::get('/testSession', 'ShoppingCartController@testSession');

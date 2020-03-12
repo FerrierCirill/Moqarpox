@@ -14,37 +14,37 @@ class SubCategoriesTableSeeder extends Seeder
         // ================================ //
             // Sport et aventure
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Stage de Pilotage',
             'category_id' => '1'
         ]);
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Activité Aérienne',
             'category_id' => '1'
         ]);
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Activité Nature',
             'category_id' => '1'
         ]);
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Activité Neige',
             'category_id' => '1'
         ]);
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Activité d\'Intérieur',
             'category_id' => '1'
         ]);
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Sport Nautique & Aquatique',
             'category_id' => '1'
         ]);
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Coach sportif 7 Fitness',
             'category_id' => '1'
         ]);
@@ -52,27 +52,27 @@ class SubCategoriesTableSeeder extends Seeder
         // ================================ //
             // Séjour & Weekend
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Week-end en Amoureux',
             'category_id' => '2'
         ]);
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Week-end Thalasso & Spa',
             'category_id' => '2'
         ]);
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Week-end Insolite',
             'category_id' => '2'
         ]);
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Week-end en Famille',
             'category_id' => '2'
         ]);
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Week-end en Famille',
             'category_id' => '2'
         ]);
@@ -80,22 +80,22 @@ class SubCategoriesTableSeeder extends Seeder
         // ================================ //
             // Beauté & Bien-être
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Soin et Massage',
             'category_id' => '3'
         ]);
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Spa et Thalasso',
             'category_id' => '3'
         ]);
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Beauté',
             'category_id' => '3'
         ]);
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Minceur et fitness',
             'category_id' => '3'
         ]);
@@ -103,22 +103,22 @@ class SubCategoriesTableSeeder extends Seeder
         // ================================ //
             // Gastronomie
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Restaurant',
             'category_id' => '4'
         ]);
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Dégustation',
             'category_id' => '4'
         ]);
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Atelier Culinaire',
             'category_id' => '4'
         ]);
 
-        DB::table('subCategories')->insert([
+        DB::table('subcategories')->insert([
             'name'        => 'Oenologie',
             'category_id' => '4'
         ]);

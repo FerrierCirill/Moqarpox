@@ -16,20 +16,20 @@ class ActivitiesOrders extends Migration
         Schema::create('activities_orders', function(Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('code')->unique();
-            $table->integer('state')->default(1);
+            $table->integer('state')->default(0); //0 : acheté | 1 : retracté | 2 : utilisé | 3: dépassé
             $table->text('text')->nullable();
             $table->string('email');
             $table->string('friend_name')->nullable();
             $table->string('friend_email')->nullable();
 
             $table->unsignedBigInteger('order_id');
-            $table->unsignedBigInteger('activity_id'); 
+            $table->unsignedBigInteger('activity_id');
 
             $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('activity_id')->references('id')->on('activities');
 
             $table->timestamps();
-             
+
         });
     }
 
