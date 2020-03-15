@@ -30,10 +30,10 @@
 
 <div style="display:none" id="switchSearchEngine-2">
     <div class="w-35">
-        <input type="text" id="what" placeholder="Quoi ?">
+        <input type="text" id="what" placeholder="Quoi* ?">
     </div>
     <div class="w-35">
-        <input type="text" id="where" placeholder="Où ?">
+        <input type="text" id="where" placeholder="Où* ? ">
     </div>
     <div>
         <i class="fas fa-ellipsis-h" onclick="switchSearchEngine()"></i>

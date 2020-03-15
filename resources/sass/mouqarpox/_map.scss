@@ -53,8 +53,7 @@
         background: -moz-linear-gradient(       90deg, rgba(255, 255, 255, 0) 0%, #F5F5F5 20%, #fff 100%);
         background: -webkit-linear-gradient(    90deg, rgba(255, 255, 255, 0) 0%, #F5F5F5 20%, #fff 100%);
         background: linear-gradient(            90deg, rgba(255, 255, 255, 0) 0%, #F5F5F5 20%, #fff 100%);
-        padding-left: 11%;
-        padding-right: 2rem;
+        padding: 10px 2rem 10px 11%;
 
         #activities {
             overflow-y: scroll;
