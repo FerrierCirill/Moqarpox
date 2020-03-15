@@ -26,17 +26,35 @@
         position: absolute;
     }
 
+    #switchSearchEngine-0,#switchSearchEngine-1,#switchSearchEngine-2 {
+        z-index: 151;
+        background: #fff;
+        margin-left: 3.5rem;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        height: fit-content;
+        width: 55%;
+        margin-top: 10px;
+        padding: 10px 20px;
+
+        .col {
+            margin: 0;
+        }
+    }
+
     .containerActivities {
-            z-index: 151;
-    width: 42%;
-    height: 80vh;
-    align-items: flex-end;
-    background: white;
-    background: -moz-linear-gradient(       90deg, rgba(255, 255, 255, 0) 0%, #F5F5F5 20%, #fff 100%);
-    background: -webkit-linear-gradient(    90deg, rgba(255, 255, 255, 0) 0%, #F5F5F5 20%, #fff 100%);
-    background: linear-gradient(            90deg, rgba(255, 255, 255, 0) 0%, #F5F5F5 20%, #fff 100%);
-    padding-left: 11%;
-    padding-right: 2rem;
+        z-index: 152;
+        width: 42%;
+        height: 80vh;
+        align-items: flex-end;
+        background: white;
+        background: -moz-linear-gradient(       90deg, rgba(255, 255, 255, 0) 0%, #F5F5F5 20%, #fff 100%);
+        background: -webkit-linear-gradient(    90deg, rgba(255, 255, 255, 0) 0%, #F5F5F5 20%, #fff 100%);
+        background: linear-gradient(            90deg, rgba(255, 255, 255, 0) 0%, #F5F5F5 20%, #fff 100%);
+        padding-left: 11%;
+        padding-right: 2rem;
 
         #activities {
             overflow-y: scroll;

@@ -8802,6 +8802,10 @@ input[type=range]::-ms-thumb {
   width: 100% !important;
 }
 
+.w-35 {
+  width: 35%;
+}
+
 .no-margin {
   margin: 0 !important;
 }
@@ -8948,8 +8952,24 @@ header .note {
   width: 100%;
   position: absolute;
 }
-#scrollToMap .containerActivities {
+#scrollToMap #switchSearchEngine-0, #scrollToMap #switchSearchEngine-1, #scrollToMap #switchSearchEngine-2 {
   z-index: 151;
+  background: #fff;
+  margin-left: 3.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  height: fit-content;
+  width: 55%;
+  margin-top: 10px;
+  padding: 10px 20px;
+}
+#scrollToMap #switchSearchEngine-0 .col, #scrollToMap #switchSearchEngine-1 .col, #scrollToMap #switchSearchEngine-2 .col {
+  margin: 0;
+}
+#scrollToMap .containerActivities {
+  z-index: 152;
   width: 42%;
   height: 80vh;
   align-items: flex-end;
@@ -8976,7 +8996,7 @@ header .note {
 }
 #scrollToMap .containerActivities #activities::-webkit-scrollbar-thumb {
   border-radius: 12px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
   background-color: #aed581;
 }
 #scrollToMap .containerActivities #activities .homeActivity {

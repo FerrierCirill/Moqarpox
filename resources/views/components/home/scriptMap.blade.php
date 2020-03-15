@@ -305,17 +305,36 @@
 
 
     // Cirill
-    var switchSearchEngine_open = false
+    var switchSearchEngine_open = 0
 
     function switchSearchEngine() {
-        if (switchSearchEngine_open) {
-            switchSearchEngine_open = false;
-            document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:none');
-            document.getElementById('switchSearchEngine-0').setAttribute('style', 'display:flex');
-        } else {
-            switchSearchEngine_open = true;
-            document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:flex');
-            document.getElementById('switchSearchEngine-0').setAttribute('style', 'display:none');
+        switchSearchEngine_open++;
+        let v = switchSearchEngine_open%3;
+        switch (v) {
+            case 0:
+                document.getElementById('switchSearchEngine-0').setAttribute('style', 'display:flex');
+
+                document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:none');
+                document.getElementById('switchSearchEngine-2').setAttribute('style', 'display:none');
+
+                break;
+
+            case 1:
+                document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:flex');
+
+                document.getElementById('switchSearchEngine-0').setAttribute('style', 'display:none');
+                document.getElementById('switchSearchEngine-2').setAttribute('style', 'display:none');
+                break;
+
+            case 2:
+                document.getElementById('switchSearchEngine-2').setAttribute('style', 'display:flex');
+
+                document.getElementById('switchSearchEngine-0').setAttribute('style', 'display:none');
+                document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:none');
+                break;
+
+            default:
+                break;
         }
     }
 </script>
