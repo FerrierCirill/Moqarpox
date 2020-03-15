@@ -43,7 +43,7 @@ header {
         font-size: 1em;
         font-weight: 400;
     }
-    
+
 }
 
 .button-acheter-header {
@@ -51,57 +51,8 @@ header {
     min-width:30%;
 }
 
-
-.homeActivity {
-    margin-bottom: 1rem;
-    padding: 0.5em;
-
-    &-div {
-        height  : 150px;
-        overflow: hidden;
-        padding: 0em;
-        transition: 0.17s;
-        background-color: #fff;
-        
-        &-img {
-            height             : inherit;
-            height             : -webkit-fill-available;
-            width              : 100%;
-            background-size    : cover !important;
-            background-position: center !important;
-            border-radius      : 0px;
-        }    
-    }
-
-    &:hover .homeActivity-div {
-       padding: 4px;
-       border-radius: 10px;
-       border: solid $primary-color 3px;
-
-       &-img {
-           border-radius: 4px;
-       }
-    }
-
-    &-main {
-        min-height: 100px;
-        border-bottom: solid 1px #eee;
-    }
-
-    &-price {
-        font-size: 1.5rem;
-        color: $primary-color;
-        font-weight: 700;
-        letter-spacing: -1px;
-    }
-}
-
-
-
-
-
-#activities {
-    overflow-y: scroll;
-    max-height: 70vh;
-    align-items: stretch;
+.parallax-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

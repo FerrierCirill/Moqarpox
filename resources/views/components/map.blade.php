@@ -1,2 +1,2 @@
-<div id="cluster" class="h-full">
+<div id="cluster" class="clusterHome">
 </div>

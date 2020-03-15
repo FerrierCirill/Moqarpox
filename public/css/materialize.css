@@ -8847,6 +8847,34 @@ span.categori-show {
   left: -6px;
 }
 
+.scroolBarDesign::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+.scroolBarDesign::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+.scroolBarDesign::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+}
+body::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+body::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #aed581;
+}
+
 header {
   background-size: cover !important;
   background-position: center !important;
@@ -8889,48 +8917,10 @@ header .note {
   min-width: 30%;
 }
 
-.homeActivity {
-  margin-bottom: 1rem;
-  padding: 0.5em;
-}
-.homeActivity-div {
-  height: 150px;
-  overflow: hidden;
-  padding: 0em;
-  transition: 0.17s;
-  background-color: #fff;
-}
-.homeActivity-div-img {
-  height: inherit;
-  height: -webkit-fill-available;
-  width: 100%;
-  background-size: cover !important;
-  background-position: center !important;
-  border-radius: 0px;
-}
-.homeActivity:hover .homeActivity-div {
-  padding: 4px;
-  border-radius: 10px;
-  border: solid #aed581 3px;
-}
-.homeActivity:hover .homeActivity-div-img {
-  border-radius: 4px;
-}
-.homeActivity-main {
-  min-height: 100px;
-  border-bottom: solid 1px #eee;
-}
-.homeActivity-price {
-  font-size: 1.5rem;
-  color: #aed581;
-  font-weight: 700;
-  letter-spacing: -1px;
-}
-
-#activities {
-  overflow-y: scroll;
-  max-height: 70vh;
-  align-items: stretch;
+.parallax-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .mycluster {
@@ -8944,6 +8934,87 @@ header .note {
   line-height: 40px;
   margin-top: -20px;
   margin-left: -20px;
+}
+
+#scrollToMap {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  justify-content: flex-end;
+}
+#scrollToMap .clusterHome {
+  z-index: 150;
+  height: 80vh;
+  width: 100%;
+  position: absolute;
+}
+#scrollToMap .containerActivities {
+  z-index: 151;
+  width: 42%;
+  height: 80vh;
+  align-items: flex-end;
+  background: white;
+  background: -moz-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #F5F5F5 20%, #fff 100%);
+  background: -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #F5F5F5 20%, #fff 100%);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #F5F5F5 20%, #fff 100%);
+  padding-left: 11%;
+  padding-right: 2rem;
+}
+#scrollToMap .containerActivities #activities {
+  overflow-y: scroll;
+  max-height: 100%;
+  align-items: stretch;
+  padding: 1em 2em 1em 0em;
+}
+#scrollToMap .containerActivities #activities::-webkit-scrollbar-track {
+  border-radius: 12px;
+  background-color: #fff;
+}
+#scrollToMap .containerActivities #activities::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+#scrollToMap .containerActivities #activities::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #aed581;
+}
+#scrollToMap .containerActivities #activities .homeActivity {
+  margin-bottom: 1rem;
+  padding: 0.5em;
+}
+#scrollToMap .containerActivities #activities .homeActivity-div {
+  height: 150px;
+  overflow: hidden;
+  padding: 0em;
+  transition: 0.17s;
+  background-color: #fff;
+}
+#scrollToMap .containerActivities #activities .homeActivity-div-img {
+  height: inherit;
+  height: -webkit-fill-available;
+  width: 100%;
+  background-size: cover !important;
+  background-position: center !important;
+  border-radius: 0px;
+}
+#scrollToMap .containerActivities #activities .homeActivity:hover .homeActivity-div {
+  padding: 4px;
+  border-radius: 10px;
+  border: solid #aed581 3px;
+}
+#scrollToMap .containerActivities #activities .homeActivity:hover .homeActivity-div-img {
+  border-radius: 4px;
+}
+#scrollToMap .containerActivities #activities .homeActivity-main {
+  min-height: 100px;
+  border-bottom: solid 1px #eee;
+}
+#scrollToMap .containerActivities #activities .homeActivity-price {
+  font-size: 1.5rem;
+  color: #aed581;
+  font-weight: 700;
+  letter-spacing: -1px;
 }
 
 .card-category {

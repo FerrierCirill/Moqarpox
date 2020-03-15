@@ -152,10 +152,11 @@ class CompaniesController extends Controller
     }
 
     public function getMoneyBack() {
+        dd('hello');
         return view('pages.company.get_customer_code');
     }
 
     public function postMoneyBack() {
-        //Todo
+        //TODO
     }
 }

@@ -30,27 +30,33 @@ class AdminController extends Controller
         $orders = ActivityOrder::get()->count();
 
         $NowYear = date('Y');
-        $NowMouth = date('m');
+        $NowMonth = date('m');
 
-        $nombre_companies_on_last_12_mouth  = [];
-        $nombre_activities_on_last_12_mouth = [];
-        $nombre_orders_on_last_12_mouth     = [];
+        $nombre_companies_on_last_12_month  = [];
+        $nombre_activities_on_last_12_month = [];
+        $nombre_orders_on_last_12_month     = [];
+        $mois_parcouru                      = [];
 
-        for ($i=0; $i < 12; $i++) { 
-            $nombre_companies_on_last_12_mouth[]  = Company:: whereMonth('created_at', $NowMouth)
+        $mois_en_francais = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Déc'];
+
+
+        for ($i=0; $i < 12; $i++) {
+            $mois_parcouru[] = $mois_en_francais[intval($NowMonth)-1] . ' ' . $NowYear;
+
+            $nombre_companies_on_last_12_month[]  = Company:: whereMonth('created_at', $NowMonth)
                                                             ->whereYear ('created_at', $NowYear)->get()->count();
-            $nombre_activities_on_last_12_mouth[] = Activity::whereMonth('created_at', $NowMouth)
+            $nombre_activities_on_last_12_month[] = Activity::whereMonth('created_at', $NowMonth)
                                                             ->whereYear ('created_at', $NowYear)->get()->count();
-            $nombre_orders_on_last_12_mouth[]= ActivityOrder::whereMonth('created_at', $NowMouth)
+            $nombre_orders_on_last_12_month[]= ActivityOrder::whereMonth('created_at', $NowMonth)
                                                             ->whereYear ('created_at', $NowYear)->get()->count();
 
 
-            if($NowMouth == 1) {
-                $NowMouth = 12;
+            if($NowMonth == 1) {
+                $NowMonth = 12;
                 $NowYear--;
             }
             else {
-                $NowMouth--;
+                $NowMonth--;
             }
         }
 
@@ -66,9 +72,10 @@ class AdminController extends Controller
             'nombre_activities'                  => $numberOfActivities,
             'nombre_companies_valide'            => $numberOfCompaniesValidate,
             'nombre_activities_valide'           => $numberOfActivitiesValidate,
-            'nombre_companies_on_last_12_mouth'  => $nombre_companies_on_last_12_mouth,
-            'nombre_activities_on_last_12_mouth' => $nombre_activities_on_last_12_mouth,
-            'nombre_orders_on_last_12_mouth'     => $nombre_orders_on_last_12_mouth
+            'nombre_companies_on_last_12_month'  => array_reverse($nombre_companies_on_last_12_month),
+            'nombre_activities_on_last_12_month' => array_reverse($nombre_activities_on_last_12_month),
+            'nombre_orders_on_last_12_month'     => array_reverse($nombre_orders_on_last_12_month),
+            'mois_parcouru'                      => array_reverse($mois_parcouru)
         ]);
     }
 

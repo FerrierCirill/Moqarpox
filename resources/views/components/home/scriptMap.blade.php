@@ -4,7 +4,7 @@
     function getSubCategories() {return @json($subCategories);}
 
     let companies = getCompanies();
-    let map = L.map('cluster').setView([46.90296, 1.90925], 5);
+    let map = L.map('cluster').setView([46.93517913608688, 6.998149223314707], 6);
 
     let cyanIcon = L.icon({iconUrl: '{{ asset('images/geo/gpsCyan.svg') }}',
         iconSize:     [38, 95], // size of the icon
@@ -19,7 +19,7 @@
     generateMap = () => {
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            minZoom: 5.5,
+            minZoom: 6,
             maxZoom: 17,
             id: 'mapbox/streets-v11',
             accessToken: 'pk.eyJ1IjoibjRpdmx5cyIsImEiOiJjazU4YThxYTcwYzZrM21tdXRxOXk5b3J6In0.F8-mFYmaIsB1PJMMTrzu6Q',
@@ -68,13 +68,13 @@
                             let url = '{{route('activity_details', [':activity_id'])}}';
                             url = url.replace(':activity_id',json[i]['id']);
 
-                            let html = 
+                            let html =
                                 `<a href="${url}" class="col s12 m6 l4 ">
                                     <div class="homeActivity w-100">
                                         <div class="homeActivity-div">
                                             <div class="homeActivity-div-img"
                                                 style="background:url('{{--asset('storage')--}}${json[i]['link0']}')">
-                                            </div>    
+                                            </div>
                                         </div>
                                         <div class="homeActivity-main">
                                             <h6 class="black-text mb-0">${json[i]['name']}</h6>
@@ -83,7 +83,7 @@
                                         <p class="grey-text mt-0">
                                             Note : ${json[i]['note']} / 5
                                         </p>
-                                        
+
                                     </div>
                                 </a>`;
                             result.innerHTML += html;
@@ -248,7 +248,7 @@
         }
     };
 
-    
+
     recherche = () => {
         let category_id = document.getElementById('category').value;
         let subCategory_id = document.getElementById('subCategory').value;
