@@ -11,11 +11,118 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
-    public function mapUpdate($category_id, $subCategory_id, $what, $where) {
+    public function mapUpdate($category_id, $subCategory_id, $what, $where, $min, $max) {
         /*if ($category_id != 'null' && $subCategory_id != 'null' && $what != 'null' && $where != 'null') {
             $companies = Company::where([['category_id','=', $category_id]['subCategory_id', '=', $subCategory_id]['']])
         }*/
-        return Company::where('category_id', '=', $category_id)->get();
+
+        if ($subCategory_id != 'null') {
+            $subCategory =  SubCategory::find($subCategory_id);
+            $activities  =  $subCategory->activities;
+            $category = [];
+            foreach ($activities as $activity) {
+                $category[] = $activity->company; // 1
+            }
+        }
+        else if ($category_id != 'null') {
+            $category = [];
+            $category[] = Company::where('category_id', '=', $category_id)->get(); // 1
+        }
+
+        if ($what != 'null') {
+            $activities = Activity::where('name', 'LIKE', '%'.$what.'%')->get();
+            $whats = [];
+            foreach ($activities as $activity) {
+                $whats[] = $activity->company; // 2
+            }
+
+        }
+
+        if ($where != 'null') {
+            $cities = City::where('name', 'LIKE', '%'.$where.'%')->get();
+            $wheres = [];
+            foreach ($cities as $city) {
+                $wheres[] = Company::where('city_id', $city->id); // 3
+            }
+        }
+
+        /////////////////////////////
+
+        $ctg = ($subCategory_id != 'null' || $category_id != 'null');
+
+        if (
+            $ctg   &&
+            $where != 'null' &&
+            $what  != 'null'
+        ){
+            $tpm_result = array_unique(
+                        array_intersect($category, $whats, $wheres)
+                    );
+        }
+
+        else if (
+            $ctg   &&
+            $where != 'null'
+
+        ){
+            $tpm_result = array_unique(
+                        array_intersect($category,  $wheres)
+                    );
+        }
+
+        else if (
+            $ctg   &&
+            $what != 'null'
+
+        ){
+            $tpm_result = array_unique(
+                        array_intersect($category, $whats)
+                    );
+        }
+
+        else if (
+            $ctg   &&
+            $where != 'null' &&
+            $what  != 'null'
+        ){
+            $tpm_result = array_unique(
+                        array_intersect($whats, $wheres)
+                    );
+        }
+
+        else if ( $ctg )            { return $category;  }
+        else if ( $where != 'null') { return $wheres;    }
+        else if ( $what  != 'null') { return $whats;     }
+        else                        { abort(402);        }
+
+        /////////////////////////////
+
+
+        $min = intval($min);
+        $max = intval($max);
+
+        if (is_int($min) && is_int($max)){
+            $result = [];
+
+            foreach ($tpm_result as $company) {
+                $activities = $company->activities;
+                $str        = false;
+                $i          = 0;
+                while(!$str && $i < sizeof($activities)){
+                    if( $activities[$i]->price >= $min &&
+                        $activities[$i]->price <= $max )
+                    {
+                        $str = true;
+                        $result[] = $activities[$i];
+                    }
+                    $i++;
+                }
+            }
+            return $result ;
+        }
+        else {
+            return $tpm_result;
+        }
     }
 
     public function datalist($value) {

@@ -98,7 +98,7 @@ Route::post('/admin/delete', 'AdminController@deleteAdmin')->name('delete_admin'
 //     Route AJAX     //
 // ================== //
 
-Route::get('/api/mapUpdate/{category_id}/{subCategory_id}/{what}/{where}', 'ApiController@mapUpdate')->name('api_map_update');
+Route::get('/api/mapUpdate/{category_id}/{subCategory_id}/{what}/{where}/{min}/{max}', 'ApiController@mapUpdate')->name('api_map_update');
 Route::get('/api/activities/{company_id}', 'ApiController@getActivitiesOfCompany')->name('api_activities_of_company');
 
 Route::get('/api/datalist/{value}', 'ApiController@datalist')->name('api_datalist');
@@ -106,7 +106,6 @@ Route::get('/api/main_search/{type}/{value}', 'ApiController@mainSearch')->name(
 Route::get('/api/budget/{value}/{budget}', 'ApiController@budget')->name('api_budget');
 
 Route::get('/api/marker/{address}', 'ApiController@returnLatlng')->name('api_lat_lng');
-
 
 // ================== //
 //     Route Google   //

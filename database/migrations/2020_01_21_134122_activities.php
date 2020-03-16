@@ -27,10 +27,10 @@ class Activities extends Migration
             $table->string('link1')->nullable();
             $table->string('link2')->nullable();
 
-            $table->unsignedBigInteger('subCategory_id');
+            $table->unsignedBigInteger('sub_category_id');
             $table->unsignedBigInteger('company_id');
 
-            $table->foreign('subCategory_id')->references('id')->on('subcategories');
+            $table->foreign('sub_category_id')->references('id')->on('subcategories');
             $table->foreign('company_id')->references('id')->on('companies');
 
             $table->timestamps();

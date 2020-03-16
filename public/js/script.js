@@ -23,7 +23,7 @@
             let elems = document.querySelectorAll('.modal');
             M.Modal.init(elems);
         });
-    
+
     // COLLAPSIBLE
         document.addEventListener('DOMContentLoaded', function () {
             let elems = document.querySelectorAll('.collapsible');
@@ -32,8 +32,14 @@
 
     // NAV
         document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.sidenav');
+            let elems = document.querySelectorAll('.sidenav');
             M.Sidenav.init(elems);
+        });
+
+    // TOOLTIPS
+        document.addEventListener('DOMContentLoaded', function () {
+            let elems = document.querySelectorAll('.tooltipped');
+            instances = M.Tooltip.init(elems);
         });
 
 // END _ MATERIALIZE //

@@ -125,3 +125,16 @@
         }
     }
 }
+
+
+.multi-range {
+    width:55%;
+    #lower {
+        position: relative;
+        top: 13px;
+    }
+    #upper {
+        position: relative;
+        bottom: 10px;
+    }
+}

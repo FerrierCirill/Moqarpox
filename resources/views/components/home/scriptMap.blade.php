@@ -185,12 +185,12 @@
                 console.log(json.length);
                 if(json.length > 50) {
                     map.remove();
-                    map = L.map('cluster').setView([46.90296, 1.90925], 5);
+                    map = L.map('cluster').setView([46.93517913608688, 6.998149223314707], 6);
                     generateMap();
                     generateMultiMarker(json);
                 } else {
                     map.remove();
-                    map = L.map('cluster').setView([46.90296, 1.90925], 5);
+                    map = L.map('cluster').setView([46.93517913608688, 6.998149223314707], 6);
                     generateMap();
                     generateSomeMarker(json);
                 }
@@ -250,29 +250,37 @@
 
 
     recherche = () => {
-        let category_id = document.getElementById('category').value;
+        let category_id    = document.getElementById('category').value;
         let subCategory_id = document.getElementById('subCategory').value;
-        let what = document.getElementById('what').value;
-        if (what == '') what = 'null';
-        let where = document.getElementById('where').value;
-        if (where == '') where = 'null';
+        let what           = document.getElementById('what').value;
+        let where          = document.getElementById('where').value;
+        let min            = document.getElementById('lower').value;
+        let max            = document.getElementById('upper').value;
+        if  (subCategory_id == 'null') subCategory_id = 'null';
+        if  (category_id    == 'null') category_id    = 'null';
+        if  (what           == '')     what           = 'null';
+        if  (where          == '')     where          = 'null';
 
         let req = new XMLHttpRequest();
 
-        let url = '{{route('api_map_update', [':category_id', ':subCategory_id', ':what', ':where'])}}';
+        let url = '{{route('api_map_update', [':category_id', ':subCategory_id', ':what', ':where', ':min', ':max'])}}';
         url = url.replace(':category_id',category_id);
         url = url.replace(':subCategory_id',subCategory_id);
         url = url.replace(':what',what);
         url = url.replace(':where',where);
+        url = url.replace(':min',min);
+        url = url.replace(':max',max);
 
         req.open("GET", url, true);
         req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         req.onload = function(){
             if (this.status == 200) {
                 let json = JSON.parse(this.responseText);
+                console.log(json);
                 map.remove();
-                map = L.map('cluster').setView([46.90296, 1.90925], 5);
+                map = L.map('cluster').setView([46.93517913608688, 6.998149223314707], 6);
                 generateMap(json);
+                generateMultiMarker(json)
             } else {
                 console.error('erreur de requete AJAX');
             }
@@ -291,6 +299,8 @@
     updateSubCategories = () => {
         let subCategories = getSubCategories();
         let category_id = document.getElementById('category').value;
+        console.log(category_id);
+        console.log(subCategories);
         let select = document.getElementById('subCategory');
         select.innerHTML = '<option value="null">--</option>';
         for(let i = 0; i < subCategories.length; i++) {
@@ -298,6 +308,9 @@
                 select.innerHTML += '<option value="' + subCategories[i]['id'] + '">' + subCategories[i]['name'] + '</option>';
             }
         }
+
+        let instance = M.FormSelect.getInstance(document.getElementById('subCategory'));
+        instance.constructor(document.getElementById('subCategory'));
     };
 
     initialisation();
@@ -337,4 +350,42 @@
                 break;
         }
     }
+
+    var lowerSlider = document.querySelector('#lower'),
+        upperSlider = document.querySelector('#upper'),
+        lowerVal    = parseInt(lowerSlider.value);
+        upperVal    = parseInt(upperSlider.value);
+
+    upperSlider.oninput = function() {
+        lowerVal = parseInt(lowerSlider.value);
+        upperVal = parseInt(upperSlider.value);
+
+        if (upperVal < lowerVal + 10) {
+            lowerSlider.value = upperVal - 10;
+
+            if (lowerVal == lowerSlider.min) {
+                upperSlider.value = 10;
+            }
+        }
+        document.getElementById('min').innerHTML = 'Min:<br>'+lowerVal;
+        document.getElementById('max').innerHTML = 'Max:<br>'+upperVal;
+    };
+
+
+    lowerSlider.oninput = function() {
+        lowerVal = parseInt(lowerSlider.value);
+        upperVal = parseInt(upperSlider.value);
+
+        if (lowerVal > upperVal - 10) {
+            upperSlider.value = lowerVal + 10;
+
+            if (upperVal == upperSlider.max) {
+                lowerSlider.value = parseInt(upperSlider.max) - 10;
+            }
+
+        }
+        document.getElementById('min').innerHTML = 'Min:<br>'+lowerVal;
+        document.getElementById('max').innerHTML = 'Max:<br>'+upperVal;
+    };
+
 </script>
