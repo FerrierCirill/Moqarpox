@@ -14,7 +14,7 @@ $factory->define(Activity::class, function (Faker $faker) {
         'resume'            => $faker->paragraph($nbSentences = 7, $variableNbSentences = true),
         'information'       => $faker->paragraph($nbSentences = 7, $variableNbSentences = true),
         'state'             => $faker->numberBetween($min = -1, $max = 1),
-        'subCategory_id'    => $faker->numberBetween($min = 1, $max = 20),
+        'sub_category_id'    => $faker->numberBetween($min = 1, $max = 20),
         'company_id'        => $faker->numberBetween($min = 1, $max = 1000),
         'note'              => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 5),
         'link0' => 'https://picsum.photos/1080/720',
