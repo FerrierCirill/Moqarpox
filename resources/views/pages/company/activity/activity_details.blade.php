@@ -27,7 +27,7 @@
                 <div class="mb-1">
                     {{$activity->note}} / 5 @include('components.star', ['note' => $activity->note]) |
                     <span class="categori-show" style="background :{{ \App\SubCategory::find($activity->sub_category_id)->category->hexa }}"></span>
-                     {{ \App\SubCategory::find($activity->sub_category_id)->category->name }} >
+                    {{ \App\SubCategory::find($activity->sub_category_id)->category->name }} >
                     <span>{{ \App\SubCategory::find($activity->sub_category_id)->name }}</span> |
                     <a href="#comments">{{sizeof($activity->comments)}} commentaires</a>
 

@@ -48,7 +48,7 @@
                                     {{$activity->price}} €
                                 </span>
                                 <span>
-                                    <a class="btn" >
+                                    <a class="btn" href="{{route('activity_details', ['activity_id' => $activity->id])}}">
                                         <i class="fas fa-cart-arrow-down"></i>
                                     </a>
                                 </span>
