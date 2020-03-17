@@ -58,7 +58,7 @@ class ResetPasswordNotificationFR extends Notification
         }
 
         return (new MailMessage)
-            ->from(Lang::get('service-password@mouqarpox.fr', 'Mouqarpox'))
+            ->from('service-password@mouqarpox.fr', 'Mouqarpox')
             ->subject(Lang::get('Réinitialisation du mot de passe'))
             ->line(Lang::get('Nous avons reçu une demande de réinitialisation de votre mot de passe.'))
             ->action(Lang::get('Réinitialiser votre mot de passe'), url(config('app.url').route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
