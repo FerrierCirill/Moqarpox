@@ -35,7 +35,7 @@
         <div class="row mt-2">
             @forelse($activities_activer as $activity)
                 <div class="col s12 m12 l4">
-                         <div class="card">
+                        <div class="card">
                         <div class="card-image">
                             @if (isset($activity->link0))
                                 <img src="{{asset($activity->link0)}}" alt="{{$activity->name}}">
@@ -45,7 +45,7 @@
 
                             <div class="price">
                                 <span>
-                                    {{$activity->price}} $
+                                    {{$activity->price}} €
                                 </span>
                                 <span>
                                     <a class="btn" >
@@ -60,8 +60,8 @@
                                 <h5>{{$activity->name}}</h5>
                                 <p>
                                     <div class="mb-1">
-                                        <span class="categori-show" style="background : {{ \App\SubCategory::find($activity->subCategory_id)->category->hexa }}"></span>
-                                        {{ \App\SubCategory::find($activity->subCategory_id)->category->name }}<br>
+                                        <span class="categori-show" style="background : {{ \App\SubCategory::find($activity->sub_category_id)->category->hexa }}"></span>
+                                        {{ \App\SubCategory::find($activity->sub_category_id)->category->name }}<br>
                                         {{$activity->note}} / 5 @include('components.star', ['note' => $activity->note])<br>
                                     </div>
                                     {{\Illuminate\Support\Str::limit($activity->description, 150, $end='...') }}
@@ -115,8 +115,8 @@
                                     <h5>{{$activity->name}}</h5>
                                     <p>
                                         <div class="mb-1">
-                                            <span class="categori-show" style="background : {{ \App\SubCategory::find($activity->subCategory_id)->category->hexa }}"></span>
-                                            {{ \App\SubCategory::find($activity->subCategory_id)->category->name }}<br>
+                                            <span class="categori-show" style="background : {{ \App\SubCategory::find($activity->sub_category_id)->category->hexa }}"></span>
+                                            {{ \App\SubCategory::find($activity->sub_category_id)->category->name }}<br>
                                             {{$activity->note}} / 5 @include('components.star', ['note' => $activity->note])<br>
                                         </div>
                                         {{\Illuminate\Support\Str::limit($activity->description, 150, $end='...') }}
