@@ -156,6 +156,11 @@ class ShoppingCartController extends Controller
         return view('pages.shoppingCart.thanks');
     }
 
+
+    public function floren() {
+
+    }
+
 //     public function testSession(Request $request) {
 //         // phpinfo();
 //         session_start();
