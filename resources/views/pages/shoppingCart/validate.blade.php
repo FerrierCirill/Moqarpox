@@ -14,7 +14,7 @@
                             <h5 class="mt-0">{{ $shoppingCart->activity->name }} <span class="shoppingCart-price ml-2 right small-text">{{ $shoppingCart->activity->price }} €</span></h5>
 
                             <h6><strong>Votre cadeau sera envoyé à :</strong></h6>
-                            
+
                             @if($shoppingCart->friend_name != null)
                                 <div class="col s12 m6"><strong>{{$shoppingCart->friend_name}}</strong> → {{$shoppingCart->friend_email}}</div>
                                 <div class="col s12">{{$shoppingCart->text}}</div>
@@ -33,7 +33,7 @@
 
         <div class="h-full col l3 m12 shoppingCart-rightZone pt-2 px-2">
             <h5 class="white-text mb-2">Total : {{$total}} €</h5>
-            
+
             <p>
                 Pour procédé au paiement vous devez accepté les <a href="{{route('terms_conditions_sale')}}">conditions générales de vente</a>
                 <br><br>
@@ -62,11 +62,11 @@
                         onApprove: function(data, actions) {
                             document.getElementById('loader').innerHTML = `<div class="progress"><div class="indeterminate"></div></div>`
                             return actions.order.capture().then(function(details) {
-                                var xhr  = new XMLHttpRequest();
-                                xhr.open("GET", "{{route('payment')}}");
-                                xhr.send();
+                                // var xhr  = new XMLHttpRequest();
+                                // xhr.open("GET", "");
+                                // xhr.send();
 
-                                window.location.replace("{{route('thanks')}}");
+                                window.location.replace("{{route('payment')}}");
                             });
                         },
                         style: {
@@ -77,7 +77,7 @@
                         },
                         }).render('#paypal-button-container');
                 }
-                
+
                 document.getElementById('CGV').addEventListener('click', () => {
                     if(!OUI){
                         cheackCGV()

@@ -161,7 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        'Barryvdh\Debugbar\ServiceProvider',
+        // 'Barryvdh\Debugbar\ServiceProvider',
 
         /*
          * Package Service Providers...
@@ -232,7 +232,7 @@ return [
 
         // Other aliases…
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'Debugbar' => 'Barryvdh\Debugbar\Facade',
+        // 'Debugbar' => 'Barryvdh\Debugbar\Facade',
     ],
 
 ];

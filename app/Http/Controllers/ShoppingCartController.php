@@ -136,19 +136,20 @@ class ShoppingCartController extends Controller
             $order->save();
             foreach ($shopping_carts as $shopping_cart) {
 
-                $activity_order = new ActivityOrder();
-                $activity_order->code = Code404Generator::generate();
-                $activity_order->text = $shopping_cart->text;
-                $activity_order->email = $shopping_cart->email;
-                $activity_order->friend_name = $shopping_cart->friend_name;
+                $activity_order               = new ActivityOrder();
+                $activity_order->code         = Code404Generator::generate();
+                $activity_order->text         = $shopping_cart->text;
+                $activity_order->email        = $shopping_cart->email;
+                $activity_order->friend_name  = $shopping_cart->friend_name;
                 $activity_order->friend_email = $shopping_cart->friend_email;
-                $activity_order->order_id = $order->id;
-                $activity_order->activity_id = $shopping_cart->activity_id;
+                $activity_order->order_id     = $order->id;
+                $activity_order->activity_id  = $shopping_cart->activity_id;
                 $activity_order->save();
 
                 ShoppingCart::where('id', $shopping_cart->id)->delete();
             }
         }
+        return redirect()->route('thanks');
     }
 
     public function thanks() {
