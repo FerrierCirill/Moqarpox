@@ -50,7 +50,6 @@ class ResetPasswordNotificationFR extends Notification
      * Build the mail representation of the notification.
      *
      * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
@@ -59,6 +58,7 @@ class ResetPasswordNotificationFR extends Notification
         }
 
         return (new MailMessage)
+            ->from(Lang::get('service-password@mouqarpox.fr', 'Mouqarpox'))
             ->subject(Lang::get('Réinitialisation du mot de passe'))
             ->line(Lang::get('Nous avons reçu une demande de réinitialisation de votre mot de passe.'))
             ->action(Lang::get('Réinitialiser votre mot de passe'), url(config('app.url').route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
@@ -69,7 +69,6 @@ class ResetPasswordNotificationFR extends Notification
     /**
      * Set a callback that should be used when building the notification mail message.
      *
-     * @param  \Closure  $callback
      * @return void
      */
     public static function toMailUsing($callback)
