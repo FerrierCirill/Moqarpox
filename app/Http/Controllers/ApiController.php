@@ -23,10 +23,10 @@ class ApiController extends Controller
             foreach ($activities as $activity) {
                 $category[] = $activity->company; // 1
             }
+            // $category = array_unique($category);
         }
         else if ($category_id != 'null') {
-            $category = [];
-            $category[] = Company::where('category_id', '=', $category_id)->get(); // 1
+            $category = Company::where('category_id', '=', $category_id)->get(); // 1
         }
 
         if ($what != 'null') {
@@ -35,15 +35,19 @@ class ApiController extends Controller
             foreach ($activities as $activity) {
                 $whats[] = $activity->company; // 2
             }
-
+            // $whats = array_unique($whats);
         }
 
         if ($where != 'null') {
             $cities = City::where('name', 'LIKE', '%'.$where.'%')->get();
             $wheres = [];
             foreach ($cities as $city) {
-                $wheres[] = Company::where('city_id', $city->id); // 3
+                $tmp_company_in_wheres = Company::where('city_id', $city->id)->get(); // 3
+                foreach($tmp_company_in_wheres as $tmp_company_in_where) {
+                    $wheres[] = $tmp_company_in_where;
+                }
             }
+            $wheres = array_unique($wheres);
         }
 
         /////////////////////////////
@@ -81,7 +85,6 @@ class ApiController extends Controller
         }
 
         else if (
-            $ctg   &&
             $where != 'null' &&
             $what  != 'null'
         ){
@@ -93,6 +96,7 @@ class ApiController extends Controller
         else if ( $ctg )            { return $category;  }
         else if ( $where != 'null') { return $wheres;    }
         else if ( $what  != 'null') { return $whats;     }
+        // else                        { return [];         }
         else                        { abort(402);        }
 
         /////////////////////////////
