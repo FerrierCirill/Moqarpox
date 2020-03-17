@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Lang;
 
 class ResetPasswordNotificationFR extends Notification
 {
@@ -58,11 +59,11 @@ class ResetPasswordNotificationFR extends Notification
         }
 
         return (new MailMessage)
-            ->subject(('Reset Password Notification'))
-            ->line(('Yozedzekfzefl because we received a password reset request for your account.'))
-            ->action(('Reset Password'), url(config('app.url').route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
-            ->line(('This passwzezepire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
-            ->line(('If you did not request a password reset, no further action is required.'));
+            ->subject(Lang::get('Reset Password Notification'))
+            ->line(Lang::get('Yozedzekfzefl because we received a password reset request for your account.'))
+            ->action(Lang::get('Reset Password'), url(config('app.url').route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
+            ->line(Lang::get('This passwzezepire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
+            ->line(Lang::get('If you did not request a password reset, no further action is required.'));
     }
 
     /**
