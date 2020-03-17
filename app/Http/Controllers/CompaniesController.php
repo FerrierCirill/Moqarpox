@@ -150,13 +150,4 @@ class CompaniesController extends Controller
 
         return redirect()->back();
     }
-
-    public function getMoneyBack() {
-        dd('hello');
-        return view('pages.company.get_customer_code');
-    }
-
-    public function postMoneyBack() {
-        //TODO
-    }
 }

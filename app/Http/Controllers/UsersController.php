@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Activity;
+use App\Company;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -56,6 +59,37 @@ class UsersController extends Controller
 
         return "<p> Your E-mail has been sent successfully. </p>";
 
+    }
+
+    public function getCustomerCode() {
+        return view('pages.company.get_customer_code');
+    }
+
+    public function postCustomerCode(Request $request) {
+        $activity_order = ActivityOrder::where('code', $request->input('code'))->first();
+        if($activity_order != null) {
+            $activity = Activity::where('id', $activity_order->activity_id)->first();
+            $company = Company::where('id', $activity->company_id)->first();
+            $user = User::where('id', $company->user_id)->first();
+            if (\Auth::id() == $user->id) {
+                if ($activity_order->state == 0) {
+                    $activity_order->state = 2;
+                    $activity_order->save();
+
+                    return view('pages.company.post_customer_code', [
+                        'etat' => 1,
+                    ]);
+                } else {
+                    return view('pages.company.post_customer_code', [
+                        'etat' => 2,
+                    ]);
+                }
+            } else {
+                return view('pages.company.post_customer_code', [
+                    'etat' => 0,
+                ]);
+            }
+        }
     }
 
 }

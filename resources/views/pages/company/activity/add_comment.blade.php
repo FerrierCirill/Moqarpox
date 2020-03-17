@@ -11,15 +11,11 @@
             </div>
         </div>
         <div class="row">
-            <form action="{{ route('post_add_comment') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('user_customer_code_post') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="input-field col s12 m6">
                     <label>Code*</label>
-                    <input type="text"
-                            class="validate"
-                            name="code"
-                            require>
-
+                    <input type="text" class="validate" name="code" required>
                     @error('code')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -29,10 +25,7 @@
 
                 <div class="input-field col s12 m6">
                     <label>Titre*</label>
-                    <input type="text"
-                            class="validate"
-                            name="title"
-                            require>
+                    <input type="text" class="validate" name="title" required>
 
                     @error('title')
                         <span class="invalid-feedback" role="alert">
@@ -54,7 +47,7 @@
                     <textarea type="text"
                                 class="validate materialize-textarea"
                                 name="message"
-                                require></textarea>
+                                required></textarea>
 
                     @error('message')
                         <span class="invalid-feedback" role="alert">

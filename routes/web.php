@@ -42,9 +42,6 @@ Route::get('/company/{company_id}', 'CompaniesController@getCompany')->name('com
 Route::get('/company/{company_id}/edit', 'CompaniesController@getEditCompany')->name('company_edit')->middleware('AuthIsProviderAndItsHisCompany');
 Route::post('/company/{company_id}/edit', 'CompaniesController@postEditCompany')->name('company_edit')->middleware('AuthIsProviderAndItsHisCompany');
 
-Route::get('/company/moneyBack', 'CompaniesController@getMoneyBack')->name('company_moneyback_get')->middleware('auth');
-Route::post('/company/moneyBack2', 'CompaniesController@postMoneyBack')->name('company_moneyback_post')->middleware('auth');
-
 Route::get('/company/confirm/{company_id}', 'CompaniesController@confirmCompany')->name('confirm_company')->middleware('AuthIsAdmin');
 Route::get('/company/refuse/{company_id}', 'CompaniesController@refuseCompany')->name('refuse_company')->middleware('AuthIsAdmin');
 
@@ -58,6 +55,9 @@ Route::get('/company/enable/{company_id}', 'CompaniesController@confirmCompany')
 Route::get('/user', 'UsersController@getClient')->name('user_details')->middleware('auth');
 Route::get('/user/historical', 'UsersController@historical')->name('user_historical')->middleware('auth');
 Route::post('/user/edit', 'UsersController@postUserEdit')->name('user_edit')->middleware('auth');
+
+Route::get('/user/customercode/get', 'UsersController@getCustomerCode')->name('user_customer_code_get')->middleware('auth');
+Route::post('/user/customercode/post', 'UsersController@postCustomerCode')->name('user_customer_code_post')->middleware('auth');
 
 Route::get('/comment/add', 'HomeController@getAddComment')->name('get_add_comment');     //MIDDLEWARE ?
 Route::post('/comment/add', 'HomeController@postAddComment')->name('post_add_comment');  //MIDDLEWARE ?
