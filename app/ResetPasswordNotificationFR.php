@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class ResetPassword extends Notification
+class ResetPasswordNotificationFR extends Notification
 {
     /**
      * The password reset token.
