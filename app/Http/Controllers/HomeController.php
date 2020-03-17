@@ -46,14 +46,7 @@ class HomeController extends Controller
         $categories = Category::get();
         $companies = Company::get();
 
-        $comps = Company::where('state', 1)->get();
-        $companiesMap = [];
-
-        foreach ($comps as $company) {
-            if(sizeof($company->activities) != 0) {
-                array_push($companiesMap, $company);
-            }
-        }
+        $companiesMap = \DB::select('SELECT * from companies WHERE state = 1 AND id IN (SELECT company_id FROM activities)');
 
         $categories = Category::where('id', '<>', 5)->get();
         $subCategories = SubCategory::get();
