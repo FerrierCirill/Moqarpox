@@ -46,7 +46,15 @@ class HomeController extends Controller
         $categories = Category::get();
         $companies = Company::get();
 
-        $companiesMap = Company::where('state', 1)->get();
+        $comps = Company::where('state', 1)->get();
+        $companiesMap = [];
+
+        foreach ($comps as $company) {
+            if(sizeof($company->activities) != 0) {
+                array_push($companiesMap, $company);
+            }
+        }
+
         $categories = Category::where('id', '<>', 5)->get();
         $subCategories = SubCategory::get();
         $maxPrice = Activity::orderBy('price', 'desc')->first();
@@ -55,8 +63,6 @@ class HomeController extends Controller
         return view('pages.home', [
             'activity' => $activity,
             'companies' => $companies,
-            'categories' => $categories,
-
             'minPrice' => $minPrice,
             'maxPrice' => $maxPrice,
             'companiesMap' => $companiesMap,

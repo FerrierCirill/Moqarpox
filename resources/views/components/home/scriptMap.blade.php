@@ -1,5 +1,5 @@
 <script>
-    function getCompanies() {return @json($companies);}
+    function getCompanies() {return @json($companiesMap);}
     function getCategories() {return @json($categories);}
     function getSubCategories() {return @json($subCategories);}
 
