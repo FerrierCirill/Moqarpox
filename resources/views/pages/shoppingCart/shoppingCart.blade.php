@@ -26,17 +26,17 @@
                                     <a href="{{route('activity_details', ['activity_id' => $panier->id])}}">
                                         <h5 class="m-0">{{ $panier->name }}</h5>
                                     </a>
-                                    
+
                                     <p>
                                         {{$panier->note}} / 5 @include('components.star', ['note' => $panier->note]) |
-                                        <span class="categori-show" style="background :{{ \App\SubCategory::find($panier->subCategory_id)->category->hexa }}"></span>
-                                        {{ \App\SubCategory::find($panier->subCategory_id)->category->name }} >
-                                        <span>{{ \App\SubCategory::find($panier->subCategory_id)->name }}</span> |
+                                        <span class="categori-show" style="background :{{ \App\SubCategory::find($panier->sub_category_id)->category->hexa }}"></span>
+                                        {{ \App\SubCategory::find($panier->sub_category_id)->category->name }} >
+                                        <span>{{ \App\SubCategory::find($panier->sub_category_id)->name }}</span> |
                                         {{sizeof($panier->comments)}} commentaires</a>
-                                    </p> 
-                                    
-                                    
-                                    <span class="shoppingCart-price">{{ $panier->price }} €</span> 
+                                    </p>
+
+
+                                    <span class="shoppingCart-price">{{ $panier->price }} €</span>
                                 </div>
 
                                 @if(\Auth::check())
@@ -63,7 +63,7 @@
                         </div>
 
                         <div class="shoppingCart-separator"></div>
-                        
+
                         @php $total += $panier->price @endphp
                     @empty
                         <div class="center-align col s12">
@@ -83,7 +83,7 @@
                 @if(\Auth::check())
                     <h5 class="white-text mb-2">Total : {{$total}} €</h5>
                     <button class="btn w-100" type="submit">Valider votre pannier</button>
-                    
+
                     <a href="{{route('shopping_cart_validate')}}">
                         <p>Vous avez deja remplie toute ces informations ? Reprenez votre panier ou vous l'avez laisser ici</p>
                     </a>
