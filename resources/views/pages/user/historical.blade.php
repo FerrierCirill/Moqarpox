@@ -10,21 +10,23 @@
                         <div class="collapsible-header">
                             N&#186;: {{$order->id}} | Commander le : {{$order->created_at}}
                         </div>
-                        <div class="collapsible-body row">
+                        <div class="collapsible-body">
                             @foreach($order->activityOrder as $actOrd)
-                                <div class="col s12 m6 l4">
-                                    <img src="{{asset($actOrd->activity->link0)}}" alt="{{$actOrd->activity->name}}">
-                                </div>
-                                <div class="col s12 m6 l8">
-                                    <h4>{{$actOrd->activity->name}}</h4>
-                                    <h6>Code cadeau : {{$actOrd->code}}</h6>
-                                    <p>
-                                        <strong>Facture envoyer à :</strong> {{$actOrd->email}}<br>
-                                        <br>
+                                <div class="row">
+                                    <div class="col s12 m6 l4">
+                                        <img src="{{asset($actOrd->activity->link0)}}" class="responsive-img" alt="{{$actOrd->activity->name}}">
+                                    </div>
+                                    <div class="col s12 m6 l8">
+                                        <h4>{{$actOrd->activity->name}}</h4>
+                                        <h6>Code cadeau : {{$actOrd->code}}</h6>
+                                        <p>
+                                            <strong>Facture envoyer à :</strong> {{$actOrd->email}}<br>
+                                            <br>
 
-                                        <strong>Envoyer à :</strong> {{$actOrd->friend_name}} → {{$actOrd->friend_mail}}<br>
-                                        <strong>Message :</strong> {{$actOrd->text}}<br>
-                                    </p>
+                                            <strong>Envoyer à :</strong> {{$actOrd->friend_name}} → {{$actOrd->friend_mail}}<br>
+                                            <strong>Message :</strong> {{$actOrd->text}}<br>
+                                        </p>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
