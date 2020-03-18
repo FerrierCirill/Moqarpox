@@ -8,18 +8,18 @@
             <a href="{{route('activity_details', ['activity_id' => $activity->id])}}">
                 <h2 class="H2-title-header">{{$activity->name}}</h2>
             </a>
-                       
 
-            
+
+
             <div class="right">
                 <div class="H2-container-header">
                     <div class="home-price">{{$activity->price}} €</div>
                     <div class="note">
                         @include('components.star', ['note' => $activity->note])
-                    </div>              
+                    </div>
                 </div>
 
-                <a  class="btn button-acheter-header w-100" 
+                <a  class="btn button-acheter-header w-100"
                     href="{{route('activity_details', ['activity_id' => $activity->id ])}}">
                     Acheter
                 </a>
@@ -67,32 +67,38 @@
 
     <div class="scrollAction">
         <a href="#scrollToCategorie" class="btn-floating btn-large scrollAction">
-            <?xml version="1.0" encoding="UTF-8"?>
-            <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="transform: rotate(0.5turn)">
-                <style>
-                    .scroll-mouse{
-                animation-duration: 1.3s;
-                    animation-name: scrolldown;
-                    animation-iteration-count: infinite;
-                }
-                @keyframes scrolldown {
-                    0% {
-                        opacity: 0;
-                        transform: translate(0, 6px);
+            {{-- <?xml version="1.0" encoding="UTF-8"?>
+                <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="transform: rotate(0.5turn)">
+                    <style>
+                        .scroll-mouse{
+                    animation-duration: 1.3s;
+                        animation-name: scrolldown;
+                        animation-iteration-count: infinite;
                     }
-                    50% {
-                        opacity: 1;
-                        transform: translate(0, 0);
+                    @keyframes scrolldown {
+                        0% {
+                            opacity: 0;
+                            transform: translate(0, 6px);
+                        }
+                        50% {
+                            opacity: 1;
+                            transform: translate(0, 0);
+                        }
+                        100% {
+                            opacity: 0;
+                            transform: translate(0, 6px);
+                        }
                     }
-                    100% {
-                        opacity: 0;
-                        transform: translate(0, 6px);
-                    }
-                }
-                </style>
-                <path d="M10,32 C20,32 20,24.94 20,16 C20,7.06 20,0 10,0 C0,0 0,7.06 0,16 C0,24.94 0,32 10,32" id="Fill-1" fill="#404040"></path>
-                <path class="scroll-mouse" d="M8,6 C8,4.896 8.896,4 10,4 C11.104,4 12,4.896 12,6 C12,7.104 11.104,8 10,8 C8.896,8 8,7.104 8,6" id="Fill-3" fill="#FFFFFF"></path>
-            </svg>
+                    </style>
+                    <path d="M10,32 C20,32 20,24.94 20,16 C20,7.06 20,0 10,0 C0,0 0,7.06 0,16 C0,24.94 0,32 10,32" id="Fill-1" fill="#404040"></path>
+                    <path class="scroll-mouse" d="M8,6 C8,4.896 8.896,4 10,4 C11.104,4 12,4.896 12,6 C12,7.104 11.104,8 10,8 C8.896,8 8,7.104 8,6" id="Fill-3" fill="#FFFFFF"></path>
+            </svg> --}}
+            <div class="scroll-prompt" scroll-prompt="" ng-show="showPrompt" style="opacity: 1;">
+                <div class="scroll-prompt-arrow-container">
+                    <div class="scroll-prompt-arrow"><div></div></div>
+                    <div class="scroll-prompt-arrow"><div></div></div>
+                </div>
+            </div>
         </a>
     </div>
 

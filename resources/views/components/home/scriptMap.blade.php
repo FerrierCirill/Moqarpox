@@ -155,7 +155,7 @@
 
             });
             marker.bindPopup(
-                '<strong>' + companies[i]['name'] + '</strong>'
+                '<h4><strong>' + companies[i]['name'] + '</strong></h4>'
                 + '<br>Adresse : ' + companies[i]['adress1']
                 + '<br>Téléphone : ' + companies[i]['phone']
                 + '<br>E-mail : ' + companies[i]['email']
@@ -249,7 +249,9 @@
     };
 
 
-    recherche = () => {
+    recherche = (btnCategory = null) => {
+        console.log(btnCategory);
+
         let category_id    = document.getElementById('category').value;
         let subCategory_id = document.getElementById('subCategory').value;
         let what           = document.getElementById('what').value;
@@ -262,25 +264,44 @@
         if  (where          == '')     where          = 'null';
 
         let req = new XMLHttpRequest();
-
         let url = '{{route('api_map_update', [':category_id', ':subCategory_id', ':what', ':where', ':min', ':max'])}}';
-        url = url.replace(':category_id',category_id);
-        url = url.replace(':subCategory_id',subCategory_id);
-        url = url.replace(':what',what);
-        url = url.replace(':where',where);
-        url = url.replace(':min',min);
-        url = url.replace(':max',max);
+
+        if (btnCategory == null) {
+            url = url.replace(':category_id',category_id);
+            url = url.replace(':subCategory_id',subCategory_id);
+            url = url.replace(':what',what);
+            url = url.replace(':where',where);
+            url = url.replace(':min',min);
+            url = url.replace(':max',max);
+        }
+        else {
+            url = '{{route('api_map_update', [':category_id', 'null', 'null', 'null', '0', '9999999'])}}';
+            url = url.replace(':category_id',btnCategory);
+        }
+
 
         req.open("GET", url, true);
         req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         req.onload = function(){
             if (this.status == 200) {
+                location.hash = '#scrollToMap';
+
+                document.getElementById('activities').innerHTML = '';
                 let json = JSON.parse(this.responseText);
                 console.log(json);
+                console.log(json.length);
                 map.remove();
                 map = L.map('cluster').setView([46.93517913608688, 6.998149223314707], 6);
                 generateMap(json);
-                generateMultiMarker(json)
+                generateMultiMarker(json);
+                if (json.length == 0) {
+                    document.getElementById('activities').innerHTML = `
+                        <h5 class="m-0">Aucun résultat</h5>
+                    `
+                }
+                else {
+                    document.getElementById('activities').innerHTML = `<h6 class="m-0">Résultat : ${json.length} entreprise trouvée</h6><hr>`
+                }
             } else {
                 console.error('erreur de requete AJAX');
             }
