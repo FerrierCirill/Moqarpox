@@ -82,7 +82,7 @@
             <div class="h-full col l3 m12 shoppingCart-rightZone pt-2 px-2">
                 @if(\Auth::check())
                     <h5 class="white-text mb-2">Total : {{$total}} €</h5>
-                    <button class="btn w-100" type="submit">Valider votre pannier</button>
+                    <button class="btn w-100" type="submit">Valider votre panier</button>
 
                     <a href="{{route('shopping_cart_validate')}}">
                         <p>Vous avez deja remplie toute ces informations ? Reprenez votre panier ou vous l'avez laisser ici</p>
