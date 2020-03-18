@@ -9162,6 +9162,10 @@ a:hover .scroll-prompt .scroll-prompt-arrow > div {
   bottom: 10px;
 }
 
+table.maptable td {
+  padding: 5px 5px;
+}
+
 .card-category {
   height: -webkit-fill-available !important;
 }

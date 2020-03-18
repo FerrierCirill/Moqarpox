@@ -3,6 +3,9 @@
     function getCategories() {return @json($categories);}
     function getSubCategories() {return @json($subCategories);}
 
+    document.getElementById('activities').innerHTML = `<h6 class="m-0">Résultat : ${getCompanies().length} entreprise trouvée</h6><hr>`
+
+
     let companies = getCompanies();
     let map = L.map('cluster').setView([46.93517913608688, 6.998149223314707], 6);
 
@@ -96,10 +99,20 @@
 
             });
             marker.bindPopup(
-                '<strong>' + companies[i]['name'] + '</strong>'
-                + '<br>Adresse : ' + companies[i]['adress1']
-                + '<br>Téléphone : ' + companies[i]['phone']
-                + '<br>E-mail : ' + companies[i]['email']
+                '<h4 style="margin-bottom:10px"><strong>' + companies[i]['name'] + '</strong></h4>' +
+                `<table class="responsive-table maptable">
+                    <tr>
+                        <td>Adresse :</td>
+                        <td>${companies[i]['adress1']}</td>
+                    </tr>
+                    <tr>
+                        <td>Téléphone :</td>
+                        <td>${companies[i]['phone']}</td>
+                    </tr>
+                    <tr>
+                        <td>E-mail :</td>
+                        <td>${companies[i]['email']}</td>
+                    </tr>`
             );
             markersCluster.addLayer(marker);
         }
@@ -155,10 +168,20 @@
 
             });
             marker.bindPopup(
-                '<h4><strong>' + companies[i]['name'] + '</strong></h4>'
-                + '<br>Adresse : ' + companies[i]['adress1']
-                + '<br>Téléphone : ' + companies[i]['phone']
-                + '<br>E-mail : ' + companies[i]['email']
+                '<h4 style="margin-bottom:10px"><strong>' + companies[i]['name'] + '</strong></h4>' +
+                `<table class="responsive-table maptable">
+                    <tr>
+                        <td>Adresse :</td>
+                        <td>${companies[i]['adress1']}</td>
+                    </tr>
+                    <tr>
+                        <td>Téléphone :</td>
+                        <td>${companies[i]['phone']}</td>
+                    </tr>
+                    <tr>
+                        <td>E-mail :</td>
+                        <td>${companies[i]['email']}</td>
+                    </tr>`
             );
             marker.addTo(map);
         }
@@ -284,6 +307,7 @@
         req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         req.onload = function(){
             if (this.status == 200) {
+                location.hash = '#scrollToCategorie';
                 location.hash = '#scrollToMap';
 
                 document.getElementById('activities').innerHTML = '';
