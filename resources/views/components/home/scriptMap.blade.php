@@ -3,7 +3,11 @@
     function getCategories() {return @json($categories);}
     function getSubCategories() {return @json($subCategories);}
 
-    document.getElementById('activities').innerHTML = `<h6 class="m-0">Résultat : {{ sizeof($companiesMap) }} entreprise.s trouvée.s</h6><hr>`
+    document.getElementById('activities').innerHTML = `
+        <h6 class="m-0">Résultat : {{ sizeof($companiesMap) }} entreprise.s trouvée.s
+            <button class="btn right" onclick="generateMap();generateMultiMarker(companies);initialisation();">Reset</button>
+        </h6>
+        <hr style="float:left; width:75%">`
 
 
     let companies = getCompanies();
