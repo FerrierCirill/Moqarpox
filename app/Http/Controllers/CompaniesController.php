@@ -143,9 +143,9 @@ class CompaniesController extends Controller
         $company->state = 1;
         $company->save();
         $user = User::findOrFail($company->user_id);
-        $to_email = $user->mail;
-
+        $to_email = $user->email;
         Mail::to($to_email)->send(new CompanyValide($company_id));
+        return redirect()->back();
     }
 
     public function refuseCompany($company_id) {
