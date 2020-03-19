@@ -1,4 +1,5 @@
-Bonjour,
-Merci d'avoir effectué votre achat.
+<div>Bonjour,</div>
+<div>Votre demande de céation de l'entreprise {{$company_name}} a été refusée.</div>
+<a href="{{$path_company_add}}"> Ajouter à nouveau une entreprise </a>
 
-Voici votre facture d'un montant de {{$solde}}
+<div>Merci de votre confiance!</div>

@@ -6,6 +6,7 @@ use App\Company;
 use App\Category;
 use App\Activity;
 use App\City;
+use App\Mail\CompanyRefuse;
 use App\Mail\CompanyValide;
 use App\Mail\SendEmail;
 use App\User;
@@ -152,7 +153,10 @@ class CompaniesController extends Controller
         $company = Company::findOrFail($company_id);
         $company->state = 2;
         $company->save();
+        $user = User::findOrFail($company->user_id);
+        $to_email = $user->email;
 
+        Mail::to($to_email)->send(new CompanyRefuse($company->name));
         return redirect()->back();
     }
 }
