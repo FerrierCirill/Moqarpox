@@ -16,6 +16,12 @@ class ApiController extends Controller
             $companies = Company::where([['category_id','=', $category_id]['subCategory_id', '=', $subCategory_id]['']])
         }*/
 
+
+        //RESET
+        if ($category_id == 'null' && $subCategory_id == 'null' && $what == 'null' && $where == 'null' && $min == 'null' && $max == 'null') {
+            return \DB::select('SELECT * from companies WHERE state = 1 AND id IN (SELECT company_id FROM activities)');
+        }
+
         // POUR LE BUDGET EN SOLO
         if ($category_id == 'null' && $subCategory_id == 'null' && $what == 'null' && $where == 'null' && $min != 'null' && $max != 'null') {
             $activities = Activity::where('state', 1)->whereBetween('price', [$min, $max])->get();

@@ -3,11 +3,11 @@
     function getCategories() {return @json($categories);}
     function getSubCategories() {return @json($subCategories);}
 
-    document.getElementById('activities').innerHTML = `
-        <h6 class="m-0">Résultat : {{ sizeof($companiesMap) }} entreprise.s trouvée.s
-            <button class="btn right" onclick="generateMap();generateMultiMarker(companies);initialisation();">Reset</button>
-        </h6>
-        <hr style="float:left; width:75%">`
+    document.getElementById('activities').innerHTML = document.getElementById('activities').innerHTML = `
+                        <h6 class="m-0">Résultat : {{ sizeof($companiesMap) }} entreprise.s trouvée.s
+                            <button class="btn right" onclick="resetBtn();">Reset</button>
+                        </h6>
+                        <hr style="float:left; width:75%">`
 
 
     let companies = getCompanies();
@@ -302,8 +302,14 @@
             url = url.replace(':max',max);
         }
         else {
-            url = '{{route('api_map_update', [':category_id', 'null', 'null', 'null', '0', '9999999'])}}';
-            url = url.replace(':category_id',btnCategory);
+            if (btnCategory == 'reset') {
+                url = '{{route('api_map_update', ['null', 'null', 'null', 'null', 'null', 'null'])}}';
+
+            }
+            else {
+                url = '{{route('api_map_update', [':category_id', 'null', 'null', 'null', '0', '9999999'])}}';
+                url = url.replace(':category_id',btnCategory);
+            }
         }
 
 
@@ -328,7 +334,11 @@
                     `
                 }
                 else {
-                    document.getElementById('activities').innerHTML = `<h6 class="m-0">Résultat : ${json.length} entreprise.s trouvée.s</h6><hr>`
+                    document.getElementById('activities').innerHTML = `
+                        <h6 class="m-0">Résultat : ${json.length} entreprise.s trouvée.s
+                            <button class="btn right" onclick="resetBtn();">Reset</button>
+                        </h6>
+                        <hr style="float:left; width:75%">`
                 }
             } else {
                 console.error('erreur de requete AJAX');
@@ -436,5 +446,11 @@
         document.getElementById('min').innerHTML = 'Min:<br>'+lowerVal;
         document.getElementById('max').innerHTML = 'Max:<br>'+upperVal;
     };
+
+
+    function resetBtn() {
+        recherche('reset');
+    }
+
 
 </script>
