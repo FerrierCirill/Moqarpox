@@ -1,34 +1,36 @@
 <header class="parallax-container h-full">
     <div class="parallax">
-        <img src="{{asset($activity->link0)}}">
+        @if($activity != [])
+            <img src="{{asset($activity->link0)}}">
+        @else
+            <img src="{{ asset('images/categories/gastro.jpg') }}">
+        @endif
     </div>
 
     <div class="row">
-        <div class="col s12 l7 mb-2 ">
-            <a href="{{route('activity_details', ['activity_id' => $activity->id])}}">
-                <h2 class="H2-title-header">{{$activity->name}}</h2>
-            </a>
-
-
-
-            <div class="right">
-                <div class="H2-container-header">
-                    <div class="home-price">{{$activity->price}} €</div>
-                    <div class="note">
-                        @include('components.star', ['note' => $activity->note])
-                    </div>
-                </div>
-
-                <a  class="btn button-acheter-header w-100"
-                    href="{{route('activity_details', ['activity_id' => $activity->id ])}}">
-                    Acheter
+            <div class="col s12 l7 mb-2 ">
+                @if($activity != [])
+                <a href="{{route('activity_details', ['activity_id' => $activity->id])}}">
+                    <h2 class="H2-title-header">{{$activity->name}}</h2>
                 </a>
+                <div class="right">
+                    <div class="H2-container-header">
+                        <div class="home-price">{{$activity->price}} €</div>
+                        <div class="note">
+                            @include('components.star', ['note' => $activity->note])
+                        </div>
+                    </div>
+                    <a  class="btn button-acheter-header w-100"
+                        href="{{route('activity_details', ['activity_id' => $activity->id ])}}">
+                        Acheter
+                    </a>
+                </div>
+                @endif
             </div>
-        </div>
+
         <div class="col s12 l5">
             <div class="bg-white px-2 pb-2 pt-1 mb-1">
                 <h1 class="H1-call-to-action mb-1">Trouvez des activités, des séjours et plus encore pour vous ou pour offrir !</h1>
-
                 <div class="input-field mt-2">
                     <input list="results" type="text" id="search" oninput="setdatalist(this.value)" placeholder="Ville, Activité, Domaine..." autocomplete="no">
                     <input list="type" id="type" type="text" hidden>

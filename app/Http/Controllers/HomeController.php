@@ -63,8 +63,7 @@ class HomeController extends Controller
             'subCategories' => $subCategories
         ]);
     }
-
-
+    
     public function LM() {
         return view('pages.right.lm');
     }
