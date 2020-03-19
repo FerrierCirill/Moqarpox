@@ -109,6 +109,7 @@ class ActivitiesController extends Controller
         $to_email = $user->email;
 
         Mail::to($to_email)->send(new ActivityRefuse($activity->name));
+        return redirect()->back();
     }
 
     public function changeState($activity_id, $state) {
