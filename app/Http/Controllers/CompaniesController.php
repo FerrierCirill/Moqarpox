@@ -6,10 +6,13 @@ use App\Company;
 use App\Category;
 use App\Activity;
 use App\City;
+use App\Mail\CompanyValide;
+use App\Mail\SendEmail;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class CompaniesController extends Controller
 {
@@ -139,8 +142,10 @@ class CompaniesController extends Controller
         $company = Company::findOrFail($company_id);
         $company->state = 1;
         $company->save();
+        $to_email = "flo-ti@hotmail.fr";
 
-        return redirect()->back();
+        Mail::to($to_email)->send(new CompanyValide($company_id));
+
     }
 
     public function refuseCompany($company_id) {

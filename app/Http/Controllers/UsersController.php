@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Activity;
 use App\Company;
+use App\Notifications\Provider;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
