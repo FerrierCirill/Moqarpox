@@ -146,7 +146,6 @@ class CompaniesController extends Controller
         $to_email = $user->mail;
 
         Mail::to($to_email)->send(new CompanyValide($company_id));
-
     }
 
     public function refuseCompany($company_id) {
