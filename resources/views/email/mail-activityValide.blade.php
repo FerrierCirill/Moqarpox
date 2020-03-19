@@ -1,4 +1,5 @@
-Bonjour,
-Merci d'avoir effectué votre achat.
+<div>Bonjour,</div>
+<div>Votre demande de céation d'activité a été validée.</div>
+<a href="{{$path_detail_activity}}"> Voir votre activité </a>
 
-Voici votre facture d'un montant de {{$solde}}
+<div>Merci de votre confiance!</div>
