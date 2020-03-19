@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\ActivityOrder;
 use App\Code404Generator;
+use App\Notifications\Provider;
+use App\Notifications\ResetPasswordNotificationFR;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Activity;
 use App\ShoppingCart;
+use Illuminate\Notifications\Notification;
 
 class ShoppingCartController extends Controller
 {
@@ -158,6 +161,18 @@ class ShoppingCartController extends Controller
 
 
     public function floren() {
+        //mail_Auth :
+        // Nom Auth
+        // Prenom Aut
+
+        //boucle sur les articles
+            // titre
+            // prix
+            // code
+            // email destinataire
+
+        $notif = new Notification;
+        $notif.Provider::toMail('flo-ti@hotmail.fr');
 
     }
 
