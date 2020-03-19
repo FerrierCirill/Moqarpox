@@ -142,7 +142,8 @@ class CompaniesController extends Controller
         $company = Company::findOrFail($company_id);
         $company->state = 1;
         $company->save();
-        $to_email = "flo-ti@hotmail.fr";
+        $user = User::findOrFail($company->user_id);
+        $to_email = $user->mail;
 
         Mail::to($to_email)->send(new CompanyValide($company_id));
 
