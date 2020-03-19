@@ -171,8 +171,7 @@ class ShoppingCartController extends Controller
             // code
             // email destinataire
 
-        $notif = new Notification;
-        $notif.Provider::toMail('flo-ti@hotmail.fr');
+
 
     }
 
