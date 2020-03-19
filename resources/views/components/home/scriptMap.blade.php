@@ -3,7 +3,7 @@
     function getCategories() {return @json($categories);}
     function getSubCategories() {return @json($subCategories);}
 
-    document.getElementById('activities').innerHTML = `<h6 class="m-0">Résultat : {{ sizeof($companiesMap) }} entreprise.s trouvée</h6><hr>`
+    document.getElementById('activities').innerHTML = `<h6 class="m-0">Résultat : {{ sizeof($companiesMap) }} entreprise.s trouvée.s</h6><hr>`
 
 
     let companies = getCompanies();
@@ -324,7 +324,7 @@
                     `
                 }
                 else {
-                    document.getElementById('activities').innerHTML = `<h6 class="m-0">Résultat : ${json.length} entreprise.s trouvée</h6><hr>`
+                    document.getElementById('activities').innerHTML = `<h6 class="m-0">Résultat : ${json.length} entreprise.s trouvée.s</h6><hr>`
                 }
             } else {
                 console.error('erreur de requete AJAX');

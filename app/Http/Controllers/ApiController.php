@@ -16,6 +16,19 @@ class ApiController extends Controller
             $companies = Company::where([['category_id','=', $category_id]['subCategory_id', '=', $subCategory_id]['']])
         }*/
 
+        // POUR LE BUDGET EN SOLO
+        if ($category_id == 'null' && $subCategory_id == 'null' && $what == 'null' && $where == 'null' && $min != 'null' && $max != 'null') {
+            $activities = Activity::where('state', 1)->whereBetween('price', [$min, $max])->get();
+            $companies  = [];
+            foreach ($activities as $activity) {
+                $companies[] = $activity->company;
+            }
+
+            return array_values(array_unique($companies));
+        }
+
+
+
         if ($subCategory_id != 'null') {
             $subCategory =  SubCategory::find($subCategory_id);
             $activities  =  $subCategory->activities;
@@ -93,11 +106,11 @@ class ApiController extends Controller
                     );
         }
 
-        else if ( $ctg )            { return $category;  }
-        else if ( $where != 'null') { return $wheres;    }
-        else if ( $what  != 'null') { return $whats;     }
-        // else                        { return [];         }
-        else                        { abort(402);        }
+        else if ( $ctg )            { $tpm_result = $category;  }
+        else if ( $where != 'null') { $tpm_result = $wheres;    }
+        else if ( $what  != 'null') { $tpm_result = $whats;     }
+        else                        { return [];         }
+        // else                        { abort(402);        }
 
         /////////////////////////////
 
@@ -105,11 +118,18 @@ class ApiController extends Controller
         $min = intval($min);
         $max = intval($max);
 
+        if($max == 2500){
+            $max = 999999999999;
+        }
+
+        // dd(is_int($min) . ' ' . $max) ;
+
         if (is_int($min) && is_int($max)){
             $result = [];
 
-            foreach ($tpm_result as $company) {
+            foreach ($tpm_result as $key => $company) {
                 $activities = $company->activities;
+                // var_dump(sizeof($activities));
                 $str        = false;
                 $i          = 0;
                 while(!$str && $i < sizeof($activities)){
@@ -117,7 +137,7 @@ class ApiController extends Controller
                         $activities[$i]->price <= $max )
                     {
                         $str = true;
-                        $result[] = $activities[$i];
+                        $result[] = $tpm_result[$key];
                     }
                     $i++;
                 }
