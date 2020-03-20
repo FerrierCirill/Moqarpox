@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use App\ActivityOrder;
 use App\Code404Generator;
+use App\Company;
+use App\Mail\ActivityRefuse;
 use App\Notifications\Provider;
 use App\Notifications\ResetPasswordNotificationFR;
 use App\Order;
+use App\User;
 use Illuminate\Http\Request;
 use App\Activity;
 use App\ShoppingCart;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Mail;
 
 class ShoppingCartController extends Controller
 {
@@ -160,19 +164,22 @@ class ShoppingCartController extends Controller
     }
 
 
-    public function floren() {
-        //mail_Auth :
-        // Nom Auth
-        // Prenom Aut
+    /**
+     * @param $products : contien le code
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function floren($products) {
 
-        //boucle sur les articles
-            // titre
-            // prix
-            // code
-            // email destinataire
+//        $company = Company::findOrFail($activity->company_id);
+//        $user = User::findOrFail($company->user_id);
+//        $to_email = $user->email;
 
+        Mail::to($to_email)->send(new Bill( /** pour la facture */));
+        foreach($products as$product){
+            Mail::to($to_email)->send(new Bill( $product, $customer,));
+        }
 
-
+        return redirect()->back();
     }
 
 //     public function testSession(Request $request) {
