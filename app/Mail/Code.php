@@ -18,23 +18,26 @@ class Code extends Mailable
     protected $activity_name;
     protected $code;
     protected $name_customer;
+    protected $text;
+    protected $turn;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($product)
+    public function __construct($product, $user, $turn)
     {
         $activity = Activity::findOrFail($product->activity_id);
-        $user = User::findOrFail($product->order_id);
 
         $this->activity_name =  $activity->name;;
         $this->code =  $product->code;
+        $this->text =  $product->text;
+        $this->turn =  $turn;
 
         if($user->second_name)
             $this->name_customer =  $user->second_name.' ';
         if($user->first_name)
-            $this->name_customer += $user->first_name;
+            $this->name_customer = $this->name_customer.$user->first_name;
 
         $this->path_activity = 'mouqarpox.neolithic.fr/activity/'.$activity->id;
     }
@@ -49,12 +52,16 @@ class Code extends Mailable
      */
     public function build()
     {
+        $date = gmdate("d M Y",mktime(0, 0, 0, date("m"),   date("d"),   date("Y")+1));
+        setlocale(LC_TIME, "fr_FR");
         return $this->from('admin@programmingfields.com')
             ->view('email.mail-code')
             ->with([
                 'name_customer' => $this->name_customer,
                 'code' => $this->code,
-                'date' =>  mktime(date("d"), date("m"),date("Y")+1),
+                'date' =>  $date,
+                'text' => $this->text,
+                'turn' => $this->turn,
                 'path_activity' => $this->path_activity,
                 'activity_name' => $this->activity_name,
             ]);

@@ -119,6 +119,7 @@ Route::get('/callback/{provider}', 'SocialController@callback');
 // ================== //
 
 Route::get('send-mail','UsersController@sendEmailToUser');
+Route::get('test_paye','ShoppingCartController@payment');
 
 ///////////////////////////////////////
 
