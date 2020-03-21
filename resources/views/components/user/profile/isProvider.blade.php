@@ -6,6 +6,88 @@
 <h3>Vos entreprises :</h3>
 
 <div class="row">
+    <div class="col s12">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+        <canvas id="orderChar" height="100" style='color:#fff'></canvas>
+        <script>
+            @php
+                $NowYear            = date('Y');
+                $orders_by_Comp     = [];
+                $total_all_by_mouth = [0,0,0,0,0,0,0,0,0,0,0,0];
+                $total_of_company_by_mouth = [];
+                $companies_names = [];
+
+                foreach($user->companies as $key => $company) {
+                    $companies_names[]               = $company->name;
+                    $activities                      = $company->activities;
+                    $total_of_company_by_mouth[$key] = [0,0,0,0,0,0,0,0,0,0,0,0];
+
+                    foreach($activities as $activity) {
+                        for ($i=0; $i < 12; $i++) {
+                            $activityOrder = \App\ActivityOrder::where('activity_id', $activity->id)
+                                                ->whereMonth('created_at', ($i + 1))
+                                                ->whereYear ('created_at', $NowYear)->get();
+                            if (sizeof($activityOrder) != 0)
+                            {
+                                $total_all_by_mouth[$i]              += $activity->price * sizeof($activityOrder);
+                                $total_of_company_by_mouth[$key][$i] += $activity->price * sizeof($activityOrder);
+                                // $orders[]                = $activityOrder;
+                                // $orders_by_Comp[$key][]  = $activityOrder;
+                            }
+                        }
+                    }
+                }
+
+                // dd($companies_names);
+                // dd($total_of_company_by_mouth);
+                // dd($total_all_by_mouth);
+            @endphp
+
+
+            const mois_fr = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Déc'];
+
+            let ctxOrderChar   = document.getElementById('orderChar').getContext('2d');
+            let chartOrderChar = new Chart(ctxOrderChar, {
+                type: 'line',
+                data: {
+                    labels: mois_fr,
+                    datasets: [
+                        {
+                            label          : 'Montant bénéfice en Euro',
+                            backgroundColor: '#aed581',
+                            borderColor    : 'rgb(255, 255, 255)',
+                            fillColor      : "#aed581",
+                            data           : JSON.parse('{{ json_encode($total_all_by_mouth) }}')
+                        },
+                        @foreach($total_of_company_by_mouth as $key => $value)
+                        {
+                            label          : '{{ $companies_names[$key] }}',
+                            backgroundColor: '#fff',
+                            borderColor    : 'rgb({{ random_int (0,255) }}, {{ random_int (0,255) }}, {{ random_int (0,255) }})',
+                            fillColor      : "#aed581",
+                            data           : JSON.parse('{{ json_encode($value) }}')
+                        },
+                        @endforeach
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    defaultFontColor : '#fff',
+                    labelColor: "#fff",
+                    legend: {
+                        font: {
+                            color: "#fff"
+                        }
+                    },
+                    scaleFontColor: "#fff",
+                }
+            });
+        </script>
+    </div>
+
+</div>
+
+<div class="row">
     @forelse($user->companies as $company)
         <div class="col s12 m6 l4">
             <div class="card">

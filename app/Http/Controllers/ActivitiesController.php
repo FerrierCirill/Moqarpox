@@ -30,13 +30,13 @@ class ActivitiesController extends Controller
     public function postAddActivity(Request $request, $company_id){
 
         $this->validate ($request, [
-            'name' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-            'resume' => 'required',
-            'information' => 'required',
+            'name'           => 'required',
+            'price'          => 'required',
+            'description'    => 'required',
+            'resume'         => 'required',
+            'information'    => 'required',
             'subCategory_id' => 'required|exists:subCategories,id',
-            'link0' => 'required|image',
+            'link0'          => 'required|image',
         ]);
 
         if($request->hasFile('link0')) {
