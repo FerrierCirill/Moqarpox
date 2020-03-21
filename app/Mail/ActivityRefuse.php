@@ -31,13 +31,11 @@ class ActivityRefuse extends Mailable
      */
     public function build()
     {
-
-
         return $this->from('admin@programmingfields.com')
             ->view('email.mail-activityRefuse')
             ->with([
-                'path_company_add' => $this->path_activity_add,
-                'company_name' => $this->activity_name,
+                'path_activity_add' => $this->path_activity_add,
+                'activity_name' => $this->activity_name,
             ]);
     }
 }

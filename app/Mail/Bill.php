@@ -7,19 +7,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ActivityValide extends Mailable
+class Bill extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $path_detail_activity;
+    protected $path_activity_add;
+    protected $activity_name;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($activity_id)
+    public function __construct($activity_name)
     {
-        $this->path_detail_activity = 'mouqarpox.neolithic.fr/activity/'.$activity_id;
+        $this->path_activity_add = 'mouqarpox.neolithic.fr/activity/add';
+        $this->activity_name =  $activity_name;
     }
 
     /**
@@ -29,12 +31,11 @@ class ActivityValide extends Mailable
      */
     public function build()
     {
-
-
         return $this->from('admin@programmingfields.com')
-            ->view('email.mail-activityValide')
+            ->view('email.mail-activityRefuse')
             ->with([
-                'path_detail_activity' => $this->path_detail_activity,
+                'path_activity_add' => $this->path_activity_add,
+                'activity_name' => $this->activity_name,
             ]);
     }
 }

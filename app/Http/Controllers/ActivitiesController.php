@@ -47,7 +47,7 @@ class ActivitiesController extends Controller
             $activity->resume = $request->input('resume');
             $activity->description_perso = $request->input('description_perso');
             $activity->information = $request->input('information');
-            $activity->subCategory_id = $request->input('subCategory_id');
+            $activity->sub_category_id = $request->input('subCategory_id');
             $activity->company_id = $company_id;
             $activity->save();
 
@@ -109,6 +109,7 @@ class ActivitiesController extends Controller
         $to_email = $user->email;
 
         Mail::to($to_email)->send(new ActivityRefuse($activity->name));
+        return redirect()->back();
     }
 
     public function changeState($activity_id, $state) {

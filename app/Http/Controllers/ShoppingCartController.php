@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\ActivityOrder;
 use App\Code404Generator;
+use App\Mail\Code;
+use App\Mail\ActivityRefuse;
 use App\Notifications\Provider;
 use App\Notifications\ResetPasswordNotificationFR;
 use App\Order;
+use App\User;
 use Illuminate\Http\Request;
 use App\Activity;
 use App\ShoppingCart;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ShoppingCartController extends Controller
 {
@@ -131,6 +136,7 @@ class ShoppingCartController extends Controller
     }
 
     public function payment() {
+        $turn = 0;
         $user = \Auth::user();
         $shopping_carts = ShoppingCart::where('user_id', $user->id)->get();
         if($shopping_carts != []) {
@@ -138,18 +144,22 @@ class ShoppingCartController extends Controller
             $order->user_id = $user->id;
             $order->save();
             foreach ($shopping_carts as $shopping_cart) {
-
+                $turn++;
                 $activity_order               = new ActivityOrder();
                 $activity_order->code         = Code404Generator::generate();
                 $activity_order->text         = $shopping_cart->text;
                 $activity_order->email        = $shopping_cart->email;
                 $activity_order->friend_name  = $shopping_cart->friend_name;
-                $activity_order->friend_email = $shopping_cart->friend_email;
+                $activity_order->friend_email = $shopping_cart->friend_mail;
                 $activity_order->order_id     = $order->id;
                 $activity_order->activity_id  = $shopping_cart->activity_id;
                 $activity_order->save();
+                if($activity_order->friend_email != '' && $activity_order->friend_email != null){
+                    $to_email=$activity_order->friend_email;
+                    Mail::to($to_email)->send(new Code( $activity_order,$user,$turn));
+                }
 
-                ShoppingCart::where('id', $shopping_cart->id)->delete();
+               // ShoppingCart::where('id', $shopping_cart->id)->delete();
             }
         }
         return redirect()->route('thanks');
@@ -160,19 +170,22 @@ class ShoppingCartController extends Controller
     }
 
 
-    public function floren() {
-        //mail_Auth :
-        // Nom Auth
-        // Prenom Aut
+    /**
+     * @param $products : contien le code
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function floren($products) {
 
-        //boucle sur les articles
-            // titre
-            // prix
-            // code
-            // email destinataire
+//        $company = Company::findOrFail($activity->company_id);
+//        $user = User::findOrFail($company->user_id);
+//        $to_email = $user->email;
 
+        Mail::to($to_email)->send(new Bill( /** pour la facture */));
+        foreach($products as$product){
+            Mail::to($to_email)->send(new Bill( $product, $customer,));
+        }
 
-
+        return redirect()->back();
     }
 
 //     public function testSession(Request $request) {
@@ -181,4 +194,5 @@ class ShoppingCartController extends Controller
 //         dd($_SESSION);
 //         return '<br><br>O';
 //     }
+
 }
