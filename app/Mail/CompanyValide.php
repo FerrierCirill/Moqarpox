@@ -32,6 +32,7 @@ class CompanyValide extends Mailable
 
 
         return $this->from('admin@programmingfields.com')
+            ->subject('[Entreprise Validée] Mouqarpox')
             ->view('email.mail-companyValide')
             ->with([
                 'path_detail_company' => $this->path_detail_company,

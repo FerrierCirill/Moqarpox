@@ -32,6 +32,7 @@ class ActivityRefuse extends Mailable
     public function build()
     {
         return $this->from('admin@programmingfields.com')
+            ->subject('[Activité Refusée] Mouqarpox')
             ->view('email.mail-activityRefuse')
             ->with([
                 'path_activity_add' => $this->path_activity_add,

@@ -17,7 +17,7 @@ class Code extends Mailable
     protected $path_activity;
     protected $activity_name;
     protected $code;
-    protected $name_customer;
+    protected $name_customer = 'votre ami(e)';
     protected $text;
     /**
      * Create a new message instance.
@@ -53,6 +53,7 @@ class Code extends Mailable
         $date = gmdate("d/m/Y",mktime(0, 0, 0, date("m"),   date("d"),   date("Y")+1));
         return $this->from('admin@programmingfields.com')
             ->view('email.mail-code')
+            ->subject('Toc, Toc ! '.$this->name_customer.' vous as offet à cadeaux via Mouqarpox !')
             ->with([
                 'name_customer' => $this->name_customer,
                 'code' => $this->code,

@@ -32,6 +32,7 @@ class ActivityValide extends Mailable
 
 
         return $this->from('admin@programmingfields.com')
+            ->subject('[Activité Validée] Mouqarpox')
             ->view('email.mail-activityValide')
             ->with([
                 'path_detail_activity' => $this->path_detail_activity,

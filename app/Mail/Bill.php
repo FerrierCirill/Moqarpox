@@ -35,8 +35,10 @@ class Bill extends Mailable
      */
     public function build()
     {
+        $date = gmdate("d/m/Y",mktime(0, 0, 0, date("m"),   date("d"),   date("Y")+1));
         return $this->from('admin@programmingfields.com')
             ->view('email.mail-bill')
+            ->subject('[Facture] Mouqarpox - '.$date)
             ->with([
                 'solde' => $this->solde,
                 'produits' => $this->produits,

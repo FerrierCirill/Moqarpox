@@ -34,6 +34,7 @@ class CompanyRefuse extends Mailable
 
 
         return $this->from('admin@programmingfields.com')
+            ->subject('[Entreprise Refusée] Mouqarpox')
             ->view('email.mail-companyRefuse')
             ->with([
                 'path_company_add' => $this->path_company_add,
