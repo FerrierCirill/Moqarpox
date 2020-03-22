@@ -1,5 +1,3 @@
-turn : {{$turn}}
-
 <div>Bonjour,</div>
 
 <div>Voici un peti cadeau de la part de {{$name_customer}}.</div>

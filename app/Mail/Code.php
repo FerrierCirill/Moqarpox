@@ -19,20 +19,18 @@ class Code extends Mailable
     protected $code;
     protected $name_customer;
     protected $text;
-    protected $turn;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($product, $user, $turn)
+    public function __construct($product, $user)
     {
         $activity = Activity::findOrFail($product->activity_id);
 
         $this->activity_name =  $activity->name;;
         $this->code =  $product->code;
         $this->text =  $product->text;
-        $this->turn =  $turn;
 
         if($user->second_name)
             $this->name_customer =  $user->second_name.' ';
@@ -52,8 +50,7 @@ class Code extends Mailable
      */
     public function build()
     {
-        $date = gmdate("d M Y",mktime(0, 0, 0, date("m"),   date("d"),   date("Y")+1));
-        setlocale(LC_TIME, "fr_FR");
+        $date = gmdate("d/m/Y",mktime(0, 0, 0, date("m"),   date("d"),   date("Y")+1));
         return $this->from('admin@programmingfields.com')
             ->view('email.mail-code')
             ->with([
@@ -61,7 +58,6 @@ class Code extends Mailable
                 'code' => $this->code,
                 'date' =>  $date,
                 'text' => $this->text,
-                'turn' => $this->turn,
                 'path_activity' => $this->path_activity,
                 'activity_name' => $this->activity_name,
             ]);

@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Activity;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -11,17 +12,20 @@ class Bill extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $path_activity_add;
-    protected $activity_name;
+    protected $solde;
+    protected $produits;
+    protected $user;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($activity_name)
+    public function __construct($user, $produits,$solde)
     {
-        $this->path_activity_add = 'mouqarpox.neolithic.fr/activity/add';
-        $this->activity_name =  $activity_name;
+        $this->solde = $solde;
+        $this->produits = $produits ;
+        $this->user= $user;
     }
 
     /**
@@ -32,10 +36,12 @@ class Bill extends Mailable
     public function build()
     {
         return $this->from('admin@programmingfields.com')
-            ->view('email.mail-activityRefuse')
+            ->view('email.mail-bill')
             ->with([
-                'path_activity_add' => $this->path_activity_add,
-                'activity_name' => $this->activity_name,
+                'solde' => $this->solde,
+                'produits' => $this->produits,
+                'user' => $this->user,
+                'num' => 0,
             ]);
     }
 }

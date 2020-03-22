@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ActivityOrder;
 use App\Code404Generator;
+use App\Mail\Bill;
 use App\Mail\Code;
 use App\Mail\ActivityRefuse;
 use App\Notifications\Provider;
@@ -16,6 +17,7 @@ use App\ShoppingCart;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use PhpParser\Node\Expr\Array_;
 
 class ShoppingCartController extends Controller
 {
@@ -136,15 +138,19 @@ class ShoppingCartController extends Controller
     }
 
     public function payment() {
-        $turn = 0;
         $user = \Auth::user();
         $shopping_carts = ShoppingCart::where('user_id', $user->id)->get();
+
+
+        $solde = 0;
+        $activities = [];
         if($shopping_carts != []) {
             $order = new Order();
             $order->user_id = $user->id;
             $order->save();
             foreach ($shopping_carts as $shopping_cart) {
-                $turn++;
+                $activity = Activity::find($shopping_cart->activity_id);
+                $solde= $solde+$activity->price;
                 $activity_order               = new ActivityOrder();
                 $activity_order->code         = Code404Generator::generate();
                 $activity_order->text         = $shopping_cart->text;
@@ -156,11 +162,12 @@ class ShoppingCartController extends Controller
                 $activity_order->save();
                 if($activity_order->friend_email != '' && $activity_order->friend_email != null){
                     $to_email=$activity_order->friend_email;
-                    Mail::to($to_email)->send(new Code( $activity_order,$user,$turn));
+                    Mail::to($to_email)->send(new Code( $activity_order,$user));
                 }
-
-               // ShoppingCart::where('id', $shopping_cart->id)->delete();
+                ShoppingCart::where('id', $shopping_cart->id)->delete();
+             array_push($activities,$activity_order);
             }
+            Mail::to($user->email)->send(new Bill($user, $activities, $solde));
         }
         return redirect()->route('thanks');
     }
