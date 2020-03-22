@@ -68,7 +68,7 @@
                         </script>
                     </div>
 				</div>
-				
+
                 <div class="col s12 mb-1">
 					<div class="col m4 s12 pb-1">
                         <div class="col m8 s12 pt-1">
@@ -121,11 +121,11 @@
 					<div class="col m4 s12 pb-1">
                         <div class="col m8 s12 pt-1">
                             Nombres de commandes réalisé : <br>
-                            Moyenne de commandes par activité : <br>
+                            {{-- Moyenne de commandes par activité : <br> --}}
                         </div>
                         <div class="col m4 s12 right-align pt-1">
                             {{ $orders }} <br>
-                            TODO <br>
+                            {{-- TODO <br> --}}
                         </div>
                     </div>
 
