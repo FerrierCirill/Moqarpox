@@ -55,6 +55,7 @@
 		/* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
 		a {
 			text-decoration: none;
+            color: white;
 		}
 
 		/* What it does: A work-around for email clients meddling in triggered links. */
@@ -126,8 +127,8 @@
 		.bg_light{
 			background: #fafafa;
 		}
-		.bg_black{
-			background: #000000;
+		.bg_green{
+			background: #aed581;
 		}
 		.bg_dark{
 			background: rgba(0,0,0,.8);
@@ -344,7 +345,7 @@
 
 			<table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
 				<tr>
-					<td valign="middle" class="bg_black footer email-section">
+					<td valign="middle" class="bg_green footer email-section">
 						<table>
 							<tr>
 								<td valign="top" width="75%" style="padding-top: 20px;">
@@ -352,7 +353,6 @@
 										<tr>
 											<td style="text-align: left; padding-right: 10px;">
 												<h3 class="heading">About</h3>
-												<p>Bon valide a compter d'un an à partir de la réception de ce mail.<br><br>Date limite:{{$date}}</p>
 										</td>
 										</tr>
 									</table>
@@ -376,7 +376,7 @@
 					</td>
 				</tr><!-- end: tr -->
 				<tr>
-					<td valign="middle" class="bg_black footer email-section">
+					<td valign="middle" class="bg_green footer email-section">
 						<table>
 							<tr>
 								<td valign="top" width="100%">

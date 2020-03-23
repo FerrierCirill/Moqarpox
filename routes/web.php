@@ -76,10 +76,10 @@ Route::get(  '/shoppingCart',                       'ShoppingCartController@shop
 Route::post( '/shoppingCart/addItem',               'ShoppingCartController@shoppingCartAdd')       ->name('shopping_cart_add');
 Route::get(  '/shoppingCart/delItem/{activity_id}', 'ShoppingCartController@shoppingCartDelete')    ->name('shopping_cart_delete');
 
-Route::post( '/shoppingCart/validate',              'ShoppingCartController@shoppingCartValidate')  ->name('shopping_cart_validate')->middleware('auth');
-Route::get(  '/shoppingCart/validate',              'ShoppingCartController@shoppingCartValidate')  ->name('shopping_cart_validate')->middleware('auth');
+Route::post( '/shoppingCart/validate',              'ShoppingCartController@shoppingCartValidate')  ->name('shopping_cart_validate')->middleware('auth')->middleware('MailValide');
+Route::get(  '/shoppingCart/validate',              'ShoppingCartController@shoppingCartValidate')  ->name('shopping_cart_validate')->middleware('auth')->middleware('MailValide');
 
-Route::get('/shoppingCart/payment', 'ShoppingCartController@payment')->name('payment')->middleware('auth');
+Route::get('/shoppingCart/payment',                 'ShoppingCartController@payment')->name('payment')->middleware('auth');
 Route::get(  '/shoppingCart/thanks',                'ShoppingCartController@thanks')                ->name('thanks');              //->middleware('auth');
 
 // Route::get('/testSession', 'ShoppingCartController@testSession');

@@ -1,4 +1,4 @@
-@extends('mail')
+@extends('email.mail')
 @section('content')
 <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
 	<tr>

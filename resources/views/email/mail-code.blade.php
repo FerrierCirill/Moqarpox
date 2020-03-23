@@ -1,4 +1,4 @@
-@extends('mail')
+@extends('email.mail')
 @section('content')
 <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
 	<tr>
@@ -17,7 +17,7 @@
 		</td>
 	</tr><!-- end tr -->
 	<tr>
-		<td valign="middle" class="hero bg_white" style="background-image: url({{ $img }}); background-size: cover; height: 400px;">
+		<td valign="middle" class="hero bg_white" style="background-image:url('{{ $img }}'); background-size: cover; height: 400px;">
 			<div class="overlay">
 			</div>
 			<table>
@@ -43,6 +43,7 @@
                 <br><br><br><br>
 
                 <h4>Utilisation :</h4>
+                <p>Bon valide a compter d'un an à partir de la réception de ce mail.<br><br>Date limite:{{ $date }}</p>
                 <p>Pour utiliser ce cadeaux, rendez-vous sur <a href="{{$path_activity}}">Mouqarpox</a> pour connaitre l'emplacement de l'entreprise. Une fois sur place il vous suffira de donné ce code : <span style="font-weight:900;text-transform: uppercase;">{{$code}}</span></p>
 			</div>
 		</td>
