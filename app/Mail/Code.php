@@ -63,7 +63,7 @@ class Code extends Mailable
                 'text'          => $this->text,
                 'path_activity' => $this->path_activity,
                 'activity_name' => $this->activity_name,
-                'img'           => $this->img
+                'img'           => $this->img,
             ]);
     }
 }

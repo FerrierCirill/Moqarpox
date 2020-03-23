@@ -11,12 +11,14 @@
                 </div>
             @endif
 
-            <p>Avant de continuer, veuillez vérifier votre boite mail. Si vous n'avez pas reçu l'e-mail</p>
-
-            <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                @csrf
-                <button type="submit" class="btn m-0">Cliquez ici pour en demander un autre lien</button>
-            </form>
+                    {{ __('Before proceeding, please check your email for a verification link.') }}
+                    {{ __('If you did not receive the email') }},
+                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

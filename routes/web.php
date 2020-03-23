@@ -79,7 +79,7 @@ Route::get(  '/shoppingCart/delItem/{activity_id}', 'ShoppingCartController@shop
 Route::post( '/shoppingCart/validate',              'ShoppingCartController@shoppingCartValidate')  ->name('shopping_cart_validate')->middleware('auth')->middleware('verified');
 Route::get(  '/shoppingCart/validate',              'ShoppingCartController@shoppingCartValidate')  ->name('shopping_cart_validate')->middleware('auth')->middleware('verified');
 
-Route::get('/shoppingCart/payment', 'ShoppingCartController@payment')->name('payment')->middleware('auth');
+Route::get('/shoppingCart/payment',                 'ShoppingCartController@payment')->name('payment')->middleware('auth');
 Route::get(  '/shoppingCart/thanks',                'ShoppingCartController@thanks')                ->name('thanks');              //->middleware('auth');
 
 // Route::get('/testSession', 'ShoppingCartController@testSession');

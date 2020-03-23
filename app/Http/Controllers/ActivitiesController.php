@@ -35,7 +35,7 @@ class ActivitiesController extends Controller
             'description'    => 'required',
             'resume'         => 'required',
             'information'    => 'required',
-            'subCategory_id' => 'required|exists:subCategories,id',
+            'subCategory_id' => 'required|exists:subcategories,id',
             'link0'          => 'required|image',
         ]);
 
@@ -47,7 +47,7 @@ class ActivitiesController extends Controller
             $activity->resume = $request->input('resume');
             $activity->description_perso = $request->input('description_perso');
             $activity->information = $request->input('information');
-            $activity->sub_category_id = $request->input('subCategory_id');
+            $activity->sub_category_id = $request->input('subcategory_id');
             $activity->company_id = $company_id;
             $activity->save();
 
