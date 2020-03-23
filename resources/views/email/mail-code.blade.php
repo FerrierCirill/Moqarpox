@@ -1,5 +1,5 @@
+@extends('mail')
 @section('content')
-
 <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
 	<tr>
 		<td valign="top" class="bg_white" style="padding: 1em 2.5em;">
@@ -49,5 +49,4 @@
 	</tr><!-- end: tr -->
 	<!-- 1 Column Text + Button : END -->
 </table>
-
 @endsection
