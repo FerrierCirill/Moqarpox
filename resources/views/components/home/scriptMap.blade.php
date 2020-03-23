@@ -437,7 +437,6 @@
             document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:none');
 
             document.getElementById('addH6').innerHTML = `
-                <h6>Recherche</h6>
                 <div class="w-35">
                     <input type="text" placeholder="Quoi ?"  id="what" value="${document.getElementById('what').value}">
                 </div>
