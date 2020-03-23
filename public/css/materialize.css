@@ -9066,20 +9066,27 @@ a:hover .scroll-prompt .scroll-prompt-arrow > div {
   width: 100%;
   position: absolute;
 }
-#scrollToMap #switchSearchEngine-0, #scrollToMap #switchSearchEngine-1, #scrollToMap #switchSearchEngine-2 {
+#scrollToMap #switchSearchEngine {
   z-index: 151;
   background: #fff;
   margin-left: 3.5rem;
   display: flex;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   height: fit-content;
   width: 55%;
   margin-top: 10px;
   padding: 10px 20px;
 }
-#scrollToMap #switchSearchEngine-0 .col, #scrollToMap #switchSearchEngine-1 .col, #scrollToMap #switchSearchEngine-2 .col {
+#scrollToMap #switchSearchEngine > div {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  height: fit-content;
+}
+#scrollToMap #switchSearchEngine .col {
   margin: 0;
 }
 #scrollToMap .containerActivities {
@@ -9174,9 +9181,14 @@ table.maptable td {
   #scrollToMap #cluster.clusterHome {
     height: 60vh;
   }
-  #scrollToMap #switchSearchEngine-0, #scrollToMap #switchSearchEngine-1, #scrollToMap #switchSearchEngine-2 {
+  #scrollToMap #switchSearchEngine {
     width: 100%;
     flex-wrap: wrap;
+  }
+  #scrollToMap #switchSearchEngine > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
   }
   #scrollToMap .containerActivities {
     width: 100%;
@@ -9187,7 +9199,7 @@ table.maptable td {
   }
   #scrollToMap .containerActivities #activities {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
     width: auto;
     overflow-x: scroll;

@@ -380,34 +380,44 @@
     var switchSearchEngine_open = 0
 
     function switchSearchEngine() {
-        switchSearchEngine_open++;
-        let v = switchSearchEngine_open%3;
-        switch (v) {
-            case 0:
-                document.getElementById('switchSearchEngine-0').setAttribute('style', 'display:flex');
+        // switchSearchEngine_open++;
+        // let v = switchSearchEngine_open%3;
+        // switch (v) {
+        //     case 0:
+        //         document.getElementById('switchSearchEngine-0').setAttribute('style', 'display:flex');
 
-                document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:none');
-                document.getElementById('switchSearchEngine-2').setAttribute('style', 'display:none');
+        //         document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:none');
+        //         document.getElementById('switchSearchEngine-2').setAttribute('style', 'display:none');
 
-                break;
+        //         break;
 
-            case 1:
-                document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:flex');
+        //     case 1:
+        //         document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:flex');
 
-                document.getElementById('switchSearchEngine-0').setAttribute('style', 'display:none');
-                document.getElementById('switchSearchEngine-2').setAttribute('style', 'display:none');
-                break;
+        //         document.getElementById('switchSearchEngine-0').setAttribute('style', 'display:none');
+        //         document.getElementById('switchSearchEngine-2').setAttribute('style', 'display:none');
+        //         break;
 
-            case 2:
-                document.getElementById('switchSearchEngine-2').setAttribute('style', 'display:flex');
+        //     case 2:
+        //         document.getElementById('switchSearchEngine-2').setAttribute('style', 'display:flex');
 
-                document.getElementById('switchSearchEngine-0').setAttribute('style', 'display:none');
-                document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:none');
-                break;
+        //         document.getElementById('switchSearchEngine-0').setAttribute('style', 'display:none');
+        //         document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:none');
+        //         break;
 
-            default:
-                break;
+        //     default:
+        //         break;
+        // }
+
+        if (switchSearchEngine_open % 2 == 0) {
+            document.getElementById('switchSearchEngine-0').setAttribute('style', 'display:flex')
+            document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:flex')
         }
+        else {
+            document.getElementById('switchSearchEngine-0').setAttribute('style', 'display:none');
+            document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:none');
+        }
+        switchSearchEngine_open++;
     }
 
     var lowerSlider = document.querySelector('#lower'),

@@ -26,18 +26,27 @@
         position: absolute;
     }
 
-    #switchSearchEngine-0,#switchSearchEngine-1,#switchSearchEngine-2 {
-        z-index: 151;
-        background: #fff;
-        margin-left: 3.5rem;
-        display: flex;
-        align-items: center;
-        flex-direction: row;
+    #switchSearchEngine {
+        z-index        : 151;
+        background     : #fff;
+        margin-left    : 3.5rem;
+        display        : flex;
+        align-items    : center;
+        flex-direction : column;
         justify-content: space-between;
-        height: fit-content;
-        width: 55%;
-        margin-top: 10px;
-        padding: 10px 20px;
+        height         : fit-content;
+        width          : 55%;
+        margin-top     : 10px;
+        padding        : 10px 20px;
+
+
+        > div {
+            display        : flex;
+            align-items    : center;
+            flex-direction : row;
+            justify-content: space-between;
+            height         : fit-content;
+        }
 
         .col {
             margin: 0;
@@ -155,9 +164,15 @@ table.maptable td {
             height: 60vh;
         }
 
-        #switchSearchEngine-0,#switchSearchEngine-1,#switchSearchEngine-2 {
+        #switchSearchEngine {
             width    : 100%;
             flex-wrap: wrap;
+
+            > div {
+                display       : flex;
+                flex-direction: row;
+                flex-wrap     : nowrap;
+            }
         }
 
         .containerActivities {
@@ -171,13 +186,14 @@ table.maptable td {
 
             #activities {
                 display       : flex;
-                flex-direction: row;
+                flex-direction: column;
                 flex-wrap     : nowrap;
                 width         : auto;
                 overflow-x    : scroll;
                 overflow-y    : hidden;
                 padding       : 0em 10px 0.1em 10px;
                 margin        : 0px 20px 0px 20px;
+
 
                 > h6 {
                     display        : flex;
