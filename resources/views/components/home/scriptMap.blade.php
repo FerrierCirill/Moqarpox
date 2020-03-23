@@ -412,10 +412,47 @@
         if (switchSearchEngine_open % 2 == 0) {
             document.getElementById('switchSearchEngine-0').setAttribute('style', 'display:flex')
             document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:flex')
+
+            document.getElementById('addH6').innerHTML = `
+                <h6>Recherche avancée</h6>
+                <div style="width:45%">
+                    <input type="text" placeholder="Quoi ?"  id="what" value="${document.getElementById('what').value}">
+                </div>
+                <div style="width:45%">
+                    <input type="text" placeholder="Où ? "  id="where" value="${document.getElementById('where').value}">
+                </div>
+            `;
+
+            document.getElementById('btnZone').innerHTML = `
+                <div style="margin-right:2rem">
+                    <i class="fas fa-caret-up" onclick="switchSearchEngine()"></i>
+                </div>
+                <div>
+                    <button type="button" onclick="recherche()" class="btn right">Rechercher</button>
+                </div>
+            `
         }
         else {
             document.getElementById('switchSearchEngine-0').setAttribute('style', 'display:none');
             document.getElementById('switchSearchEngine-1').setAttribute('style', 'display:none');
+
+            document.getElementById('addH6').innerHTML = `
+                <h6>Recherche</h6>
+                <div class="w-35">
+                    <input type="text" placeholder="Quoi ?"  id="what" value="${document.getElementById('what').value}">
+                </div>
+                <div class="w-35">
+                    <input type="text" placeholder="Où ? "  id="where" value="${document.getElementById('where').value}">
+                </div>
+                <div>
+                    <i class="fas fa-caret-down" onclick="switchSearchEngine()"></i>
+                </div>
+                <div>
+                    <button type="button" onclick="recherche()" class="btn right">Rechercher</button>
+                </div>
+            `;
+
+            document.getElementById('btnZone').innerHTML = ``
         }
         switchSearchEngine_open++;
     }

@@ -9158,7 +9158,8 @@ a:hover .scroll-prompt .scroll-prompt-arrow > div {
 }
 
 .multi-range {
-  width: 55%;
+  width: 75% !important;
+  margin: 0 3rem !important;
 }
 .multi-range #lower {
   position: relative;

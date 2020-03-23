@@ -11,7 +11,7 @@
 </div> --}}
 
 <div id="switchSearchEngine">
-    <div class="row m-0">
+    <div class="row m-0" id="addH6">
         <div class="w-35">
             <input type="text" placeholder="Quoi ?"  id="what" >
         </div>
@@ -20,7 +20,7 @@
         </div>
 
         <div>
-            <i class="fas fa-caret-down tooltipped" data-position="bottom" data-tooltip="Tous ces champs de recherche son cumulable !" onclick="switchSearchEngine()"></i>
+            <i class="fas fa-caret-down" onclick="switchSearchEngine()"></i>
         </div>
         <div>
             <button type="button" onclick="recherche()" class="btn right">Rechercher</button>
@@ -29,12 +29,12 @@
 
     <div class="row m-0" id="switchSearchEngine-0" style="display:none">
         <h6>Catégorie</h6>
-        <div class="w-35">
+        <div style="width:50%">
             <select id="category" onchange="updateSubCategories()">
                 <option value="null">--</option>
             </select>
         </div>
-        <div class="w-35">
+        <div style="width:45%">
             <select id="subCategory" >
                 <option value="null">--</option>
             </select>
@@ -51,6 +51,8 @@
             </p>
             <span id="max" style="min-width:35px">Max:<br>2500</span>
         </div>
+    </div>
+    <div id="btnZone">
 
     </div>
 </div>
