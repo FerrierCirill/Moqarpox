@@ -16,7 +16,7 @@ class ActivitiesOrders extends Migration
         Schema::create('activities_orders', function(Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('code')->unique();
-            $table->integer('state')->default(0); //0 : acheter | 1 : retracter | 2: Rembourser | 3: Depasser
+            $table->smallInteger('state')->default(0); //0 : acheter | 1 : retracter | 2: Rembourser | 3: Depasser
             $table->text('text')->nullable();
             $table->string('email');
             $table->string('friend_name')->nullable();
