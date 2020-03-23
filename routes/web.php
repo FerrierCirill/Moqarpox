@@ -52,9 +52,9 @@ Route::get('/company/enable/{company_id}', 'CompaniesController@confirmCompany')
 //        User        //
 // ================== //
 
-Route::get('/user', 'UsersController@getClient')->name('user_details')->middleware('auth');
-Route::get('/user/historical', 'UsersController@historical')->name('user_historical')->middleware('auth');
-Route::post('/user/edit', 'UsersController@postUserEdit')->name('user_edit')->middleware('auth');
+Route::get('/user', 'UsersController@getClient')            ->name('user_details')      ->middleware('auth');
+Route::get('/user/historical', 'UsersController@historical')->name('user_historical')   ->middleware('auth');
+Route::post('/user/edit', 'UsersController@postUserEdit')   ->name('user_edit')         ->middleware('auth');
 
 Route::get('/user/customercode/get', 'UsersController@getCustomerCode')->name('user_customer_code_get')->middleware('auth');
 Route::post('/user/customercode/post', 'UsersController@postCustomerCode')->name('user_customer_code_post')->middleware('auth');
@@ -76,10 +76,10 @@ Route::get(  '/shoppingCart',                       'ShoppingCartController@shop
 Route::post( '/shoppingCart/addItem',               'ShoppingCartController@shoppingCartAdd')       ->name('shopping_cart_add');
 Route::get(  '/shoppingCart/delItem/{activity_id}', 'ShoppingCartController@shoppingCartDelete')    ->name('shopping_cart_delete');
 
-Route::post( '/shoppingCart/validate',              'ShoppingCartController@shoppingCartValidate')  ->name('shopping_cart_validate')->middleware('auth');
-Route::get(  '/shoppingCart/validate',              'ShoppingCartController@shoppingCartValidate')  ->name('shopping_cart_validate')->middleware('auth');
+Route::post( '/shoppingCart/validate',              'ShoppingCartController@shoppingCartValidate')  ->name('shopping_cart_validate')->middleware('auth')->middleware('verified');
+Route::get(  '/shoppingCart/validate',              'ShoppingCartController@shoppingCartValidate')  ->name('shopping_cart_validate')->middleware('auth')->middleware('verified');
 
-Route::get('/shoppingCart/payment', 'ShoppingCartController@payment')->name('payment')->middleware('auth');
+Route::get('/shoppingCart/payment',                 'ShoppingCartController@payment')->name('payment')->middleware('auth');
 Route::get(  '/shoppingCart/thanks',                'ShoppingCartController@thanks')                ->name('thanks');              //->middleware('auth');
 
 // Route::get('/testSession', 'ShoppingCartController@testSession');
@@ -119,10 +119,11 @@ Route::get('/callback/{provider}', 'SocialController@callback');
 // ================== //
 
 Route::get('send-mail','UsersController@sendEmailToUser');
+Route::get('test_paye','ShoppingCartController@payment');
 
 ///////////////////////////////////////
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 /*
  * TODO

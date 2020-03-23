@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Activity;
 use App\Category;
+use App\Company;
+use App\Mail\ActivityRefuse;
+use App\Mail\ActivityValide;
+use App\Mail\CompanyValide;
 use App\SubCategory;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ActivitiesController extends Controller
 {
@@ -22,17 +28,15 @@ class ActivitiesController extends Controller
     }
 
     public function postAddActivity(Request $request, $company_id){
-       // echo 'company:'.$company_id.'<br>';
-      //  var_dump($request->request);
 
         $this->validate ($request, [
-            'name' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-            'resume' => 'required',
-            'information' => 'required',
-            'subCategory_id' => 'required|exists:subCategories,id',
-            'link0' => 'required|image',
+            'name'           => 'required',
+            'price'          => 'required',
+            'description'    => 'required',
+            'resume'         => 'required',
+            'information'    => 'required',
+            'subCategory_id' => 'required|exists:subcategories,id',
+            'link0'          => 'required|image',
         ]);
 
         if($request->hasFile('link0')) {
@@ -43,7 +47,7 @@ class ActivitiesController extends Controller
             $activity->resume = $request->input('resume');
             $activity->description_perso = $request->input('description_perso');
             $activity->information = $request->input('information');
-            $activity->subCategory_id = $request->input('subCategory_id');
+            $activity->sub_category_id = $request->input('subcategory_id');
             $activity->company_id = $company_id;
             $activity->save();
 
@@ -65,8 +69,6 @@ class ActivitiesController extends Controller
                 $activity->save();
             }
 
-        //Voir pour le cas d'envoie d'images
-        //var_dump('test');
         return redirect()->route('company_details', ['company_id' => $company_id]);
         } else {
             return redirect()->back();
@@ -90,6 +92,10 @@ class ActivitiesController extends Controller
         $activity->state = 1;
         $activity->save();
 
+        $company = Company::findOrFail($activity->company_id);
+        $user = User::findOrFail($company->user_id);
+        $to_email = $user->email;
+        Mail::to($to_email)->send(new ActivityValide($activity_id));
         return redirect()->back();
     }
 
@@ -98,6 +104,11 @@ class ActivitiesController extends Controller
         $activity->state = 2;
         $activity->save();
 
+        $company = Company::findOrFail($activity->company_id);
+        $user = User::findOrFail($company->user_id);
+        $to_email = $user->email;
+
+        Mail::to($to_email)->send(new ActivityRefuse($activity->name));
         return redirect()->back();
     }
 

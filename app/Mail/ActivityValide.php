@@ -7,19 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class CompanyValide extends Mailable
+class ActivityValide extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $path_detail_company;
+    protected $path_detail_activity;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($company_id)
+    public function __construct($activity_id)
     {
-        $this->path_detail_company = 'mouqarpox.neolithic.fr/company/'.$company_id;
+        $this->path_detail_activity = 'mouqarpox.neolithic.fr/activity/'.$activity_id;
     }
 
     /**
@@ -32,10 +32,10 @@ class CompanyValide extends Mailable
 
 
         return $this->from('admin@programmingfields.com')
-            ->subject('[Entreprise Validée] Mouqarpox')
-            ->view('email.mail-companyValide')
+            ->subject('[Activité Validée] Mouqarpox')
+            ->view('email.mail-activityValide')
             ->with([
-                'path_detail_company' => $this->path_detail_company,
+                'path_detail_activity' => $this->path_detail_activity,
             ]);
     }
 }
