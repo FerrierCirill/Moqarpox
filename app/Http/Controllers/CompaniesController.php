@@ -96,7 +96,7 @@ class CompaniesController extends Controller
         return view('pages.company.company_details', [
             'company'                       => $company,
             'activities_activer'            => $activities_activer,
-            'activities_forValideOrNotActi' => $activities_forValideOrNotActi
+            'activities_forValideOrNotActi' => $activities_forValideOrNotActi,
         ]);
     }
 
