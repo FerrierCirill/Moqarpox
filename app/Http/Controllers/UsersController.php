@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Activity;
-use App\Company;
 use App\Notifications\Provider;
-use App\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Foundation\Auth\User as Authenticatable;
+// use Illuminate\Notifications\Notifiable;
+
+use App\Activity;
+use App\Company;
+use App\User;
 use App\ActivityOrder;
 use App\Order;
 use App\Mail\SendEmail;
