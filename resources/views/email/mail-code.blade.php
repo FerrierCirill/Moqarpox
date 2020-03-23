@@ -17,7 +17,7 @@
 		</td>
 	</tr><!-- end tr -->
 	<tr>
-		<td valign="middle" class="hero bg_white" style="background-image: url({{ ICI FLOREN  }}); background-size: cover; height: 400px;">
+		<td valign="middle" class="hero bg_white" style="background-image: url({{ $img }}); background-size: cover; height: 400px;">
 			<div class="overlay">
 			</div>
 			<table>

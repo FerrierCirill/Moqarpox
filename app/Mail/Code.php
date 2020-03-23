@@ -19,6 +19,7 @@ class Code extends Mailable
     protected $code;
     protected $name_customer = 'votre ami(e)';
     protected $text;
+    protected $img;
     /**
      * Create a new message instance.
      *
@@ -31,6 +32,7 @@ class Code extends Mailable
         $this->activity_name =  $activity->name;;
         $this->code =  $product->code;
         $this->text =  $product->text;
+        $this->img = $activity->link0;
 
         if($user->second_name)
             $this->name_customer =  $user->second_name.' ';
@@ -56,11 +58,12 @@ class Code extends Mailable
             ->subject('Toc, Toc ! '.$this->name_customer.' vous as offet à cadeaux via Mouqarpox !')
             ->with([
                 'name_customer' => $this->name_customer,
-                'code' => $this->code,
-                'date' =>  $date,
-                'text' => $this->text,
+                'code'          => $this->code,
+                'date'          => $date,
+                'text'          => $this->text,
                 'path_activity' => $this->path_activity,
                 'activity_name' => $this->activity_name,
+                'img'           => $this->img
             ]);
     }
 }
