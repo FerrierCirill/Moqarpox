@@ -2,26 +2,21 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
-
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
-                        </div>
-                    @endif
-
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
-                    </form>
+    <div class="row">
+        <div class="col s12 center-align">
+            <h2>Vérifiez votre adresse e-mail</h2>
+            @if (session('resent'))
+                <div class="alert alert-success" role="alert">
+                    <p style="color: red">Vérifiez votre adresse e-mail<p>
                 </div>
-            </div>
+            @endif
+
+            <p>Avant de continuer, veuillez vérifier votre boite mail. Si vous n'avez pas reçu l'e-mail</p>
+
+            <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                @csrf
+                <button type="submit" class="btn m-0">Cliquez ici pour en demander un autre lien</button>
+            </form>
         </div>
     </div>
 </div>
