@@ -89,18 +89,19 @@ class HomeController extends Controller
         ]);
 
         $code_exists = ActivityOrder::where('code', $request->input('code'))->first();
-        $activityOrderId = $code_exists->id;
-        $activityId = $code_exists->activity_id;
+
         if($code_exists != null) {
-            $code_used = Comment::where('activity_order_id', $code_exists->id)->first();
+            $activityOrderId = $code_exists->id;
+            $activityId      = $code_exists->activity_id;
+            $code_used       = Comment::where('activity_order_id', $code_exists->id)->first();
             if ($code_used == null) {
 
-                $comment = new Comment();
-                $comment->title = $request->input('title');
-                $comment->message = $request->input('message');
-                $comment->note = $request->input('note');
+                $comment                    = new Comment();
+                $comment->title             = $request->input('title');
+                $comment->message           = $request->input('message');
+                $comment->note              = $request->input('note');
                 $comment->activity_order_id = $activityOrderId;
-                $comment->activity_id = $activityId;
+                $comment->activity_id       = $activityId;
                 $comment->state = 0;
 
                 $comment->save();

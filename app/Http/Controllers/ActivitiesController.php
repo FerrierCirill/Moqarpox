@@ -69,7 +69,7 @@ class ActivitiesController extends Controller
                 $activity->save();
             }
 
-        return redirect()->route('company_details', ['company_id' => $company_id]);
+            return redirect()->route('company_details', ['company_id' => $company_id]);
         } else {
             return redirect()->back();
         }
