@@ -32,8 +32,12 @@
             <a href="{{route('activity_add_get', ['company_id' => $company->id])}}" class="btn">Ajouter une activité <i class="fas fa-plus-square"></i></a>
         @endisMyCompany
         @isAdmin
-            <a href="{{ route('confirm_company', ['company_id' => $company->id]) }}" class="btn"><i class="fas fa-check"></i></a>
-            <a href="{{ route('refuse_company', ['company_id' => $company->id]) }}" class="btn"><i class="fas fa-ban"></i></a>
+        @if($company->state==0)
+            <a href="{{ route('confirm_company', ['company_id' => $company->id]) }}" class="btn" title="Validée entreprise"><i class="fas fa-check"></i></a>
+            <a href="{{ route('refuse_company', ['company_id' => $company->id]) }}" class="btn"  title="Refusée entreprise"><i class="fas fa-ban"></i></a>
+        @else
+            <a href="{{ route('refuse_company', ['company_id' => $company->id]) }}" class="btn" title="Supprimer entreprise"><i class="fas fa-ban"></i></a>
+        @endif
         @endisAdmin
 
         <div class="row mt-2">
