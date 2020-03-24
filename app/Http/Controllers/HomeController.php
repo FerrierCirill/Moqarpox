@@ -42,7 +42,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $activity = Activity::inRandomOrder()->first();
+        $activity = Activity::where('state',1)->inRandomOrder()->first();
         $categories = Category::get();
         $companies = Company::get();
 
@@ -63,7 +63,7 @@ class HomeController extends Controller
             'subCategories' => $subCategories
         ]);
     }
-    
+
     public function LM() {
         return view('pages.right.lm');
     }
