@@ -144,6 +144,7 @@ class CompaniesController extends Controller
     public function confirmCompany($company_id) {
         $company = Company::findOrFail($company_id);
         $company->state = 1;
+        $company->save();
         $user = User::find($company->user_id);
         if($user){
         $to_email = $user->email;
