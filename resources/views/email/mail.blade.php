@@ -348,16 +348,7 @@
 					<td valign="middle" class="bg_green footer email-section">
 						<table>
 							<tr>
-								<td valign="top" width="75%" style="padding-top: 20px;">
-									<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-										<tr>
-											<td style="text-align: left; padding-right: 10px;">
-												<h3 class="heading">About</h3>
-										</td>
-										</tr>
-									</table>
-								</td>
-								<td valign="top" width="33.333%" style="padding-top: 20px;">
+								<td valign="top" width="100%" style="padding-top: 20px;">
 									<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
 										<tr>
 											<td style="text-align: left; padding-left: 5px; padding-right: 5px;">
@@ -383,7 +374,7 @@
 									<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
 										<tr>
 											<td style="text-align: left; padding-right: 10px;">
-												<p>&copy; 202 Mouqarpox</p>
+												<p>&copy; Mouqarpox</p>
 											</td>
 										</tr>
 									</table>
