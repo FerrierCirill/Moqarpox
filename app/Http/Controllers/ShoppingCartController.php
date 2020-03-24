@@ -120,7 +120,7 @@ class ShoppingCartController extends Controller
                     $texts[$key]         != null
                 ) {
                     $shoppingCarts[$key]->friend_name  = $friend_name;
-                    $shoppingCarts[$key]->friend_email = $friend_emails[$key];
+                    $shoppingCarts[$key]->friend_mail = $friend_emails[$key];
                     $shoppingCarts[$key]->text         = $texts[$key];
                     $shoppingCarts[$key]->save();
                 }
