@@ -8,7 +8,7 @@
 					<td class="logo" style="text-align: center;">
 						<h1>
 							<a href="{{ route('home') }}">
-								<img src="{{asset('images/logo.svg')}}" alt="mouqarpox" class="responsive-img">
+								Mouqarpox
 							</a>
 						</h1>
 					</td>
