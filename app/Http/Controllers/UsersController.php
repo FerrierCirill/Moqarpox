@@ -97,6 +97,9 @@ class UsersController extends Controller
                 ]);
             }
         }
+        else {
+            return redirect()->back();
+        }
     }
 
 }

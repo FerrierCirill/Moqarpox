@@ -32,8 +32,8 @@
 
 			<div class="row">
 				<div class="input-field col s12 m6">
-					<input id="first_name" name="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" autocomplete="first_name">
-					<label for="first_name">Nom*</label>
+					<input id="first_name" name="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" autocomplete="first_name" autofocus>
+					<label for="first_name">Prénom*</label>
 
 					@error('first_name')
 					<span class="invalid-feedback" role="alert">
@@ -43,8 +43,8 @@
 				</div>
 
 				<div class="input-field col s12 m6">
-					<input id="second_name" type="text" class="form-control @error('second_name') is-invalid @enderror" name="second_name" value="{{ old('second_name') }}" autocomplete="second_name" autofocus>
-					<label for="second_name">Prénom*</label>
+					<input id="second_name" type="text" class="form-control @error('second_name') is-invalid @enderror" name="second_name" value="{{ old('second_name') }}" autocomplete="family-name">
+					<label for="second_name">Nom*</label>
 
 					@error('second_name')
 					<span class="invalid-feedback" role="alert">
@@ -107,7 +107,7 @@
 
 			<div class="row">
 				<label class="col s12 center center-align">
-					<input type="checkbox" class="filled-in"/>
+					<input type="checkbox" class="filled-in" name="cgu" required/>
 					<span>Vous acceptez nos conditions d'utilisation</span>
 				</label>
 			</div>

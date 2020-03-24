@@ -89,12 +89,19 @@ class CompaniesController extends Controller
          * - l'utilisateur est connecté  + ( utilisateur = (admin  [ou  propriétaire]* ) )
          *  *à voir
          */
-        if($company == null  || $company->state=!1 && ( !\Auth::check() && \Auth::user()->admin != \App\User::ADMIN ))//|| \Auth::id()!=$company->user_id) )
+
+        if($company == null  || $company->state != 1 && ( !\Auth::check() && \Auth::user()->admin != \App\User::ADMIN )) {
+            //|| \Auth::id()!=$company->user_id) )
             return back();
-        $activities_activer = Activity::where('company_id', $company->id)->where('state', '1')->paginate(12);
+        }
+
+        $activities_activer            = Activity::where('company_id', $company->id)->where('state', '1')->paginate(12);
         $activities_forValideOrNotActi = Activity::where('company_id', $company->id)->where('state', '<>', '1')->get();
 
+        // dd($company->state);
+
         return view('pages.company.company_details', [
+            'state'                         => $company->state,
             'company'                       => $company,
             'activities_activer'            => $activities_activer,
             'activities_forValideOrNotActi' => $activities_forValideOrNotActi,
@@ -143,9 +150,11 @@ class CompaniesController extends Controller
         $company = Company::findOrFail($company_id);
         $company->state = 1;
         $company->save();
-        $user = User::findOrFail($company->user_id);
+        $user = User::find($company->user_id);
+        if($user){
         $to_email = $user->email;
         Mail::to($to_email)->send(new CompanyValide($company_id));
+        }
         return redirect()->back();
     }
 
@@ -158,5 +167,18 @@ class CompaniesController extends Controller
 
         Mail::to($to_email)->send(new CompanyRefuse($company->name));
         return redirect()->back();
+    }
+
+    public function disableCompany($company_id){
+        $company = Company::where('id', $company_id)->first();
+        if($company == null  || $company->state=!1 && ( !\Auth::check() && \Auth::user()->admin != \App\User::ADMIN ))//|| \Auth::id()!=$company->user_id) )
+            return back();
+        $activities = Activity::where('company_id', $company->id)->get();
+        foreach ($activities as $activity){
+            $activity->state = -1;
+            $activity->save();
+        }
+        $company->state = 2;
+        return back();
     }
 }

@@ -158,10 +158,24 @@
                             let url = '{{route('activity_details', [':activity_id'])}}';
                             url = url.replace(':activity_id',json[i]['id']);
 
-                            let html = '<div class="activity">Nom : ' + json[i]['name'] + '<br>' +
-                                'Prix : ' + json[i]['price'] + ' € <br>' +
-                                'Description : ' + json[i]['description_perso'] + '<br>' +
-                                '<a href="' + url + '">Voir l\'activité</a></div>';
+                            let html =
+                                `<a href="${url}" class="col s12 m6 l4 ">
+                                    <div class="homeActivity w-100">
+                                        <div class="homeActivity-div">
+                                            <div class="homeActivity-div-img"
+                                                style="background:url('{{--asset('storage')--}}${json[i]['link0']}')">
+                                            </div>
+                                        </div>
+                                        <div class="homeActivity-main">
+                                            <h6 class="black-text mb-0">${json[i]['name']}</h6>
+                                            <span class="homeActivity-price mt-0">${json[i]['price']} €</span>
+                                        </div>
+                                        <p class="grey-text mt-0">
+                                            Note : ${json[i]['note']} / 5
+                                        </p>
+
+                                    </div>
+                                </a>`;
                             result.innerHTML += html;
                         }
                     } else {

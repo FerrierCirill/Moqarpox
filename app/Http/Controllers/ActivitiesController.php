@@ -47,7 +47,7 @@ class ActivitiesController extends Controller
             $activity->resume = $request->input('resume');
             $activity->description_perso = $request->input('description_perso');
             $activity->information = $request->input('information');
-            $activity->sub_category_id = $request->input('subcategory_id');
+            $activity->sub_category_id = $request->input('subCategory_id');
             $activity->company_id = $company_id;
             $activity->save();
 
@@ -69,7 +69,7 @@ class ActivitiesController extends Controller
                 $activity->save();
             }
 
-        return redirect()->route('company_details', ['company_id' => $company_id]);
+            return redirect()->route('company_details', ['company_id' => $company_id]);
         } else {
             return redirect()->back();
         }
@@ -95,7 +95,7 @@ class ActivitiesController extends Controller
         $company = Company::findOrFail($activity->company_id);
         $user = User::findOrFail($company->user_id);
         $to_email = $user->email;
-        Mail::to($to_email)->send(new ActivityValide($activity_id));
+        Mail::to($to_email)->send(new ActivityValide($activity_id,$company->name));
         return redirect()->back();
     }
 
