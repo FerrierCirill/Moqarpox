@@ -95,7 +95,7 @@ class ActivitiesController extends Controller
         $company = Company::findOrFail($activity->company_id);
         $user = User::findOrFail($company->user_id);
         $to_email = $user->email;
-        Mail::to($to_email)->send(new ActivityValide($activity_id));
+        Mail::to($to_email)->send(new ActivityValide($activity_id,$company->name));
         return redirect()->back();
     }
 
