@@ -47,7 +47,7 @@ class ActivitiesController extends Controller
             $activity->resume = $request->input('resume');
             $activity->description_perso = $request->input('description_perso');
             $activity->information = $request->input('information');
-            $activity->sub_category_id = $request->input('subcategory_id');
+            $activity->sub_category_id = $request->input('subCategory_id');
             $activity->company_id = $company_id;
             $activity->save();
 
