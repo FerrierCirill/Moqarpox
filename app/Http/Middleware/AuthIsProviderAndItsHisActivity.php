@@ -17,6 +17,10 @@ class AuthIsProviderAndItsHisActivity
      */
     public function handle($request, Closure $next)
     {
+        if (\Auth::check() && \Auth::user()->admin != \App\User::ADMIN) {
+            return $next($request);
+        }
+
         if (!\Auth::check() || \Auth::user()->state != \App\User::PROVIDER) {
             return back();
         } else {
