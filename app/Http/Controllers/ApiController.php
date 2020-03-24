@@ -170,7 +170,7 @@ class ApiController extends Controller
     }
 
     public function getActivitiesOfCompany($company_id) {
-        $activities = Activity::where('company_id', '=', $company_id)->get();
+        $activities = Activity::where('company_id', '=', $company_id)->where('state', 1)->get();
         return $activities;
     }
 
