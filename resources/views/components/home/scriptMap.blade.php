@@ -158,7 +158,6 @@
                             let url = '{{route('activity_details', [':activity_id'])}}';
                             url = url.replace(':activity_id',json[i]['id']);
 
-//ICI
                             let html =
                                 `<a href="${url}" class="col s12 m6 l4 ">
                                     <div class="homeActivity w-100">
