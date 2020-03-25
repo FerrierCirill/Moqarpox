@@ -13,6 +13,7 @@ Route::get('/redir', 'HomeController@testDir');
 Route::get('/legalMentions', 'HomeController@LM')->name('legal_mentions');
 Route::get('/termsConditionsUse', 'HomeController@TCU')->name('terms_conditions_use');
 Route::get('/termsConditionsSale', 'HomeController@TCS')->name('terms_conditions_sale');
+Route::get('/faq', 'HomeController@faq')->name('faq');
 
 
 // ================== //

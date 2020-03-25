@@ -76,6 +76,10 @@ class HomeController extends Controller
         return view('pages.right.tcs');
     }
 
+    public function faq() {
+        return view('pages.right.faq');
+    }
+
     public function getAddComment() {
         return view('pages.company.activity.add_comment');
     }
