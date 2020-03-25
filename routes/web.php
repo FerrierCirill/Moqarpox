@@ -13,6 +13,7 @@ Route::get('/redir', 'HomeController@testDir');
 Route::get('/legalMentions', 'HomeController@LM')->name('legal_mentions');
 Route::get('/termsConditionsUse', 'HomeController@TCU')->name('terms_conditions_use');
 Route::get('/termsConditionsSale', 'HomeController@TCS')->name('terms_conditions_sale');
+Route::get('/faq', 'HomeController@faq')->name('faq');
 
 
 // ================== //
@@ -63,6 +64,8 @@ Route::get('/comment/add', 'HomeController@getAddComment')->name('get_add_commen
 Route::post('/comment/add', 'HomeController@postAddComment')->name('post_add_comment');  //MIDDLEWARE ?
 
 Route::get('/comment/{comment_id}/{state}', 'HomeController@changeStateComment')->name('change_state_comment')->middleware('AuthIsAdmin');
+
+Route::get('/comment/thanks', 'HomeController@thanks')->name('comment_thanks');
 
 Route::get('/repayment', 'HomeController@getRepayment')->name('get_repayment');          //MIDDLEWARE ?
 Route::post('/repayment', 'HomeController@postRepayment')->name('post_repayment');       //MIDDLEWARE ?

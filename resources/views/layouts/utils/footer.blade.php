@@ -33,6 +33,7 @@
             <a class="grey-text text-lighten-4 right ml-1" href="{{route('legal_mentions')}}">Mentions légales</a>
             <a class="grey-text text-lighten-4 right ml-1" href="{{route('terms_conditions_use')}}">CGU</a>
             <a class="grey-text text-lighten-4 right ml-1" href="{{route('terms_conditions_sale')}}">CGV</a>
+            <a class="grey-text text-lighten-4 right ml-1" href="{{route('faq')}}">FAQ</a>
         </div>
     </div>
 </footer>

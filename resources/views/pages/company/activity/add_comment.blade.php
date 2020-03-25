@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="row">
-            <form action="{{ route('user_customer_code_post') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('post_add_comment') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="input-field col s12 m6">
                     <label>Code*</label>
@@ -61,8 +61,14 @@
                     </div>
                 </div>
             </form>
-        </div>
-    </div>
+         </div>
+        @if(isset($error))
+            <div class="center-align" style="color: red">
+                {{$error}}
+                <br>
+                <a href="https://mouqarpox.neolithic.fr/faq">Voir la FAQ pour plus de détails.</a>
+            </div></div>
+@endif
 </div>
 
 <script>

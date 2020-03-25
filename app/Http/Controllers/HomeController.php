@@ -76,6 +76,10 @@ class HomeController extends Controller
         return view('pages.right.tcs');
     }
 
+    public function faq() {
+        return view('pages.right.faq');
+    }
+
     public function getAddComment() {
         return view('pages.company.activity.add_comment');
     }
@@ -93,9 +97,11 @@ class HomeController extends Controller
         if($code_exists != null) {
             $activityOrderId = $code_exists->id;
             $activityId      = $code_exists->activity_id;
-            $code_used       = Comment::where('activity_order_id', $code_exists->id)->first();
+            $code_used       = Comment::where('activity_order_id',   $activityOrderId)->first();
+            if($code_exists != ( 2 || 3) ) // L'activit n'a pas été utilisé ( prestataire pas payer ) ou dépassé
+            { echo 'view à faire code non utilisé'; die();}  //return redirect('view à faire code non utilisé');
             if ($code_used == null) {
-
+                //ici le code existe && il n'existe pas de commentaire
                 $comment                    = new Comment();
                 $comment->title             = $request->input('title');
                 $comment->message           = $request->input('message');
@@ -106,12 +112,14 @@ class HomeController extends Controller
 
                 $comment->save();
 
-                return redirect()->back();
+                return view('pages.company.activity.thanks',
+                ['comment'=>$comment, 'activity_id'=>$activityId]);
             } else {
-                return redirect()->back();
+                return view('pages.company.activity.add_comment',['error'=> 'Vous avez déjà laissé un commentaire avec ce code: '.$request->input('code')]);
             }
         } else {
-            return redirect()->back();
+            $error='Le code entré n\'est pas valide ou le code n\'a pas encoré été utilisé.';
+            return view('pages.company.activity.add_comment',['error'=> $error]);
         }
     }
 
@@ -129,4 +137,6 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
     */
+
+
 }
