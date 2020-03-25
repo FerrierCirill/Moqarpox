@@ -45,10 +45,21 @@ class UsersController extends Controller
 
         if (Hash::check($request->input('password'), $user->password)) {
 
+            $this->validate ($request, [
+                    'first_name' =>  ['required', 'string', 'max:25'],
+                    'second_name' => ['required', 'string', 'max:25'],
+                    'phone' =>      ['required', 'numeric','regex:/^[0-9]{10}$/'],
+                ]);
+
+            if($request->input('email')!= $user->email){
+                $this->validate ($request, ['email' =>       ['required', 'string', 'email', 'max:40', 'unique:users'],]);
+                $user->email       = $request->input('email');
+                $user->email_verified_at = null;
+            }
+
             $user->first_name  = $request->input('first_name');
             $user->second_name = $request->input('second_name');
             $user->phone       = $request->input('phone');
-            $user->email       = $request->input('email');
             $user->civility    = $request->input('civility');
 
             $user->save();
