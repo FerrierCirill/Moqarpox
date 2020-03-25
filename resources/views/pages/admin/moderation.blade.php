@@ -233,9 +233,8 @@
 									{{ $comment->title }} : {{ \Illuminate\Support\Str::limit($comment->message, $limit = 75, $end = '...') }}
 								</div>
 								<div class="colm4 s12 right-align">
-									<a href="#" class="btn" style="margin: 1px"><i class="fas fa-book-open"></i></a>
-									<a href="#" class="btn" style="margin: 1px"><i class="fas fa-check"></i></a>
-									<a href="#" class="btn" style="margin: 1px"><i class="fas fa-ban"></i></a>
+									<a href="{{ route('change_state_comment', ['comment_id' => $comment->id, 'state' => 1]) }}" class="btn" style="margin: 1px"><i class="fas fa-check"></i></a>
+									<a href="{{ route('change_state_comment', ['comment_id' => $comment->id, 'state' => -1]) }}" class="btn" style="margin: 1px"><i class="fas fa-ban"></i></a>
 								</div>
 							</div>
 						</li>
