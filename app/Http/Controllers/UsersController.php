@@ -88,7 +88,9 @@ class UsersController extends Controller
         if($activity_order != null) {
             $activity = Activity::where('id', $activity_order->activity_id)->first();
             $company = Company::where('id', $activity->company_id)->first();
+
             $user = User::where('id', $company->user_id)->first();
+
             if (\Auth::id() == $user->id) {
                 if ($activity_order->state == 0) {
                     $activity_order->state = 2;

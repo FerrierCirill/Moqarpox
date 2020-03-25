@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="row">
-            <form action="{{ route('user_customer_code_post') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('post_add_comment') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="input-field col s12 m6">
                     <label>Code*</label>

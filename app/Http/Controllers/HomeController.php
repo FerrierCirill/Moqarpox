@@ -93,9 +93,11 @@ class HomeController extends Controller
         if($code_exists != null) {
             $activityOrderId = $code_exists->id;
             $activityId      = $code_exists->activity_id;
-            $code_used       = Comment::where('activity_order_id', $code_exists->id)->first();
+            $code_used       = Comment::where('activity_order_id',   $activityOrderId)->first();
+            if($code_exists != ( 2 || 3) ) // L'activit n'a pas été utilisé ( prestataire pas payer ) ou dépassé
+            { echo 'view à faire code non utilisé'; die();}  //return redirect('view à faire code non utilisé');
             if ($code_used == null) {
-
+                //ici le code existe && il n'existe pas de commentaire
                 $comment                    = new Comment();
                 $comment->title             = $request->input('title');
                 $comment->message           = $request->input('message');
@@ -108,10 +110,13 @@ class HomeController extends Controller
 
                 return redirect()->back();
             } else {
-                return redirect()->back();
+                echo 'vous avez déjà laissé un commentaire';
+               // return redirect()->back(); // vous avez déjà laissé un commentaire
             }
         } else {
-            return redirect()->back();
+            echo 'le code entré n\'est pas valide ou le code n\'a pas encoré été utilisé. Voir la faq pour plus d\'info';
+           // return redirect()->back();
+            // le code entré n'est pas valide ou le code n'a pas encoré été utilisé. Voir la faq pour plus d'info
         }
     }
 
