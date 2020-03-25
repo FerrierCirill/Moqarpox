@@ -65,6 +65,8 @@ Route::post('/comment/add', 'HomeController@postAddComment')->name('post_add_com
 
 Route::get('/comment/{comment_id}/{state}', 'HomeController@changeStateComment')->name('change_state_comment')->middleware('AuthIsAdmin');
 
+Route::get('/comment/thanks', 'HomeController@thanks')->name('comment_thanks');
+
 Route::get('/repayment', 'HomeController@getRepayment')->name('get_repayment');          //MIDDLEWARE ?
 Route::post('/repayment', 'HomeController@postRepayment')->name('post_repayment');       //MIDDLEWARE ?
 
