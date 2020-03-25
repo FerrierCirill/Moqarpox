@@ -61,8 +61,14 @@
                     </div>
                 </div>
             </form>
-        </div>
-    </div>
+         </div>
+        @if(isset($error))
+            <div class="center-align" style="color: red">
+                {{$error}}
+                <br>
+                <a href="https://mouqarpox.neolithic.fr/faq">Voir la FAQ pour plus de détails.</a>
+            </div></div>
+@endif
 </div>
 
 <script>

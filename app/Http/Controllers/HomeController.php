@@ -112,15 +112,14 @@ class HomeController extends Controller
 
                 $comment->save();
 
-                return redirect()->back();
+                return view('pages.company.activity.thanks',
+                ['comment'=>$comment, 'activity_id'=>$activityId]);
             } else {
-                echo 'vous avez déjà laissé un commentaire';
-               // return redirect()->back(); // vous avez déjà laissé un commentaire
+                return view('pages.company.activity.add_comment',['error'=> 'Vous avez déjà laissé un commentaire avec ce code: '.$request->input('code')]);
             }
         } else {
-            echo 'le code entré n\'est pas valide ou le code n\'a pas encoré été utilisé. Voir la faq pour plus d\'info';
-           // return redirect()->back();
-            // le code entré n'est pas valide ou le code n'a pas encoré été utilisé. Voir la faq pour plus d'info
+            $error='Le code entré n\'est pas valide ou le code n\'a pas encoré été utilisé.';
+            return view('pages.company.activity.add_comment',['error'=> $error]);
         }
     }
 
@@ -138,4 +137,6 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
     */
+
+
 }
