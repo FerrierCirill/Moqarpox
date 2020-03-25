@@ -29,7 +29,7 @@
                     <span class="categori-show" style="background :{{ \App\SubCategory::find($activity->sub_category_id)->category->hexa }}"></span>
                     {{ \App\SubCategory::find($activity->sub_category_id)->category->name }} >
                     <span>{{ \App\SubCategory::find($activity->sub_category_id)->name }}</span> |
-                    <a href="#comments">{{sizeof($activity->comments)}} commentaires</a>
+                    <a href="#comments">{{ $nb_de_commentaire ?? 0 }} commentaires</a>
 
                     <p>
                         {{$activity->resume}}

@@ -10,6 +10,7 @@ use App\Mail\ActivityValide;
 use App\Mail\CompanyValide;
 use App\SubCategory;
 use App\User;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -82,8 +83,13 @@ class ActivitiesController extends Controller
             $activity = Activity::where('id',$activity_id)->first();
         if($activity == null) return back();
 
+        $nb_de_commentaire = Comment::where('activity_id', $activity->id)->where('state', 1)->count();
+
+        // dd($nb_de_commentaire);
+
         return view('pages.company.activity.activity_details', [
-            'activity' => $activity
+            'activity' => $activity,
+            'nb_de_commentaire' => $nb_de_commentaire
         ]);
     }
 
