@@ -146,7 +146,7 @@
                 <h4>Comment retirer une activité/ une entreprise?</h4>
                     <p>Pour le moment Mouqarpox ne propose pas de supprimer une activité créé, vous pouvez la désactiver pour qu'elle ne soit plus accesible au utilisateur ou contacter Mouqarpox à l’adresse contact[at]mouqarpox.fr</p>
 
-                <hr>
+                <hr class="separator">
 
 
                 <h4>Comment modifier une entreprise ?</h4>
