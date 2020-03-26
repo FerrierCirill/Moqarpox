@@ -249,12 +249,12 @@
 
   <div class="row">
     <div class="col s12 z-depth-1 px-1">
-      <form class=" valign-wrapper" action="" method="post">
+        <form class="valign-wrapper" action="{{route('add_admin')}}" method="post">
         <div class="col s5">
           Ajouter un admin :
         </div>
         <div class="col s5">
-            <input type="text" name="addAdmin" value="">
+            <input type="text" name="email" value="">
         </div>
         <div class="col s2">
           <button type="button" name="button" class="btn-small">></button>
@@ -265,12 +265,12 @@
 
   <div class="row">
     <div class="col s12 z-depth-1 px-1">
-      <form class=" valign-wrapper" action="index.html" method="post">
+      <form class=" valign-wrapper" action="{{route('delete_admin')}}" method="post">
         <div class="col s5">
           Supprimer un admin :
         </div>
         <div class="col s5">
-          <input type="text" name="delAdmin" value="">
+          <input type="text" name="email" value="">
         </div>
         <div class="col s2">
           <button type="button" class="btn-small" name="button">></button>
