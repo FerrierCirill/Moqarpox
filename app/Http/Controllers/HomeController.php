@@ -128,6 +128,18 @@ class HomeController extends Controller
         $comment->state = $state;
         $comment->save();
 
+        if($state == 1) {
+            $tt = 0;
+            $nb = 0;
+            foreach(Comment::where('activity_id', $comment->activity_id)->where('state', 1)->get() as $commentaire) {
+                $tt += $commentaire->note;
+                $nb++;
+            }
+            $a = Activity::find($comment->activity_id);
+            $a->note = number_format($tt/$nb, 2);
+            $a->save();
+        }
+
         return redirect()->back();
     }
 
