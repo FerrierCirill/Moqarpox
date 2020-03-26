@@ -221,7 +221,7 @@ class ApiController extends Controller
 
     public function returnLatLng($address) {
         $data = array(
-            'q'      => $address,
+            'q'      => trim($address),
             'format' => 'json',
         );
         $url = 'https://nominatim.openstreetmap.org/?' . http_build_query($data);
@@ -235,8 +235,9 @@ class ApiController extends Controller
         $json_data = json_decode($geopos, true);
 
         $result = [];
-        $lat = $json_data[0]['lat'];
-        $lon = $json_data[0]['lon'];
+
+        $lat = (sizeof($json_data)!=0) ? $json_data[0]['lat'] : 'NoResult';
+        $lon = (sizeof($json_data)!=0) ? $json_data[0]['lon'] : 'NoResult';
         array_push($result, $lat);
         array_push($result, $lon);
         return $result;
