@@ -75,6 +75,7 @@
             <div class="col s12">
                 <h3 id="compte" class="pt-5">Compte</h3>
 
+                    <h4>Comment crée un compte ?</h4>
             </div>
         </div>
 
@@ -126,6 +127,19 @@
             <div class="col s12">
                 <h3 id="prestataire" class="pt-5">Prestataire</h3>
 
+                <h4>Comment devenir prestataire / Créé un entrprise ?</h4>
+                    <ul>
+                        <li>Connecter vous à votre compte <em>(Voir <a href="#compte">crée un compte</a>)</em></li>
+                        <li>Cliquer sur l'icon <strong>"  <a href="{{route('user_details')}}"><i class="fas fa-user"></i></a> "</strong> dans la bare de navigation pour accéder à votre compte</li>
+                        <li>Cliquer sur <a class="btn" href="{{route('company_add_get')}}'">Déposer une offre <i class="fas fa-paper-plane" aria-hidden="true"></i></a> ou <a href="{{route('company_add_get')}}" class="btn">Créer une entreprise <i class="fas fa-plus-square" aria-hidden="true"></i></a> si vous etes déjà  prestataire pour Mouqarpox</li>
+                        <li>Remplir les différents champs</li>
+                        <li>Puis valider en cliquant sur <button class="btn">Ajouter <i class="fas fa-save"></i></button></li>
+                    </ul>
+
+                    <p>Une fois ajouter notre équipe ce chargera de verifier votre ajout, une fois validé/refusé vous receverez un email à l'adresse renseignez lors de votre inscription à Mouqarpox <em>(pour plus d'information : <a href="{{route('terms_conditions_use')}}">CGU</a>)</em></p>
+
+                <hr class="separator">
+
                 <h4>Comment ajouter une activité ?</h4>
                     <blockquote>
                         <strong>Nécessite : Avoir une entreprise valide. Voir devenir prestataire.</strong>
@@ -161,6 +175,26 @@
                         <li>Cliquer sur <button class="btn">Modifier <i class="fas fa-edit"></i></button></li>
                         <li>Remplisez les différents champs <em>(<strong>Attention</strong> : La photo sera alors supprimée, il vous faudra remettre la photo avant l’envoie du formulaire)</em><br>puis validé avec le button <button class="btn">Enregistrer <i class="fas fa-save"></i></button></li>
                     </ul>
+
+                <hr class="separator">
+
+                <h4>Un client ce présente avec un cadeau Mouqarpox© ?</h4>
+                    <blockquote>
+                        Avant réaliser toute activité, nous vous conseillons de suivre ce déroulement. Sans cela Mouqarpox ne peut vous garantir le rembourcement de votre prestation.<br>
+                        <strong>Seul un code vérifier sur Mouqarpox peut servir de preuve d'achat.</strong>
+                    </blockquote>
+
+                    <ul>
+                        <li>Demander à votre client le code qui lui à etais remis lors de son achat</li>
+                        <li>Connecter-vous</li>
+                        <li>Rendez vous sur votre profil en cliquant sur l'icon <strong>"  <a href="{{route('user_details')}}"><i class="fas fa-user"></i></a> "</strong> dans la bare de navigation pour accéder à votre compte</li>
+                        <li>Cliquer sur <a class="btn" href="{{ route('user_customer_code_get') }}">Récupérer un code <i class="fas fa-money-bill-wave" aria-hidden="true"></i></a></li>
+                        <li>Rentré le code demandé précédemment et valider</li>
+                        <li>Suivez les instruction écrite : <br>
+                            <span style="margin-left:1.2rem">- Soit le code soit le code est valide est vous pouvez réaliser l'activiter <em>(Mouqarpox créditera votre compte sous 30 jours, pour plus d'information voir les <a href="{{route('terms_conditions_sale')}}">condition general de vente</a> et les <a href="{{route('terms_conditions_use')}}">condition générale d'utilisation</a>)</em></span><br>
+                            <span style="margin-left:1.2rem">- Soit le code est inconnu ou à déjà etait utiliser<span></li>
+                    </ul>
+                    <p><br><br>La prochaine fois renvez-vous directement à l'adresse <a href="{{ route('user_customer_code_get') }}">{{ route('user_customer_code_get') }}</a> en l'ajoutant à vos favori <em>(vous devez etre connecter)</em></p>
             </div>
 
         </div>
