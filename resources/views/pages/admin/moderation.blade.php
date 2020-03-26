@@ -250,6 +250,7 @@
   <div class="row">
     <div class="col s12 z-depth-1 px-1">
         <form class="valign-wrapper" action="{{route('add_admin')}}" method="post">
+            @csrf
         <div class="col s5">
           Ajouter un admin :
         </div>
@@ -266,6 +267,7 @@
   <div class="row">
     <div class="col s12 z-depth-1 px-1">
       <form class=" valign-wrapper" action="{{route('delete_admin')}}" method="post">
+         @csrf
         <div class="col s5">
           Supprimer un admin :
         </div>
