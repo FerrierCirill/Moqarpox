@@ -146,6 +146,7 @@
                                data-city="-1"
                                autocomplete="no"
                                required
+                               onchange="setMarker()"
                         >
                         <datalist id="city">
                             @foreach($cities as $city)
@@ -178,6 +179,7 @@
                         <input type="text"
                                class="validate"
                                name="adress2"
+                               onchange="setMarker()"
                                @if(old('adress2'))
                                value="{{ old('adress2') }}"
                                @else
