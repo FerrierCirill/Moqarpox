@@ -94,7 +94,7 @@
 
 
         @isMyCompany($company->user_id)
-            <h4>Vos activités en cours de validation ou désactivée</h4>
+            <h4>Vos activités en cours de validation ou désactivées</h4>
             <div class="row mt-2">
                 @forelse($activities_forValideOrNotActi as $activity)
                     <div class="col s12 m12 l4">

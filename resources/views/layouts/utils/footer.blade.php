@@ -7,7 +7,7 @@
                 <br><a href="#!" class="white-text">Charte qualité</a>
                 <br><a href="#!" class="white-text">Idées séjours Mouqar-Weekend</a>
                 <br><a href="#!" class="white-text">Recrutement</a>
-                <br><a href="#!" class="white-text">Partenaria Mouqarpox</a>
+                <br><a href="#!" class="white-text">Partenariat Mouqarpox</a>
             </div>
 
             <div class="col s12 m6 l4">

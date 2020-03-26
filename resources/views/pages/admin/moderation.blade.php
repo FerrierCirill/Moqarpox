@@ -22,9 +22,9 @@
                 <div class="col s12 mb-1">
                     <div class="col m4 s12 pb-1">
                         <div class="col m8 s12 pt-1">
-                            Nombres d'entreprises créer : <br>
-                            Nombres d'entreprises validé : <br>
-                            Nombres d'entreprises en attente : <br>
+                            Nombre d'entreprises créées : <br>
+                            Nombre d'entreprises validées : <br>
+                            Nombre d'entreprises en attente : <br>
                         </div>
                         <div class="col m4 s12 right-align pt-1">
                             {{ $nombre_companies }}<br>
@@ -50,7 +50,7 @@
 								data: {
 									labels: mois_fr,
 									datasets: [{
-										label          : 'Entreprises créer',
+										label          : 'Entreprises créées',
 										backgroundColor: '#aed581',
 										borderColor    : 'rgb(255, 255, 255)',
 										fillColor      : "#aed581",
@@ -78,9 +78,9 @@
                 <div class="col s12 mb-1">
 					<div class="col m4 s12 pb-1">
                         <div class="col m8 s12 pt-1">
-                            Nombres d'activités créer : <br>
-                            Nombres d'activités validé : <br>
-                            Nombres d'activités en attente : <br>
+                            Nombre d'activités créées : <br>
+                            Nombre d'activités validées : <br>
+                            Nombre d'activités en attente : <br>
                         </div>
                         <div class="col m4 s12 right-align pt-1">
                             {{ $nombre_activities }} <br>
@@ -129,7 +129,7 @@
 				<div class="col s12 mb-1">
 					<div class="col m4 s12 pb-1">
                         <div class="col m8 s12 pt-1">
-                            Nombres de commandes réalisé : <br>
+                            Nombre de commandes réalisées : <br>
                             {{-- Moyenne de commandes par activité : <br> --}}
                         </div>
                         <div class="col m4 s12 right-align pt-1">
@@ -149,7 +149,7 @@
 								data: {
 									labels: mois_fr,
 									datasets: [{
-										label          : 'Nombres de commandes',
+										label          : 'Nombre de commandes',
 										backgroundColor: '#aed581',
 										borderColor    : 'rgb(255, 255, 255)',
 										fillColor      : "#aed581",

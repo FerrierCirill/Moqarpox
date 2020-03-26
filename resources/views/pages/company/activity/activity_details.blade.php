@@ -56,7 +56,7 @@
                     <li>
                         <div class="collapsible-header"><strong><i class="fas fa-info-circle"></i> Information</strong></div>
                         <div class="collapsible-body">
-                            <h5>Information</h5>
+                            <h5>Informations</h5>
                             {{$activity->information}}
                             <br>
                             <br>
@@ -154,12 +154,12 @@
                 @empty
                     @php $test = true @endphp
                     <div class="col s12">
-                        <p>Il n'y as pas encore de commentaire pour cette activité, <a href="{{route('get_add_comment')}}">déposer un commentaire ici</a></p>
+                        <p>Il n'y a pas encore de commentaire pour cette activité, <a href="{{route('get_add_comment')}}">déposez un commentaire ici</a></p>
                     </div>
                 @endforelse
                 @if($test == false)
                     <div class="col s12">
-                        <p>Il n'y as pas encore de commentaire pour cette activité, <a href="{{route('get_add_comment')}}">déposer un commentaire ici</a></p>
+                        <p>Il n'y a pas encore de commentaire pour cette activité, <a href="{{route('get_add_comment')}}">déposez un commentaire ici</a></p>
                     </div>
                 @endif
             </div>

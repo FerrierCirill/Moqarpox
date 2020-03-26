@@ -3,7 +3,7 @@
         Catégorie
     </label>
     <select id    = "{{$from_include}}-category">
-            <option>Really long option that will likely overlap the chevron</option>
+            <option>Option très longue</option>
             <option>Option 2</option>
             <option>Option 3</option>
     </select>

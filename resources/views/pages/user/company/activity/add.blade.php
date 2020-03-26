@@ -88,7 +88,7 @@
             <div class="row">
                 <div class="col s6 ">
                     <div class="input-field col s12 m11">
-                        <label>Description dates et horraires</label>
+                        <label>Description dates et horaires</label>
                         <textarea placeholder="Entrez les dates/horaires de l'activité"
                                   type="text"
                                   class="validate materialize-textarea"

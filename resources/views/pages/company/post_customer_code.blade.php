@@ -10,14 +10,14 @@
             </div>
             <div class="row">
                 @if($etat == 1)
-                    Votre demande de remboursement au-près de Moquarpox à été prise en compte.
-                    Nous vous rembourserons dans les plus bref délais. <br><br>
+                    Votre demande de remboursement auprès de Mouquarpox à été prise en compte.
+                    Nous vous rembourserons dans les plus brefs délais. <br><br>
                 @elseif($etat == 2)
-                    .. mais la demande de reboursement concerant l'activité correspondante au code saisi à déja été effectué.
+                    .. mais la demande de reboursement concerant l'activité correspondante au code saisi à déja été effectuée.
                     Merci de rééssayer .. <br><br>
                 @else
                     ..mais un problème est survenu ..
-                    Veuillez vérifier que le code n'ai pas déja été saisi .. <br><br>
+                    Veuillez vérifier que le code n'a pas déja été saisi .. <br><br>
                 @endif
                 <a class="btn right mb-2 mr-1" href="{{ route('user_customer_code_get') }}">Récupérer un code <i class="fas fa-money-bill-wave"></i></a>
             </div>

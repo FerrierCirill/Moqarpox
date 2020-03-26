@@ -35,7 +35,7 @@
             <h5 class="white-text mb-2">Total : {{$total}} €</h5>
 
             <p>
-                Pour procédé au paiement vous devez accepté les <a href="{{route('terms_conditions_sale')}}">conditions générales de vente</a>
+                Pour procédé au paiement vous devez accepter les <a href="{{route('terms_conditions_sale')}}">conditions générales de vente</a>
                 <br><br>
                 <label class="white-text">
                     <input id="CGV" type="checkbox"/>

@@ -85,7 +85,7 @@
                     <button class="btn w-100" type="submit">Valider votre panier</button>
 
                     <a href="{{route('shopping_cart_validate')}}">
-                        <p>Vous avez deja remplie toute ces informations ? Reprenez votre panier ou vous l'avez laisser ici</p>
+                        <p>Vous avez déjà rempli toutes ces informations ? Reprenez votre panier où vous l'avez laissé ici</p>
                     </a>
                 @else
                     <div class="white-text">
@@ -105,7 +105,7 @@
                                 <i class="fas fa-shield-alt"></i> Paiement sécurisé
                             </div>
                             <div class="collapsible-body shoppingCart-collapsible-body">
-                                <span>En utilisant PayPal, vous vous assurez que votre paiement est sécurisé par une des entreprises les plus populaire au monde !</span>
+                                <span>En utilisant PayPal, vous vous assurez que votre paiement est sécurisé par une des entreprises les plus populaires au monde !</span>
                             </div>
                         </li>
                         <li>

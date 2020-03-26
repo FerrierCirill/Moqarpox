@@ -45,7 +45,7 @@
             <div class="bg-white px-2 py-1 show-on-small hide-on-med-and-up center-align">
                 <div class="row">
                     <div class="col s12 m8 center-align">
-                        <p class="small-text">Vous êtes un professionnel et vous proposer des activités ou des séjours a vos clients ? Mettez vous en avant en apparaissant sur Mouqarpox </p>
+                        <p class="small-text">Vous êtes un professionnel et vous proposez des activités ou des séjours à vos clients ? Mettez vous en avant en apparaissant sur Mouqarpox. </p>
                     </div>
                     <div class="col s12 m4 center-align">
                         <a href="{{route('company_add_get')}}">Déposer une offre <i class="fas fa-paper-plane"></i></a>
@@ -56,7 +56,7 @@
             <div class="bg-white px-2 py-1 show-on-medium-and-up hide-on-small-only">
                 <div class="row valign-wrapper ">
                     <div class="col s12 m8 col-sparator-r valign-wrapper">
-                        <p class="small-text">Vous êtes un professionnel et vous proposer des activités ou des séjours a vos clients ? Mettez vous en avant en apparaissant sur Mouqarpox </p>
+                        <p class="small-text">Vous êtes un professionnel et vous proposez des activités ou des séjours a vos clients ? Mettez vous en avant en apparaissant sur Mouqarpox. </p>
                     </div>
                     <div class="col s12 m4 valign-wrapper">
                         <a class="mt-2" href="{{route('company_add_get')}}">Déposer une offre <i class="fas fa-paper-plane"></i></a>
