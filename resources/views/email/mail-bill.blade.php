@@ -42,12 +42,12 @@
                             @endphp
                             <td>{{$num}}</td>
                             <td>{{$activity->name}}</td>
-                            <td>{{$produit->friend_name}}</td>
-                            <td>{{$produit->friend_email}}</td>
+                            <td>{{$produit->friend_name ?? 'n/a'}}</td>
+                            <td>{{$produit->friend_email ?? 'n/a'}}</td>
                             <td>{{$produit->code}}</td>
                             <td>{{$activity->price}}</td>
                             <td>{{gmdate("d/m/Y",mktime(0, 0, 0, date("m"),   date("d"),   date("Y")+1))}}</td>
-                            <td>{{$produit->text}}</td>
+                            <td>{{$produit->text ?? 'n/a'}}</td>
                         </tr>
                         @php
                         $num++
