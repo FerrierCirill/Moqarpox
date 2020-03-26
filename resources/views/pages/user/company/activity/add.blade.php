@@ -89,16 +89,16 @@
                 <div class="col s6 ">
                     <div class="input-field col s12 m11">
                         <label>Description dates et horraires</label>
-                        <textarea placeholder="Entrez les dates/horraires de l'activité"
+                        <textarea placeholder="Entrez les dates/horaires de l'activité"
                                   type="text"
                                   class="validate materialize-textarea"
                                   name="information"
-                                  value="{{ old('information') }}"></textarea>
+                                  value="{{ old('information') }}" required></textarea>
 
                         @error('information')
                         <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
-                      </span>
+                        </span>
                         @enderror
                     </div>
 
