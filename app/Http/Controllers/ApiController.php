@@ -224,7 +224,7 @@ class ApiController extends Controller
             'q'      => trim($address),
             'format' => 'json',
         );
-        $url = 'https://nominatim.openstreetmap.org/?' . http_build_query($data);
+        $url = 'https://nominatim.openstreetmap.org/search/?' . http_build_query($data);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

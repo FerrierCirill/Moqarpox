@@ -269,12 +269,13 @@
                 <blockquote id="reponseJson">
                 </blockquote>
                 <script>
-                    document.getElementById('lon').addEventListener('load', loadmap())
+                    var mymap = null
+                    document.getElementById('lon').addEventListener('load', loadmap());
                     function loadmap() {
                         var lat = document.getElementById('lat').value
                         var lng = document.getElementById('lon').value
                         console.log('coo:'+lat+'   '+lng)
-                        var mymap = L.map('mapid').setView([lat, lng], 13);
+                        mymap = L.map('mapid').setView([lat, lng], 13);
                         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
                             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                             maxZoom: 18,
@@ -294,7 +295,7 @@
                                                 ? " " + document.getElementById('adress2').value
                                                 : '';
                                 address += (document.getElementById('_city').value != "")
-                                                ? document.getElementById('_city').value
+                                                ? " " + document.getElementById('_city').value
                                                 : '';
 
 
