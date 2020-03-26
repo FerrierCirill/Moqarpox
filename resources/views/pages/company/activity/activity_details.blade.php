@@ -138,8 +138,6 @@
                 @php $test = false; @endphp
 
                 @forelse($activity->comments as $comment)
-                    <p>Vous avez participé à cette activité ? <a href="{{route('get_add_comment')}}">Déposer un commentaire ici !</a></p>
-
                     @if($comment->state == 1)
                         @php $test = true @endphp
                         <div class="col s12 mb-2 comment">
@@ -161,6 +159,8 @@
                     <div class="col s12">
                         <p>Il n'y a pas encore de commentaire pour cette activité, <a href="{{route('get_add_comment')}}">déposez un commentaire ici</a></p>
                     </div>
+                @else
+                    <p>Vous avez participé à cette activité ? <a class="btn" href="{{route('get_add_comment')}}">Déposer un commentaire ici !</a></p>
                 @endif
             </div>
 
