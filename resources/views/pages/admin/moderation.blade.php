@@ -9,12 +9,16 @@
 @section('content')
 
 <div class="container pt-2">
-	<h1> Panel Administration</h1>
+    <h1> Panel Administration</h1>
+
+    <h4>Statistiques</h4>
     <div class="row">
-        <div class="col s12 z-depth-1 px-1 mb-3">
+        <div class="col s12 z-depth-1 px-1 pt-1 mb-3">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
-            <h5>Statistiques</h5>
+
+
             <div>
+                <h5>Entreprises</h5>
                 <div class="col s12 mb-1">
                     <div class="col m4 s12 pb-1">
                         <div class="col m8 s12 pt-1">
@@ -69,6 +73,8 @@
                     </div>
 				</div>
 
+                <hr>
+                <h5>Activités</h5>
                 <div class="col s12 mb-1">
 					<div class="col m4 s12 pb-1">
                         <div class="col m8 s12 pt-1">
@@ -117,6 +123,9 @@
 					</div>
 				</div>
 
+                <hr>
+                <h5>Commandes</h5>
+                <hr>
 				<div class="col s12 mb-1">
 					<div class="col m4 s12 pb-1">
                         <div class="col m8 s12 pt-1">
@@ -160,11 +169,14 @@
 								}
 							});
                         </script>
-					</div>
+                    </div>
+
 				</div>
             </div>
         </div>
     </div>
+
+    <h4>Modération</h4>
 	<ul class="collapsible accordeon">
 		<li>
 			<div class="collapsible-header">
@@ -247,39 +259,65 @@
 		</li>
 	</ul>
 
-  <div class="row">
-    <div class="col s12 z-depth-1 px-1">
-        <form class="valign-wrapper" action="{{route('add_admin')}}" method="post">
-            @csrf
-        <div class="col s5">
-          Ajouter un admin :
-        </div>
-        <div class="col s5">
-            <input type="text" name="email" value="">
-        </div>
-        <div class="col s2">
-          <button type="submit" name="button" class="btn-small">></button>
-        </div>
-      </form>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col s12 z-depth-1 px-1">
-      <form class=" valign-wrapper" action="{{route('delete_admin')}}" method="post">
-         @csrf
-        <div class="col s5">
-          Supprimer un admin :
+    <h4 class="mt-4">Administration</h4>
+    <div class="row">
+        <div class="col s12 z-depth-1 px-1">
+            <h5>Liste des administrateurs</h5>
+            <table class="striped highlight responsive-table" >
+                <thead>
+                        <td>Nom</td>
+                        <td>Email</td>
+                        <td>Téléphone</td>
+                </thead>
+                <tbody>
+                    @foreach ($administrators as $admin)
+                        <tr>
+                            <td>{{ $admin->first_name }} {{ $admin->second_name }}</td>
+                            <td>{{ $admin->email }}</td>
+                            <td>{{ $admin->phone }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-        <div class="col s5">
-          <input type="text" name="email" value="">
-        </div>
-        <div class="col s2">
-          <button type="submit" class="btn-small" name="button">></button>
-        </div>
-      </form>
     </div>
-  </div>
+
+    <div class="row z-depth-1">
+        @if($errorUser != null)
+            <div class="col s12 m-0">
+                <h6 style="color:#ff0000">Utilisateur inconnu</h6>
+            </div>
+        @endif
+        <div class="col s12 l6  px-1">
+            <form class="valign-wrapper" action="{{route('add_admin')}}" method="post">
+                @csrf
+                <div class="col s5">
+                Ajouter un admin :
+                </div>
+                <div class="col s5">
+                    <input type="text" name="email" value="">
+                </div>
+                <div class="col s2">
+                <button type="submit" name="button" class="btn-small">></button>
+                </div>
+            </form>
+        </div>
+        <div class="col s12 l6 px-1">
+            <form class=" valign-wrapper" action="{{route('delete_admin')}}" method="post">
+                @csrf
+                <div class="col s5">
+                Supprimer un admin :
+                </div>
+                <div class="col s5">
+                <input type="text" name="email" value="">
+                </div>
+                <div class="col s2">
+                <button type="submit" class="btn-small" name="button">></button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 @endsection

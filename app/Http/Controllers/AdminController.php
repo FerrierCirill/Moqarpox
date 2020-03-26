@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function moderation() {
+    public function moderation(Request $request) {
 
         $activities = Activity::where('state', 0)->paginate(5);
         $companies  = Company::where('state', 0)->paginate(5);
@@ -60,6 +60,8 @@ class AdminController extends Controller
             }
         }
 
+        $administrators = User::where('admin', 1)->get();
+
         return view('pages.admin.moderation', [
             'activities'                         => $activities,
             'nombre_activities_attente'          => $nombre_activities_attente,
@@ -75,7 +77,9 @@ class AdminController extends Controller
             'nombre_companies_on_last_12_month'  => array_reverse($nombre_companies_on_last_12_month),
             'nombre_activities_on_last_12_month' => array_reverse($nombre_activities_on_last_12_month),
             'nombre_orders_on_last_12_month'     => array_reverse($nombre_orders_on_last_12_month),
-            'mois_parcouru'                      => array_reverse($mois_parcouru)
+            'mois_parcouru'                      => array_reverse($mois_parcouru),
+            'administrators'                     => $administrators,
+            'errorUser'                          => $request->input('errorUser')
         ]);
     }
 
@@ -84,8 +88,11 @@ class AdminController extends Controller
         if ($user != null) {
             $user->admin = 1;
             $user->save();
+            return redirect()->route('admin', ['#OK' => 1]);
         }
-        return redirect()->back();
+        else {
+            return redirect()->route('admin', ['errorUser' => 1]);
+        }
     }
 
     public function deleteAdmin(Request $request) {
@@ -93,7 +100,10 @@ class AdminController extends Controller
         if ($user != null) {
             $user->admin = 0;
             $user->save();
+            return redirect()->route('admin', ['#OK' => 1]);
         }
-        return redirect()->back();
+        else {
+            return redirect()->route('profile', ['errorUser' => 1]);
+        }
     }
 }
