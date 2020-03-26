@@ -257,7 +257,7 @@
             <input type="text" name="email" value="">
         </div>
         <div class="col s2">
-          <button type="button" name="button" class="btn-small">></button>
+          <button type="submit" name="button" class="btn-small">></button>
         </div>
       </form>
     </div>
@@ -273,7 +273,7 @@
           <input type="text" name="email" value="">
         </div>
         <div class="col s2">
-          <button type="button" class="btn-small" name="button">></button>
+          <button type="submit" class="btn-small" name="button">></button>
         </div>
       </form>
     </div>
