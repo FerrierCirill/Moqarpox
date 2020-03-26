@@ -59,7 +59,6 @@
                             @enderror
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="input-field col s12 m4">
                             <label>Siret *</label>
@@ -91,7 +90,6 @@
                             @enderror
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="input-field col s12 m8">
                             <label>Adresse *</label>

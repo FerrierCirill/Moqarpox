@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Mail;
 class ActivitiesController extends Controller
 {
     public function getAddActivity($company_id){
-        $categories = Category::get();
+        $categories = Category::where('id','!=','5')->get();
         $subCategories = SubCategory::get();
 
         return view('pages.user.company.activity.add', [
