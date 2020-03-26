@@ -263,6 +263,8 @@
                     #mapid { height: 450px; }
                 </style>
                 <div id="mapid"></div>
+                <blockquote id="reponseJson">
+                </blockquote>
                 <script>
                     document.getElementById('lon').addEventListener('load', loadmap())
                     function loadmap() {
@@ -284,36 +286,49 @@
                     }
 
                     setMarker = () => {
-                        let address = document.getElementById('adress1').value;
-                        let req = new XMLHttpRequest();
-                        let url = '{{route('api_lat_lng', [':address'])}}';
-                        url = url.replace(':address', address);
-                        req.open("GET", url, true);
-                        req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                        req.onload = function(){
-                            if (this.status == 200) {
-                                let json = JSON.parse(this.responseText);
-                                console.log(json);
-                                mymap.remove();
-                                mymap = L.map('mapid').setView([json[0], json[1]], 13);
-                                L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-                                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                                    maxZoom: 18,
-                                    id: 'mapbox/streets-v11',
-                                    tileSize: 512,
-                                    zoomOffset: -1,
-                                    accessToken: 'pk.eyJ1IjoibjRpdmx5cyIsImEiOiJjazU4YThxYTcwYzZrM21tdXRxOXk5b3J6In0.F8-mFYmaIsB1PJMMTrzu6Q'
-                                }).addTo(mymap);
-                                let marker = L.marker([json[0], json[1]]).addTo(mymap);
-                                console.log('json,0:'+json[0]+'1:'+json[1])
-                                document.getElementById('lat').value = json[0];
-                                document.getElementById('lon').value = json[1];
-                            } else {
-                                console.error('erreur de requete AJAX');
-                            }
+                            let address  =  document.getElementById('adress1').value;
+                                address += (document.getElementById('adress2').value != "")
+                                                ? " " + document.getElementById('adress2').value
+                                                : '';
+                                address += (document.getElementById('_city').value != "")
+                                                ? document.getElementById('_city').value
+                                                : '';
+
+
+                            let req = new XMLHttpRequest();
+                            let url = '{{route('api_lat_lng', [':address'])}}';
+                            url = url.replace(':address', address);
+                            req.open("GET", url, true);
+                            req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                            req.onload = function(){
+                                if (this.status == 200) {
+                                    let json = JSON.parse(this.responseText);
+                                    console.log(json);
+                                    if(json[0] != 'NoResult' && json[1] != 'NoResult') {
+                                        mymap.remove();
+                                        mymap = L.map('mapid').setView([json[0], json[1]], 13);
+                                        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                                            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                                            maxZoom: 18,
+                                            id: 'mapbox/streets-v11',
+                                            tileSize: 512,
+                                            zoomOffset: -1,
+                                            accessToken: 'pk.eyJ1IjoibjRpdmx5cyIsImEiOiJjazU4YThxYTcwYzZrM21tdXRxOXk5b3J6In0.F8-mFYmaIsB1PJMMTrzu6Q'
+                                        }).addTo(mymap);
+                                        let marker = L.marker([json[0], json[1]]).addTo(mymap);
+                                        document.getElementById('lat').value = json[0];
+                                        document.getElementById('lon').value = json[1];
+                                        document.getElementById('reponseJson').innerHTML = "";
+                                    }
+                                    else {
+                                        document.getElementById('reponseJson').innerHTML = "Aucune position geographique ne correspond a votre adresse";
+                                    }
+                                } else {
+                                    console.error('erreur de requete AJAX');
+                                }
+                            };
+                            req.send(null);
                         };
-                        req.send(null);
-                    };
 
 
 
