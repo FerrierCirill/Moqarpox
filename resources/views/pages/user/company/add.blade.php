@@ -223,7 +223,7 @@
                                                 ? " " + document.getElementById('adress2').value
                                                 : '';
                                 address += (document.getElementById('_city').value != "")
-                                                ? document.getElementById('_city').value
+                                                ? " " + document.getElementById('_city').value
                                                 : '';
 
 
