@@ -170,7 +170,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s6 m4 input-field">
+                        <div class="col s12 m4 input-field">
                             <select name="category_id" required>
                                 <option value="" disabled selected>Catégorie principal</option>
                                 @foreach($categories as $category)
@@ -179,12 +179,12 @@
                             </select>
                             <label>Catégorie principal *</label>
                         </div>
-                        <div class="col s6 m8 file-field input-field">
-                            <div class="btn">
+                        <div class="col s12 m8 file-field input-field">
+                            <div class="btn col s12 m4">
                                 <span>Logo, photo...</span>
                                 <input type="file" name="link">
                             </div>
-                            <div class="file-path-wrapper">
+                            <div class="file-path-wrapper col s12 m8">
                                 <input class="file-path validate" name="link_path" type="text" placeholder="Votre logo ou photo de l'entreprise">
                             </div>
                         </div>
@@ -199,7 +199,7 @@
                 </div>
                 <div class="col m12 l5">
                     <style>
-                        #mapid { height: 450px; }
+                        #mapid { height: 450px; min-width: 245px;}
                     </style>
                     <div id="mapid"></div>
                     <blockquote id="reponseJson">

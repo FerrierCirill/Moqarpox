@@ -13,7 +13,7 @@
         <form action="{{route('activity_add_post', $company_id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <div class="col s6">
+                <div class="col l6 s12">
                     <div class="input-field col s12 m11">
                         <label>Nom de votre activité*</label>
                         <input placeholder="Entrez le nom de votre activité"
@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-                <div class="col s6">
+                <div class="col l6 s12">
                     <div class="input-field col s12 m11">
                         <label>Prix*</label>
                         <input placeholder="Entrez le prix de l'activité (en €)"
@@ -50,7 +50,7 @@
             </div>
 
             <div class="row">
-                <div class="col s6">
+                <div class="col l6 s12">
                     <div class="input-field col s12 m11">
                         <label>Description*</label>
                         <textarea placeholder="Entrez la description de votre activité..."
@@ -67,7 +67,7 @@
                     </div>
                 </div>
 
-                <div class="col s6">
+                <div class="col l6 s12">
                     <div class="input-field col s12 m11">
                         <label>Résumé*</label>
                         <textarea placeholder="Entrez le résumé de votre activité..."
@@ -86,7 +86,7 @@
             </div>
 
             <div class="row">
-                <div class="col s6 ">
+                <div class="col l6 s12 ">
                     <div class="input-field col s12 m11">
                         <label>Description dates et horaires</label>
                         <textarea placeholder="Entrez les dates/horaires de l'activité"
@@ -103,7 +103,7 @@
                     </div>
 
 
-                        <div class="input-field col s5">
+                        <div class="input-field col l5 s12">
                             <select id="category" type="text"
                                     class="form-control @error('category') is-invalid @enderror"
                                     name="category_id"
@@ -153,7 +153,7 @@
                             console.log(document.getElementById("subCategory").innerHTML);
                         }
                     </script>
-                        <div class="input-field col s6">
+                        <div class="input-field col l6 s12">
                             <select id="subCategory"
                                     type="text"
                                     class="browser-default form-control @error('subCategory')is-invalid @enderror"
@@ -172,7 +172,7 @@
                             @enderror
                         </div>
                 </div>
-                <div class="col s6 ">
+                <div class="col l6 s12 ">
                     <div class="input-field col s12 m11">
                         <label>Description personnelle (visible seulement par vous)</label>
                         <textarea placeholder="Entrez votre description personnelle"
@@ -191,7 +191,7 @@
 
 
                 <div class="row">
-                    <div class="col s3 ">
+                    <div class="col l3 s12 ">
                         <div class="input-field col s12 ">
 
                             <div class="file-field input-field">
@@ -206,7 +206,7 @@
                         </div>
                     </div>
 
-                    <div class="col s3 ">
+                    <div class="col l3 s12 ">
                         <div class="input-field col s12 ">
 
                             <div class="file-field input-field">
@@ -221,7 +221,7 @@
                         </div>
                     </div>
 
-                    <div class="col s3 ">
+                    <div class="col l3 s12 ">
                         <div class="input-field col s12 ">
 
                             <div class="file-field input-field">

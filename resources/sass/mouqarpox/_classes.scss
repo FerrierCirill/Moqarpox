@@ -182,3 +182,14 @@ body {
     background-color: $primary-color;
   }
 }
+
+
+
+@media #{$medium-and-down} {
+    .chartjs-size-monitor {
+        display: none !important;
+    }
+    #orderChar,#adminStat {
+        display: none !important;
+    }
+}

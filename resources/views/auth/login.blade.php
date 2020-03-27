@@ -7,8 +7,7 @@
 </div>
 <div class="row">
 </div>
-  <div class="card col l4 offset-l4 m6 offset-m3 s10 offset-1">
-
+  <div class="card col l4 offset-l4 m6 offset-m3 s10 offset-s1">
     <div class="row">
     </div>
     <div class="row">

@@ -10,168 +10,169 @@
 
 <div class="container pt-2">
     <h1> Panel Administration</h1>
+    <div id="adminStat">
+        <h4>Statistiques</h4>
+        <div class="row">
+            <div class="col s12 z-depth-1 px-1 pt-1 mb-3">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
 
-    <h4>Statistiques</h4>
-    <div class="row">
-        <div class="col s12 z-depth-1 px-1 pt-1 mb-3">
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
 
-
-            <div>
-                <h5>Entreprises</h5>
-                <div class="col s12 mb-1">
-                    <div class="col m4 s12 pb-1">
-                        <div class="col m8 s12 pt-1">
-                            Nombre d'entreprises créées : <br>
-                            Nombre d'entreprises validées : <br>
-                            Nombre d'entreprises en attente : <br>
+                <div>
+                    <h5>Entreprises</h5>
+                    <div class="col s12 mb-1">
+                        <div class="col m4 s12 pb-1">
+                            <div class="col m8 s12 pt-1">
+                                Nombre d'entreprises créées : <br>
+                                Nombre d'entreprises validées : <br>
+                                Nombre d'entreprises en attente : <br>
+                            </div>
+                            <div class="col m4 s12 right-align pt-1">
+                                {{ $nombre_companies }}<br>
+                                {{ $nombre_companies_valide }} <br>
+                                {{ $nombre_companies_attente }} <br>
+                            </div>
                         </div>
-                        <div class="col m4 s12 right-align pt-1">
-                            {{ $nombre_companies }}<br>
-                            {{ $nombre_companies_valide }} <br>
-                            {{ $nombre_companies_attente }} <br>
-                        </div>
-                    </div>
 
-                    <div class="col m8 s12 pb-1">
-						<canvas id="companyChar"  height="100" style='color:#fff'></canvas>
+                        <div class="col m8 s12 pb-1">
+                            <canvas id="companyChar"  height="100" style='color:#fff'></canvas>
 
-                        <script>
-							const mois_fr = [
-								@foreach($mois_parcouru as $mois)
-									'{{$mois}}',
-								@endforeach
-							]
+                            <script>
+                                const mois_fr = [
+                                    @foreach($mois_parcouru as $mois)
+                                        '{{$mois}}',
+                                    @endforeach
+                                ]
 
-							let dataCompanyChar  = JSON.parse('{{json_encode($nombre_companies_on_last_12_month)}}')
-							let ctxCompanyChar   = document.getElementById('companyChar').getContext('2d');
-							let chartCompanyChar = new Chart(ctxCompanyChar, {
-								type: 'bar',
-								data: {
-									labels: mois_fr,
-									datasets: [{
-										label          : 'Entreprises créées',
-										backgroundColor: '#aed581',
-										borderColor    : 'rgb(255, 255, 255)',
-										fillColor      : "#aed581",
-										data           : dataCompanyChar
-									}]
-								},
-								options: {
-									responsive: true,
-									defaultFontColor : '#fff',
-									labelColor: "#fff",
-									legend: {
-										font: {
-											color: "#fff"
-										}
-									},
-									scaleFontColor: "#fff",
-								}
-							});
-                        </script>
-                    </div>
-				</div>
-
-                <hr>
-                <h5>Activités</h5>
-                <div class="col s12 mb-1">
-					<div class="col m4 s12 pb-1">
-                        <div class="col m8 s12 pt-1">
-                            Nombre d'activités créées : <br>
-                            Nombre d'activités validées : <br>
-                            Nombre d'activités en attente : <br>
-                        </div>
-                        <div class="col m4 s12 right-align pt-1">
-                            {{ $nombre_activities }} <br>
-                            {{ $nombre_activities_valide }} <br>
-                            {{ $nombre_activities_attente }} <br>
+                                let dataCompanyChar  = JSON.parse('{{json_encode($nombre_companies_on_last_12_month)}}')
+                                let ctxCompanyChar   = document.getElementById('companyChar').getContext('2d');
+                                let chartCompanyChar = new Chart(ctxCompanyChar, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: mois_fr,
+                                        datasets: [{
+                                            label          : 'Entreprises créées',
+                                            backgroundColor: '#aed581',
+                                            borderColor    : 'rgb(255, 255, 255)',
+                                            fillColor      : "#aed581",
+                                            data           : dataCompanyChar
+                                        }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        defaultFontColor : '#fff',
+                                        labelColor: "#fff",
+                                        legend: {
+                                            font: {
+                                                color: "#fff"
+                                            }
+                                        },
+                                        scaleFontColor: "#fff",
+                                    }
+                                });
+                            </script>
                         </div>
                     </div>
 
-                    <div class="col m8 s12 pb-1">
-						<canvas id="activityChar" height="100" style='color:#fff'></canvas>
-
-                        <script>
-							let dataActivityChar  = JSON.parse('{{json_encode($nombre_activities_on_last_12_month)}}')
-							let ctxActivityChar   = document.getElementById('activityChar').getContext('2d');
-							let chartActivityChar = new Chart(ctxActivityChar, {
-								type: 'bar',
-								data: {
-									labels: mois_fr,
-									datasets: [{
-										label          : 'Activités créer',
-										backgroundColor: '#aed581',
-										borderColor    : 'rgb(255, 255, 255)',
-										fillColor      : "#aed581",
-										data           : dataActivityChar
-									}]
-								},
-								options: {
-									responsive: true,
-									defaultFontColor : '#fff',
-									labelColor: "#fff",
-									legend: {
-										font: {
-											color: "#fff"
-										}
-									},
-									scaleFontColor: "#fff",
-								}
-							});
-                        </script>
-					</div>
-				</div>
-
-                <hr>
-                <h5>Commandes</h5>
-                <hr>
-				<div class="col s12 mb-1">
-					<div class="col m4 s12 pb-1">
-                        <div class="col m8 s12 pt-1">
-                            Nombre de commandes réalisées : <br>
-                            {{-- Moyenne de commandes par activité : <br> --}}
+                    <hr>
+                    <h5>Activités</h5>
+                    <div class="col s12 mb-1">
+                        <div class="col m4 s12 pb-1">
+                            <div class="col m8 s12 pt-1">
+                                Nombre d'activités créées : <br>
+                                Nombre d'activités validées : <br>
+                                Nombre d'activités en attente : <br>
+                            </div>
+                            <div class="col m4 s12 right-align pt-1">
+                                {{ $nombre_activities }} <br>
+                                {{ $nombre_activities_valide }} <br>
+                                {{ $nombre_activities_attente }} <br>
+                            </div>
                         </div>
-                        <div class="col m4 s12 right-align pt-1">
-                            {{ $orders }} <br>
-                            {{-- TODO <br> --}}
+
+                        <div class="col m8 s12 pb-1">
+                            <canvas id="activityChar" height="100" style='color:#fff'></canvas>
+
+                            <script>
+                                let dataActivityChar  = JSON.parse('{{json_encode($nombre_activities_on_last_12_month)}}')
+                                let ctxActivityChar   = document.getElementById('activityChar').getContext('2d');
+                                let chartActivityChar = new Chart(ctxActivityChar, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: mois_fr,
+                                        datasets: [{
+                                            label          : 'Activités créer',
+                                            backgroundColor: '#aed581',
+                                            borderColor    : 'rgb(255, 255, 255)',
+                                            fillColor      : "#aed581",
+                                            data           : dataActivityChar
+                                        }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        defaultFontColor : '#fff',
+                                        labelColor: "#fff",
+                                        legend: {
+                                            font: {
+                                                color: "#fff"
+                                            }
+                                        },
+                                        scaleFontColor: "#fff",
+                                    }
+                                });
+                            </script>
                         </div>
                     </div>
 
-                    <div class="col m8 s12 pb-1">
-						<canvas id="orderChar" height="100" style='color:#fff'></canvas>
+                    <hr>
+                    <h5>Commandes</h5>
+                    <hr>
+                    <div class="col s12 mb-1">
+                        <div class="col m4 s12 pb-1">
+                            <div class="col m8 s12 pt-1">
+                                Nombre de commandes réalisées : <br>
+                                {{-- Moyenne de commandes par activité : <br> --}}
+                            </div>
+                            <div class="col m4 s12 right-align pt-1">
+                                {{ $orders }} <br>
+                                {{-- TODO <br> --}}
+                            </div>
+                        </div>
 
-                        <script>
-							let dataOrderChar  = JSON.parse('{{json_encode($nombre_orders_on_last_12_month)}}')
-							let ctxOrderChar   = document.getElementById('orderChar').getContext('2d');
-							let chartOrderChar = new Chart(ctxOrderChar, {
-								type: 'bar',
-								data: {
-									labels: mois_fr,
-									datasets: [{
-										label          : 'Nombre de commandes',
-										backgroundColor: '#aed581',
-										borderColor    : 'rgb(255, 255, 255)',
-										fillColor      : "#aed581",
-										data           : dataOrderChar
-									}]
-								},
-								options: {
-									responsive: true,
-									defaultFontColor : '#fff',
-									labelColor: "#fff",
-									legend: {
-										font: {
-											color: "#fff"
-										}
-									},
-									scaleFontColor: "#fff",
-								}
-							});
-                        </script>
+                        <div class="col m8 s12 pb-1">
+                            <canvas id="orderChar" height="100" style='color:#fff'></canvas>
+
+                            <script>
+                                let dataOrderChar  = JSON.parse('{{json_encode($nombre_orders_on_last_12_month)}}')
+                                let ctxOrderChar   = document.getElementById('orderChar').getContext('2d');
+                                let chartOrderChar = new Chart(ctxOrderChar, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: mois_fr,
+                                        datasets: [{
+                                            label          : 'Nombre de commandes',
+                                            backgroundColor: '#aed581',
+                                            borderColor    : 'rgb(255, 255, 255)',
+                                            fillColor      : "#aed581",
+                                            data           : dataOrderChar
+                                        }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        defaultFontColor : '#fff',
+                                        labelColor: "#fff",
+                                        legend: {
+                                            font: {
+                                                color: "#fff"
+                                            }
+                                        },
+                                        scaleFontColor: "#fff",
+                                    }
+                                });
+                            </script>
+                        </div>
+
                     </div>
-
-				</div>
+                </div>
             </div>
         </div>
     </div>
