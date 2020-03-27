@@ -34,8 +34,8 @@
             zoomOffset: -1
         }).addTo(map);
 
-        map.fitBounds([[41.323717,-4.995212], [52.197928,10.242972]]);
-        map.setMaxBounds(map.getBounds());
+        // map.fitBounds([[41.323717,-4.995212], [52.197928,10.242972]]);
+        // map.setMaxBounds(map.getBounds());
     };
 
     generateMultiMarker = (companies) => {

@@ -156,20 +156,27 @@ table.maptable td {
 
 
 @media #{$medium-and-down} {
+    #scrollToCategorie {
+        margin-bottom: 155px!important;
+    }
     #scrollToMap {
         flex-wrap: wrap;
-        height: 132vh;
+        height: 141vh;
         // padding-left: 2rem;
         // padding-right: 2rem;
 
         #cluster.clusterHome {
-            height: 60vh;
+            height: 70vh;
         }
 
         #switchSearchEngine {
-            width    : 100%;
+            width         : 100%;
             flex-direction: column;
-            flex-wrap: wrap;
+            flex-wrap     : wrap;
+            position      : relative;
+            top           : -205px;
+            margin-left   : 1.5rem;
+            margin-right  : 1.5rem;
 
             > div {
                 display       : flex;
