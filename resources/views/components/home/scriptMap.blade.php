@@ -75,6 +75,8 @@
                             let url = '{{route('activity_details', [':activity_id'])}}';
                             url = url.replace(':activity_id',json[i]['id']);
 
+                            let noteTPM = ( json[i]['note'] != null ) ? json[i]['note'] + ' / 5' : 'Aucune note'
+
                             let html =
                                 `<a href="${url}" class="col s12 m6 l4 ">
                                     <div class="homeActivity w-100">
@@ -88,7 +90,7 @@
                                             <span class="homeActivity-price mt-0">${json[i]['price']} €</span>
                                         </div>
                                         <p class="grey-text mt-0">
-                                            Note : ${json[i]['note']} / 5
+                                            Note : ${noteTPM}
                                         </p>
 
                                     </div>
@@ -158,6 +160,8 @@
                             let url = '{{route('activity_details', [':activity_id'])}}';
                             url = url.replace(':activity_id',json[i]['id']);
 
+                            let noteTPM = ( json[i]['note'] != null ) ? json[i]['note'] + ' / 5' : 'Aucune note'
+
                             let html =
                                 `<a href="${url}" class="col s12 m6 l4 ">
                                     <div class="homeActivity w-100">
@@ -171,7 +175,7 @@
                                             <span class="homeActivity-price mt-0">${json[i]['price']} €</span>
                                         </div>
                                         <p class="grey-text mt-0">
-                                            Note : ${json[i]['note']} / 5
+                                            Note : ${noteTPM}
                                         </p>
 
                                     </div>

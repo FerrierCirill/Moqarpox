@@ -70,7 +70,11 @@
                                     <div class="mb-1">
                                         <span class="categori-show" style="background : {{ \App\SubCategory::find($activity->sub_category_id)->category->hexa }}"></span>
                                         {{ \App\SubCategory::find($activity->sub_category_id)->category->name }}<br>
-                                        {{$activity->note}} / 5 @include('components.star', ['note' => $activity->note])<br>
+                                        @if ($activity->note != null)
+                                            {{$activity->note}}  @include('components.star', ['note' => $activity->note])
+                                        @else
+                                            Aucune note
+                                        @endif<br>
                                     </div>
                                     {{\Illuminate\Support\Str::limit($activity->description, 150, $end='...') }}
                                 </p>
@@ -125,7 +129,11 @@
                                         <div class="mb-1">
                                             <span class="categori-show" style="background : {{ \App\SubCategory::find($activity->sub_category_id)->category->hexa }}"></span>
                                             {{ \App\SubCategory::find($activity->sub_category_id)->category->name }}<br>
-                                            {{$activity->note}} / 5 @include('components.star', ['note' => $activity->note])<br>
+                                            @if ($activity->note != null)
+                                                {{$activity->note}}  @include('components.star', ['note' => $activity->note])
+                                            @else
+                                                Aucune note
+                                            @endif<br>
                                         </div>
                                         {{\Illuminate\Support\Str::limit($activity->description, 150, $end='...') }}
                                     </p>

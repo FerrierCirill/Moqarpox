@@ -17,7 +17,11 @@
                     <div class="H2-container-header">
                         <div class="home-price">{{$activity->price}} €</div>
                         <div class="note">
-                            @include('components.star', ['note' => $activity->note])
+                            @if ($activity->note != null)
+                                {{$activity->note}}  @include('components.star', ['note' => $activity->note])
+                            @else
+                                Aucune note
+                            @endif
                         </div>
                     </div>
                     <a  class="btn button-acheter-header w-100"
