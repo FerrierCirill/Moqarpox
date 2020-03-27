@@ -198,12 +198,12 @@ table.maptable td {
             padding: 0.2rem 0em 2em;
 
             #activities {
-                display       : flex;
-                flex-direction: column;
-                flex-wrap     : nowrap;
-                width         : auto;
-                overflow-x    : scroll;
-                overflow-y    : hidden;
+            //     display       : flex;
+            //     flex-direction: column;
+            //     flex-wrap     : nowrap;
+            //     width         : auto;
+            //     overflow-x    : scroll;
+            //     overflow-y    : hidden;
                 padding       : 0em 10px 0.1em 10px;
                 margin        : 0px 20px 0px 20px;
 
@@ -221,17 +221,17 @@ table.maptable td {
                     flex-shrink: 5;
                 }
 
-                a {
-                    min-width: 45vh;
-                    margin-right: 20px;
-                    &:last-child {
-                        margin-right: 0px;
-                    }
+            //     a {
+            //         min-width: 45vh;
+            //         margin-right: 20px;
+            //         &:last-child {
+            //             margin-right: 0px;
+            //         }
 
-                    .homeActivity-main {
-                        min-height : 70px;
-                    }
-                }
+            //         .homeActivity-main {
+            //             min-height : 70px;
+            //         }
+            //     }
             }
         }
     }

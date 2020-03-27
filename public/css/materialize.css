@@ -9212,36 +9212,8 @@ table.maptable td {
     padding: 0.2rem 0em 2em;
   }
   #scrollToMap .containerActivities #activities {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    width: auto;
-    overflow-x: scroll;
-    overflow-y: hidden;
     padding: 0em 10px 0.1em 10px;
     margin: 0px 20px 0px 20px;
-  }
-  #scrollToMap .containerActivities #activities > h6 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0em 2rem;
-    width: 100%;
-    flex-shrink: 0;
-  }
-  #scrollToMap .containerActivities #activities > hr {
-    width: 100%;
-    flex-shrink: 5;
-  }
-  #scrollToMap .containerActivities #activities a {
-    min-width: 45vh;
-    margin-right: 20px;
-  }
-  #scrollToMap .containerActivities #activities a:last-child {
-    margin-right: 0px;
-  }
-  #scrollToMap .containerActivities #activities a .homeActivity-main {
-    min-height: 70px;
   }
 }
 .card-category {
