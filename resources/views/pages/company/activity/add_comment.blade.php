@@ -75,5 +75,9 @@
     document.getElementById('note-input').addEventListener('mousemove', () => {
         document.getElementById('note-p').innerText = `Note : ${document.getElementById('note-input').value} / 5`
     })
+
+    document.getElementById('note-input').addEventListener('change', () => {
+        document.getElementById('note-p').innerText = `Note : ${document.getElementById('note-input').value} / 5`
+    })
 </script>
 @endsection
