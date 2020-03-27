@@ -438,8 +438,9 @@
             `;
 
             document.getElementById('btnZone').innerHTML = `
-                <div style="margin-right:2rem">
-                    <i class="fas fa-caret-up" onclick="switchSearchEngine()"></i>
+                <div style="margin-right:2rem; cursor:pointer" onclick="switchSearchEngine()">
+                    <i class="fas fa-filter"></i>
+                    <i class="fas fa-minus" style="font-size: 0.7em;position: relative;left: -5px;"></i>
                 </div>
                 <div>
                     <button type="button" onclick="recherche()" class="btn right">Rechercher</button>
@@ -457,8 +458,9 @@
                 <div class="w-35">
                     <input type="text" placeholder="Où ? "  id="where" value="${document.getElementById('where').value}">
                 </div>
-                <div>
-                    <i class="fas fa-caret-down" onclick="switchSearchEngine()"></i>
+                <div onclick="switchSearchEngine()" style="cursor:pointer">
+                    <i class="fas fa-filter"></i>
+                    <i class="fas fa-plus" style="font-size: 0.7em;position: relative;left: -5px;"></i>
                 </div>
                 <div>
                     <button type="button" onclick="recherche()" class="btn right">Rechercher</button>

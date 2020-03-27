@@ -19,8 +19,9 @@
             <input type="text" placeholder="Où ? "  id="where">
         </div>
 
-        <div>
-            <i class="fas fa-caret-down" onclick="switchSearchEngine()"></i>
+        <div onclick="switchSearchEngine()" style="cursor:pointer">
+            <i class="fas fa-filter"></i>
+            <i class="fas fa-plus" style="font-size: 0.7em;position: relative;left: -5px;"></i>
         </div>
         <div>
             <button type="button" onclick="recherche()" class="btn right">Rechercher</button>
