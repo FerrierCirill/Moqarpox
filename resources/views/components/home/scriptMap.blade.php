@@ -295,6 +295,9 @@
 
 
     recherche = (btnCategory = null) => {
+
+        switchSearchEngine_open = 1;
+        switchSearchEngine();
         console.log(btnCategory);
 
         let category_id    = document.getElementById('category').value;
