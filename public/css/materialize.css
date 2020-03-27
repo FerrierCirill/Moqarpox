@@ -9185,6 +9185,14 @@ table.maptable td {
 }
 
 @media only screen and (max-width : 992px) {
+  .maptable tbody {
+    display: flex !important;
+    flex-direction: column;
+  }
+  .maptable tbody tr {
+    border-bottom: solid #555 1px;
+  }
+
   #scrollToCategorie {
     margin-bottom: 155px !important;
   }
@@ -9223,6 +9231,18 @@ table.maptable td {
   #scrollToMap .containerActivities #activities {
     padding: 0em 10px 0.1em 10px;
     margin: 0px 20px 0px 20px;
+  }
+  #scrollToMap .containerActivities #activities > h6 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0em 2rem;
+    width: 100%;
+    flex-shrink: 0;
+  }
+  #scrollToMap .containerActivities #activities > hr {
+    width: 100%;
+    flex-shrink: 5;
   }
 }
 .card-category {

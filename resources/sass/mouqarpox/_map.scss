@@ -156,6 +156,14 @@ table.maptable td {
 
 
 @media #{$medium-and-down} {
+    .maptable tbody {
+        display: flex !important;
+        flex-direction: column;
+        tr {
+            border-bottom: solid #555 1px;
+        }
+    }
+
     #scrollToCategorie {
         margin-bottom: 155px!important;
     }
