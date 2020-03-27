@@ -25,7 +25,7 @@
                 <h1 class="activity-title">{{$activity->name}}</h1>
 
                 <div class="mb-1">
-                    {{$activity->note}} / 5 @include('components.star', ['note' => $activity->note]) |
+                    {{$activity->note .' / 5' ?? 'Aucune note'}}  @include('components.star', ['note' => $activity->note]) |
                     <span class="categori-show" style="background :{{ \App\SubCategory::find($activity->sub_category_id)->category->hexa }}"></span>
                     {{ \App\SubCategory::find($activity->sub_category_id)->category->name }} >
                     <span>{{ \App\SubCategory::find($activity->sub_category_id)->name }}</span> |
