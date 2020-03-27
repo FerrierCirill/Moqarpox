@@ -438,6 +438,7 @@
             `;
 
             document.getElementById('btnZone').innerHTML = `
+                <div style="margin-right:2rem; font-size:0.8em; color:#555; text-align:center">Une fois réduite, la recherche<br> garde les propriétés que vous avez définis</div>
                 <div style="margin-right:2rem; cursor:pointer" onclick="switchSearchEngine()">
                     <i class="fas fa-filter"></i>
                     <i class="fas fa-minus" style="font-size: 0.7em;position: relative;left: -5px;"></i>
