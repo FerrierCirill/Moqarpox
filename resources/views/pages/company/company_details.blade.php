@@ -71,7 +71,7 @@
                                         <span class="categori-show" style="background : {{ \App\SubCategory::find($activity->sub_category_id)->category->hexa }}"></span>
                                         {{ \App\SubCategory::find($activity->sub_category_id)->category->name }}<br>
                                         @if ($activity->note != null)
-                                            {{$activity->note}}  @include('components.star', ['note' => $activity->note])
+                                            {{$activity->note}} / 5 @include('components.star', ['note' => $activity->note])
                                         @else
                                             Aucune note
                                         @endif<br>

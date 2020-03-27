@@ -26,7 +26,7 @@
 
                 <div class="mb-1">
                     @if ($activity->note != null)
-                        {{$activity->note}}  @include('components.star', ['note' => $activity->note])
+                        {{$activity->note}} / 5 @include('components.star', ['note' => $activity->note])
                     @else
                         Aucune note
                     @endif |
